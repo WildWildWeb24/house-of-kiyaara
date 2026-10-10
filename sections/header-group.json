@@ -1,0 +1,93 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:section_groups.header",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "blocks": {
+        "logo": {
+          "type": "logo",
+          "settings": {
+            "logo_default": "shopify://shop_images/logo-footer4X.png",
+            "logo_max_width_desktop": 130,
+            "logo_padding_desktop": 30,
+            "logo_max_width": 120,
+            "logo_padding": 18
+          }
+        },
+        "overlay": {
+          "type": "overlay",
+          "settings": {
+            "overlay_index": false,
+            "overlay_collection": false,
+            "overlay_product": false,
+            "inverted_colors": true,
+            "background_opacity": 0,
+            "background_blur": 0,
+            "overlay_templates": "",
+            "disabled_templates": "",
+            "overlay_handles": ""
+          }
+        },
+        "announcement_2": {
+          "type": "announcement",
+          "settings": {
+            "title": "Enjoy 10% Off Your First Order - Use Code WELCOME10 at Checkout"
+          }
+        },
+        "announcement_3": {
+          "type": "announcement",
+          "settings": {
+            "title": "A little festive joy - Use code FESTIVE10 for 10% off"
+          }
+        },
+        "announcement_4": {
+          "type": "announcement",
+          "settings": {
+            "title": "Discount codes applicable on non-sale items only"
+          }
+        }
+      },
+      "block_order": [
+        "logo",
+        "overlay",
+        "announcement_2",
+        "announcement_3",
+        "announcement_4"
+      ],
+      "custom_css": [],
+      "settings": {
+        "main_menu": "main-menu",
+        "color_scheme": "default",
+        "header_layout": "logo-left__menu-center",
+        "desktop_submenu_type": "drawer",
+        "dropdown_menu_cols": "5,5",
+        "enable_full_width": true,
+        "header_sticky_behavior": "fixed",
+        "header_border_style": "default",
+        "action_buttons_type": "text",
+        "secondary_menu": "",
+        "toolbar_color_scheme": "alternative-2",
+        "announcements_type": "sliding_text",
+        "autoplay_speed": 40,
+        "show_social_icons": false,
+        "show_language_button": true,
+        "show_region_button": true,
+        "region_group_by_continents": true,
+        "drawer_menu_footer_info": "<p>There are events, giveaways, videos and more to be found in our social media channels. <strong>Like and subscribe!</strong></p>"
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
+}

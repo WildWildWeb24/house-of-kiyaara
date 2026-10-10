@@ -1,0 +1,303 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_UiHUP8": {
+      "type": "hero",
+      "blocks": {
+        "image_NaAqxq": {
+          "type": "image",
+          "settings": {
+            "media_toggle": "show_video",
+            "overlay_opacity": 15
+          }
+        },
+        "title_mDmMDb": {
+          "type": "title",
+          "settings": {
+            "title": "About",
+            "heading_tag": "h1",
+            "sm_margin_top": 0,
+            "margin_top": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_NaAqxq",
+        "title_mDmMDb"
+      ],
+      "name": "t:sections.hero.name",
+      "settings": {
+        "color_scheme": "default",
+        "media_link": "",
+        "enable_parallax": true,
+        "enable_full_width": true,
+        "sm_section_height": "by_pixels",
+        "sm_pixel_height": 600,
+        "content_width": "col-sm-max-6",
+        "sm_content_position": "sm-vertical-center sm-horizontal-center",
+        "sm_text_alignment": "center",
+        "section_height": "by_pixels",
+        "pixel_height": 380,
+        "content_position": "vertical-center horizontal-center",
+        "text_alignment": "center"
+      }
+    },
+    "rich_text_pU3D9t": {
+      "type": "rich-text",
+      "blocks": {
+        "custom_spacing_RxBn7D": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 80,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 24,
+            "padding_bottom": 0
+          }
+        },
+        "text_KRN6D9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We are truly grateful to <strong>Aarni</strong> for allowing us to feature their beautiful product imagery and content in this demo store. Aarni’s dedication to natural materials, thoughtful design, and enduring craftsmanship is something we are proud to showcase.</p>",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 12,
+            "size_multiplier": "size--default",
+            "margin_top": 12
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_RxBn7D",
+        "text_KRN6D9"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "color_scheme": "",
+        "content_width": "default",
+        "sm_content_position": "center",
+        "sm_text_alignment": "center",
+        "text_alignment": "left"
+      }
+    },
+    "multicolumn_kkQkaV": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_nJMqnh": {
+          "type": "column",
+          "settings": {
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "Inspired by Northern Nature",
+            "text": "<p>Nature is at the heart of Aarni’s story. The quiet strength of northern forests, the calm of open landscapes, and the honesty of natural materials guide every design choice.</p><p>Instead of following trends, Aarni draws inspiration from the simplicity and balance found outdoors — creating pieces that carry a sense of harmony wherever they go. Each product reflects this connection to the natural world: calm, grounded, and beautifully authentic.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
+        "column_Jh9rkY": {
+          "type": "column",
+          "settings": {
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "Nature’s Finest Materials",
+            "text": "<p>Aarni uses only carefully selected materials that honor both durability and natural beauty. Finnish elk leather — known for its velvety softness and remarkable strength — is one of the signature elements that bring warmth and character to each bag.</p><p>Every hide carries subtle marks of the forest it comes from, making every piece unique. With minimal treatment and a respect for natural texture, Aarni celebrates materials that age gracefully and grow richer over time.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
+        "column_EfRLCb": {
+          "type": "column",
+          "settings": {
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "Designed to Endure, Made to Last",
+            "text": "<p>Aarni’s design philosophy is built around longevity. Clean silhouettes, balanced proportions, and thoughtful functionality ensure that each piece remains relevant season after season. Rather than creating fast-fashion accessories, Aarni focuses on timeless design that adapts effortlessly to everyday life. When form, material, and craftsmanship work in quiet harmony, the result is an accessory you carry for years — not just for moments.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_nJMqnh",
+        "column_Jh9rkY",
+        "column_EfRLCb"
+      ],
+      "custom_css": [
+        ".container {--ideal-width: 1200px;}"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "color_scheme": "",
+        "alignment": "left",
+        "layout_desktop": "grid",
+        "items_per_row_desktop": 3,
+        "sm_media_aspect_ratio": "square",
+        "items_per_row_tablet": 2,
+        "layout_mobile": "grid",
+        "media_aspect_ratio": "landscape_alt",
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all"
+      }
+    },
+    "multirow_wPfqKg": {
+      "type": "multirow",
+      "blocks": {
+        "row_BG3xUw": {
+          "type": "row",
+          "settings": {
+            "media_width": "6",
+            "video_autoplay": true,
+            "video_controls": false,
+            "desktop_alignment": "left",
+            "vertical_position": "col-align-items-center",
+            "title": "Inspired by Northern Nature",
+            "text": "<p>Nature is at the heart of Aarni’s story. The quiet strength of northern forests, the calm of open landscapes, and the honesty of natural materials guide every design choice. </p><p>Instead of following trends, Aarni draws inspiration from the simplicity and balance found outdoors — creating pieces that carry a sense of harmony wherever they go. Each product reflects this connection to the natural world: calm, grounded, and beautifully authentic.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
+        "row_V9miRH": {
+          "type": "row",
+          "settings": {
+            "media_width": "6",
+            "video_autoplay": true,
+            "video_controls": false,
+            "desktop_alignment": "left",
+            "vertical_position": "col-align-items-center",
+            "title": "Crafted from Nature’s Finest Materials",
+            "text": "<p>Aarni uses only carefully selected materials that honor both durability and natural beauty. Finnish elk leather — known for its velvety softness and remarkable strength — is one of the signature elements that bring warmth and character to each bag. </p><p>Every hide carries subtle marks of the forest it comes from, making every piece unique. With minimal treatment and a respect for natural texture, Aarni celebrates materials that age gracefully and grow richer over time.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
+        "row_ddiNMf": {
+          "type": "row",
+          "settings": {
+            "media_width": "6",
+            "video_autoplay": true,
+            "video_controls": false,
+            "desktop_alignment": "left",
+            "vertical_position": "col-align-items-center",
+            "title": "Designed to Endure, Made to Last",
+            "text": "<p>Aarni’s design philosophy is built around longevity. Clean silhouettes, balanced proportions, and thoughtful functionality ensure that each piece remains relevant season after season. Rather than creating fast-fashion accessories, Aarni focuses on timeless design that adapts effortlessly to everyday life. When form, material, and craftsmanship work in quiet harmony, the result is an accessory you carry for years — not just for moments.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_BG3xUw",
+        "row_V9miRH",
+        "row_ddiNMf"
+      ],
+      "disabled": true,
+      "name": "t:sections.multirow.name",
+      "settings": {
+        "color_scheme": "",
+        "layout_desktop": "grid",
+        "media_position": "media_last",
+        "even_row_flip": true,
+        "sm_full_width_buttons": false,
+        "heading_sm_size_multiplier": "sm-size--default",
+        "text_sm_size_multiplier": "sm-size--default",
+        "button_sm_size_multiplier": "sm-size--default",
+        "layout_mobile": "grid",
+        "full_width_buttons": false,
+        "heading_size_multiplier": "size--small",
+        "text_size_multiplier": "size--default",
+        "button_size_multiplier": "size--default",
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "heading_text_align": "left",
+        "sm_size_multiplier": "sm-size--default",
+        "size_multiplier": "size--default"
+      }
+    },
+    "featured_collection_or_products_KKhUpJ": {
+      "type": "featured-collection-or-products",
+      "blocks": {
+        "section_header_UyEybU": {
+          "type": "section_header",
+          "settings": {
+            "subtitle": "",
+            "title": "Staff recommendations",
+            "text": "",
+            "text_alignment": "center",
+            "subtitle_tag": "h3",
+            "title_tag": "h2",
+            "sm_size_multiplier": "sm-size--tiny",
+            "size_multiplier": "size--small"
+          }
+        }
+      },
+      "block_order": [
+        "section_header_UyEybU"
+      ],
+      "name": "t:sections.featured-collection-or-products.name",
+      "settings": {
+        "color_scheme": "default",
+        "collection": "",
+        "product_limit": 8,
+        "view_all": true,
+        "enable_card_thumbnail": false,
+        "layout_desktop": "grid",
+        "products_per_row_desktop": 4,
+        "products_per_row_tablet": 4,
+        "layout_mobile": "grid",
+        "products_per_row_mobile": 2,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all"
+      }
+    }
+  },
+  "order": [
+    "hero_UiHUP8",
+    "rich_text_pU3D9t",
+    "multicolumn_kkQkaV",
+    "multirow_wPfqKg",
+    "main",
+    "featured_collection_or_products_KKhUpJ"
+  ]
+}

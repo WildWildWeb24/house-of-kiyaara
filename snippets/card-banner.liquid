@@ -1,0 +1,82 @@
+{%- liquid
+  # Sizing
+  # TODO: Sizes to snippet
+  assign ipr_mobile = ipr_array[0] | times: 1
+  assign ipr_tablet = ipr_array[1] | times: 1
+  assign ipr_desktop = ipr_array[2] | times: 1
+  assign column_span = current_block.column_span | at_most: ipr_mobile | default: 1
+  assign sm_column_span = current_block.sm_column_span | at_most: ipr_tablet | default: 1
+  assign md_column_span = current_block.md_column_span | at_most: ipr_desktop | default: 1
+
+  # content
+  assign card_url = current_block.url
+  assign card_image = current_block.image
+  assign card_title = current_block.title
+
+  # TODO: Change HTML structure to follow same format as other cards
+  # assign card_subtitle = current_block.subtitle
+  # assign card_content = current_block.content
+  # assign card_button = current_block.button_label
+
+  # Style
+  assign classes = ''
+  assign overlay_alpha = current_block.overlay_opacity | divided_by: 100.00
+
+  unless sizes
+    assign desktop_sizes = 'calc(100vw / ' | append: ipr_desktop | divided_by: md_column_span  | append: ')'
+    assign tablet_sizes = '(max-width: 1023px) calc(100vw / ' | append: ipr_tablet | divided_by: sm_column_span | append: ')'
+    assign mobile_sizes = '(max-width: 767px) calc(100vw / ' | append: ipr_mobile | divided_by: column_span | append: ')'
+    assign sizes = mobile_sizes | append: ', ' | append: tablet_sizes | append: ', ' | append: desktop_sizes
+  endunless
+
+  # All-cols class needed when banner is the only item of the row
+  if column_span == ipr_mobile
+    assign classes = classes | append: 'sm-down-all-cols'
+  endif
+
+  if sm_column_span == ipr_tablet
+    assign classes = classes | append: ' sm-md-all-cols' | strip
+  endif
+
+  if md_column_span == ipr_desktop
+    assign classes = classes | append: ' md-all-cols' | strip
+  endif
+-%}
+
+<div
+  class="card card--banner col-span {{ classes }}"
+  style="
+    --col-span: {{ column_span }};
+    --sm-col-span: {{ sm_column_span }};
+    --md-col-span: {{ md_column_span }};
+    --color: {{ current_block.text_color }};">
+  {%- if card_url != blank -%}
+  <a class="card-media" href="{{ card_url }}">
+  {%- else -%}
+  <div class="card-media">
+  {%- endif -%}
+    {%- if current_block.video == blank and card_image != blank -%}
+      {% render 'picture',
+        image_default: card_image,
+        preload: preload,
+        sizes: sizes %}
+    {%- else -%}
+      {%- render 'video_new', video_default: current_block.video -%}
+    {%- endif -%}
+
+    <div
+      class="card-media-overlay flex {{ current_block.content_alignment }}"
+      style="
+        background-color: {{ current_block.overlay_color | color_modify: 'alpha', overlay_alpha }};
+        {% unless current_block.title_style contains 'btn' %}
+        --color-foreground: {{ current_block.text_color }};
+        color: var(--color-foreground);
+        {% endunless %} ">
+      <span class="{{ current_block.title_style }}{% if current_block.title_style contains 'btn' and card_url == blank %} disabled{% endif %}">{{ card_title | replace: '[br]', '<br>' }}</span>
+    </div>
+  {%- if card_url != blank -%}
+  </a>
+  {%- else -%}
+  </div>
+  {%- endif -%}
+</div>

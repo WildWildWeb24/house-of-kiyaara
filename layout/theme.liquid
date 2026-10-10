@@ -1,0 +1,319 @@
+<!doctype html>
+<html
+  class="no-js button-shape--{{ settings.button_shape }} template-{{ template.name }} drawers--{{ settings.drawer_appearance }} hotspots--{{ settings.hotspot_dot_style }} {%- unless settings.transparent_dot_label_background %} hotspots--show-dot-label-background {%- endunless %} {%- if request.design_mode %} theme-editor {%- endif %}"
+  lang="{{ request.locale.iso_code }}"
+  data-add-to-cart-type="{{ settings.add_to_cart_type }}"
+>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W2TZLFJM');</script>
+    <!-- End Google Tag Manager -->
+    <meta name="google-site-verification" content="2sYIy2e0mTIMIyxLpGMB_OgpDEFrPQj4eaqTkb93aSI" /> <!-- Google My Business -->
+    <meta name="google-site-verification" content="jYfkcBENnoNWc6Bk8dXcCnxZIPPWxj9UKcysKfWbM4o" /> <!-- Google Search Console -->
+    <meta name="p:domain_verify" content="5ce962a5b241d945d00f935865d03c93"/>
+
+    {%- comment -%} Critical metas below here {%- endcomment -%}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    {%- comment -%} Title {%- endcomment -%}
+    <title>
+      {{- page_title -}}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {%- comment -%} Preconnect links below here {%- endcomment -%}
+    {% unless settings.type_header_font.system? and settings.base_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {% endunless -%}
+
+    {%- comment -%} Asynchronous JS below here {%- endcomment -%}
+
+    {%- comment -%} CSS that includes @import below here {%- endcomment -%}
+
+    {%- comment -%} Synchronous JS and CSS below here {%- endcomment -%}
+    {% render 'css-settings-and-variables' %}
+
+    {{ 'accessibility.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'reset.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
+    {% if template.name == 'product' -%}
+      {{ 'template-product.css' | asset_url | stylesheet_tag: preload: true }}
+    {% elsif template.name == 'collection' or template.name == 'search' -%}
+      {{ 'component-facets.css' | asset_url | stylesheet_tag: preload: true }}
+      {{ 'component-product-grid.css' | asset_url | stylesheet_tag: preload: true }}
+    {% endif -%}
+    {{ 'component-grid.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'component-card.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'component-upsell-products.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'component-gridy-slider.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'component-modals.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'component-loading.css' | asset_url | stylesheet_tag: preload: true }}
+    {% if settings.product_card_show_rating != 'hide' -%}
+      {{ 'component-rating.css' | asset_url | stylesheet_tag: preload: true }}
+    {% endif -%}
+
+    {%- comment -%} Preload links below here {%- endcomment -%}
+    {% # theme-check-disable %}
+    {% unless settings.base_font.system? -%}
+      <link
+        rel="preload"
+        as="font"
+        fetchpriority="high"
+        href="{{ settings.base_font | font_url }}"
+        type="font/woff2"
+        crossorigin
+      >
+    {% endunless -%}
+    {% unless settings.header_font.system? -%}
+      <link
+        rel="preload"
+        as="font"
+        fetchpriority="high"
+        href="{{ settings.header_font | font_url }}"
+        type="font/woff2"
+        crossorigin
+      >
+    {% endunless -%}
+    {% if settings.animate_sections -%}
+      <link
+        rel="preload"
+        as="style"
+        fetchpriority="low"
+        href="{{ 'animations-sections.css' | asset_url }}"
+        onload="this.rel='stylesheet'"
+      >
+    {% endif -%}
+
+    {% if settings.animate_banners and request.design_mode == false -%}
+      <link
+        rel="preload"
+        as="style"
+        fetchpriority="low"
+        href="{{ 'animations-banners.css' | asset_url }}"
+        onload="this.rel='stylesheet'"
+      >
+    {% endif -%}
+    {% if settings.product_card_quick_buy or template.name == 'product' -%}
+      {%- if template.name == 'product' -%}
+        <link
+          rel="preload"
+          as="style"
+          fetchpriority="low"
+          href="{{ 'component-product-form.css' | asset_url }}"
+          onload="this.rel='stylesheet'"
+        >
+      {%- else -%}
+        <link
+          rel="stylesheet"
+          fetchpriority="low"
+          media="print"
+          href="{{ 'component-product-form.css' | asset_url }}"
+          onload="this.media='all'"
+        >
+      {%- endif -%}
+    {% endif %}
+    {% if template.name != 'cart' -%}
+      <link rel="stylesheet" href="{{ 'component-cart.css' | asset_url }}" media="print" onload="this.media='all'">
+    {% endif %}
+    {% # theme-check-enable %}
+
+    <noscript>
+      {{ 'component-loading.css' | asset_url | stylesheet_tag }}
+      {% if settings.animate_sections -%}
+        {{ 'animations-sections.css' | asset_url | stylesheet_tag }}
+      {% endif -%}
+      {% if settings.animate_sections -%}
+        {{ 'animations-banners.css' | asset_url | stylesheet_tag }}
+      {% endif -%}
+      {% if settings.product_card_quick_buy or template.name == 'product' -%}
+        {{ 'component-product-form.css' | asset_url | stylesheet_tag }}
+      {% endif -%}
+      {% if template.name != 'cart' -%}
+        {{ 'component-cart.css' | asset_url | stylesheet_tag }}
+      {% endif -%}
+    </noscript>
+
+    {% comment -%} Deferred JS below here. Content for header after. {% endcomment -%}
+    <script type="text/javascript" src="{{ 'global.js' | asset_url }}" defer></script>
+    <script type="text/javascript" src="{{ 'component-predictive-search.js' | asset_url }}" defer></script>
+    <script type="text/javascript" src="{{ 'component-product-form.js' | asset_url }}" defer></script>
+    <script type="text/javascript" src="{{ 'component-animations.js' | asset_url }}" defer></script>
+    {% if settings.product_card_quick_buy -%}
+      <script type="text/javascript" src="{{ 'component-quick-buy.js' | asset_url }}" defer></script>
+    {% endif -%}
+
+    {{ content_for_header }}
+
+    {%- comment -%} Everything else, e.g. SEO metas etc. below here {%- endcomment -%}
+    {% if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif -%}
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="alternate" hreflang="en-in" href="{{ canonical_url }}">
+    <link rel="alternate" hreflang="x-default" href="{{ canonical_url }}">
+
+    {%- render 'meta-tags' %}
+    {%- render 'schema-organization' -%}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
+
+    <meta name="theme-color" content="">
+    {% if settings.favicon != blank -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 32, height: 32 }}" type="image/png">
+    {% endif -%}
+    {% if settings.head_custom_liquid != blank -%}
+      {{ settings.head_custom_liquid }}
+    {% endif %}
+  </head>
+
+  <body class="woolman">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2TZLFJM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a class="skip-to-content-link visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- sections 'header-group' -%}
+
+    <main id="MainContent" class="content-for-layout" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    <div class="aside-group">
+      {%- sections 'aside-group' -%}
+    </div>
+
+    <div class="footer-group">
+      {%- sections 'footer-group' -%}
+    </div>
+
+    {%- liquid
+      if settings.add_to_cart_type == 'notification'
+        render 'cart-notification'
+      endif
+    -%}
+
+    {%- if localization.available_languages.size > 1 or localization.available_countries.size > 1 -%}
+      {%- render 'modal-localization' -%}
+    {%- endif -%}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+    </ul>
+
+    <script>
+      window.shopUrl = '{{ shop.url }}';
+      window.routes = {
+        root: '{{ routes.root_url }}',
+        cart_url: '{{ routes.cart_url }}',
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        search_url: '{{ routes.search_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}',
+        product_recommendations_url: '{{ routes.product_recommendations_url }}',
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t: quantity: '[quantity]' }}`,
+        shipping_free: `{{ 'sections.cart.shipping_free' | t }}`,
+        shipping_not_free: `{{ 'sections.cart.shipping_not_free' | t: amount: '[amount]' }}`,
+      };
+
+      window.saleBadgeStrings = {
+        default: `{{ 'products.product.badges.on_sale' | t }}`,
+        savings: `{{ 'products.product.badges.on_sale_savings' | t: amount: '[amount]' }}`,
+        percentage: `{{ 'products.product.badges.on_sale_percentage_off' | t: percentage: '[percentage]' }}`,
+      };
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        itemAdded: `{{ 'general.cart.item_added' | t }}`,
+        itemsAdded: `{{ 'general.cart.items_added' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        preOrder: `{{ 'products.product.preorder.preorder' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+        unavailable_with_option: `{{ 'products.product.value_unavailable' | t: option_value: '[value]' }}`,
+        inventory: {
+          in_stock: `{{ 'products.product.inventory.in_stock' | t }}`,
+          in_stock_with_quantity: `{{ 'products.product.inventory.in_stock_with_quantity' | t: quantity: '[quantity]' }}`,
+          few_left: `{{ 'products.product.inventory.few_left' | t }}`,
+          few_left_with_quantity: `{{ 'products.product.inventory.few_left_with_quantity' | t: quantity: '[quantity]' }}`,
+          will_be_in_stock_after: `{{ 'products.product.inventory.will_be_in_stock_after' | t: date: '[date]' }}`,
+          waiting_for_stock: `{{ 'products.product.inventory.waiting_for_stock' | t }}`,
+          out_of_stock: `{{ 'products.product.inventory.out_of_stock' | t }}`,
+          out_of_stock_continue_selling: `{{ 'products.product.inventory.out_of_stock_continue_selling' | t }}`,
+        },
+      };
+
+      window.accessibilityStrings = {
+        imageAvailable: `{{ 'products.product.media.image_available' | t: index: '[index]' }}`,
+        shareSuccess: `{{ 'general.share.success_message' | t }}`,
+        pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
+        playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
+      };
+
+      window.themeStrings = {
+        product_count_simple_one: `{{ 'products.facets.product_count_simple.one' | t: count: '[count]' }}`,
+        product_count_simple_other: `{{ 'products.facets.product_count_simple.other' | t: count: '[count]' }}`,
+        results_with_count_one: `{{ 'templates.search.results_with_count.one' | t: count: '[count]' }}`,
+        results_with_count_other: `{{ 'templates.search.results_with_count.other' | t: count: '[count]' }}`,
+        from_price_html: `{{ 'products.product.price.from_price_html' | t: price: '[price]' }}`,
+      };
+
+      theme = {};
+      theme.settings = {
+        moneyFormat: {{ shop.money_format | json }},
+      };
+
+      theme.assets = {};
+    </script>
+
+    {%- if settings.body_custom_liquid != blank -%}
+      {{ settings.body_custom_liquid }}
+    {%- endif -%}
+
+{% render 'razorpay-magic-checkout' %}
+
+{%- comment -%}
+  ===== FREE TWILLY GIFT: DISABLED (offer discontinued Oct 2026) =====
+  The whole block between DISABLE-START and DISABLE-END is commented out, not deleted.
+  TO RE-ENABLE: remove the comment tag that opens on the DISABLE-START line and the
+  endcomment tag on the DISABLE-END line.
+  TO USE A DIFFERENT FREE PRODUCT: change both 'meadow-twlly-forest-green' handles,
+  update the 'free-twilly-eligible-products' collection, and set giftThreshold (paise; 100000 = Rs 1,000).
+  OTHER FILES THAT BELONG TO THIS FEATURE (left untouched):
+  assets/free-gift-twilly.js, snippets/block--product-buy-buttons.liquid (gift-only notice on the twilly page),
+  templates/product.json (Free Twilly Banner), templates/index.json (announcement bar and homepage banner).
+{%- endcomment -%}
+{%- comment -%} DISABLE-START
+{% assign gift_eligible_collection = collections['free-twilly-eligible-products'] %}
+<script>
+  window.freeGiftConfig = {
+    giftProductId: {{ all_products['meadow-twlly-forest-green'].id | json }},
+    giftVariantId: {{ all_products['meadow-twlly-forest-green'].variants[0].id | json }},
+    giftThreshold: 100000
+, eligibleProductIds: [
+    {%- for p in gift_eligible_collection.products -%}
+        {{ p.id }}{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  };
+</script>
+<script src="{{ 'free-gift-twilly.js' | asset_url }}" defer="defer"></script>
+DISABLE-END {%- endcomment -%}
+</body>
+</html>

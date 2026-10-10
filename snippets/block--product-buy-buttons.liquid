@@ -1,0 +1,125 @@
+{%- unless product == nil -%}
+  <product-form class="product-form" data-parent-drawer="{{ parent_drawer }}" data-hide-errors="{{ gift_card_recipient_feature_active }}">
+
+    {%- liquid
+      assign gift_card_recipient_feature_active = false
+      if block.settings.show_gift_card_recipient and product.gift_card?
+        assign gift_card_recipient_feature_active = true
+      endif
+
+      if product.selected_or_first_available_variant.available == false or product.selected_or_first_available_variant == nil
+        assign buttons_disabled = true
+      endif
+
+      if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty
+        assign show_dynamic_checkout = true
+      endif
+    -%}
+
+    {%- if block.settings.add_multipliers != blank -%}
+      {%- assign add_multipliers_array = block.settings.add_multipliers | remove: ' ' | split: ',' -%}
+
+      {%- capture add_multipliers -%}
+        {%- for multiply_by in add_multipliers_array -%}
+          {%- assign integer_value = multiply_by | divided_by: 1 -%}
+          {%- if integer_value == 0 -%}
+            {%- continue -%}
+          {%- endif -%}
+            <add-multiplier class="js">
+              <input type="hidden" name="multiplied-quantity" value="{{ integer_value }}">
+              <button type="button" class="btn btn--add-multiplier{% if show_dynamic_checkout %} btn--secondary{% endif %}" {% if buttons_disabled %}disabled{% endif %}>&times;{{ integer_value }}</button>
+            </add-multiplier>
+        {%- endfor -%}
+      {%- endcapture -%}
+    {%- endif -%}
+
+    <div class="error-message-wrapper flex horizontal vertical-center mb-16 mt-16" role="alert" hidden>
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-error" viewBox="0 0 13 13">
+        <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+        <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+        <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+        <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7"/>
+      </svg>
+      <span class="error-message"></span>
+    </div>
+
+    {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+
+      {%- if is_preorder -%}
+        <input type="hidden" name="attributes[_preorder]" value="true">
+      {%- endif -%}
+
+      {%- if gift_card_recipient_feature_active -%}
+        {%- render 'gift-card-recipient-form', product: product, form: form -%}
+      {%- endif -%}
+
+      <div class="product-form__buttons">
+{%- comment -%} FREE TWILLY DISABLED (re-enable: remove this comment wrapper, here and at the endif near the bottom)
+{%- if product.id == all_products['twilly'].id or product.id == all_products['meadow-twlly-forest-green'].id -%}
+  <p class="product-form__gift-only-notice">
+    This item is only available as a free gift with qualifying orders — it can't be purchased separately.
+  </p>
+{%- else -%}
+{%- endcomment -%}
+
+        {% if has_quantity_selector and quantity_next_to_add_to_cart %}
+          {% capture quantity_input %}
+            {% render 'quantity-input', input_min_value: 1, input_value: 1, input_form: product_form_id  %}
+          {% endcapture %}
+        {% elsif has_quantity_selector == false %}
+          <input class="quantity__input" type="hidden" name="quantity" min="1" value="1" form="{{ product_form_id }}">
+        {% endif %}
+
+        {%- capture add_to_cart_button -%}
+          <button type="submit" name="add" class="product-form__submit btn btn--full {% if show_dynamic_checkout %}btn--secondary{% else %}btn--primary{% endif %}" {% if buttons_disabled %}disabled{% endif %} {% if settings.add_to_cart_type == 'drawer' %}aria-haspopup="dialog"{% endif %}>
+          <span>
+          {%- if product.selected_or_first_available_variant.available -%}
+            {%- if is_preorder -%}
+              {{ 'products.product.preorder.preorder' | t }}
+            {%- else -%}
+              {{ 'products.product.add_to_cart' | t }}
+            {%- endif -%}
+          {%- elsif product.selected_or_first_available_variant == nil -%}
+            {{ 'products.product.unavailable' | t }}
+          {%- else -%}
+            {{ 'products.product.sold_out' | t }}
+          {%- endif -%}
+          </span>
+          {% render 'loading' %}
+          </button>
+        {%- endcapture -%}
+
+        <div class="add-to-cart-container{% if quantity_input %} with-quantity-input{% endif %}">
+        {% if quantity_input %}
+          {{ quantity_input }}
+        {% endif %}
+
+        {%- if add_multipliers != blank -%}
+        <div class="with-add-multipliers {{ block.settings.add_multipliers_layout }}">
+          {{ add_to_cart_button }}
+          {{ add_multipliers }}
+        </div>
+        {%- else -%}
+          {{ add_to_cart_button }}
+        {%- endif -%}
+         </div>
+
+    {%- if block.settings.show_dynamic_checkout -%}
+      <div class="product__dynamic-checkout-buttons mt-16">
+        {{ form | payment_button }}
+      </div>
+    {%- endif -%}
+
+    {%- if is_preorder -%}
+      <p class="mt-8 text-center size--tiny preorder--info">
+        {{- 'products.product.preorder.info_html' | t -}}
+      </p>
+    {%- endif -%}
+
+  {%- comment -%} FREE TWILLY DISABLED {%- endif -%} {%- endcomment -%}
+  </div>      
+
+    {%- endform -%}
+  </product-form>
+{%- endunless -%}

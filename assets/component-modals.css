@@ -1,0 +1,252 @@
+/* Modal properties */
+.modal {
+  --modal-level: 9999;
+  --dialog-width: calc(100% - calc(var(--container-margin) * 2));
+  --dialog-max-width: 500px;
+  --dialog-height: 800px;
+  --dialog-max-height: 90dvh;
+
+  background: transparent;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .2s linear;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--modal-level)
+}
+.modal--large {
+  --dialog-max-width: 800px;
+}
+.modal--huge {
+  --dialog-max-width: 1200px;
+}
+.modal-dialog {
+  container-name: modal;
+  container-type: inline-size;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: var(--modal-level);
+
+  width: var(--dialog-width);
+  max-width: var(--dialog-max-width);
+  height: var(--dialog-height);
+  max-height: var(--dialog-max-height);
+
+  border-radius: var(--modal-border-radius);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  box-shadow: var(--box-shadow--big);
+}
+.modal-dialog::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.modal.is-open {
+  visibility: visible;
+  opacity: 1;
+}
+.modal-body {
+  height: 100%;
+  overflow-y: scroll;
+}
+.modal-body > * + * {
+  margin-top: 2.4rem;
+}
+.modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  transform: translate(50%, -50%);
+}
+@media only screen and (min-width: 1024px) {
+  .modal-body.md-no-scroll {
+    overflow-y: hidden;
+  }
+  .modal-column--media {
+    height: 100%;
+  }
+  .modal-column--media *:is(picture, img, video, svg) {
+    height: 100%;
+  }
+  .modal-column {
+    height: min(var(--dialog-height), var(--dialog-max-height));
+  }
+  .modal-column--text {
+    overflow-y: scroll;
+  }
+}
+
+/* Dialog animations */
+.modal:not(.modal--slider) .modal-dialog,
+.modal--slider > gridy-slider {
+  opacity: 0;
+  transition: transform .3s ease, opacity .3s ease-in-out;
+  transform: translateY(6vh);
+  transition-delay: .2s;
+}
+.modal:not(.modal--slider).is-open .modal-dialog,
+.modal--slider.is-open > gridy-slider {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ---------------------------------- */
+/* Full screen modal */
+.modal--fullscreen .modal-dialog {
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  border-radius: 0;
+  position: relative;
+  z-index: 0;
+}
+.modal--fullscreen .modal-close {
+  top: var(--gutter);
+  right: var(--gutter);
+  transform: none;
+}
+
+/* ---------------------------------- */
+/* Modal with slider */
+.modal--slider .gridy-slider {
+  --slide-items-width: 100%;
+  --track-padding: var(--container-margin);
+  z-index: var(--modal-level);
+  width: 100%;
+  pointer-events: none;
+}
+.modal--slider .gridy-track {
+  align-items: center;
+  padding: 4rem max(var(--track-padding), var(--container-margin));
+  scroll-padding-inline: calc(var(--track-padding));
+  grid-gap: var(--container-margin)
+}
+.modal--slider .gridy-slider .modal-dialog {
+  pointer-events: auto;
+  z-index: auto;
+  scroll-snap-align: center;
+  margin: 0 auto;
+  width: 100%;
+  height: 90dvh;
+}
+.modal--slider .modal-close {
+  pointer-events: auto;
+  top: 4rem;
+  right: auto;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal--slider .gridy-slider .gridy-arrows {
+  left: var(--container-margin);
+  width: calc(100% - var(--container-margin) * 2);
+}
+.modal--slider .gridy-slider .gridy-indicator {
+  bottom: -1rem;
+}
+.modal--slider .media-only {
+  height: 100%;
+
+  .modal-column--media {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  video {
+    height: 100%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .modal--slider .gridy-slider .gridy-indicator {
+    bottom: 4rem;
+    left: calc(20% - 0.6rem);
+    width: calc(60% + 1.2rem);
+    background: var(--color-background);
+    box-shadow: var(--box-shadow--default);
+    transform: translateY(50%);
+    padding: 2rem;
+    border-radius: var(--button-border-radius);
+
+    .dot {
+      background: var(--color-foreground);
+    }
+  }
+  .modal--slider .gridy-slider .gridy-arrows {
+    left: 20%;
+    width: 60%;
+    top: auto;
+    bottom: 4rem;
+    z-index: 4;
+
+    .gridy-arrow {
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+  }
+}
+
+
+@media only screen and (min-width: 768px) {
+  .modal--slider .modal-close {
+    left: calc(50% + min(calc(50% - var(--container-margin)), 600px));
+  }
+  .modal--slider .gridy-slider .gridy-arrows {
+    width: 100%;
+    max-width: 1280px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .modal--slider .gridy-slider [data-direction="next"] {
+    right: max(var(--track-padding), var(--container-margin));
+    transform: translate(50%, -50%);
+  }
+  .modal--slider .gridy-slider [data-direction="prev"] {
+    left: max(var(--track-padding), var(--container-margin));
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .modal--slider .gridy-slider .modal-dialog {
+    height: 800px;
+  }
+  .modal--slider .gridy-slider {
+    --track-padding: calc((100% - (var(--max-col-width) * 10 + var(--gutter) * 9))/2);
+  }
+  .modal--slider .gridy-track {
+    grid-gap: calc((100% - var(--gutter) * 9)/10);
+  }
+  .modal-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: inherit;
+  }
+}
+
+/* Auto heights */
+.product-modal .modal-dialog,
+.modal-localization .modal-dialog {
+  height: auto;
+}
+
+/* Performance improvements */
+/* Ensures that images are not loaded until the modal is opened */
+.modal img {
+  display: none;
+}
+.modal.is-open img {
+  display: block;
+}

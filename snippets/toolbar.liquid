@@ -1,0 +1,147 @@
+{%- liquid
+  assign toolbar_nav = linklists[section.settings.secondary_menu.handle]
+  assign announcements = section.blocks | where: 'type', 'announcement'
+
+  # Show booleans used to change layout according to the shown content
+  assign show_localization = false
+  assign show_language = false
+  assign show_country = false
+  assign show_announcements = false
+  assign show_nav = false
+
+  # NAV visibility
+  if toolbar_nav != empty
+    assign show_nav = true
+  endif
+
+  # SOME visibility
+  if section.settings.show_social_icons
+    capture some_links
+      render 'social-icons'
+    endcapture
+
+    if some_links != empty
+      assign show_nav = true
+    endif
+  endif
+
+  # ANNOUNCEMENTS visibility
+  if announcements.size > 0
+    assign show_announcements = true
+  endif
+
+  # LOCALIZATION visibility
+  if section.settings.show_region_button and localization.available_countries.size > 1
+    assign show_localization = true
+    assign show_country = true
+  endif
+
+  if section.settings.show_language_button and localization.available_languages.size > 1
+    assign show_localization = true
+    assign show_language = true
+  endif
+
+  # TOOLBAR template columns class
+  if show_localization and show_announcements and show_nav
+    assign toolbar_class = 'toolbar--all'
+  elsif show_localization and show_announcements
+    assign toolbar_class = 'toolbar--localization-announcements'
+  elsif show_localization and show_nav
+    assign toolbar_class = 'toolbar--localization-nav'
+  elsif show_announcements and show_nav
+    assign toolbar_class = 'toolbar--announcements-nav'
+  endif
+-%}
+
+<div id="ToolBar" class="toolbar-container color-{{ section.settings.toolbar_color_scheme }}">
+  <div class="toolbar style--with-borders {{ toolbar_class }}" {% unless section.settings.enable_full_width %}style="max-width: var(--ideal-width); margin: 0 auto;"{% endunless %}>
+
+    {% if show_localization %}
+      <button type="button" aria-controls="modal-localization" aria-label="{{ 'accessibility.country_selector_and_current' | t: current: localization.country, currency: localization.country.currency.iso_code  }}" data-open="modal-localization" class="toolbar-localization-button style--uppercase flex center-center" style="gap:6px">
+        {%- if show_country -%}
+            {{ localization.country | image_url: width: 32 | image_tag | replace: '<img', '<img class="country-flag --small" alt="Flag"'  }}
+            <span class="visually-hidden">{{ localization.country }}</span>
+            <div class="country-text sm-down-hide">
+              <span class="currency-iso-code">{{ localization.country.currency.iso_code }}</span>
+              <span class="currency-symbol">{{ localization.country.currency.symbol }}</span>
+            </div>
+        {%- endif -%}
+        {%- if show_country and show_language -%}
+          <span class="separator sm-down-hide">&middot;</span>
+        {%- endif -%}
+        {%- if show_language -%}
+          <span class="lang-iso-code">{{- localization.language.iso_code | upcase -}}</span>
+        {%- endif -%}
+      </button>
+
+    {% endif %}
+
+    {% if show_announcements %}
+      {% if section.settings.announcements_type == 'sliding_text' %}
+        {{ 'section-sliding-text.css' | asset_url | stylesheet_tag }}
+        {% assign autoplay_speed_factor = section.settings.autoplay_speed | plus: 10 %}
+        {% assign animation_duration = 1100 | divided_by: autoplay_speed_factor | append: 's' %}
+
+        <div class="announcements sliding-text">
+          <div class="sliding-container pause-on-hover">
+            {% capture announcement_blocks -%}
+              <div class="sliding-item" aria-hidden="true" style="animation-duration: {{ animation_duration }}; animation-direction: normal; --sliding-item-gap: 30px; --sm-sliding-item-gap: 60px;">
+                {% for announcement in announcements -%}
+                  <p class="announcement">{{ announcement.settings.title | replace: '<a' , '<a tabindex="-1"' }}</p>
+                {%- endfor %}
+              </div>
+            {%- endcapture %}
+            {%- for i in (0..3) -%}
+              {%- if forloop.index0 == 0 -%}
+                {{ announcement_blocks | remove: 'aria-hidden="true" ' | remove: 'tabindex="-1"' }}
+              {%- else -%}
+                {{ announcement_blocks }}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {% else %}
+      {% liquid
+        if show_nav
+          assign align_suffix = 'left'
+        elsif show_localization
+          assign align_suffix = 'right'
+        else
+          assign align_suffix = 'center'
+        endif
+
+        assign autoplay_speed_factor = section.settings.autoplay_speed | divided_by: 50.00 | plus: 1.00
+      %}
+      <gridy-slider
+        class="gridy-slider announcements"
+        data-mobile-enabled="true"
+        data-tablet-enabled="true"
+        data-desktop-enabled="true"
+        data-ipr-mobile="1"
+        data-ipr-tablet="1"
+        data-ipr-desktop="1"
+        data-autoplay="true"
+        data-autoplay-delay="{{ 7500 | divided_by: autoplay_speed_factor | round }}">
+        <div class="gridy-track disable-scroll grid grid-cols-1{% if settings.toolbar_uppercase %} style--uppercase{% endif %}" style="--gap:0px;">
+          {% for announcement in announcements %}
+          <div class="announcement flex text-center horizontal-center md-horizontal-{{ align_suffix }} md-text-align-{{ align_suffix }}"><p>{{ announcement.settings.title }}</p>
+          </div>
+        {% endfor %}
+        </div>
+      </gridy-slider>
+
+      {% endif %}
+    {% endif %}
+
+    {% if show_nav %}
+      <nav class="toolbar-nav nav-horizontal md-down-hide">
+        {% for menu_item in toolbar_nav.links %}
+          <a class="nav-item" href="{{ menu_item.url }}">{{ menu_item.title }}</a>
+        {% endfor %}
+        {% if section.settings.show_social_icons %}
+          {% render 'social-icons' %}
+        {% endif %}
+      </nav>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,253 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "blocks": {
+        "custom_spacing_PxKnCn": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_PxKnCn"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "show_collection_image": true,
+        "show_breadcrumb": true,
+        "center_text": false,
+        "enable_parallax": true,
+        "content_width": "narrow"
+      }
+    },
+    "custom_liquid_ttjAYd": {
+      "type": "custom-liquid",
+      "blocks": {
+        "custom_spacing_4H4Vew": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_4H4Vew"
+      ],
+      "name": "Collection Banner Desktop",
+      "settings": {
+        "color_scheme": "",
+        "custom_liquid": "<div class=\"custom-image-banner-desktop\">\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/collection-desktop.webp?v=1790253188\"\n    alt=\"House of Kiyaara\"\n    loading=\"lazy\"\n    width=\"1600\"\n    height=\"900\"\n  >\n</div>\n\n<style>\n  .custom-image-banner-desktop {\n    width: 100%;\n    text-align: center;\n    overflow: hidden;\n  }\n\n  .custom-image-banner-desktop img {\n    display: block;\n    width: 100%;\n    height: auto;\n    margin: 0 auto;\n  }\n\n  @media screen and (max-width: 749px) {\n    .custom-image-banner-desktop {\n      display: none;\n    }\n  }\n</style>",
+        "enable_full_width": true
+      }
+    },
+    "custom_liquid_CgqNyE": {
+      "type": "custom-liquid",
+      "blocks": {
+        "custom_spacing_ncwxWK": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_ncwxWK"
+      ],
+      "name": "Collection Banner Mobile",
+      "settings": {
+        "color_scheme": "",
+        "custom_liquid": "<div class=\"custom-image-banner-mobile\">\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/collection-mobile.webp?v=1790253187\"\n    alt=\"House of Kiyaara\"\n    loading=\"lazy\"\n    width=\"1600\"\n    height=\"900\"\n  >\n</div>\n\n<style>\n  .custom-image-banner-mobile {\n    width: 100%;\n    text-align: center;\n    overflow: hidden;\n  }\n\n  .custom-image-banner-mobile img {\n    display: block;\n    width: 100%;\n    height: auto;\n    margin: 0 auto;\n  }\n\n  @media screen and (min-width: 750px) {\n    .custom-image-banner-mobile {\n      display: none;\n    }\n  }\n</style>",
+        "enable_full_width": true
+      }
+    },
+    "products": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "custom_spacing_AKyttK": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 30,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 30,
+            "padding_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_AKyttK"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "products_per_page": 24,
+        "show_count": true,
+        "enable_sorting": true,
+        "enable_filtering": true,
+        "enable_swatches": true,
+        "pagination_type": "button",
+        "show_sidebar": false,
+        "md_items_per_row": 4,
+        "sm_items_per_row": 3,
+        "items_per_row": 2
+      }
+    },
+    "faq_dEbKnx": {
+      "type": "faq",
+      "blocks": {
+        "section_header_qaN7VE": {
+          "type": "section_header",
+          "settings": {
+            "subtitle": "",
+            "title": "Roots & Luxury",
+            "text": "<p>We believe in crafting elegant accessories from sustainable materials that are both durable and effortlessly comfortable. Our designs embrace timeless simplicity, ensuring each piece captivates with refined beauty while meeting the uncompromising quality of everyday luxury.</p>",
+            "text_alignment": "left",
+            "subtitle_tag": "h3",
+            "title_tag": "h2",
+            "sm_size_multiplier": "sm-size--default",
+            "size_multiplier": "size--default"
+          }
+        },
+        "image_yaPQH8": {
+          "type": "image",
+          "settings": {
+            "media_type": "image",
+            "media_aspect_ratio": "natural",
+            "video_autoplay": true,
+            "video_controls": false
+          }
+        },
+        "question_RYAM6n": {
+          "type": "question",
+          "settings": {
+            "title": "Do you ship to my country?",
+            "text": "<p>Yes. We ship orders worldwide. Orders are shipped within 1-2 business days. Standard delivery times vary by region, with express options available at checkout for faster shipping.</p>",
+            "media_type": "image"
+          }
+        },
+        "question_akQiJk": {
+          "type": "question",
+          "settings": {
+            "title": "What payment methods you support?",
+            "text": "<p>We accept all major credit cards, PayPal, and other secure payment options to ensure a smooth and safe checkout experience. Your payment details are always protected with encrypted security.</p>",
+            "media_type": "image"
+          }
+        },
+        "question_wM6D7m": {
+          "type": "question",
+          "settings": {
+            "title": "How to return a product?",
+            "text": "<p>If you're not completely satisfied with your purchase, you can return it within <strong>14 days</strong> for a refund or exchange. Simply contact our support team with your order details, and we’ll guide you through the quick and easy return process.</p>",
+            "media_type": "image"
+          }
+        },
+        "question_Tw6GrW": {
+          "type": "question",
+          "settings": {
+            "title": "What kind of warranty the products have?",
+            "text": "<p>All our products come with a <strong>24-month</strong> warranty, covering any manufacturing defects or quality issues. If you experience any problems, reach out to us, and we’ll make it right. Your satisfaction is our priority!</p>",
+            "media_type": "image"
+          }
+        }
+      },
+      "block_order": [
+        "section_header_qaN7VE",
+        "image_yaPQH8",
+        "question_RYAM6n",
+        "question_akQiJk",
+        "question_wM6D7m",
+        "question_Tw6GrW"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "alternative-2",
+        "title_style": "subheading",
+        "media_position": "media_first",
+        "content_width": "col-sm-max-3"
+      }
+    },
+    "sliding_text_rR9Pmi": {
+      "type": "sliding-text",
+      "blocks": {
+        "text_3jXV3U": {
+          "type": "text",
+          "settings": {
+            "text": "Clutch Wallet",
+            "link": ""
+          }
+        },
+        "text_qDiHrh": {
+          "type": "text",
+          "settings": {
+            "text": "Crossbody Bag",
+            "link": ""
+          }
+        },
+        "text_NiRtF8": {
+          "type": "text",
+          "settings": {
+            "text": "The Weekend Bag",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_3jXV3U",
+        "text_qDiHrh",
+        "text_NiRtF8"
+      ],
+      "disabled": true,
+      "name": "t:sections.sliding-text.name",
+      "settings": {
+        "color_scheme": "alternative-1",
+        "font": "heading",
+        "direction": "normal",
+        "speed": 30,
+        "pause_on_hover": false,
+        "sm_size_multiplier": "sm-size--tiny",
+        "sm_item_gap": 80,
+        "sm_image_gap": 16,
+        "sm_image_width": 80,
+        "size_multiplier": "size--tiny",
+        "item_gap": 24,
+        "image_gap": 16,
+        "image_width": 60
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "custom_liquid_ttjAYd",
+    "custom_liquid_CgqNyE",
+    "products",
+    "faq_dEbKnx",
+    "sliding_text_rR9Pmi"
+  ]
+}

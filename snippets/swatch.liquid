@@ -1,0 +1,34 @@
+{%- comment -%}
+  Renders a color swatch using Shopify's swatch metafield object.
+
+  Parameters:
+  - swatch:  {Object}  Swatch object with image and/or color
+  - label:   {String}  Fallback label text (for alt/aria use)
+  - width:   {Number}  Width in pixels (optional, default: 16)
+  - height:  {Number}  Height in pixels (optional, default: 16)
+{%- endcomment -%}
+
+{%- liquid
+    assign swatch_width = width | default: 16
+    assign swatch_height = height | default: 16
+    assign image_width = swatch_width | times: 2
+    assign image_height = swatch_height | times: 2
+
+    assign swatch_value = null
+    if swatch.image
+      assign image_url = swatch.image | image_url: width: image_width, height: image_height
+      assign swatch_value = 'url(' | append: image_url | append: ')'
+    elsif swatch.color
+      assign swatch_value = swatch.color
+    endif
+
+  -%}
+  {%- if swatch_value -%}
+    <span class="color" style="--swatch--background: {{ swatch_value }};"></span>
+  {%- else -%}
+    <span class="color swatch-unavailable" style="border: 1px dashed"></span>
+  {%- endif -%}
+
+  <span class="visually-hidden">
+    {{- label -}}
+  </span>    

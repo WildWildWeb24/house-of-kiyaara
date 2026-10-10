@@ -1,0 +1,82 @@
+{% liquid
+  assign info_text = 'sections.cart.you_might_like_info' | t
+  assign product_form_id = 'product-form-' | append: section.id
+
+  # CUSTOM LIST: products picked in Theme settings > Cart > "You may also like" products.
+  # Empty = Shopify's automatic recommendations.
+  assign custom_products = settings.cart_recommendation_products
+%}
+
+<div id="cart-recommendations">
+  <cart-recommendations
+    class="recommendations {%- if cart.item_count == 0 %} hidden {%- endif %}"
+    data-url="{{ routes.product_recommendations_url }}?limit=6"
+    data-product-id="{{ cart.items.first.product.id }}"
+    data-section-id="{{ section.id }}"
+  >
+    {%- comment -%}
+      Custom list (Theme settings > Cart). Falls back to Shopify's automatic recommendations when the list is empty.
+    {%- endcomment -%}
+    {% if custom_products != blank %}
+      <div class="cart-recommendations-header">
+        <h2 class="cart-recommendations-title h2">{{ 'sections.cart.you_might_like' | t }}</h2>
+        {% if info_text != blank %}
+          <p class="cart-recommendations-info size--tiny mt-4">{{ info_text }}</p>
+        {% endif %}
+      </div>
+      <div class="cart-recommendation-items mt-12" data-products-ajax>
+        {% for recommendation in custom_products %}
+          {% liquid
+            assign in_cart = false
+            for item in cart.items
+              if item.product_id == recommendation.id
+                assign in_cart = true
+                break
+              endif
+            endfor
+
+            # Preorder check
+            assign is_preorder = false
+            if recommendation.tags contains 'Preorder' or recommendation.tags contains 'preorder'
+              assign is_preorder = true
+            endif
+          %}
+          {%- if in_cart == false and recommendation.available -%}
+            {%- render 'card-product-upsell',
+              product: recommendation,
+              product_form_id: product_form_id,
+              is_preorder: is_preorder,
+              section: section,
+              cart_recommendations: true
+            -%}
+          {%- endif -%}
+        {% endfor %}
+      </div>
+    {% elsif recommendations.performed and recommendations.products_count > 0 %}
+      <div class="cart-recommendations-header">
+        <h2 class="cart-recommendations-title h2">{{ 'sections.cart.you_might_like' | t }}</h2>
+        {% if info_text != blank %}
+          <p class="cart-recommendations-info size--tiny mt-4">{{ info_text }}</p>
+        {% endif %}
+      </div>
+      <div class="cart-recommendation-items mt-12" data-products-ajax>
+        {% for recommendation in recommendations.products %}
+          {% liquid
+            # Preorder check
+            assign is_preorder = false
+            if recommendation.tags contains 'Preorder' or recommendation.tags contains 'preorder'
+              assign is_preorder = true
+            endif
+          %}
+          {%- render 'card-product-upsell',
+            product: recommendation,
+            product_form_id: product_form_id,
+            is_preorder: is_preorder,
+            section: section,
+            cart_recommendations: true
+          -%}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </cart-recommendations>
+</div>

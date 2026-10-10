@@ -1,0 +1,30 @@
+{% comment %}
+  Generates product title.
+
+  Accepts:
+  - product: {Object} The product object (required/template access)
+  - onboarding: {Boolean} Whether the product is being displayed in the onboarding process. Default: false (optional)
+  - title_tag: {String} The HTML tag to use for the title. Default: 'h1' (optional)
+
+  Used:
+  - sections/main-product.liquid: The product template section
+  - sections/featured-product.liquid: The featured product section
+{% endcomment %}
+
+{%- liquid
+  assign sizing_classes = block.settings.size_multiplier | append: ' ' | append: block.settings.sm_size_multiplier
+-%}
+
+{%- capture title_html -%}
+  {% unless onboarding %}
+    <h1 class="product-title {{ sizing_classes }}">{{ product.title | escape }}</h1>
+    {% else %}
+    <h1 class="product-title {{ sizing_classes }}">{{ 'onboarding.product_title' | t }}</h1>
+  {% endunless %}
+{%- endcapture -%}
+
+{%- if title_tag -%}
+  {{ title_html | replace: 'h1', title_tag }}
+{%- else -%}
+  {{ title_html }}
+{%- endif -%}

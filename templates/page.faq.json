@@ -1,0 +1,228 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "heading_text_align": "left",
+        "sm_size_multiplier": "sm-size--default",
+        "size_multiplier": "size--default"
+      }
+    },
+    "hero_MgMFCq": {
+      "type": "hero",
+      "blocks": {
+        "title_cEAiMw": {
+          "type": "title",
+          "settings": {
+            "title": "{{ page.title }}",
+            "heading_tag": "h1",
+            "sm_size_multiplier": "sm-size--tiny",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--tiny",
+            "margin_top": 0
+          }
+        },
+        "image_a8BLk9": {
+          "type": "image",
+          "settings": {
+            "media_toggle": "show_image",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "title_cEAiMw",
+        "image_a8BLk9"
+      ],
+      "name": "t:sections.hero.name",
+      "settings": {
+        "color_scheme": "default",
+        "media_link": "",
+        "enable_parallax": false,
+        "enable_full_width": true,
+        "sm_section_height": "by_pixels",
+        "sm_pixel_height": 400,
+        "content_width": "col-sm-max-6",
+        "sm_content_position": "sm-vertical-center sm-horizontal-center",
+        "sm_text_alignment": "right",
+        "section_height": "by_pixels",
+        "pixel_height": 200,
+        "content_position": "vertical-center horizontal-center",
+        "text_alignment": "center"
+      }
+    },
+    "faq_hViL9Y": {
+      "type": "faq",
+      "blocks": {
+        "section_header_PazrWJ": {
+          "type": "section_header",
+          "settings": {
+            "subtitle": "",
+            "title": "",
+            "text": "<p>If you can’t find the information you’re looking for in our FAQ, don’t worry — help is just a click away. For any additional questions or support, simply reach out to us through our <a href=\"/pages/contact\" title=\"Contact\"><strong>Contact</strong></a> page, and we’ll be happy to assist you.</p>",
+            "text_alignment": "left",
+            "subtitle_tag": "h2",
+            "title_tag": "h1",
+            "sm_size_multiplier": "sm-size--default",
+            "size_multiplier": "size--default"
+          }
+        },
+        "subheading_RW3bgM": {
+          "type": "subheading",
+          "settings": {
+            "title": "Shipping and payments"
+          }
+        },
+        "question_37tgjC": {
+          "type": "question",
+          "settings": {
+            "title": "How long does shipping usually take?",
+            "text": "<p>Delivery times depend on the shipping method you choose at checkout. Standard shipping typically takes a few business days, while expedited options may arrive sooner.</p>",
+            "media_type": "image"
+          }
+        },
+        "question_BNMEW7": {
+          "type": "question",
+          "settings": {
+            "title": "What payment methods do you accept?",
+            "text": "<p>We accept major credit and debit cards, as well as popular digital payment methods such as Shop Pay, PayPal, Apple Pay, and Google Pay. Available payment options are shown at checkout</p>",
+            "media_type": "image"
+          }
+        },
+        "question_ynqmnf": {
+          "type": "question",
+          "settings": {
+            "title": "Will I receive tracking information for my order?",
+            "text": "<p>Yes. Once your order has been processed and shipped, you will receive a tracking number via email so you can follow your package’s progress.</p>",
+            "media_type": "image"
+          }
+        },
+        "subheading_e3kLrW": {
+          "type": "subheading",
+          "settings": {
+            "title": "Returns and refunds"
+          }
+        },
+        "question_VTYWpM": {
+          "type": "question",
+          "settings": {
+            "title": "Can I return or exchange an item?",
+            "text": "<p>Yes. We offer returns and exchanges within a defined timeframe as long as the item is unused and in its original condition. Please refer to our return policy for full details.</p>",
+            "media_type": "image"
+          }
+        },
+        "question_4wipDq": {
+          "type": "question",
+          "settings": {
+            "title": "What is your return policy?",
+            "text": "<p>We accept returns within a specified timeframe, provided the item is unused, in its original condition, and includes all packaging and tags. Please review our full return policy for details.</p>",
+            "media_type": "image"
+          }
+        },
+        "question_7tcBB8": {
+          "type": "question",
+          "settings": {
+            "title": "How do I start a return or exchange?",
+            "text": "<p>To begin a return or exchange, simply contact our customer support team with your order number and the reason for your request. We’ll guide you through the next steps.</p>",
+            "media_type": "image"
+          }
+        },
+        "question_NeAKyM": {
+          "type": "question",
+          "settings": {
+            "title": "When will I receive my refund?",
+            "text": "<p>Once your returned item has been received and inspected, your refund will be processed to your original payment method. Processing times may vary depending on your payment provider.</p>",
+            "media_type": "image"
+          }
+        },
+        "question_aFpnnM": {
+          "type": "question",
+          "settings": {
+            "title": "Can I return a sale or discounted item?",
+            "text": "<p>Eligibility for returning sale or discounted items may vary. Please check the specific product details or refer to our return policy to see if your purchase qualifies.</p>",
+            "media_type": "image"
+          }
+        },
+        "subheading_jCzMhV": {
+          "type": "subheading",
+          "settings": {
+            "title": "Products"
+          }
+        },
+        "question_mHD793": {
+          "type": "question",
+          "settings": {
+            "title": "How do I care for my leather bag??",
+            "text": "<p>Wipe it down with a soft, damp cloth and use a colorless leather conditioner when needed. Avoid storing the bag in high temperatures or direct sunlight for extended periods.</p>",
+            "media_type": "image"
+          }
+        },
+        "question_CzQfca": {
+          "type": "question",
+          "settings": {
+            "title": "Why does my new bag look different from my old one?",
+            "text": "<p>We continuously refine our designs for durability and style, which may result in slight changes over time.</p>",
+            "media_type": "image"
+          }
+        },
+        "question_KMCExE": {
+          "type": "question",
+          "settings": {
+            "title": "Where are your bags made?",
+            "text": "<p>Our bags are crafted from premium wild materials like Finnish elk leather and Scandinavian bovine leather. Production takes place in Budapest, Hungary, and Shenzhen, China—both known for their skilled leather artisans. The unique properties of these leathers require expert craftsmanship to ensure exceptional quality, durability, and timeless Scandinavian style.</p>",
+            "media_type": "image"
+          }
+        },
+        "question_CmN7X3": {
+          "type": "question",
+          "settings": {
+            "title": "How long is the strap on the bag?",
+            "text": "<p>The strap on each bag is designed to accommodate users of various heights and sizes. You can find the exact strap measurements in the details on product page.</p>",
+            "media_type": "image"
+          }
+        }
+      },
+      "block_order": [
+        "section_header_PazrWJ",
+        "subheading_RW3bgM",
+        "question_37tgjC",
+        "question_BNMEW7",
+        "question_ynqmnf",
+        "subheading_e3kLrW",
+        "question_VTYWpM",
+        "question_4wipDq",
+        "question_7tcBB8",
+        "question_NeAKyM",
+        "question_aFpnnM",
+        "subheading_jCzMhV",
+        "question_mHD793",
+        "question_CzQfca",
+        "question_KMCExE",
+        "question_CmN7X3"
+      ],
+      "name": "t:sections.faq.name",
+      "settings": {
+        "color_scheme": "",
+        "title_style": "body-text-bold",
+        "media_position": "media_first",
+        "content_width": "col-sm-max-4"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hero_MgMFCq",
+    "faq_hViL9Y"
+  ]
+}

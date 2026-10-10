@@ -1,0 +1,62 @@
+.popup {
+  --popup-level: 9999;
+  --items-opacity: 0;
+  --dialog-bottom: -300px;
+  --dialog-max-width: 880px;
+  --popup-transition: all 0.3s ease-in-out;
+
+  pointer-events: none;
+  background: transparent;
+  visibility: hidden;
+  opacity: 1 !important;
+  display: block !important;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: var(--popup-level);
+  overflow: hidden;
+}
+.popup--narrow {
+  --dialog-max-width: 480px;
+}
+.popup.is-open {
+  visibility: visible;
+  --items-opacity: 1;
+  --dialog-bottom: var(--container-margin);
+}
+
+.popup-dialog {
+  pointer-events: auto;
+  transition: var(--popup-transition);
+  opacity: var(--items-opacity);
+
+  position: absolute;
+  bottom: var(--dialog-bottom);
+  right: var(--container-margin);
+
+  width: calc(100% - calc(var(--container-margin)* 2));
+  max-width: var(--dialog-max-width);
+
+  height: auto;
+  max-height: 90dvh;
+
+  border-radius: var(--modal-border-radius);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  box-shadow: var(--box-shadow--big);
+}
+.popup-dialog picture {
+  border-top-left-radius: var(--modal-border-radius);
+  border-top-right-radius: var(--modal-border-radius);
+}
+.popup-close {
+  transition: var(--popup-transition);
+  opacity: var(--items-opacity);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  z-index: 2;
+}

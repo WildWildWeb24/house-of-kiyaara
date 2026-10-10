@@ -1,0 +1,772 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main_big": {
+      "type": "main-product-big-image",
+      "blocks": {
+        "hotspot_1": {
+          "type": "hotspot",
+          "disabled": true,
+          "settings": {
+            "title": "Sample[br]Hotspot",
+            "title_position": "right",
+            "horizontal_position": 50,
+            "vertical_position": 50,
+            "text": "<h3>Sample hotspot content</h3><p>Add image or video content to the Hotspot to tell more about the product feature you want to highlight. </p><p><strong>Quick setup:</strong></p><ul><li>Replace this sample content with you own.</li><li>Add Image or Video to the hotspot</li></ul><p></p><p><strong>Good to know:</strong></p><ul><li>You can add up to 6 hotspots. </li><li>To get the most out of this functionality check our <a href=\"https://themes.woolman.co/blogs/sampo/dynamic-hotspots-with-metaobjects\" title=\"https://themes.woolman.co/blogs/sampo/dynamic-hotspots-with-metaobjects\">guide on setting up the Hotspots with Meta objects</a>.</li></ul>",
+            "hotspots_pos_array": ""
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "sm_margin_top": 8,
+            "block_column": "left",
+            "sm_size_multiplier": "sm-size--default",
+            "margin_top": 8,
+            "size_multiplier": "size--tiny"
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "sm_margin_top": 4,
+            "block_column": "left",
+            "margin_top": 4
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "font_weight": "normal",
+            "sm_margin_top": 12,
+            "block_column": "left",
+            "sm_size_multiplier": "sm-size--large",
+            "margin_top": 12,
+            "size_multiplier": "size--large"
+          }
+        },
+        "sibling_products_XQJUEK": {
+          "type": "sibling_products",
+          "settings": {
+            "title": "Colour:",
+            "sibling_product_1": "{{ product.metafields.custom.thumbnail_swatch_product_1.value }}",
+            "sibling_product_2": "{{ product.metafields.custom.thumbnail_swatch_product_2.value }}",
+            "sibling_product_3": "{{ product.metafields.custom.thumbnail_swatch_product_3.value }}",
+            "layout": "grid",
+            "items_per_row": 5,
+            "aspect_ratio": "square",
+            "sm_margin_top": 24,
+            "block_column": "left",
+            "margin_top": 8
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch": "swatch_with_text",
+            "cross_out_unavailable": true,
+            "sm_margin_top": 20,
+            "block_column": "left",
+            "margin_top": 20
+          }
+        },
+        "text_3A9nGQ": {
+          "type": "text",
+          "name": "Key Features",
+          "settings": {
+            "text": "{{ product.metafields.custom.specification1 | metafield_tag }}",
+            "sm_margin_top": 20,
+            "sm_size_multiplier": "sm-size--default",
+            "block_column": "left",
+            "margin_top": 20,
+            "size_multiplier": "size--default"
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "enable_collapsible": false,
+            "sm_margin_top": 32,
+            "sm_size_multiplier": "sm-size--default",
+            "block_column": "left",
+            "margin_top": 32,
+            "size_multiplier": "size--default"
+          }
+        },
+        "custom_liquid_KbBNk4": {
+          "type": "custom_liquid",
+          "name": "Free Twilly Banner",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<img src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/free-twilly-offer-pdp-01.jpg?v=1784690340\" alt=\"free-twilly-banner\" style=\"display:block;width:100%;height:auto;margin:0;padding:0;border:0;box-shadow:none;max-width:100%;\">",
+            "sm_margin_top": 20,
+            "block_column": "left",
+            "margin_top": 20
+          }
+        },
+        "custom_liquid_cYMBUm": {
+          "type": "custom_liquid",
+          "name": "Festive10 offer",
+          "settings": {
+            "custom_liquid": "{% assign show_non_sale_banner = false %}\n\n{% if product != blank %}\n  {% for product_collection in product.collections %}\n    {% if product_collection.title == 'Non Sale Items' %}\n      {% assign show_non_sale_banner = true %}\n      {% break %}\n    {% endif %}\n  {% endfor %}\n{% endif %}\n\n{% if show_non_sale_banner %}\n  <div class=\"non-sale-pdp-banner\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/hok-pdp-10.webp?v=1789556727\"\n      alt=\"Non Sale Items\"\n      loading=\"lazy\"\n      width=\"1600\"\n      height=\"500\"\n    >\n  </div>\n{% endif %}\n\n<style>\n  .non-sale-pdp-banner {\n    width: 100%;\n    margin: 20px 0;\n    line-height: 0;\n    overflow: hidden;\n  }\n\n  .non-sale-pdp-banner img {\n    display: block;\n    width: 100%;\n    height: auto;\n    max-width: 100%;\n  }\n</style>",
+            "sm_margin_top": 8,
+            "block_column": "left",
+            "margin_top": 8
+          }
+        },
+        "text_8PVtb3": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>*Discount codes applicable on non-sale items only</strong></p>",
+            "sm_margin_top": 8,
+            "sm_size_multiplier": "sm-size--default",
+            "block_column": "left",
+            "margin_top": 8,
+            "size_multiplier": "size--default"
+          }
+        },
+        "same_day_pincode_checker_VNqrLy": {
+          "type": "same_day_pincode_checker",
+          "settings": {
+            "heading": "Order delivered within 24 hours across Mumbai",
+            "placeholder_text": "Enter pincode to check",
+            "button_text": "CHECK",
+            "pincodes": "400001,400002,400003,400004,400005,400006,400007,400008,400009,400010,400011,400012,400013,400014,400015,400016,400017,400018,400019,400020,400021,400022,400024,400025,400026,400027,400028,400029,400030,400031,400032,400033,400034,400035,400037,400042,400043,400047,400049,400050,400051,400052,400053,400054,400055,400056,400057,400058,400059,400060,400061,400063,400064,400065,400066,400067,400068,400069,400070,400071,400072,400074,400075,400076,400077,400078,400079,400080,400081,400082,400083,400084,400085,400086,400087,400088,400089,400091,400092,400093,400094,400095,400096,400097,400098,400099,400101,400102,400103,400104,400111,400113,400114,400118,400171,400183,400186,400604,400703,400705,400706,401107,410206",
+            "available_message": "24 Hour Delivery Available",
+            "unavailable_message": "24 Hour Delivery not available",
+            "available_color": "#1a7f37",
+            "unavailable_color": "#d1242f",
+            "sm_margin_top": 8,
+            "block_column": "left",
+            "margin_top": 8
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true,
+            "add_multipliers": "",
+            "add_multipliers_layout": "single-line",
+            "sm_margin_top": 20,
+            "block_column": "left",
+            "margin_top": 40
+          }
+        },
+        "custom_liquid_dkRtjj": {
+          "type": "custom_liquid",
+          "name": "Kiyaara's USPs",
+          "settings": {
+            "custom_liquid": "<img src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/kiyaara-usp-final_6c42c0e1-5228-46c6-8d9e-4c8c58a0631b.jpg?v=1777554837\" alt=\"usps\" style=\"display:block;width:100%; height:auto;margin-top:30px;padding:0;border:0;box-shadow:none;max-width:100%;\">",
+            "sm_margin_top": 8,
+            "block_column": "left",
+            "margin_top": 8
+          }
+        },
+        "custom_liquid_mG8JnJ": {
+          "type": "custom_liquid",
+          "name": "Payment Process",
+          "settings": {
+            "custom_liquid": "<p style=\"font-size: 10px; color: #222; margin: 0 0 8px 0; padding: 0; font-weight: 500;\">Secure and easy payment process</p>\n<img src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/HOK_Secure_Payments.png?v=1787296575\" alt=\"payment-process\" style=\"display:block;width:100%;height:auto;margin:0;padding:0;border:0;box-shadow:none;max-width:100%;\">",
+            "sm_margin_top": 8,
+            "block_column": "left",
+            "margin_top": 8
+          }
+        },
+        "icons_TG89Mz": {
+          "type": "icons",
+          "settings": {
+            "title": "",
+            "icons_per_row": 2,
+            "grid_gap": 3,
+            "first_image": "{{ product.metafields.custom.influener_img_01.value }}",
+            "second_image": "{{ product.metafields.custom.influener_img_02.value }}",
+            "sm_margin_top": 40,
+            "block_column": "left",
+            "margin_top": 24
+          }
+        },
+        "share_MaQgQM": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "",
+            "hide_on_desktop": true,
+            "sm_margin_top": 8,
+            "block_column": "left",
+            "margin_top": 8
+          }
+        },
+        "inventory": {
+          "type": "inventory",
+          "disabled": true,
+          "settings": {
+            "inventory_threshold": 7,
+            "show_available_quantity": true,
+            "inventory_transfers_enable": true,
+            "additional__in_stock": "",
+            "additional__few_on_stock": "",
+            "additional__out_of_stock": "",
+            "additional__out_of_stock_continue_selling": "",
+            "sm_margin_top": 24,
+            "block_column": "left",
+            "margin_top": 24
+          }
+        },
+        "collapsible_tab_1": {
+          "type": "collapsible_tab",
+          "name": "Size & Details",
+          "settings": {
+            "title": "Size & Details",
+            "content": "{{ product.metafields.custom.specification_and_sizes | metafield_tag }}",
+            "page": "",
+            "icon": "default",
+            "sm_margin_top": 36,
+            "block_column": "left",
+            "sm_size_multiplier": "sm-size--default",
+            "margin_top": 36,
+            "size_multiplier": "size--default",
+            "custom_liquid": "{% assign specification_image = product.metafields.custom.specification_and_image.value %}\n\n{% if specification_image != blank %}\n  {% assign alt_text = product.title | append: ' - specifications' %}\n  <div style=\"display: flex; justify-content: center;\">\n    <div style=\"width: 400px; height: 400px;  overflow: hidden;\">\n      {{ specification_image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 400, 600', sizes: '280px', alt: alt_text, style: 'width: 100%; height: 100%; object-fit: contain; display: block;' }}\n    </div>\n  </div>\n{% endif %}"
+          }
+        },
+        "collapsible_tab_QicLn9": {
+          "type": "collapsible_tab",
+          "name": "Why You'll Love It",
+          "disabled": true,
+          "settings": {
+            "title": "Why You'll Love It",
+            "content": "<p>{{ product.metafields.custom.wul_description | metafield_tag }}</p>",
+            "page": "",
+            "icon": "default",
+            "sm_margin_top": 0,
+            "block_column": "left",
+            "sm_size_multiplier": "sm-size--default",
+            "margin_top": 0,
+            "size_multiplier": "size--default",
+            "custom_liquid": "<ul class=\"flex\" role=\"list\" style=\"gap: 8px; list-style: none; margin-left:0;\">\n  {%- for type in shop.enabled_payment_types -%}\n    <li style=\"margin-top: 0;\">\n      {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}\n    </li>\n  {%- endfor -%}\n</ul>\n\n{% assign wul_title_01 = product.metafields.custom.wul_title_01.value %}\n{% assign wul_image_01 = product.metafields.custom.wul_image_01.value %}\n{% assign wul_title_02 = product.metafields.custom.wul_title_02.value %}\n{% assign wul_image_02 = product.metafields.custom.wul_image_02.value %}\n{% assign wul_title_03 = product.metafields.custom.wul_title_03.value %}\n{% assign wul_image_03 = product.metafields.custom.wul_image_03.value %}\n\n<div style=\"display: flex; flex-direction: column; align-items: left; gap: 24px;\">\n\n  {% if wul_title_01 != blank or wul_image_01 != blank %}\n    <div style=\"width: 100%; text-align: center;\">\n      {% if wul_title_01 != blank %}\n       <strong> <p style=\"margin: 0 0 8px; text-align: left;\">\n{{ wul_title_01 }}</p></strong>\n      {% endif %}\n      {% if wul_image_01 != blank %}\n        {% assign alt_01 = wul_title_01 | default: product.title %}\n        <div style=\"width: 100%; aspect-ratio: 1 / 1; overflow: hidden; margin: 0 auto;\">\n          {{ wul_image_01 | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 400, 600', sizes: '100vw', alt: alt_01, style: 'width: 100%; height: 100%; object-fit: contain; display: block;' }}\n        </div>\n      {% endif %}\n    </div>\n  {% endif %}\n\n  {% if wul_title_02 != blank or wul_image_02 != blank %}\n    <div style=\"width: 100%; text-align: left;\">\n      {% if wul_title_02 != blank %}\n        <strong><p style=\"margin: 0 0 8px; text-align: left;\">\n{{ wul_title_02 }}</p></strong>\n      {% endif %}\n      {% if wul_image_02 != blank %}\n        {% assign alt_02 = wul_title_02 | default: product.title %}\n        <div style=\"width: 100%; aspect-ratio: 1 / 1; overflow: hidden; margin: 0 auto;\">\n          {{ wul_image_02 | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 400, 600', sizes: '100vw', alt: alt_02, style: 'width: 100%; height: 100%; object-fit: contain; display: block;' }}\n        </div>\n      {% endif %}\n    </div>\n  {% endif %}\n\n  {% if wul_title_03 != blank or wul_image_03 != blank %}\n    <div style=\"width: 100%; text-align: left;\">\n      {% if wul_title_03 != blank %}\n        <strong><p style=\"margin: 0 0 8px; text-align: left;\">\n{{ wul_title_03 }}</p></strong>\n      {% endif %}\n      {% if wul_image_03 != blank %}\n        {% assign alt_03 = wul_title_03 | default: product.title %}\n        <div style=\"width: 100%; aspect-ratio: 1 / 1; overflow: hidden; margin: 0 auto;\">\n          {{ wul_image_03 | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 400, 600', sizes: '100vw', alt: alt_03, style: 'width: 100%; height: 100%; object-fit: contain; display: block;' }}\n        </div>\n      {% endif %}\n    </div>\n  {% endif %}\n\n</div>"
+          }
+        },
+        "collapsible_tab_h3cbtP": {
+          "type": "collapsible_tab",
+          "name": "Style The Bag",
+          "disabled": true,
+          "settings": {
+            "title": "Style The Bag",
+            "content": "<p>{{ product.metafields.custom.style_bag_description | metafield_tag }}</p>",
+            "page": "",
+            "icon": "default",
+            "sm_margin_top": 0,
+            "block_column": "left",
+            "sm_size_multiplier": "sm-size--default",
+            "margin_top": 0,
+            "size_multiplier": "size--default",
+            "custom_liquid": "{% assign style_title_01 = product.metafields.custom.style_bag_title_01.value %}\n{% assign style_image_01 = product.metafields.custom.style_bag_image_01.value %}\n{% assign style_title_02 = product.metafields.custom.style_bag_title_02.value %}\n{% assign style_image_02 = product.metafields.custom.style_bag_image_02.value %}\n{% assign style_title_03 = product.metafields.custom.style_bag_title_03.value %}\n{% assign style_image_03 = product.metafields.custom.style_bag_image_03.value %}\n\n<div style=\"display: flex; flex-direction: column; align-items: left; gap: 24px;\">\n\n  {% if style_title_01 != blank or style_image_01 != blank %}\n    <div style=\"width: 100%; text-align: left;\">\n      {% if style_title_01 != blank %}\n        <strong><p style=\"margin: 0 0 8px; text-align: left;\">{{ style_title_01 }}</p></strong>\n      {% endif %}\n      {% if style_image_01 != blank %}\n        {% assign alt_01 = style_title_01 | default: product.title %}\n        <div style=\"width: 100%; aspect-ratio: 1 / 1; overflow: hidden; margin: 0 auto;\">\n          {{ style_image_01 | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 400, 600', sizes: '100vw', alt: alt_01, style: 'width: 100%; height: 100%; object-fit: contain; display: block;' }}\n        </div>\n      {% endif %}\n    </div>\n  {% endif %}\n\n  {% if style_title_02 != blank or style_image_02 != blank %}\n    <div style=\"width: 100%; text-align: left;\">\n      {% if style_title_02 != blank %}\n        <strong><p style=\"margin: 0 0 8px; text-align: left;\">{{ style_title_02 }}</p></strong>\n      {% endif %}\n      {% if style_image_02 != blank %}\n        {% assign alt_02 = style_title_02 | default: product.title %}\n        <div style=\"width: 100%; aspect-ratio: 1 / 1; overflow: hidden; margin: 0 auto;\">\n          {{ style_image_02 | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 400, 600', sizes: '100vw', alt: alt_02, style: 'width: 100%; height: 100%; object-fit: contain; display: block;' }}\n        </div>\n      {% endif %}\n    </div>\n  {% endif %}\n\n  {% if style_title_03 != blank or style_image_03 != blank %}\n    <div style=\"width: 100%; text-align: left;\">\n      {% if style_title_03 != blank %}\n        <strong><p style=\"margin: 0 0 8px; text-align: left;\">{{ style_title_03 }}</p></strong>\n      {% endif %}\n      {% if style_image_03 != blank %}\n        {% assign alt_03 = style_title_03 | default: product.title %}\n        <div style=\"width: 100%; aspect-ratio: 1 / 1; overflow: hidden; margin: 0 auto;\">\n          {{ style_image_03 | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300, 400, 600', sizes: '100vw', alt: alt_03, style: 'width: 100%; height: 100%; object-fit: contain; display: block;' }}\n        </div>\n      {% endif %}\n    </div>\n  {% endif %}\n\n</div>"
+          }
+        },
+        "collapsible_tab_jyPfjg": {
+          "type": "collapsible_tab",
+          "name": "Description",
+          "disabled": true,
+          "settings": {
+            "title": "Description",
+            "content": "{{ product.description }}",
+            "page": "",
+            "icon": "default",
+            "sm_margin_top": 8,
+            "block_column": "left",
+            "sm_size_multiplier": "sm-size--default",
+            "margin_top": 8,
+            "size_multiplier": "size--default",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_Dc3DQA": {
+          "type": "collapsible_tab",
+          "name": "Shipping & Returns",
+          "settings": {
+            "title": "Shipping & Returns",
+            "content": "<p><strong>Shipping Policy</strong><br/>We're excited to get your order into your hands as quickly as possible. Here's how it works:</p><ul><li>Your order is dispatched within 24–48 hours of confirmation, so you won't have to wait long.</li><li>Delivery typically takes 5–7 business days from the date you place your order.</li></ul><p><br/><strong>Return Policy</strong><br/>We want you to absolutely love what you receive. If something isn't quite right, we're here to help:</p><ul><li>Returns, exchanges, or replacements are accepted within 7 days of delivery for unused items only (original tags, dust bags, and boxes must be intact).</li><li>Contact us at support@houseofkiyaara.com within 48 hours of delivery with an unboxing video.</li></ul><p></p><p><strong>Disclaimer</strong><br/>The colour of the product may vary slightly from how it appears in the imagery. This may be due to different display settings or lighting filters. Read more about our Privacy Policy.<br/></p>",
+            "page": "",
+            "icon": "default",
+            "sm_margin_top": 8,
+            "block_column": "left",
+            "sm_size_multiplier": "sm-size--default",
+            "margin_top": 8,
+            "size_multiplier": "size--default",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_wR7FXA": {
+          "type": "collapsible_tab",
+          "name": "Terms & Conditions",
+          "settings": {
+            "title": "Terms & Conditions",
+            "content": "<p><strong>Terms & Conditions - Promotions, Rewards & Benefits</strong></p><p>House of Kiyaara may, from time to time, offer promotions, rewards, and benefits for purchases of bags and accessories, for a limited period. The terms and conditions of such promotions, rewards, and benefits will be specified separately at the time of the offer. &nbsp;&nbsp;</p><p>House of Kiyaara reserves the right to withdraw, modify, or change the terms and conditions of promotions, rewards, and benefits for online purchases at any time without prior notice. Any changes will be effective immediately upon posting to the website.</p><p><br/><strong>T&C Apply:&nbsp;</strong></p><ul><li>Only one free product can be claimed per order, regardless of the number of bags or accessories purchased in that single order.</li><li>Festival of Joy, up to 40% discount on selected styles.&nbsp;</li><li>Use code FESTIVE10 to enjoy a 10% discount on selected items only.</li><li>Discount codes applicable on non-sale items only.</li><li>Same day delivery in Mumbai for orders placed before 2pm.</li></ul>",
+            "page": "",
+            "icon": "default",
+            "sm_margin_top": 8,
+            "block_column": "left",
+            "sm_size_multiplier": "sm-size--default",
+            "margin_top": 8,
+            "size_multiplier": "size--default",
+            "custom_liquid": ""
+          }
+        },
+        "upsell_products_DFAdeg": {
+          "type": "upsell_products",
+          "settings": {
+            "title": "More Like This",
+            "upsell_product_1": "{{ product.metafields.custom.more_like_this_product_1.value }}",
+            "upsell_product_2": "{{ product.metafields.custom.more_like_this_product_2.value }}",
+            "upsell_product_3": "{{ product.metafields.custom.more_like_this_product_3.value }}",
+            "upsell_product_4": "",
+            "card_style": "list",
+            "variant_selection_method": "quick_buy",
+            "upsell_behavior": "default",
+            "sm_margin_top": 24,
+            "block_column": "left",
+            "margin_top": 24
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_1",
+        "title",
+        "rating",
+        "price",
+        "sibling_products_XQJUEK",
+        "variant_picker",
+        "text_3A9nGQ",
+        "description",
+        "custom_liquid_KbBNk4",
+        "custom_liquid_cYMBUm",
+        "text_8PVtb3",
+        "same_day_pincode_checker_VNqrLy",
+        "buy_buttons",
+        "custom_liquid_dkRtjj",
+        "custom_liquid_mG8JnJ",
+        "icons_TG89Mz",
+        "share_MaQgQM",
+        "inventory",
+        "collapsible_tab_1",
+        "collapsible_tab_QicLn9",
+        "collapsible_tab_h3cbtP",
+        "collapsible_tab_jyPfjg",
+        "collapsible_tab_Dc3DQA",
+        "collapsible_tab_wR7FXA",
+        "upsell_products_DFAdeg"
+      ],
+      "custom_css": [
+        ".product-title {text-wrap: balance;}",
+        "@media (min-width: 1024px) {.content-column {padding: 4vw 2vw; }}",
+        ".drawer-title {font-weight: 700 !important;}",
+        ".product-block-title {font-weight: 500 !important;}"
+      ],
+      "settings": {
+        "show_breadcrumb": true,
+        "color_scheme": "default",
+        "product_image_aspect_ratio": "square",
+        "media_fill_rule": "cover",
+        "image_background": "var(--color-card-background)",
+        "image_position": "left",
+        "image_offset": 0,
+        "allow_overlap": false,
+        "image_size": "6",
+        "first_content_column_top_margin": 0,
+        "second_content_column_top_margin": 160,
+        "extend_tablet_breakpoint": false,
+        "tablet_single_column": false,
+        "color_hotspot": "invert-dot",
+        "open_as_drawer": true,
+        "sticky_buy_bar": true,
+        "sticky_buy_bar_color_scheme": "default"
+      }
+    },
+    "product-media-gallery": {
+      "type": "product-media-gallery",
+      "blocks": {
+        "custom_spacing_XzPbQy": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 40,
+            "padding_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_XzPbQy"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "media_bg": "card",
+        "media_aspect_ratio": "square",
+        "variant_images": "all",
+        "layout_desktop": "slide",
+        "items_per_row_desktop": 6,
+        "sm_media_zoom": "slider",
+        "items_per_row_tablet": 4,
+        "layout_mobile": "slide",
+        "items_per_row_mobile": 3,
+        "media_zoom": "column"
+      }
+    },
+    "hero_gP7XzA": {
+      "type": "hero",
+      "blocks": {
+        "image_qtLMG9": {
+          "type": "image",
+          "settings": {
+            "media_toggle": "show_image",
+            "overlay_opacity": 15
+          }
+        },
+        "title_VBRxBR": {
+          "type": "title",
+          "disabled": true,
+          "settings": {
+            "title": "The Aarni Crossbody Bag",
+            "heading_tag": "h2",
+            "sm_size_multiplier": "sm-size--tiny",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--tiny",
+            "margin_top": 0
+          }
+        },
+        "text_dMjVPM": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Also available in large</p>",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 6,
+            "size_multiplier": "size--default",
+            "margin_top": 6
+          }
+        },
+        "button_wptjFP": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop large",
+            "button_link": "",
+            "button_style": "",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 12,
+            "size_multiplier": "size--small",
+            "margin_top": 12
+          }
+        },
+        "custom_spacing_QxanPh": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_qtLMG9",
+        "title_VBRxBR",
+        "text_dMjVPM",
+        "button_wptjFP",
+        "custom_spacing_QxanPh"
+      ],
+      "disabled": true,
+      "name": "t:sections.hero.name",
+      "settings": {
+        "color_scheme": "default",
+        "media_link": "",
+        "enable_parallax": true,
+        "enable_full_width": true,
+        "sm_section_height": "by_pixels",
+        "sm_pixel_height": 800,
+        "content_width": "col-sm-max-4",
+        "sm_content_position": "sm-vertical-center sm-horizontal-center",
+        "sm_text_alignment": "center",
+        "section_height": "auto",
+        "pixel_height": 520,
+        "content_position": "vertical-center horizontal-center",
+        "text_alignment": "center"
+      }
+    },
+    "multicolumn_CrnWYp": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_yWBDqL": {
+          "type": "column",
+          "settings": {
+            "press_date": "",
+            "image": "{{ product.metafields.custom.about_01.value }}",
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "Better Materials, Always Vegan",
+            "text": "<p>Made with vegan leather with a smooth, premium feel and lasting durability. Kiyaara is proudly PETA-Approved Vegan, with no animal-derived leather used in our bags.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
+        "column_U8NJ6h": {
+          "type": "column",
+          "settings": {
+            "press_date": "",
+            "video": "{{ product.metafields.custom.about_02.value }}",
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "The Kiyaara Originals",
+            "text": "<p>Every Kiyaara motif starts as an original hand-painted artwork. Created by our artists, each brushstroke brings our signature world of colour, joy and imagination to life.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
+        "column_edHzPB": {
+          "type": "column",
+          "settings": {
+            "press_date": "",
+            "image": "{{ product.metafields.custom.about_03.value }}",
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "Art You Can Carry",
+            "text": "<p>After months of refinement, each original artwork is carefully translated onto premium vegan leather using a specialized printing process that preserves the richness, detail and character of the original painting.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_yWBDqL",
+        "column_U8NJ6h",
+        "column_edHzPB"
+      ],
+      "disabled": true,
+      "name": "About the Product",
+      "settings": {
+        "color_scheme": "",
+        "alignment": "left",
+        "layout_desktop": "slide",
+        "items_per_row_desktop": 3,
+        "sm_media_aspect_ratio": "square",
+        "items_per_row_tablet": 3,
+        "layout_mobile": "grid",
+        "media_aspect_ratio": "square",
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all"
+      }
+    },
+    "image_with_text_qfXA3p": {
+      "type": "image-with-text",
+      "blocks": {
+        "custom_spacing_WaxHXa": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 80,
+            "sm_padding_bottom": 80,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 40
+          }
+        },
+        "image_xcVX8Y": {
+          "type": "image",
+          "settings": {
+            "media_toggle": "show_video",
+            "media_aspect_ratio": "square",
+            "video": "{{ product.metafields.custom.product_video.value }}",
+            "video_autoplay": true,
+            "video_controls": false
+          }
+        },
+        "title_AUeP3L": {
+          "type": "title",
+          "disabled": true,
+          "settings": {
+            "title": "Nature’s luxury leather",
+            "heading_tag": "h2",
+            "sm_size_multiplier": "sm-size--tiny",
+            "sm_margin_top": 8,
+            "size_multiplier": "size--tiny",
+            "margin_top": 4
+          }
+        },
+        "text_cjMWxb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ product.metafields.custom.product_video_description | metafield_tag }}</p>",
+            "sm_size_multiplier": "sm-size--huge",
+            "sm_margin_top": 24,
+            "size_multiplier": "size--default",
+            "margin_top": 8
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_WaxHXa",
+        "image_xcVX8Y",
+        "title_AUeP3L",
+        "text_cjMWxb"
+      ],
+      "disabled": true,
+      "name": "Product Video",
+      "settings": {
+        "color_scheme": "",
+        "media_position": "media_last",
+        "media_width": "8",
+        "desktop_alignment": "left",
+        "vertical_position": "col-align-items-start",
+        "sm_full_width_buttons": false,
+        "mobile_alignment": "left",
+        "full_width_buttons": false
+      }
+    },
+    "image_with_text_MMrrhy": {
+      "type": "image-with-text",
+      "blocks": {
+        "custom_spacing_BpCqbw": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 40
+          }
+        },
+        "image_tUqXnj": {
+          "type": "image",
+          "settings": {
+            "media_toggle": "show_image",
+            "media_aspect_ratio": "landscape_alt",
+            "video_autoplay": true,
+            "video_controls": false
+          }
+        },
+        "title_F7TnDC": {
+          "type": "title",
+          "settings": {
+            "title": "The only bag you need",
+            "heading_tag": "h2",
+            "sm_size_multiplier": "sm-size--tiny",
+            "sm_margin_top": 8,
+            "size_multiplier": "size--tiny",
+            "margin_top": 4
+          }
+        },
+        "text_ELJAMF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Aarni Crossbody Bag is designed and made for everyday use. The classic crossbody is always in style. This is the perfect bag for casual and festive looks. The bag fits all your essential everyday items. Inside you’ll find a zipper pocket, card slots and a large open side pocket.</p>",
+            "sm_size_multiplier": "sm-size--small",
+            "sm_margin_top": 24,
+            "size_multiplier": "size--small",
+            "margin_top": 24
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_BpCqbw",
+        "image_tUqXnj",
+        "title_F7TnDC",
+        "text_ELJAMF"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text.name",
+      "settings": {
+        "color_scheme": "",
+        "media_position": "media_first",
+        "media_width": "8",
+        "desktop_alignment": "left",
+        "vertical_position": "col-align-items-start",
+        "sm_full_width_buttons": false,
+        "mobile_alignment": "left",
+        "full_width_buttons": false
+      }
+    },
+    "the-product-recommendations_big": {
+      "type": "product-recommendations",
+      "blocks": {
+        "custom_spacing_Camz83": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "section_header_nBWTMp": {
+          "type": "section_header",
+          "settings": {
+            "subtitle": "",
+            "title": "You May Also Like",
+            "text": "",
+            "text_alignment": "left",
+            "subtitle_tag": "h3",
+            "title_tag": "h2",
+            "sm_size_multiplier": "sm-size--large",
+            "size_multiplier": "size--large"
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_Camz83",
+        "section_header_nBWTMp"
+      ],
+      "custom_css": [],
+      "settings": {
+        "product_limit": 8,
+        "color_scheme": "",
+        "enable_card_thumbnail": false,
+        "enable_full_width": false,
+        "layout_desktop": "grid",
+        "products_per_row_desktop": 4,
+        "products_per_row_tablet": 3,
+        "layout_mobile": "grid",
+        "products_per_row_mobile": 2,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all"
+      }
+    }
+  },
+  "order": [
+    "main_big",
+    "product-media-gallery",
+    "hero_gP7XzA",
+    "multicolumn_CrnWYp",
+    "image_with_text_qfXA3p",
+    "image_with_text_MMrrhy",
+    "the-product-recommendations_big"
+  ]
+}

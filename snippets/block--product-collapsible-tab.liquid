@@ -1,0 +1,62 @@
+{% comment %}
+  Generates a collapsible tab for product details. Tab can be opened as a drawer.
+
+  Accepts:
+  - block: {Object} The block object (required/template access)
+  - product: {Object} The product object (required/template access)
+
+  Used:
+  - sections/main-product.liquid: The main product section
+{% endcomment %}
+
+{% if block.settings.content != empty or block.settings.page.content != blank or block.settings.custom_liquid != blank %}
+  {%- assign collapsible_id = 'Details-' | append: block.id | append: '-' | append: section.id -%}
+  {%- capture summary_title -%}
+    <span>{{ block.settings.title | default: block.settings.page.title }}</span>
+    {%- liquid
+      if block.settings.icon != 'none'
+        case block.settings.icon
+          when 'default'
+            if section.settings.open_as_drawer
+              render 'icon-plus'
+            else
+              render 'icon-caret', direction: 'down'
+            endif
+          when 'icon-caret__right'
+            render 'icon-caret', direction: 'right'
+          when 'icon-caret__down'
+            render 'icon-caret', direction: 'down'
+          when 'icon-gift'
+            render 'icon-gift'
+          when 'icon-map-pin'
+            render 'icon-map-pin'
+          when 'icon-package'
+            render 'icon-package'
+          when 'icon-truck'
+            render 'icon-truck'
+          when 'icon-plus'
+            render 'icon-plus'
+        endcase
+      endif
+    -%}
+  {%- endcapture -%}
+
+  {%- unless section.settings.open_as_drawer -%}
+    {%- capture details_body -%}
+      <div class="content rte pt-8 pb-16 {{ block.settings.size_multiplier }} {{ block.settings.sm_size_multiplier }}">
+        {{ block.settings.content }}
+        {{ block.settings.page.content }}
+        {{ block.settings.custom_liquid }}
+      </div>
+    {%- endcapture -%}
+
+    <details id="{{- collapsible_id -}}" class="{{ block.settings.size_multiplier }} {{ block.settings.sm_size_multiplier }}">
+      <summary>{{- summary_title -}}</summary>
+      {{- details_body -}}
+    </details>
+  {%- else -%}
+    <button type="button" class="summary-title {{ block.settings.size_multiplier }} {{ block.settings.sm_size_multiplier }}" data-open="drawer-{{ collapsible_id }}" aria-controls="drawer-{{ collapsible_id }}" aria-haspopup="dialog">
+      {{- summary_title -}}
+    </button>
+  {%- endunless -%}
+{% endif %}

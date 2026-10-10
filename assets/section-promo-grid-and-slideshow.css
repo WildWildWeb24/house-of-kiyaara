@@ -1,0 +1,64 @@
+.banner {
+  --overlay-opacity: 0;
+  background-color: var(--color-overlay);
+
+  display: grid;
+  grid-template-rows: 1fr;
+  position: relative;
+  max-width: 100%;
+}
+.banner video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.banner--image img {
+  height: 100%;
+}
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.banner-overlay > * {
+  z-index: 1;
+  position: relative;
+  display: block;
+}
+.banner-overlay::before {
+  content: '';
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: var(--color-overlay);
+  opacity: var(--overlay-opacity);
+  z-index: 0;
+}
+.v-top { justify-content: flex-start; }
+.v-center { justify-content: center; }
+.v-bottom { justify-content: flex-end; }
+
+.h-left {
+  align-items: flex-start;
+  text-align: left;
+}
+.h-center {
+  align-items: center;
+  text-align: center;
+}
+.h-right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.section--promo-grid-and-slideshow .media:not(.media--empty) {
+  background-color: transparent;
+}

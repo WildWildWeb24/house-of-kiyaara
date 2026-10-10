@@ -1,0 +1,36 @@
+{% comment %}
+  Generates product description content.
+
+  Accepts:
+  - product: {Object} The product object (required/template access)
+  - collapsible: {Boolean} The aspect ratio of the media. Default: false (optional)
+
+  Used:
+  - sections/main-product.liquid: The main product section
+{% endcomment %}
+
+{%- if product.description != blank -%}
+  {% if collapsible %}
+    {% if collapsible_as_drawer %}
+      {%- assign collapsible_id = 'Details-' | append: block.id | append: '-' | append: section.id -%}
+      <button type="button" class="summary-title {{ block.settings.size_multiplier }} {{ block.settings.sm_size_multiplier }}" data-open="drawer-{{ collapsible_id }}" aria-controls="drawer-{{ collapsible_id }}" aria-haspopup="dialog">
+        {{ 'products.product.description' | t }}
+        {% render 'icon-plus' %}
+      </button>
+    {% else %}
+      <details id="Description-{{ block.id }}" class="{{ block.settings.size_multiplier }} {{ block.settings.sm_size_multiplier }}">
+        <summary>
+          <span>{{ 'products.product.description' | t }}</span>
+          {% render 'icon-caret', direction: 'down' %}
+        </summary>
+        <div class="content rte pt-8 pb-16">
+          {{ product.description }}
+        </div>
+      </details>
+    {% endif %}
+  {% else %}
+    <div class="rte {{ block.settings.size_multiplier }} {{ block.settings.sm_size_multiplier }}">
+      {{ product.description }}
+    </div>
+  {% endif %}
+{%- endif -%}

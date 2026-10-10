@@ -1,0 +1,11 @@
+{% comment %}
+  The close button is used to close modals, drawers, and other components.
+
+  Accepts:
+  - button_class: {string} Additional classes to add to the button (optional)
+  - aria_controls: {string} The ID of the element that the button controls (optional)
+{% endcomment %}
+
+<button type="button" class="btn btn--close {% if button_class != empty -%} {{ button_class  }} {%- endif %}"{% if aria_controls %} aria-controls="{{ aria_controls }}"{% endif %} aria-label="{{ 'accessibility.close_something' | t: something: context}}" data-close>
+  {% render 'icon-close' %}
+</button>

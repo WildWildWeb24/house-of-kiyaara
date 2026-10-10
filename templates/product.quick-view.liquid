@@ -1,0 +1,119 @@
+{% layout none %}
+{%- liquid
+  # Product form id
+  # - Used to map inputs outside the form to the correct product form using form="{{ product_form_id }}" attribute
+  # - Also used as a prefix in input ids and labels
+  assign product_form_id = 'product-form-' | append: product.id
+  assign drawer_id = 'modal-' | append: product.id | append: '-product'
+
+  # Preorder check
+  assign is_preorder = false
+  if product.tags contains 'Preorder' or product.tags contains 'preorder'
+    assign is_preorder = true
+  endif
+
+  # Combined listing check
+  assign product_for_media = product
+  if product.id != product.selected_or_first_available_variant.product.id and product.selected_or_first_available_variant != blank
+    assign product_for_media = product.selected_or_first_available_variant.product
+  endif
+-%}
+<div
+  id="{{ drawer_id }}"
+  class="drawer drawer--quick-buy slide-from-right product-drawer color-{{ settings.color_scheme_modals }}"
+  data-quick-view
+  data-is-preorder="{{ is_preorder }}"
+  data-drawer
+  data-parent
+  style="opacity: 0; display: none;"
+>
+  {% render 'close-button', button_class: 'drawer-close drawer-float-close', context: 'quick-buy drawer' %}
+
+  <div class="drawer-panel">
+    <div class="drawer-content" style="--drawer-content-padding: 0;">
+      <div class="media-and-badges">
+        {%- render 'product-badges', product: product, show_badges: true, show_rating: true -%}
+        {%- render 'product-media-slider',
+          product: product_for_media,
+          aspect_ratio: 'square',
+          background_color: 'var(--color-card-background)',
+          sizing_rule: 'contain',
+          slider_mobile: true,
+          slider_desktop: true,
+          slide_peek: false,
+          show_zoom_mobile: false,
+          show_zoom_desktop: false,
+          sizes: '480px'
+        -%}
+      </div>
+
+      <div class="p-gutter">
+        {%- if settings.product_card_show_vendor -%}
+          {% render 'block--product-vendor' %}
+        {%- endif -%}
+
+        <h2 class="product-title mt-4" id="{{ product.id | append: '-dialog-title' }}">{{ product.title }}</h2>
+
+        <div class="product-modal__price mt-12 mb-12">
+          <div class="js" id="price-{{ product.id }}" role="status">
+            {%- render 'price', product: product, use_variant: true -%}
+          </div>
+
+          {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
+            <div class="product__tax size--nano style--subdued">
+              {%- if cart.taxes_included -%}
+                {{ 'products.product.include_taxes' | t }}
+              {%- endif -%}
+              {%- if shop.shipping_policy.body != blank -%}
+                {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- unless product == null -%}
+            {%- assign product_form_installment_id = 'product-form-installment-' | append: product.id -%}
+            {%- form 'product', product, id: product_form_installment_id, class: 'installment' -%}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              {{ form | payment_terms }}
+            {%- endform -%}
+          {%- endunless -%}
+        </div>
+
+        <div class="js quick-view-radios" data-quick-view-radios>
+          {%- unless product.has_only_default_variant -%}
+            {%- comment -%} Variant buttons {%- endcomment -%}
+            {%- render 'product-variant-picker',
+              product: product,
+              product_form_id: product_form_id,
+              cross_out_unavailable: true,
+              is_preorder: is_preorder,
+              picker_type: 'modal'
+            -%}
+          {%- endunless -%}
+        </div>
+
+        <div class="mt-24">
+          {% render 'block--product-buy-buttons',
+            product_form_id: product_form_id,
+            parent_drawer: drawer_id,
+            is_preorder: is_preorder
+          %}
+        </div>
+
+        <div class="rte mt-gutter">
+          <p>{{ product.description | strip_html | truncatewords: 50, '...' }}</p>
+          <a
+            href="{{ product.url }}"
+            class="mt-24 link"
+            aria-label="{{ 'accessibility.read_more_product' | t: product: product.title }}"
+          >
+            {{- 'accessibility.read_more' | t -}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% comment %} Background, click to close {% endcomment %}
+  <button type="button" class="page-overlay" data-overlay aria-hidden="true" tabindex="-1"></button>
+</div>

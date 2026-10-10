@@ -1,0 +1,158 @@
+{{ 'component-localization-list.css' | asset_url | stylesheet_tag }}
+
+<div id="modal-localization" class="modal modal-localization modal--huge color-{{ settings.color_scheme_modals }}" data-modal data-parent>
+
+  <div id="modal-localization-dialog" class="modal-dialog col-sm-max-10" data-modal-dialog role="dialog" aria-modal="true" tabindex="-1">
+    {% render 'close-button', button_class: 'modal-close', context: 'localization-modal' %}
+
+    <div class="modal-body p-40 sm-p-64" data-modal-body>
+      <div class="localization-panel">
+        {%- if localization.available_languages.size > 1 -%}
+          <localization-form>
+            {%- form 'localization', id: 'ModalLanguageForm', class: 'localization-form mb-48' -%}
+              {% comment %} TODO: Investigate what semantic HTML element would fit here for the languages heading, should it be a heading element or something else? {% endcomment %}
+              <span class="localization-link h3 heading --emphasize mb-24 js">
+                {{- 'localization.language_label' | t -}}
+              </span>
+              <div class="localization-list">
+                {%- for language in localization.available_languages -%}
+                  <a
+                    class="localization-link js{% if language.iso_code == localization.language.iso_code %} active{% endif %}" href="#"
+                    {% if language.iso_code == localization.language.iso_code %}
+                      aria-current="true"
+                    {% endif %}
+                    data-value="{{ language.iso_code }}">
+                    {{ language.endonym_name | capitalize }}
+                    <span class="style--subdued-light">· {{ language.iso_code | upcase }}</span>
+                  </a>
+                {%- endfor -%}
+              </div>
+              <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+            {%- endform -%}
+          </localization-form>
+          <noscript>
+            {%- form 'localization', id: 'ModalLanguageForm', class: 'localization-form' -%}
+              <h2 class="visually-hidden" id="ModalLanguageLabelNoScript">
+                {{ 'localization.language_label' | t }}
+              </h2>
+              <select class="btn btn--full" name="locale_code" aria-labelledby="ModalLanguageLabelNoScript">
+                {%- for language in localization.available_countries -%}
+                  <option
+                    value="{{ language.iso_code }}"
+                    {%- if language.iso_code == localization.language.iso_code %}
+                      selected
+                    {% endif %}
+                  >
+                    {{ language.name }} ({{ language.currency.iso_code }}
+                    {{ language.currency.symbol }})
+                  </option>
+                {%- endfor -%}
+              </select>
+              <button class="btn btn--full mt-8">{{ 'localization.update_language' | t }}</button>
+            {%- endform -%}
+          </noscript>
+        {%- endif -%}
+
+        {%- if localization.available_countries.size > 1 -%}
+          <localization-form>
+            {%- form 'localization', id: 'ModalCountryForm', class: 'localization-form mb-48' -%}
+              <span class="localization-link h3 heading mb-24 --emphasize js">
+                {{- 'localization.country_label' | t -}}
+              </span>
+
+              {% liquid
+                assign available_countries_sorted = localization.available_countries | sort: 'continent'
+                assign continent_names = available_countries_sorted | map: 'continent' | uniq
+              %}
+
+              {% capture country_list %}
+                {% for continent_name in continent_names %}
+                  {% liquid
+                    assign countries = available_countries_sorted | where: 'continent', continent_name
+                    assign country_count_incl_continent_name = countries | size | plus: 1
+                    if country_count_incl_continent_name < 6
+                      assign continent_size = 'small'
+                    elsif country_count_incl_continent_name < 12
+                      assign continent_size = 'medium'
+                    else
+                      assign continent_size = 'large'
+                    endif
+                  %}
+                  <div class="continent-container continent--{{ continent_name | downcase }} {{ continent_size }}">
+                    <h3 class="continent-name size--tiny subheading">{{ continent_name }}</h3>
+                    {% for country in countries %}
+                      <a
+                        class="localization-link size--small js{% if country.iso_code == localization.country.iso_code %} active{% endif %}"
+                        href="#"
+                        {% if country.iso_code == localization.country.iso_code %}
+                          aria-current="true"
+                        {% endif %}
+                        data-value="{{ country.iso_code }}"
+                      >
+                        {{- country | image_url: width: 32 | image_tag | replace: '<img', '<img class="country-flag" loading="lazy"' }}
+                        <span class="country-text">{{ country.name }}</span> <span class="separator style--subdued-light">&middot;</span> <span class="localization-currency style--subdued-light">{{ country.currency.iso_code }} {{ country.currency.symbol }}</span>
+                      </a>
+                    {% endfor %}
+                  </div>
+                {% endfor %}
+              {% endcapture %}
+              {% comment %}
+
+              {% if section.settings.region_group_by_continents %}
+              {% else %}
+                {% capture country_list %}
+                  {% for country in localization.available_countries %}
+                    <a
+                      class="localization-link js{% if country.iso_code == localization.country.iso_code %} active{% endif %}"
+                      href="#"
+                      {% if country.iso_code == localization.country.iso_code %}
+                        aria-current="true"
+                      {% endif %}
+                      data-value="{{ country.iso_code }}"
+                    >
+                      {{- country | image_url: width: 32 | image_tag | replace: '<img', '<img class="country-flag"' }}
+                      {{ country.name }}<span class="localization-currency style--subdued-light">· {{ country.currency.iso_code }} {{ country.currency.symbol }}</span>
+                    </a>
+                  {% endfor %}
+                {% endcapture %}
+              {% endif %}
+              {% endcomment %}
+
+              <div class="localization-list">
+                {{ country_list }}
+              </div>
+              <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+            {%- endform -%}
+          </localization-form>
+          <noscript>
+            {%- form 'localization', id: 'ModalCountryForm', class: 'localization-form' -%}
+              <h2 class="visually-hidden" id="ModalCountryLabelNoScript">
+                {{ 'localization.country_label' | t | t }}
+              </h2>
+              <select class="btn btn--full" name="country_code" aria-labelledby="ModalCountryLabelNoScript">
+                {%- for country in localization.available_countries -%}
+                  <option
+                    value="{{ country.iso_code }}"
+                    {%- if country.iso_code == localization.country.iso_code %}
+                      selected
+                    {% endif %}
+                  >
+                    {{ country.name }} ({{ country.currency.iso_code }}
+                    {{ country.currency.symbol }})
+                  </option>
+                {%- endfor -%}
+              </select>
+              <button class="btn btn--full mt-8">{{ 'localization.update_country' | t }}</button>
+            {%- endform -%}
+          </noscript>
+        {%- endif -%}
+        <div class="localization-info size--tiny style--subdued">
+          {{ 'localization.availability_info' | t }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% comment %} Background, click to close {% endcomment %}
+  <button type="button" class="page-overlay" aria-hidden="true" tabindex="-1" data-overlay></button>
+</div>

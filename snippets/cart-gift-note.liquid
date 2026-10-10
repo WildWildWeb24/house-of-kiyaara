@@ -1,0 +1,116 @@
+{%- comment -%}
+  "Make it a gift" cart drawer add-on: an optional greeting-card upsell product
+  plus a personal gift-note field. Ported from the live theme's cart drawer.
+
+  Controlled from Theme Settings > Cart > "Make it a gift":
+  - show_gift_note            : show/hide the whole block
+  - gift_note_heading         : heading text
+  - gift_note_product         : the upsell product shown until it's in the cart
+  - gift_note_added_message   : message shown once that product is in the cart
+  - show_gift_note_textarea   : show/hide the note field
+  - gift_note_placeholder     : note field placeholder text
+
+  The note is saved as its own cart attribute ("Gift Note") rather than
+  cart.note, so it doesn't collide with the theme's separate order-note field.
+{%- endcomment -%}
+{%- if settings.show_gift_note and cart.item_count > 0 -%}
+  {%- liquid
+    assign gift_product = settings.gift_note_product
+    assign gift_product_in_cart = false
+
+    if gift_product != blank
+      for item in cart.items
+        if item.product_id == gift_product.id
+          assign gift_product_in_cart = true
+          break
+        endif
+      endfor
+    endif
+  -%}
+
+  <div class="cart-gift-note" id="cart-gift-note">
+    <p class="cart-gift-note__heading h6 subheading size--tiny">
+      {{- settings.gift_note_heading | default: 'Make it a gift' -}}
+    </p>
+
+    {%- if gift_product != blank -%}
+      {%- unless gift_product_in_cart -%}
+        <div class="cart-gift-note__product">
+          {%- render 'card-product-upsell', product: gift_product, section: section, cart_recommendations: true -%}
+        </div>
+      {%- else -%}
+        <p class="cart-gift-note__added-msg size--tiny">
+          {%- render 'icon-checkmark' -%}
+          {{- settings.gift_note_added_message | default: 'Greeting Cards added to your cart' -}}
+        </p>
+      {%- endunless -%}
+    {%- endif -%}
+
+    {%- if settings.show_gift_note_textarea -%}
+      <div class="cart-gift-note__field">
+        <textarea
+          class="text-area field__input"
+          id="cart-gift-note-input"
+          placeholder="{{ settings.gift_note_placeholder | default: 'Add your personal message here..' }}"
+          rows="4"
+        >{{- cart.attributes['Gift Note'] -}}</textarea>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <style>
+    .cart-gift-note {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-borders);
+      padding-bottom: 16px;
+    }
+
+    .cart-gift-note__heading {
+      margin-bottom: 12px;
+    }
+
+    .cart-gift-note__added-msg {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--success);
+    }
+
+    .cart-gift-note__added-msg .icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .cart-gift-note__field {
+      margin-top: 12px;
+    }
+
+    .cart-gift-note__field .text-area {
+      width: 100%;
+      min-height: 70px;
+      resize: vertical;
+    }
+  </style>
+
+  <script>
+    (function () {
+      var giftNoteInput = document.getElementById('cart-gift-note-input');
+      if (!giftNoteInput) return;
+
+      var giftNoteTimeout;
+      giftNoteInput.addEventListener('input', function () {
+        clearTimeout(giftNoteTimeout);
+        giftNoteTimeout = setTimeout(function () {
+          fetch(routes.cart_update_url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({ attributes: { 'Gift Note': giftNoteInput.value } }),
+            keepalive: true,
+          });
+        }, 300);
+      });
+    })();
+  </script>
+{%- endif -%}

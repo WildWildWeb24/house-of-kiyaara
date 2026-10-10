@@ -1,0 +1,10 @@
+{% if product.vendor != blank %}
+  <p class="vendor subheading size--small" aria-label="{{ 'accessibility.product_vendor' | t }}">
+    {% if enable_vendor_link %}
+      <a href="{{ shop.url }}/collections/vendors?q={{ product.vendor | url_encode }}" 
+         aria-label="{{ 'accessibility.product_vendor_link' | t: vendor: product.vendor }}">{{ product.vendor }}</a>
+    {% else %}
+      {{ product.vendor }}
+    {% endif %}
+  </p>
+{% endif %}

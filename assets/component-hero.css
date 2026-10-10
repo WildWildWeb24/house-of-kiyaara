@@ -1,0 +1,119 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: var(--section-height);
+  background: var(--color-overlay);
+}
+
+.hero-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.hero-media .media--empty,
+.hero-media .media--empty .placeholder-svg {
+  opacity: 1;
+}
+
+.hero video {
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-text {
+  --overlay-opacity: 0;
+  position: relative;
+  height: 100%;
+  z-index: 1;
+}
+.hero:not(.hero--no-media) .hero-text {
+  color: var(--color-overlay-text);
+}
+.hero:not(.hero--no-media) .hero-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: var(--color-overlay);
+  opacity: var(--overlay-opacity);
+}
+
+.hero-media picture {
+  display: block;
+  height: 100%;
+}
+
+.hero-media img,
+.hero-media svg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  object-fit: cover;
+}
+.hero-media svg {
+  background-color: var(--placeholder-bg);
+}
+
+.hero-text-container {
+  display: flex;
+  height: 100%;
+  padding: var(--container-margin);
+  max-width: calc(var(--ideal-width) + var(--container-margin)*2);
+  margin: 0 auto;
+  z-index: 2;
+  position: relative;
+}
+
+@media only screen and (max-width: 767px) {
+  .hero-text-container > * {
+    min-width: 100%;
+  }
+  .height-auto:not(.hero--sm-down-contained) .hero-media {
+    position: relative;
+  }
+  .height-auto:not(.hero--sm-down-contained) .hero-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero--sm-down-contained .hero-media {
+    position: static;
+    height: var(--section-height);
+  }
+  .hero--sm-down-contained .hero-text {
+    color: var(--color-overlay-text) !important;
+    background: var(--color-overlay) !important;
+    height: auto;
+  }
+  .hero--sm-down-contained .hero-text::before {
+    content: none !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .hero {
+    min-height: var(--sm-section-height);
+  }
+  .sm-height-auto .hero-media {
+    position: relative;
+  }
+  .sm-height-auto .hero-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

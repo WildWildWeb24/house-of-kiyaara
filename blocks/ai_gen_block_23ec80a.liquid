@@ -1,0 +1,303 @@
+{% doc %}
+  @prompt
+    Create a reusable standalone page section that visually matches the current theme's Announcement bar exactly. It must be insertable below a hero banner on any page, without being tied to the header. Include customizable announcement text, optional link and link label, background color, text color, typography size, section height or vertical padding, text alignment, and mobile settings. Preserve the same spacing, styling, borders, and overall appearance as the existing Announcement bar. Do not modify or duplicate the header announcement bar automatically. Make the new section available to add as a regular page section in the theme editor.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-announcement-section-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    border-top: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    border-bottom: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+  }
+
+  .ai-announcement-section-{{ ai_gen_id }}__inner {
+    display: flex;
+    align-items: center;
+    justify-content: {{ block.settings.text_alignment }};
+    min-height: {{ block.settings.section_height }}px;
+    padding: {{ block.settings.vertical_padding }}px {{ block.settings.horizontal_padding }}px;
+    text-align: {{ block.settings.text_alignment }};
+    box-sizing: border-box;
+  }
+
+  .ai-announcement-section-{{ ai_gen_id }}__content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: {{ block.settings.content_gap }}px;
+    max-width: 100%;
+    font-family: {{ block.settings.announcement_font.family }};
+    font-size: {{ block.settings.text_size }}px;
+    font-weight: {{ block.settings.text_weight }};
+    letter-spacing: {{ block.settings.letter_spacing }}px;
+    line-height: 1.4;
+  }
+
+  .ai-announcement-section-{{ ai_gen_id }}__message {
+    margin: 0;
+  }
+
+  .ai-announcement-section-{{ ai_gen_id }}__link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+  }
+
+  .ai-announcement-section-{{ ai_gen_id }}__link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-announcement-section-{{ ai_gen_id }}__inner {
+      min-height: {{ block.settings.mobile_section_height }}px;
+      padding: {{ block.settings.mobile_vertical_padding }}px {{ block.settings.mobile_horizontal_padding }}px;
+    }
+
+    .ai-announcement-section-{{ ai_gen_id }}__content {
+      flex-wrap: wrap;
+      font-size: {{ block.settings.mobile_text_size }}px;
+      gap: {{ block.settings.mobile_content_gap }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-announcement-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-announcement-section-{{ ai_gen_id }}__inner">
+    <div class="ai-announcement-section-{{ ai_gen_id }}__content">
+      {% if block.settings.announcement_text != blank %}
+        <p class="ai-announcement-section-{{ ai_gen_id }}__message">{{ block.settings.announcement_text | escape }}</p>
+      {% endif %}
+      {% if block.settings.link != blank and block.settings.link_label != blank %}
+        <a class="ai-announcement-section-{{ ai_gen_id }}__link" href="{{ block.settings.link }}">{{ block.settings.link_label | escape }}</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement strip",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "Complimentary shipping on orders over ₹2,500"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Shop now"
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "font_picker",
+      "id": "announcement_font",
+      "label": "Font",
+      "default": "inter_n3"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "text_weight",
+      "label": "Weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "label": "Letter spacing",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section height",
+      "min": 24,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "vertical_padding",
+      "label": "Vertical padding",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "horizontal_padding",
+      "label": "Horizontal padding",
+      "min": 8,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Content gap",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_size",
+      "label": "Text size",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 11
+    },
+    {
+      "type": "range",
+      "id": "mobile_section_height",
+      "label": "Section height",
+      "min": 24,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_vertical_padding",
+      "label": "Vertical padding",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "mobile_horizontal_padding",
+      "label": "Horizontal padding",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_content_gap",
+      "label": "Content gap",
+      "min": 0,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement strip"
+    }
+  ],
+  "tag": null,
+  "class": "announcement-strip-block"
+}
+{% endschema %}

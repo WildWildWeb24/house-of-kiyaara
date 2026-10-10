@@ -1,0 +1,17 @@
+{% if button_position != blank %}
+<button type="button" class="size-guide-button link flex size--small" style="gap: 4px;" data-open="drawer-{{ drawer_id }}" aria-controls="drawer-{{ drawer_id }}" aria-haspopup="dialog">
+  {% if show_ruler %}
+    {% render 'icon-ruler' %}
+  {% endif %}
+  <span>{{ label}}</span>
+</button>
+{% else %}
+<button type="button" class="summary-title" data-open="drawer-{{ drawer_id }}" aria-controls="drawer-{{ drawer_id }}" aria-haspopup="dialog">
+  <span>{{ label}}</span>
+  {%- if show_ruler -%}
+    {% render 'icon-ruler' %}
+  {% else %}
+    {% render 'icon-plus' %}
+  {%- endif -%}
+</button>
+{% endif %}

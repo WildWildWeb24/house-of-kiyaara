@@ -1,0 +1,75 @@
+{%- liquid
+
+  # ** PARAMETERS **
+  # option          =>  REQUIRED | option object
+  # product_form_id =>  REQUIRED | string | used to mach labels and inputs correctly
+  # picker_type     =>  OPTIONAL | string: 'button', 'dropdown' | default: 'dropdown'
+
+  assign picker_type = picker_type | default: 'dropdown'
+
+-%}
+
+{%- for value in option.values -%}
+  {%- liquid
+    assign option_disabled = true
+    if value.available
+      assign option_disabled = false
+    endif
+  -%}
+
+  {%- if picker_type == 'button' -%}
+    <input
+      type="radio"
+      id="{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}"
+      name="{{ option.name }}"
+      value="{{ value | escape }}"
+      form="{{ product_form_id }}"
+      {% if value.product_url != blank %}
+      data-product-url="{{ value.product_url }}"
+      {% endif %}
+      data-variant-id="{{ value.variant.id }}"
+      data-option-value-id="{{ value.id }}"
+      {% if option.selected_value == value %}
+        checked
+      {% endif %}
+      {% if option_disabled %}
+        class="disabled"
+      {% endif %}
+    >
+    <label
+      for='{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}'
+      class="{%- if swatch == "swatch_only" and swatch_count > 0 %}swatch{% endif -%}{%- if swatch == "swatch_with_text" %}swatch-with-label{% endif -%}">
+      {%- if swatch != "text_only" and swatch_count > 0  -%}
+        {% if swatch == "swatch_with_text" %}
+          <span class="swatch">
+        {%  endif %}
+        {% render 'swatch', swatch: value.swatch, label: value.name %}
+        {% if swatch == "swatch_with_text" %}
+          </span>
+          <span>{{ value }}</span>
+        {% endif %}
+      {%- else -%}
+        {{- value -}}
+      {%- endif -%}
+    </label>
+
+  {%- elsif picker_type == 'dropdown' -%}
+    <option
+      value="{{ value | escape }}"
+      {% if value.product_url != blank %}
+      data-product-url="{{ value.product_url }}"
+      {% endif %}
+      data-variant-id="{{ value.variant.id }}"
+      data-option-value-id="{{ value.id }}"
+      {% if option.selected_value == value %}
+        selected="selected"
+      {% endif %}
+    >
+      {% if option_disabled -%}
+        {{- 'products.product.value_unavailable' | t: option_value: value -}}
+      {%- else -%}
+        {{- value -}}
+      {%- endif %}
+    </option>
+  {%- endif -%}
+{%- endfor -%}

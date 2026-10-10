@@ -1,0 +1,177 @@
+{% doc %}
+  @prompt
+    Create a simple image banner section for the Shopify theme. It should let the merchant upload one image that displays the same on desktop and mobile (no separate desktop/mobile image selectors, just a single image setting). Add a configurable link URL for when the banner is clicked. give options  to enable and disable it.  Include settings to control the section's top padding and bottom padding (range sliders in pixels), plus an optional image alt text. Keep the layout simple: a full-width image that scales naturally, no overlays, headings, or buttons.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-image-banner-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding-top: {{ block.settings.padding_top }}px;
+    padding-bottom: {{ block.settings.padding_bottom }}px;
+  }
+
+  .ai-image-banner-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    display: block;
+    position: relative;
+  }
+
+  .ai-image-banner-link-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    cursor: {{ block.settings.enable_link | default: false }}{% if block.settings.enable_link and block.settings.banner_link != blank %} pointer{% else %} default{% endif %};
+  }
+
+  .ai-image-banner-link-{{ ai_gen_id }}:not([href]) {
+    cursor: default;
+  }
+
+  .ai-image-banner-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ai-image-banner-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 400px;
+  }
+
+  .ai-image-banner-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 400px;
+  }
+
+  .ai-image-banner-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+{% endstyle %}
+
+<div class="ai-image-banner-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-image-banner-wrapper-{{ ai_gen_id }}">
+    {% if block.settings.enable_link and block.settings.banner_link != blank %}
+      <a href="{{ block.settings.banner_link }}" class="ai-image-banner-link-{{ ai_gen_id }}">
+        {% if block.settings.banner_image %}
+          <img
+            src="{{ block.settings.banner_image | image_url: width: 2000 }}"
+            alt="{{ block.settings.image_alt_text | escape }}"
+            loading="lazy"
+            width="{{ block.settings.banner_image.width }}"
+            height="{{ block.settings.banner_image.height }}"
+            class="ai-image-banner-image-{{ ai_gen_id }}"
+          >
+        {% else %}
+          <div class="ai-image-banner-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+            <div class="ai-image-banner-empty-state-{{ ai_gen_id }}">
+              Next, add a banner image
+            </div>
+          </div>
+        {% endif %}
+      </a>
+    {% else %}
+      <div class="ai-image-banner-link-{{ ai_gen_id }}">
+        {% if block.settings.banner_image %}
+          <img
+            src="{{ block.settings.banner_image | image_url: width: 2000 }}"
+            alt="{{ block.settings.image_alt_text | escape }}"
+            loading="lazy"
+            width="{{ block.settings.banner_image.width }}"
+            height="{{ block.settings.banner_image.height }}"
+            class="ai-image-banner-image-{{ ai_gen_id }}"
+          >
+        {% else %}
+          <div class="ai-image-banner-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+            <div class="ai-image-banner-empty-state-{{ ai_gen_id }}">
+              Next, add a banner image
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt_text",
+      "label": "Image alt text"
+    },
+    {
+      "type": "header",
+      "content": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_link",
+      "label": "Enable link",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "banner_link",
+      "label": "Banner link"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image banner"
+    }
+  ]
+}
+{% endschema %}

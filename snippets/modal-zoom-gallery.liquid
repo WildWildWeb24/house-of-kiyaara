@@ -1,0 +1,111 @@
+{{ 'component-zoom-gallery.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  # ** PURPOSE **
+  # Used to create a zoom gallery that can be used with product media or with gallery section. Uses product.media as medias when used with 'product' context. Uses section blocks as medias when used with 'gallery-section' context
+
+  # ** PARAMETERS **
+  # id                =>  REQUIRED | string | unique ID, can be section ID
+  # context           =>  OPTIONAL | string | default: 'product' | 'product' OR 'gallery-section'
+  # medias            =>  REQUIRED | array | product.media OR section.blocks | depending on the context
+  # zoom_type_mobile  =>  OPTIONAL | string | default: 'slider' | 'slider' OR 'column'
+  # zoom_type_desktop =>  OPTIONAL | string | default: 'slider' | 'slider','column'
+
+  assign context = context | default: 'product'
+
+  if zoom_type_mobile != 'slider'
+    assign zoom_type_mobile = 'column'
+  endif
+
+  if zoom_type_desktop != 'slider'
+    assign zoom_type_desktop = 'column'
+  endif
+-%}
+
+<div id="modal--zoom-gallery-{{ id }}"
+  class="modal modal--fullscreen zoom-gallery type-{{ zoom_type_mobile }} sm-type-{{ zoom_type_desktop }} color-{{ settings.color_scheme_modals }}"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title-{{ id }}"
+  data-modal
+  data-parent>
+  <h2 id="modal-title-{{ id }}" class="visually-hidden">{{ 'accessibility.product_images_gallery' | t }}</h2>
+  {% render 'close-button', button_class: 'modal-close', context: 'gallery-modal' %}
+  <div class="modal-dialog">
+    <div class="modal-body">
+      <gridy-slider
+        id="zoom-slider-{{ id }}"
+        class="gridy-slider"
+        data-mobile-enabled="{% if zoom_type_mobile == 'slider' %}true{% else %}false{% endif %}"
+        data-tablet-enabled="{% if zoom_type_desktop == 'slider' %}true{% else %}false{% endif %}"
+        data-desktop-enabled="{% if zoom_type_desktop == 'slider' %}true{% else %}false{% endif %}"
+        data-arrows="true"
+        {% if zoom_type_mobile == 'slider' or zoom_type_desktop == 'slider' %}
+          aria-roledescription="carousel"
+        {% else %}
+          role="region"
+        {% endif %}
+        aria-label="{{ 'accessibility.product_images_gallery' | t }}"
+        data-inside-modal="true">
+
+        <div class="grid gridy-track scrollbar--hide grid-cols-1">
+          {% assign current_item = 1 %}
+          {%- for media in medias -%}
+            {%- liquid
+              if zoom_skip_positions
+                assign forloop_index = forloop.index | append: ''
+                assign breaking_position = forloop.index | append: '!'
+                if zoom_skip_positions contains forloop_index
+                  continue
+                elsif zoom_skip_positions contains breaking_position
+                  break
+                endif
+              endif
+
+              assign media_alt = media.alt
+              if context != 'product' and media.type == 'image'
+                assign media_alt = media.settings.image.alt
+              endif
+            -%}
+            <div id="modal-item-{{ media.id }}"
+                class="zoom-item"
+                role="group"
+                aria-label="{% if media_alt %}{{ media_alt }}{% endif %} {{ 'accessibility.product_images_gallery_item' | t: item: current_item }} {% if skipped_total %}{{ skipped_total }}{% else %}{{ medias.size }}{% endif %}"
+                tabindex="0">
+              <div class="item-number size--nano flex center-center" aria-hidden="true">
+                <span>{{ current_item }} / {% if skipped_total %}{{ skipped_total }}{% else %}{{ medias.size }}{% endif %}</span>
+              </div>
+              {% if context == 'product' %}
+                {%- render 'product-media',
+                  media: media,
+                  aspect_ratio: 'natural',
+                  lazyload: true,
+                  sizing_rule: 'contain',
+                  custom_classes: 'zoom-media',
+                  in_modal: true
+                -%}
+              {% elsif media.type == 'image' %}
+                {%- render 'picture',
+                  image_default: media.settings.image,
+                  aspect_ratio: 'natural',
+                  sizing_rule: 'contain',
+                  class: 'zoom-media',
+                  preload: false -%}
+              {% elsif media.type == 'video' %}
+                {% comment %}TODO{% endcomment %}
+              {% endif %}
+              {% if media_alt %}
+              <div class="media-alt flex center-center size--nano">
+                <span>{{ media_alt }}</span>
+              </div>
+              {% endif %}
+            </div>
+            {%- assign current_item = current_item | plus: 1 -%}
+          {%- endfor -%}
+        </div>
+
+        {% render 'gridy-arrows' %}
+      </gridy-slider>
+    </div>
+  </div>
+</div>

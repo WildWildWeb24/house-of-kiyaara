@@ -1,0 +1,93 @@
+{%- comment -%}
+  # Product block snippet for Sibling products "selection". Selection works as a link to the sibling product.
+
+  Accepts:
+  - product: {Object} The product object (required/template access)
+  - block: {Object} The block object, with following settings
+    - title: {String} The title of the block (optional)
+    - sibling_product_1 / sibling_product_2 / sibling_product_3: {Object} Individual sibling products (optional)
+    - items_per_row: {Number} The number of items per row (optional)
+    - grid_layout: {String} The layout of the block (optional)
+    - margin_top: {Number} The margin top of the block
+
+  Used in:
+  - sections/main-product.liquid: The main product section
+
+  Related assets:
+  - assets/sample-style.css
+  - assets/sample-script.js
+{%- endcomment -%}
+
+{%- liquid
+  # Block snippet for Sibling products selection
+
+  # ** PARAMETERS **
+  # block              =>  REQUIRED | block object
+  # product            =>  REQUIRED | product object (Direct access on product template)
+
+  assign sibling_product_1 = block.settings.sibling_product_1
+  assign sibling_product_2 = block.settings.sibling_product_2
+  assign sibling_product_3 = block.settings.sibling_product_3
+
+  assign siblings_count = 0
+  if sibling_product_1 != blank
+    assign siblings_count = siblings_count | plus: 1
+  endif
+  if sibling_product_2 != blank
+    assign siblings_count = siblings_count | plus: 1
+  endif
+  if sibling_product_3 != blank
+    assign siblings_count = siblings_count | plus: 1
+  endif
+
+  assign grid_layout = block.settings.layout | default: 'grid'
+  assign ipr = block.settings.items_per_row | default: 4
+  assign slider_enabled = false
+  assign sizes_string = "(max-width: 767px) calc((100vw - 60px) / [ipr]), calc(432px / [ipr])" | replace: '[ipr]', ipr
+
+  if siblings_count > ipr and grid_layout == 'slider'
+    assign slider_enabled = true
+  endif
+-%}
+
+{%- if siblings_count > 0 -%}
+  {%- if block.settings.title != blank -%}
+    <p class="mb-8">{{ block.settings.title }}</p>
+  {%- endif -%}
+  <div class="the-siblings" {% if block.settings.title == blank %}style="margin-top: {{ block.settings.margin_top | append: 'px' }}"{% endif %}>
+    <gridy-slider
+      id="slider-{{ block.id }}"
+      class="gridy-slider"
+      data-mobile-enabled="{{ slider_enabled }}"
+      data-tablet-enabled="{{ slider_enabled }}"
+      data-desktop-enabled="{{ slider_enabled }}"
+      data-ipr-mobile="{{ ipr }}"
+      data-ipr-tablet="{{ ipr }}"
+      data-ipr-desktop="{{ ipr }}"
+      data-arrows="true"
+      data-init-scroll-to="sibling-item-{{ product.id }}">
+
+      <div class="gridy-track scrollbar--hide grid grid-cols-{{ ipr }}">
+        {%- for i in (1..3) -%}
+          {%- assign setting_key = 'sibling_product_' | append: i -%}
+          {%- assign sibling = block.settings[setting_key] -%}
+          {%- if sibling != blank -%}
+            <a href="{{ sibling.url }}" id="sibling-item-{{ sibling.id }}" class="sibling-product{% if sibling.id == product.id %} current-product{% endif %}">
+              {%- render 'picture',
+                image_default: sibling.featured_media.preview_image,
+                sizing_rule: 'cover',
+                aspect_ratio: block.settings.product_image_aspect_ratio,
+                sizes: sizes_string -%}
+              <span class="visually-hidden">{{ sibling.title }}
+              </span>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      {%- if slider_enabled -%}
+        {% render 'gridy-arrows',
+          class: 'sm-on-edge' %}
+      {%- endif -%}
+    </gridy-slider>
+  </div>
+{%- endif -%}

@@ -1,0 +1,93 @@
+{% comment %}
+  Accepts:
+  - modal_slides: {Array} Array of objects with image and text properties
+
+  Block settings structure:
+  - image: {Object} ImageDrop
+  - video: {Object} VideoDrop
+  - text: {String} Richtext
+{% endcomment %}
+
+<modal-gridy-slider-parent id="modal-{{ section.id }}" class="modal modal--huge modal--slider color-{{ settings.color_scheme_modals }}" data-modal data-parent>
+  <gridy-slider id="slider-{{ section.id }}"
+    class="gridy-slider"
+    data-mobile-enabled="true"
+    data-tablet-enabled="true"
+    data-desktop-enabled="true"
+    data-ipr-desktop="1"
+    data-ipr-tablet="1"
+    data-ipr-mobile="1"
+    data-arrows="true"
+    data-overflow-visible="true"
+    data-indicator="true"
+    data-indicator-type="dot"
+    data-inside-modal="true">
+
+    {% render 'close-button', button_class: 'modal-close', context: 'slider-modal' %}
+
+    <div class="gridy-track scrollbar--hide grid grid-cols-1" dir="ltr">
+      {%- for block in modal_slides -%}
+        {%- liquid
+          assign has_text = false
+          assign has_media = false
+
+          if block.settings.text != blank
+            assign has_text = true
+          endif
+
+          if block.settings.image != blank
+            assign has_media = true
+            assign media_type = 'image'
+          elsif block.settings.video != blank
+            assign has_media = true
+            assign media_type = 'video'
+          endif
+        -%}
+        <div class="modal-dialog{% if forloop.index == 1 %} active
+        {% endif %}" data-modal-dialog role="dialog" aria-modal="true" tabindex="-1">
+          <div class="modal-body md-no-scroll" data-modal-body>
+            <div class="grid {%- if has_media and has_text == false %} media-only{% endif %}" style="gap:0;">
+            {% if has_media %}
+              <div class="col-12 {%- if has_text %} col-md-6 col-lg-7{% endif %} modal-column modal-column--media">
+                {%- if media_type == 'image' -%}
+                  {%- render 'picture', image_default: block.settings.image -%}
+                {%- elsif media_type == 'video' -%}
+                  {%- render 'video_new',
+                    video_default: block.settings.video,
+                    controls: true,
+                    autoplay: true,
+                    in_modal: true
+                  -%}
+                {%- endif -%}
+              </div>
+            {% endif %}
+
+            {% if has_text %}
+              <div class="col-12 {%- if has_media %} col-md-6 col-lg-5{% endif %} modal-column modal-column--text scrollbar--hide">
+                <div class="p-32 pb-64 sm-p-64 rte">
+                  {{ block.settings.text }}
+                </div>
+              </div>
+            {% endif %}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if modal_slides.size > 1 -%}
+      {% render 'gridy-arrows' %}
+
+      {% render 'gridy-indicator',
+        ipr_desktop: 1,
+        ipr_tablet: 1,
+        ipr_mobile: 1,
+        items_count: modal_slides.size %}
+    {%- endif -%}
+  </gridy-slider>
+
+  {% comment %} Background, click to close {% endcomment %}
+  <button type="button" class="page-overlay" aria-hidden="true" tabindex="-1" data-overlay></button>
+</modal-gridy-slider-parent>
+
+<script type="text/javascript" defer src="{{ 'component-modal-gridy-slider.js' | asset_url }}"></script>

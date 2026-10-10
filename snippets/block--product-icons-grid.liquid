@@ -1,0 +1,38 @@
+{%- liquid
+
+  # Block snippet for Product Icons Grid
+
+  assign product_icon_columns = block.settings.icons_per_row
+  assign product_icon_gap_count = product_icon_columns | minus: 1
+  assign product_icon_total_gap_width = block.settings.grid_gap | times: product_icon_gap_count
+  assign product_icon_total_width = 600 | minus: product_icon_total_gap_width
+  assign product_icon_width = product_icon_total_width | divided_by: product_icon_columns | append: 'px'
+-%}
+<span class="form__label ">{{ block.settings.title }}</span>
+<div class="product-icons-grid" style="--icons-grid-cols: {{ block.settings.icons_per_row }}; --icons-grid-gap: {{ block.settings.grid_gap | append: 'px' }}">
+  {% for i in (1..8) -%}
+    {%- liquid
+      case i
+        when 1
+          assign the_image = block.settings.first_image
+        when 2
+          assign the_image = block.settings.second_image
+        when 3
+          assign the_image = block.settings.third_image
+        when 4
+          assign the_image = block.settings.fourth_image
+        when 5
+          assign the_image = block.settings.fifth_image
+        when 6
+          assign the_image = block.settings.sixth_image
+        when 7
+          assign the_image = block.settings.seventh_image
+        when 8
+          assign the_image = block.settings.eighth_image
+      endcase -%}
+
+    {% if the_image != blank %}
+      {% render 'picture', image_default: the_image, sizes: product_icon_width %}
+    {% endif %}
+  {%- endfor %}
+</div>

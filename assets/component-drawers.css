@@ -1,0 +1,480 @@
+/* NOTES:
+/* Edit the '--drawer-animation' and '--drawer-position' variables to change the position */
+
+/* Drawer container - not actual drawer panel */
+.drawer {
+  --drawer-size: min(100vw, 432px);
+  --drawer-content-padding: var(--container-margin);
+  --drawer-animation: all 0.3s ease-in-out;
+  --drawer-padding: 24px;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+  opacity: 1 !important;
+  z-index: 70;
+  background: transparent;
+
+  display: block !important;
+  pointer-events: auto !important;
+}
+
+html.drawers--modal .drawer {
+  --drawer-offset: var(--container-margin);
+  right: var(--drawer-offset);
+  left: var(--drawer-offset);
+  top: var(--drawer-offset);
+  bottom: var(--drawer-offset);
+  --drawer-size: min(calc(100vw - var(--drawer-offset) * 2), 460px);
+}
+
+@media only screen and (min-width: 768px) {
+  .drawer {
+    --drawer-content-padding: 3.6rem;
+  }
+  html.drawers--modal .drawer.drawer--wide,
+  .drawer.drawer--wide {
+    --drawer-size: min(60vw, 520px);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  html.drawers--modal .drawer {
+    --drawer-offset: var(--container-margin);
+  }
+}
+
+
+/* Drawer panels */
+.drawer-panel,
+html.js .drawer-submenu__panel {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0;
+  width: var(--drawer-size);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  opacity: 0;
+  z-index: 10;
+
+  transform: translateX(var(--drawer-position));
+}
+.drawer-panel {
+  box-shadow: var(--box-shadow--big);
+}
+
+html.drawers--modal .drawer-panel {
+  position: relative;
+  transform: translateX(var(--drawer-position));
+  border-radius: var(--modal-border-radius);
+  height: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+  html.drawers--modal .drawer-panel{
+    position: relative;
+  }
+}
+
+html.no-js .drawer-panel {
+  --drawer-animation: transform 0.3s ease-in-out; /* for non-JS users only animate transform to avoid flash of opacity on page load */
+}
+html.js .drawer-submenu__panel {
+  --drawer-animation: all 0.3s ease-in-out; /* Default (mobile) animation properties */
+  background-color: var(--color-background);
+}
+
+/* set position of origin for different types of drawers */
+.drawer-panel,
+html.js .drawer-submenu__panel {
+  --drawer-position: -100%;
+}
+.slide-from-right .drawer-panel {
+  --drawer-position: 100vw;
+}
+
+html.drawers--modal .drawer-panel {
+  --drawer-position: calc(-100% - var(--drawer-offset));
+}
+html.drawers--modal .slide-from-right .drawer-panel {
+  --drawer-position: calc(100vw + var(--drawer-offset));
+}
+
+/* Apply transition only when drawer is initialized to avoid them flashing on page load */
+html.js .initialized .drawer-panel,
+html.no-js .drawer-panel,
+html.js .initialized .drawer-submenu__panel {
+  transition: var(--drawer-animation);
+}
+
+/* Only allow pointer-events for container when drawer is open */
+html.js .drawer.is-open {
+  opacity: 1 !important;
+  visibility: visible;
+}
+
+/* Set opacity and position for open panel element */
+html.js .drawer.is-open .drawer-panel,
+html.js .drawer-submenu__panel {
+  --drawer-position: 0;
+  opacity: 1;
+}
+html.js .drawer.slide-from-right.is-open .drawer-panel {
+  --drawer-position: calc(100vw - var(--drawer-size));
+}
+
+html.js.drawers--modal .drawer.slide-from-right.is-open .drawer-panel {
+  --drawer-position: calc(100vw - var(--drawer-size) - var(--drawer-offset) * 2);
+}
+
+/* Drawer panel header section */
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--drawer-content-padding);
+  position: relative;
+  border-bottom: 1px solid var(--color-borders);
+}
+.drawer-header .drawer-close {
+  position: absolute;
+  right: var(--drawer-content-padding);
+  box-shadow: none;
+}
+.drilldown {
+  overflow: unset;
+}
+
+/* Drawer panel content section */
+.drawer-content {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--drawer-content-padding);
+}
+
+/* Drawer panel footer section */
+.drawer-footer {
+  padding: var(--drawer-padding);
+  align-self: flex-end;
+  width: 100%;
+  border-top: 1px solid var(--color-borders);
+}
+
+/* Drawer submenu panel default styles */
+html.js .drawer-submenu__panel-container {
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: var(--drawer-size);
+  display: flex;
+  flex-direction: row;
+  width: var(--drawer-size);
+}
+
+/* DRAWER MENU */
+.drawer-menu {
+  --drawer-content-padding: max(20px, 5vh) 0;
+  --drawer-item-padding-v: 8px;
+  --drawer-item-padding-h: 30px;
+}
+html.drawers--drawer .drawer-menu-nav {
+  padding-top: 100px;
+}
+.drawer-menu .drawer-footer {
+  padding: calc(var(--drawer-item-padding-v)*2) var(--drawer-item-padding-h);
+}
+.drawer-menu .some-links {
+  justify-content: space-between;
+}
+.drawer-menu .menu-links {
+  order: 2;
+}
+.drawer-menu .menu-banner {
+  order: 1;
+  margin: var(--drawer-item-padding-v) var(--drawer-item-padding-h);
+}
+.drawer-menu .menu-banner.--after {
+  order: 3;
+}
+.drawer-menu .menu-collection {
+  margin: var(--drawer-item-padding-v) var(--drawer-item-padding-h);
+}
+.drawer-menu .menu-collection .card {
+  border: 0;
+  color: var(--color-foreground);
+  background: transparent;
+  border-top: 1px solid var(--color-borders);
+  border-radius: 0;
+}
+.drawer-menu .menu-collection .card:first-child {
+  border-top: 0;
+}
+
+/* Drawer menu items - normal links and labels */
+.drawer-menu .menu-item,
+.drawer-menu .sub-menu-item,
+.drawer-menu .sub-sub-menu-item {
+  display: block;
+  padding:var(--drawer-item-padding-v) var(--drawer-item-padding-h);
+}
+.drawer-menu .menu-item {
+  transition: all 0.2s ease-out !important;
+  border-top-left-radius: var(--button-border-radius);
+  border-bottom-left-radius: var(--button-border-radius);
+  display: flex;
+  align-items: center;
+  min-height: calc(24px + var(--drawer-item-padding-v) * 2);
+}
+.drawe-menu-nav.--borders .drawer-menu .menu-item:before {
+  content: '';
+  position: absolute;
+  width: calc(100% - var(--drawer-item-padding-h) * 2);
+  border-top: 1px solid var(--color-borders);
+  top: 100%;
+}
+.drawer-menu .sub-sub-menu-item {
+  padding-top:calc(var(--drawer-item-padding-v) * 0.5);
+  padding-bottom:calc(var(--drawer-item-padding-v) * 0.5);
+}
+.drawer-menu .sub-sub-menu-item + .drawer-menu .sub-menu-item {
+  margin-top: calc(var(--drawer-item-padding-v) * 1.5);
+}
+.close--submenu {
+  display: flex;
+  align-items: center;
+  padding: calc(var(--drawer-item-padding-h) / 2) var(--drawer-item-padding-h);
+  border-bottom: 1px solid var(--color-borders);
+  margin-top: min(-20px, -5vh);
+  margin-bottom: 24px;
+  justify-content: flex-end;
+  gap: 6px;
+}
+html.drawers--modal .close--submenu {
+  justify-content: flex-start;
+}
+
+.drawer-menu .menu-item span[class*="style--badge"] {
+  background-clip: text;
+  color: transparent;
+}
+
+@media only screen and (min-width: 1024px) {
+  .drawer-menu {
+    --drawer-content-padding: max(30px, 5vh) 0;
+    --drawer-item-padding-v: 12px;
+    --drawer-item-padding-h: 48px;
+  }
+  html.drawers--modal .drawer-panel.has-open-submenu {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  /* Open state visual styles */
+  .drawer-panel.has-open-submenu {
+    background-color: var(--color-background-alt);
+  }
+  .has-open-submenu .drawer-main-menu > *:not(.is-open) .menu-item,
+  .has-open-submenu .drawer-main-menu > .menu-item,
+  .has-open-submenu .drawer-secondary-menu .menu-item,
+  .has-open-submenu .drawer-footer {
+    opacity: 0.65;
+  }
+  .has-open-submenu .drawer-main-menu > *.is-open .menu-item {
+    background-color: var(--color-background);
+    transform: translateX(var(--drawer-item-padding-h));
+  }
+  .drawer-menu-nav > a.menu-item {
+    transition: all 0.316s ease-in-out;
+  }
+  .drawer-menu .menu-item:hover {
+    opacity: 1;
+  }
+}
+
+/* Set styles for submenu item panel when it's open */
+html.js [data-accordion-item].is-open .drawer-submenu__panel {
+  --drawer-position: 0 !important;
+  z-index: 9;
+  opacity: 1;
+}
+
+/* Set dropdown item paddings for non-JS users */
+html.no-js .drawer-submenu__panel-container,
+html.no-js .drawer-subsubmenu__panel {
+  padding-left: 1rem !important;
+}
+
+@media only screen and (max-width: 1023px) {
+  /* SVG used to clip animations */
+  .drawer-clip {
+    display: none;
+  }
+  .drawer-clip rect {
+    transform: translateY(-100%);
+  }
+  .drawer-panel {
+    overflow-x: hidden;
+  }
+  html.js .drawer-submenu__panel{
+    --drawer-position: var(--drawer-size) !important;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .drawer {
+    --drawer-size: min(40vw, 480px);
+  }
+  html.drawers--modal .drawer.drawer--wide,
+  .drawer.drawer--wide {
+    --drawer-size: min(40vw, 600px) !important;
+  }
+  /* SVG used to clip animations */
+  .drawer-clip {
+    position: fixed;
+    top: 0;
+    left: var(--drawer-size);
+  }
+
+  html.js .drawer-submenu__panel-container {
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+
+  html.drawers--modal .drawer-submenu__panel {
+    border-radius: 0 var(--modal-border-radius) var(--modal-border-radius) 0;
+  }
+
+  /* Desktop submenu item panel - open styles */
+  html.js [data-accordion-item].is-open .drawer-submenu__panel {
+    --drawer-position: var(--drawer-size) !important;
+    transition: var(--drawer-animation);
+  }
+
+  html.js .drawer-submenu__panel-container.--has-media {
+    width: calc(100vw - var(--drawer-size));
+  }
+
+  .drawer-submenu__panel-container {
+      clip-path: url(#drawer-clip);
+  }
+}
+
+.--with-padding {
+  padding: var(--drawer-padding);
+}
+.menu-divider {
+  border-top: 1px solid var(--color-borders);
+  margin: 12px 0;
+}
+.drawer .menu-divider {
+  width: calc(100% - var(--drawer-padding)*3.2);
+  margin: var(--drawer-item-padding-v) var(--drawer-item-padding-h);
+  position: relative;
+}
+
+.drawer-float-close {
+  position: absolute;
+  z-index: 80;
+  top: 24px;
+  left: 24px;
+  opacity: 0;
+  transform: translateX(calc(var(--drawer-size) * -1));
+  transition: var(--drawer-animation);
+}
+.is-open .drawer-float-close {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.slide-from-right .drawer-float-close {
+  left: auto;
+  right: 24px;
+  transform: translateX(calc(100vw + var(--drawer-size)));
+}
+.slide-from-right.is-open .drawer-float-close {
+  transform: translateX(0%);
+}
+
+html.drawers--modal .drawer-float-close {
+  transform: translate(calc(var(--drawer-size) * -1), -8px);
+  top: 0;
+  left: var(--drawer-size);
+}
+html.drawers--modal .is-open .drawer-float-close {
+  transform: translate(calc(-100% + 8px), -8px);
+}
+html.drawers--modal .slide-from-right .drawer-float-close {
+  left: auto;
+  right: 0;
+  transform: translate(calc(100vw + var(--drawer-size)), -8px);
+}
+html.drawers--modal .slide-from-right.is-open .drawer-float-close {
+  transform: translate(8px, -8px);
+}
+
+@media only screen and (min-width: 768px) {
+  html.drawers--modal .drawer-float-close {
+    transform: translate(calc(var(--drawer-size) * -1), -50%);
+    left: 0;
+  }
+  html.drawers--modal .is-open .drawer-float-close {
+    transform: translate(-50%, -50%);
+  }
+  html.drawers--modal .slide-from-right .drawer-float-close {
+    left: auto;
+    right: 0;
+    transform: translate(calc(100vw + var(--drawer-size)), -50%);
+  }
+  html.drawers--modal .slide-from-right.is-open .drawer-float-close {
+    transform: translate(50%, -50%);
+  }
+}
+
+/* iOS 14 fixes */
+drawer-menu .drawer-menu__contents {
+  height: 100%;
+}
+drawer-menu .drawer-submenu__panel {
+  left: 0;
+}
+
+/* Performance improvements */
+/* Ensures that images are not loaded until the modal is opened */
+.drawer img {
+  display: none;
+  opacity: 0;
+  transition-duration: 0.3s;
+  transition-property: display, opacity;
+  transition-timing-function: ease-in-out;
+  transition-behavior: allow-discrete !important;
+}
+.drawer.is-open img {
+  display: block;
+  opacity: 1;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+/* Quick Buy */
+.drawer--quick-buy .media-and-badges {
+  position: relative;
+}
+.drawer--quick-buy .badges {
+  position: absolute;
+  z-index: 1;
+  top: 24px;
+  left: 24px;
+}
+.drawer--quick-buy .shopify-model-viewer-ui__controls-area {
+  display: none !important;
+}

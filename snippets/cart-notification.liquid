@@ -1,0 +1,67 @@
+{%- comment -%}
+  Used when add_to_cart_type is set to 'notification' or 'notification_recommendations'
+
+  Used in:
+  - layouts/theme.liquid
+
+  Related assets:
+  - assets/component-cart-notification.css
+  - assets/component-product-form.js
+
+  Notes:
+  - JS uses classes for querySelector -> Changing classes might cause JS errors
+{%- endcomment -%}
+{% # theme-check-disable %}
+
+<template id="cart-notification">
+  <div class="cart-notification color-{{ settings.color_scheme_modals }} br-img">
+    <button type="button" class="notification-close">
+      {% render 'icon-close' %}
+      <span class="visually-hidden">{{ 'accessibility.close' | t }}</span>
+    </button>
+
+    <div class="flex vertical-center" style="gap: 8px; flex-wrap:nowrap;">
+      {% render 'icon-checkmark' %}
+      <p data-notification-title></p>
+    </div>
+
+    <div class="added-items" data-items></div>
+
+    <div class="cart-notification-buttons flex" style="gap: 12px">
+      <a
+        href="{{ routes.cart_url }}"
+        id="cart-notification-link"
+        class="btn btn--secondary btn--full size--small"
+        style="flex-grow: 1;"
+      >{{ 'general.cart.view_cart_link' | t }} (<span class="cart-total"></span>)</a>
+      <form
+        action="{{ routes.cart_url }}"
+        method="post"
+        id="cart-notification-form"
+        style="flex-grow: 1;">
+        <button class="btn btn--full size--small" name="checkout">
+          {{ 'sections.cart.checkout' | t }}
+        </button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template id="cart-notification-item">
+  <div class="notification-item">
+    <picture class="media card notification-item-image {{ settings.product_card_aspect_ratio }} {{ settings.product_card_fill_rule }}">
+      <img class="hide" src="" loading="lazy" width="120" height="120" data-image>
+    </picture>
+    <div class="notification-item-text">
+      <p class="notification-item-title" data-title></p>
+      <div class="price mb-4 size--small style--subdued" data-price></div>
+      <dl class="desc-list" data-properties></dl>
+    </div>
+  </div>
+</template>
+{% # theme-check-enable %}
+
+<link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>
+  {{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}
+</noscript>

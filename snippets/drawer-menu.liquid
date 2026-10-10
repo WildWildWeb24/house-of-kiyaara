@@ -1,0 +1,94 @@
+{%- liquid
+  assign main_menu = linklists[section.settings.main_menu.handle]
+  assign secondary_menu = linklists[section.settings.secondary_menu.handle]
+-%}
+
+<drawer-menu id="drawer-menu" class="drawer drawer-menu color-{{ settings.color_scheme_drawers }}" data-drawer data-parent style="opacity: 0; display: none;">
+  {% render 'close-button', button_class: 'drawer-close drawer-float-close', context: 'navigation-drawer' %}
+
+  <div class="drawer-panel drawer-menu__contents user-select-none">
+    {% comment %}
+      <div class="drawer-header">
+        {%- render 'close-button', button_class: 'drawer-close' -%}
+      </div>
+    {% endcomment %}
+
+    <nav class="drawer-content drawer-menu-nav scrollbar--hide">
+      {% if main_menu.links != empty -%}
+        <div class="drawer-main-menu">
+          {% for menu_item in main_menu.links -%}
+            {%- render 'drawer-menu-items',
+              menu_item: menu_item,
+              current_level: 1,
+              context: 'js',
+              content_menu_titles: content_menu_titles,
+              menu_priority: 'main'
+            -%}
+          {%- endfor %}
+          <noscript>
+          {% for menu_item in main_menu.links -%}
+            {%- render 'drawer-menu-items',
+              menu_item: menu_item,
+              current_level: 1,
+              context: 'no-js',
+              content_menu_titles: content_menu_titles,
+              menu_priority: 'main'
+            -%}
+          {%- endfor %}
+          </noscript>
+        </div>
+      {% endif %}
+
+      {% if secondary_menu.links != empty -%}
+        <div class="drawer-secondary-menu mt-32">
+          {% for menu_item in secondary_menu.links -%}
+            {%- render 'drawer-menu-items',
+              menu_item: menu_item,
+              current_level: 1,
+              context: 'js',
+              menu_priority: 'secondary'
+            -%}
+          {%- endfor %}
+          <noscript>
+            {% for menu_item in secondary_menu.links -%}
+              {%- render 'drawer-menu-items',
+                menu_item: menu_item,
+                current_level: 1,
+                context: 'no-js',
+                menu_priority: 'secondary'
+              -%}
+            {%- endfor %}
+          </noscript>
+        </div>
+      {% endif -%}
+    </nav>
+
+    {% capture drawer_footer_content %}
+      {% if footer_info != blank %}
+        <div class="additional-info size--small rte mb-12">
+          {{ footer_info }}
+        </div>
+      {% endif %}
+      {% render 'social-icons', use_nav_tag: true %}
+    {% endcapture %}
+
+    {% if drawer_footer_content != blank %}
+      <footer class="drawer-footer">
+        {{ drawer_footer_content }}
+      </footer>
+    {% endif %}
+  </div>
+
+  {% comment %} Background, click to close {% endcomment %}
+  <button type="button" class="page-overlay" data-overlay aria-hidden="true" tabindex="-1"></button>
+
+  {%- comment -%} Clipping mask for drawer animations {%- endcomment -%}
+  <svg class="drawer-clip" width="100%" preserveAspectRatio="xMidYMid meet" viewBox="0 0 100 100" aria-hidden="true" xmlns="https://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <clipPath id="drawer-clip">
+        <rect x="0" y="0" width="2000" height="2000" style="height: 100dvh;"></rect>
+      </clipPath>
+    </defs>
+  </svg>
+</drawer-menu>
+<script src="{{ 'component-drawer-menu.js' | asset_url }}" defer></script>

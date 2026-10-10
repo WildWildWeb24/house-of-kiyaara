@@ -1,0 +1,43 @@
+{{ 'component-animated-number.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  #  ** Parameters **
+  #  prefix             =>  OPTIONAL | string  | default: ""    | prefix text for animated number
+  #  animated_number    =>  REQUIRED | number  | default: 0     | animated target number to end at
+  #  suffix             =>  OPTIONAL | string  | default: ""    | suffix text for animated number
+  #  classes            =>  OPTIONAL | string  | default: ""    | custom classes
+  #  emphasized         =>  OPTIONAL | boolean | default: false | wrap content in <em> tags
+  #  duration           =>  OPTIONAL | number  | default: 3     | animation duration in seconds
+  #  delay              =>  OPTIONAL | number  | default: 1     | delay before animation starts
+
+  assign prefix = prefix | strip | default: ''
+  assign animated_number = animated_number | default: 0
+  assign suffix = suffix | strip | default: ''
+  assign classes = classes | default: ''
+  assign emphasized = emphasized | default: false
+  assign duration = duration | default: 3
+  assign delay = delay | default: 1
+%}
+
+<animated-number
+  class="{{ classes }}"
+  style="--target-num: {{ animated_number }}; --anim-duration: {{ duration }}s; --anim-delay: {{ delay }}s;"
+  data-target-num="{{ animated_number }}"
+  data-anim-duration="{{ duration | times: 1000 }}"
+  data-anim-delay="{{ delay | times: 1000 }}"
+>
+  <span class="visually-hidden">
+    {{ prefix }}
+    {{ animated_number }}
+    {{ suffix }}
+  </span>
+  {% if emphasized %}<em>{% endif %}
+  {% if prefix != '' -%}
+    <span class="animation-prefix" aria-hidden="true">{{ prefix }}</span>
+  {%- endif %}
+  <span class="animation-target" aria-hidden="true"></span>
+  {% if suffix != '' -%}
+    <span class="animation-suffix" aria-hidden="true">{{ suffix }}</span>
+  {%- endif %}
+  {% if emphasized %}</em>{% endif %}
+</animated-number>

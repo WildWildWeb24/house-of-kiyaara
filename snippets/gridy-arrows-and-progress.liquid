@@ -1,0 +1,30 @@
+{%- comment -%}
+  Arrows with slider progress/position bar
+
+  Accepts:
+  - ipr_mobile: {String} or {Number} Items per ror in mobile (required)
+  - ipr_tablet: {String} or {Number} Items per row in tablet (required)
+  - ipr_desktop: {String} or {Number} Items per row in desktop (required)
+  - items_count: {String} or {Number} Total number of items (required)
+
+  Used in:
+  - sections/promo-grid-and-slideshow.liquid
+{%- endcomment -%}
+
+{% assign items_count = items_count | default: 'var(--items-count)' %}
+
+<div class="arrows-and-progress {{ class }}">
+  <button class="arrow-btn" type="button" data-gridy-arrow data-direction="prev" aria-hidden="true" tabindex="-1">{% render 'icon-chevron-left--small' %}</button>
+  <div
+    class="progress-bar"
+    data-gridy-progress-bar
+    style="
+      --fill-width: calc({{ ipr_mobile }} / {{ items_count }} * 100%);
+      --sm-fill-width: calc({{ ipr_tablet }} / {{ items_count }} * 100%);
+      --md-fill-width: calc({{ ipr_desktop }} / {{ items_count }} * 100%);
+      --step-width: calc(100% / {{ items_count }});
+    ">
+    <div class="progress-bar-fill"data-gridy-progress-fill></div>
+  </div>
+  <button class="arrow-btn" type="button" data-gridy-arrow data-direction="next" aria-hidden="true" tabindex="-1">{% render 'icon-chevron-right--small' %}</button>
+</div>

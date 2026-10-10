@@ -1,0 +1,202 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "heading_text_align": "left",
+        "sm_size_multiplier": "sm-size--default",
+        "size_multiplier": "size--default"
+      }
+    },
+    "farasha_story": {
+      "type": "farasha-story",
+      "blocks": {
+        "chapter_YGXEQL": {
+          "type": "chapter",
+          "name": "Intro",
+          "settings": {
+            "chapter_type": "welcome",
+            "hide_chapter": false,
+            "label": "",
+            "title": "",
+            "description": "",
+            "image": "shopify://shop_images/kiyaara-logo-about-farasha.png",
+            "button_label": "Enter our meadow"
+          }
+        },
+        "chapter_7cxay6": {
+          "type": "chapter",
+          "name": "The Farasha Collection",
+          "settings": {
+            "chapter_type": "collection_intro",
+            "hide_chapter": false,
+            "label": "",
+            "title": "",
+            "description": "A world painted by hand. Farasha began as a dream. A world of curious blooms and wandering butterflies.",
+            "image": "shopify://shop_images/the-farasha-collection-logo.png",
+            "button_label": ""
+          }
+        },
+        "chapter_hTUMjz": {
+          "type": "chapter",
+          "name": "The Peachy Blooms",
+          "settings": {
+            "chapter_type": "motif",
+            "hide_chapter": false,
+            "label": "THE PEACHY BLOOMS",
+            "title": "Little Bursts of Joy",
+            "description": "Pink blooms arrive like small, happy surprises in a meadow. They bring warmth, colour and a little softness to everything around them.",
+            "image": "shopify://shop_images/peach-flower.png",
+            "button_label": ""
+          }
+        },
+        "chapter_GAcbyr": {
+          "type": "chapter",
+          "name": "THE BLUE BLOOMS",
+          "settings": {
+            "chapter_type": "motif",
+            "hide_chapter": false,
+            "label": "THE BLUE BLOOMS",
+            "title": "A Little Wildness",
+            "description": "Blue flowers are often the ones you notice twice. Cool, unexpected and a little untamed, they make the meadow feel more alive.",
+            "image": "shopify://shop_images/blue-blooms.png",
+            "button_label": ""
+          }
+        },
+        "chapter_pHWWTi": {
+          "type": "chapter",
+          "name": "THE BELL FLOWERS",
+          "settings": {
+            "chapter_type": "motif",
+            "hide_chapter": false,
+            "label": "THE BELL FLOWERS",
+            "title": "Delicate by Nature",
+            "description": "Bell flowers hang gently from their stems, moving with the lightest breeze. Quiet and delicate, they bring a soft charm to the meadow.",
+            "image": "shopify://shop_images/lilles.png",
+            "button_label": ""
+          }
+        },
+        "chapter_RfhpFi": {
+          "type": "chapter",
+          "name": "THE FOLIAGE",
+          "settings": {
+            "chapter_type": "motif",
+            "hide_chapter": false,
+            "label": "THE FOLIAGE",
+            "title": "Between the Blooms",
+            "description": "Leaves and berries fill the spaces between the flowers, making the meadow feel full and lived in. They are where the little discoveries are found.",
+            "image": "shopify://shop_images/berries.png",
+            "button_label": ""
+          }
+        },
+        "chapter_PQtriU": {
+          "type": "chapter",
+          "name": "THE BUTTERFLY",
+          "settings": {
+            "chapter_type": "butterfly_mascot",
+            "hide_chapter": false,
+            "label": "THE BUTTERFLY",
+            "title": "And Then, She Took Flight",
+            "description": "Among the flowers appeared Farasha. Colourful, curious and free. The little wonder that gave this meadow its name.",
+            "button_label": ""
+          }
+        },
+        "chapter_8pQUNC": {
+          "type": "chapter",
+          "settings": {
+            "chapter_type": "collection_bags",
+            "hide_chapter": false,
+            "label": "THE FARASHA COLLECTION",
+            "title": "Now, Wear the Story",
+            "description": "Every piece carries a little of this hand-painted world with it.",
+            "button_label": "Scroll Down"
+          }
+        }
+      },
+      "block_order": [
+        "chapter_YGXEQL",
+        "chapter_7cxay6",
+        "chapter_hTUMjz",
+        "chapter_GAcbyr",
+        "chapter_pHWWTi",
+        "chapter_RfhpFi",
+        "chapter_PQtriU",
+        "chapter_8pQUNC"
+      ],
+      "settings": {
+        "collection_url": "",
+        "header_offset": 100,
+        "shop_label": "Shop the Collection",
+        "video": "shopify://files/videos/10 sec Montage.mp4",
+        "video_url": "",
+        "finale_video": "shopify://files/videos/Kiyaara Landscape Contrast.mp4",
+        "finale_video_url": "",
+        "finale_overlay_opacity": 0,
+        "sky": "shopify://shop_images/farrasha-bg-sky.png",
+        "mountains": "shopify://shop_images/farrasha-bg-mountains.png",
+        "far_foliage": "shopify://shop_images/farrasha-bg-far-foliage.png",
+        "grass": "shopify://shop_images/farrasha-bg-grass.png",
+        "forground": "shopify://shop_images/web_page_with_grass.png",
+        "light_glow": "shopify://shop_images/farrasha-bg-glow.png",
+        "peach": "shopify://shop_images/peach-flower.png",
+        "blue": "shopify://shop_images/blue-blooms.png",
+        "bell": "shopify://shop_images/lilles.png",
+        "foliage": "shopify://shop_images/berries.png"
+      }
+    },
+    "featured_collection_or_products_dbTJ6E": {
+      "type": "featured-collection-or-products",
+      "blocks": {
+        "section_header_D9GGWQ": {
+          "type": "section_header",
+          "settings": {
+            "subtitle": "",
+            "title": "The Farasha Collection",
+            "text": "",
+            "text_alignment": "center",
+            "subtitle_tag": "h3",
+            "title_tag": "h2",
+            "sm_size_multiplier": "sm-size--default",
+            "size_multiplier": "size--default"
+          }
+        }
+      },
+      "block_order": [
+        "section_header_D9GGWQ"
+      ],
+      "name": "t:sections.featured-collection-or-products.name",
+      "settings": {
+        "color_scheme": "",
+        "collection": "all-bags",
+        "product_list": [],
+        "product_limit": 12,
+        "view_all": true,
+        "enable_card_thumbnail": false,
+        "layout_desktop": "grid",
+        "products_per_row_desktop": 4,
+        "products_per_row_tablet": 4,
+        "layout_mobile": "slide",
+        "products_per_row_mobile": 1,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "farasha_story",
+    "featured_collection_or_products_dbTJ6E"
+  ]
+}

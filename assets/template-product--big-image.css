@@ -1,0 +1,135 @@
+/*
+ The product page has a custom grid definitions. Base 12-columns grid used. Column sizes are defined by settings, not column classes. Be mindfull when making changes!
+*/
+
+/* -------------------------------------- */
+/* Globals, no matter the layout settings */
+/* -------------------------------------- */
+
+/* Breadcrumb and actions navigation */
+.product-actions-bar {
+  justify-content: space-between;
+}
+.product-action-buttons {
+  gap: min(12px, var(--container-margin));
+
+  .text-button {
+    gap: 0;
+  }
+}
+.product-action-buttons.--mobile {
+  justify-content: space-around;
+  margin-top: var(--container-margin);
+  gap: var(--container-margin);
+  margin-top: var(--container-margin);
+
+  .text-button {
+    flex-grow: 1;
+    justify-content: center;
+    background-color: var(--color-card-background);
+    color: var(--color-card-foreground);
+    border-radius: var(--button-border-radius);
+  }
+}
+
+/* Image and hotspots styles */
+.media-area .hotspot-container {
+  position: sticky;
+  overflow: hidden;
+  top: var(--header-height);
+  background: var(--image-background);
+}
+
+/* Basic layout styles */
+.big-image-product-layout {
+  position: relative;
+  z-index: 2;
+}
+.grid--product-main-content {
+  grid-template-rows: auto auto;
+  row-gap: 0;
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+}
+.content-column {
+  z-index: 3;
+  padding-top: var(--container-margin);
+}
+.media-area {
+  z-index: 2;
+}
+
+
+/* -------------------------------------- */
+/* Breakpoint specific layout styles      */
+/* -------------------------------------- */
+
+@media only screen and (max-width: 767px) {
+  .grid--product-main-content {
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet styles */
+@media only screen and (min-width: 768px) {
+  .media-area .hotspot-container {
+    overflow: visible;
+  }
+  .media-area, .content-column {
+    grid-column: 2 / 12;
+  }
+  .tablet--content-columns-split .content-column {
+    grid-column: span 6;
+  }
+}
+
+/* When tablet breakpoint is not extended, following styles are not applied */
+@media only screen and (min-width: 1024px) {
+  .grid--product-main-content:not(.tablet--extend-breakpoint) {
+    grid-template-rows: auto;
+
+    > * {
+      grid-row: 1 / 2;
+    }
+    .media-area {
+      --md-media-column-start: 1;
+      --md-media-column-span: 6;
+      --md-media-column-span-max: calc(13 - var(--md-media-column-start));
+      grid-column-start: var(--md-media-column-start);
+      grid-column-end: span min(var(--md-media-column-span), var(--md-media-column-span-max));
+    }
+    .content-column {
+      grid-column: var(--content-grid-column);
+      margin-top: var(--custom-mt);
+      padding-top: 0;
+    }
+  }
+}
+
+/* Same as above, but when tablet breakpoint is extended */
+@media only screen and (min-width: 1200px) {
+
+  .grid--product-main-content {
+    grid-template-rows: auto;
+
+    > * {
+      grid-row: 1 / 2;
+    }
+    .media-area {
+      --md-media-column-start: 1;
+      --md-media-column-span: 6;
+      --md-media-column-span-max: calc(13 - var(--md-media-column-start));
+      grid-column-start: var(--md-media-column-start);
+      grid-column-end: span min(var(--md-media-column-span), var(--md-media-column-span-max));
+    }
+    .content-column {
+      grid-column: var(--content-grid-column);
+      margin-top: var(--custom-mt);
+      padding-top: 0;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{% assign properties = block.settings.property_labels_and_value_1 | append: ',' | append: block.settings.property_labels_and_value_2 | append: ',' | append: block.settings.property_labels_and_value_3 | append: ',' | append: block.settings.property_labels_and_value_4 | append: ',' | append: block.settings.property_labels_and_value_5 | split: ',' %}
+{% if block.settings.properties_array != blank %}
+  {% assign properties = block.settings.properties_array | split: ',' %}
+{% endif %}
+
+{% capture property_bars %}
+{% for property in properties %}
+  {% assign property_parts = property | split: '|' %}
+  {% if property_parts[0] == blank or property_parts[2] == blank %}
+    {% continue %}
+  {% endif %}
+
+  <div class="level-with-labels">
+    <div class="level-labels size--tiny">
+      <div class="start-label">{{ property_parts[0] }}</div>
+      <div class="end-label">{{ property_parts[1] }}</div>
+      <span class="visually-hidden">{{ 'accessibility.product_property_bars' | t: property_from: property_parts[0], property_to: property_parts[1], property_value: property_parts[2] }}</span>
+    </div>
+    {% case block.settings.level_type -%}
+      {%- when 'steps_5' -%}
+        {%- assign step_indicator = property_parts[2] | divided_by: 20.00 -%}
+        <div class="steps-level">
+          {% for i in (1..5) -%}
+            {%- assign low_threshold = 0.05 | plus: i | minus: 1 -%}
+
+            <div class="level-bar">
+              {% if step_indicator >= low_threshold -%}
+                <div class="level-bar-fill" style="--fill-width:100%;"></div>
+              {%- endif %}
+            </div>
+          {%- endfor %}
+        </div>
+      {%- else -%}
+      <div class="level-bar">
+        <div class="level-bar-fill" style="--fill-width: {{ property_parts[2] }}%;"></div>
+      </div>
+    {%- endcase %}
+  </div>
+{% endfor %}
+{% endcapture %}
+
+{% if property_bars != blank %}
+  {{ 'component-level.css' | asset_url | stylesheet_tag }}
+  {% if block.settings.title != blank %}
+    <details id="Details-{{ block.id }}" open>
+      <summary><span>{{ block.settings.title }}</span> {% render 'icon-caret', direction: 'down' %}</summary>
+      <div class="content rte pt-8 pb-16">
+        <div class="property-bars flex vertical" style="gap: 12px;">
+          {{ property_bars }}
+        </div>
+      </div>
+    </details>
+  {% else %}
+    <div class="property-bars flex vertical" style="gap: 12px;">
+      {{ property_bars }}
+    </div>
+  {% endif %}
+{% endif %}

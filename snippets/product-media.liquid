@@ -1,0 +1,75 @@
+{% comment %}
+  Media snippet that supports images, videos, external videos and 3D models.
+
+  Accepts:
+  - media: {Object} Media object (required)
+  - aspect_ratio: {String} 'portrait', 'landscape', 'square' (optional)
+  - background_color: {String} The background color of the media (optional)
+  - custom_classes: {String} Additional classes for the media element (optional)
+  - sizing_rule: {String} 'cover', 'contain' (optional)
+  - sizes: {String} Image sizes attribute (optional)
+
+  Used in:
+  - snippets/product-media-slider.liquid: The product media slider snippet
+  - snippets/modal-zoom-gallery.liquid: The modal zoom gallery snippet
+{% endcomment %}
+
+{%- liquid
+  assign load_xr_stuff = false
+-%}
+
+{%- case media.media_type -%}
+  {%- when 'image' -%}
+    {%- render 'picture',
+      image_default: media,
+      aspect_ratio: aspect_ratio,
+      sizing_rule: sizing_rule,
+      background_color: background_color,
+      class: custom_classes,
+      sizes: sizes,
+      preload: preload
+    -%}
+  {%- when 'video' -%}
+    {%- render 'video_new',
+      video_default: media,
+      aspect_ratio: aspect_ratio,
+      class: custom_classes,
+      controls: true,
+      autoplay: true,
+      in_modal: in_modal
+    -%}
+  {%- when 'external_video' -%}
+    <div class="media {{ aspect_ratio }} media--{{ media.media_type }} {{ custom_classes }}">
+      {%- if media.host == 'youtube' -%}
+        {{ media | external_video_url: mute: 0, autoplay: 0, loop: 0, playlist: media.external_id, disablekb: 1, modestbranding: 1, rel: 0, controls: 1 | external_video_tag: loading: "lazy" }}
+      {%- else -%}
+        {{ media | external_video_url: autoplay: 0, loop: 0, controls: 1, keyboard: 0, muted: 0, title: 0 | external_video_tag: loading: "lazy" }}
+      {%- endif -%}
+    </div>
+  {%- when 'model' -%}
+    <div class="model-container {{ custom_classes }}">
+      {%- assign load_xr_stuff = true -%}
+      <product-model class="media {{ aspect_ratio }} media--{{ media.media_type }}" data-media-id="{{ media.id }}" data-loaded="false">
+        {{ media | model_viewer_tag: background-color: background_color, toggleable: true }}
+      </product-model>
+      <button
+        class="btn btn--primary size--small product__xr-button"
+        type="button"
+        aria-label="{{ 'products.product.xr_button_label' | t }}"
+        data-shopify-xr
+        data-shopify-model3d-id="{{ media.id }}"
+        data-shopify-title="{{ product.title }}"
+        data-shopify-xr-hidden
+        style="display: none;"
+        >
+        {% render 'icon-3d-model' %}
+        <span>{{ 'products.product.xr_button' | t }}</span>
+      </button>
+    </div>
+{%- endcase -%}
+
+{%- if load_xr_stuff -%}
+  <script type="application/json" id="ProductJSON-{{ product.id }}">{{ product.media | where: 'media_type', 'model' | json }}</script>
+  <link rel="stylesheet" href="{{ 'component-product-model.css' | asset_url }}" media="print" onload="this.media='all'">
+  <noscript>{{ 'component-product-model.css' | asset_url | stylesheet_tag }}</noscript>
+{%- endif -%}

@@ -1,0 +1,392 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:section_groups.footer",
+  "type": "footer",
+  "sections": {
+    "rich_text_iah7EY": {
+      "type": "rich-text",
+      "blocks": {
+        "custom_spacing_3FiGrV": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 80,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 40,
+            "padding_bottom": 0
+          }
+        },
+        "subtitle_CMyhip": {
+          "type": "subtitle",
+          "disabled": true,
+          "settings": {
+            "subtitle": "Subheading",
+            "heading_tag": "h3",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--default",
+            "margin_top": 0
+          }
+        },
+        "title_3XNbWn": {
+          "type": "title",
+          "settings": {
+            "title": "Follow & Subscribe",
+            "heading_tag": "h2",
+            "sm_size_multiplier": "sm-size--tiny",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--tiny",
+            "margin_top": 0
+          }
+        },
+        "text_i8mLQ7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Follow us @channelname and subscribe to our newsletter. </p>",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 12,
+            "size_multiplier": "size--default",
+            "margin_top": 12
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_3FiGrV",
+        "subtitle_CMyhip",
+        "title_3XNbWn",
+        "text_i8mLQ7"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "color_scheme": "",
+        "content_width": "full",
+        "sm_content_position": "left",
+        "sm_text_alignment": "left",
+        "text_alignment": "left"
+      }
+    },
+    "promo_grid_and_slideshow_QXpQTx": {
+      "type": "promo-grid-and-slideshow",
+      "blocks": {
+        "custom_spacing_HLdX3H": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 40,
+            "sm_padding_bottom": 40,
+            "margin_top": 0,
+            "padding_top": 24,
+            "padding_bottom": 12
+          }
+        },
+        "image_Rj7NJm": {
+          "type": "image",
+          "settings": {
+            "media_link": "",
+            "title": "",
+            "button_label": "",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 0,
+            "content_alignment": "v-bottom h-center"
+          }
+        },
+        "image_HkR8Aj": {
+          "type": "image",
+          "settings": {
+            "media_link": "",
+            "title": "",
+            "button_label": "",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 0,
+            "content_alignment": "v-bottom h-center"
+          }
+        },
+        "image_G9riq6": {
+          "type": "image",
+          "settings": {
+            "media_link": "",
+            "title": "",
+            "button_label": "",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 0,
+            "content_alignment": "v-bottom h-center"
+          }
+        },
+        "image_jBrKCd": {
+          "type": "image",
+          "settings": {
+            "media_link": "",
+            "title": "",
+            "button_label": "",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 0,
+            "content_alignment": "v-bottom h-center"
+          }
+        },
+        "image_W4y3X8": {
+          "type": "image",
+          "settings": {
+            "media_link": "",
+            "title": "",
+            "button_label": "",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 0,
+            "content_alignment": "v-bottom h-center"
+          }
+        },
+        "image_LdYGjF": {
+          "type": "image",
+          "settings": {
+            "media_link": "",
+            "title": "",
+            "button_label": "@channelname",
+            "button_style": "link",
+            "color_scheme": "alternative-1",
+            "overlay_opacity": 100,
+            "content_alignment": "v-center h-center"
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_HLdX3H",
+        "image_Rj7NJm",
+        "image_HkR8Aj",
+        "image_G9riq6",
+        "image_jBrKCd",
+        "image_W4y3X8",
+        "image_LdYGjF"
+      ],
+      "disabled": true,
+      "name": "t:sections.promo-grid-slideshow.name",
+      "settings": {
+        "color_scheme": "",
+        "sm_block_aspect_ratio": "square",
+        "layout_desktop": "slide",
+        "section_columns_desktop": 8,
+        "sm_grid_gap": 20,
+        "sm_padding": 0,
+        "enable_full_width": false,
+        "sm_rounded_corners": true,
+        "section_columns_tablet": 2,
+        "block_aspect_ratio": "square",
+        "layout_mobile": "grid",
+        "section_columns_mobile": 2,
+        "grid_gap": 10,
+        "padding": 0,
+        "sm_down_edge_to_edge": false,
+        "rounded_corners": false,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "single"
+      }
+    },
+    "newsletter_footer": {
+      "type": "newsletter",
+      "blocks": {
+        "custom_spacing_M8BgbE": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 80,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        },
+        "text_rmwR7R": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--default",
+            "margin_top": 0
+          }
+        },
+        "email_form_gQA4CH": {
+          "type": "email_form",
+          "settings": {
+            "additional_info": "Our newsletters contain information on our active campaigns and new product releases. Check our <a href=\"#\" title=\"#\">privacy policy</a> for details.",
+            "sm_margin_top": 0,
+            "margin_top": 0
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_M8BgbE",
+        "text_rmwR7R",
+        "email_form_gQA4CH"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "text_alignment": "left",
+        "justify_on_desktop": false
+      }
+    },
+    "custom_liquid_rAAGyE": {
+      "type": "custom-liquid",
+      "blocks": {
+        "custom_spacing_dchTVt": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_dchTVt"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "custom_liquid": "<hr>",
+        "enable_full_width": false
+      }
+    },
+    "custom_liquid_footer_2": {
+      "type": "custom-liquid",
+      "blocks": {
+        "custom_spacing_KhPfRt": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_KhPfRt"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "custom_liquid": "<hr class=\"small--hide\">",
+        "enable_full_width": false
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "custom_liquid_ttbAwx": {
+          "type": "custom_liquid",
+          "settings": {
+            "title": "",
+            "custom_liquid": "<div style=\"width: 100%; text-align: center;\">\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/hok-footer-asset.webp?v=1789646400\"\n    alt=\"House of Kiyaara\"\n    style=\"display: block; width: 100%; max-width: 100%; height: auto; margin: 0 auto;\"\n  >\n</div>",
+            "column_width": "col-md-12"
+          }
+        },
+        "image_bPcNMX": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "title": "",
+            "image": "shopify://shop_images/hok-footer-asset.webp",
+            "image_width": 1000,
+            "text": "",
+            "text_alignment": "left",
+            "column_width": "col-md-4"
+          }
+        },
+        "link_list_3CAwiM": {
+          "type": "link_list",
+          "settings": {
+            "title": "Top Categories",
+            "menu": "top-categories",
+            "column_width": "col-md-4"
+          }
+        },
+        "link_list_NznMiA": {
+          "type": "link_list",
+          "settings": {
+            "title": "Policies",
+            "menu": "footer",
+            "column_width": "col-md-4"
+          }
+        },
+        "link_list_3YDE7b": {
+          "type": "link_list",
+          "settings": {
+            "title": "Connect",
+            "menu": "footer-menu",
+            "column_width": "col-md-4"
+          }
+        },
+        "link_list_PG8jyW": {
+          "type": "link_list",
+          "disabled": true,
+          "settings": {
+            "title": "Top Categories",
+            "menu": "top-categories",
+            "column_width": "col-md-3"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_ttbAwx",
+        "image_bPcNMX",
+        "link_list_3CAwiM",
+        "link_list_NznMiA",
+        "link_list_3YDE7b",
+        "link_list_PG8jyW"
+      ],
+      "settings": {
+        "color_scheme": "scheme-footer-no-divider",
+        "bg_image": "shopify://shop_images/hok-footer-pattern-01.svg",
+        "bg_image_mobile": "shopify://shop_images/mobile_pattern.svg",
+        "bg_focal": "top",
+        "overlay_color": "#f4efe6",
+        "overlay_opacity": 80,
+        "newsletter_title": "Are you on the list?",
+        "newsletter_description": "<p>Exclusive offer straight into your inbox. Join to get special offers, free giveaways, and once-in-a-lifetime deals.</p>",
+        "email_label": "Email",
+        "show_birthday_field": true,
+        "birthday_label": "Birthday",
+        "newsletter_button_label": "Sign Up",
+        "show_back_to_top": true,
+        "payment_enable": true,
+        "show_copyright": true,
+        "copyright_text": "House of Kiyaara.",
+        "show_social": true,
+        "enable_language_selector": false,
+        "enable_country_selector": false,
+        "enable_follow_on_shop": false,
+        "disclaimer_text": "<p>Our Customer Care team is available Monday to Friday, 10:00 AM – 6:00 PM IST. For any questions or support, reach us at <strong>hello@houseofkiyaara.com</strong>. House of Kiyaara processes personal data responsibly; details on how we collect, use, and protect your information can be found in our <a href=\"/pages/privacy-policy\">Privacy Policy</a> To ensure our emails reach your inbox, please add <strong>hello@houseofkiyaara.com</strong> to your address book.</p>"
+      }
+    }
+  },
+  "order": [
+    "rich_text_iah7EY",
+    "promo_grid_and_slideshow_QXpQTx",
+    "newsletter_footer",
+    "custom_liquid_rAAGyE",
+    "custom_liquid_footer_2",
+    "footer"
+  ]
+}

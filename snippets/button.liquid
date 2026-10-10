@@ -1,0 +1,34 @@
+{%- comment -%}
+Generates a collapsible tab for product details. Tab can be opened as a drawer.
+
+Accepts:
+- label: {String} Button label text (required)
+- style: {String} Button style (default: 'primary')
+- width: {String} Button width (default: 'inline')
+- tag: {String} Button tag (default: 'a', options: 'button')
+- link: {String} Button link
+- target: {String} Button target
+- for_modal_or_drawer: {String} ID of modal or drawer to open
+- attributes: {String} Additional attributes
+- classes: {String} Additional classes
+- icon: {String} SVG Icon HTML
+{%- endcomment -%}
+
+{% liquid
+  assign style = style | default: 'primary'
+  assign width = width | default: 'inline'
+  assign class = 'btn btn--' | append: style | append: ' btn--' | append: width | append: ' ' | append: classes | strip
+
+  if icon != blank
+    assign label = icon | append: ' <span>' | append: label |append: '</span>'
+    assign class = class | append: ' btn--with-icon'
+  endif
+%}
+
+{%- if label != blank -%}
+  {%- if tag == 'button' -%}
+    <button class="{{ class }}"{% if for_modal_or_drawer %} aria-controls="{{ for_modal_or_drawer }}" data-open="{{ for_modal_or_drawer }}"{% endif %}{% if attributes %} {{ attributes }}{% endif %}>{{ label }}</button>
+  {%- else -%}
+    <a class="{{ class }}{% unless link %} disabled{% endunless %}" {% if link %}href="{{ link }}"{% endif %}{% if target == '_blank' %}target="_blank"{% endif %} {% if attributes %}{{ attributes }}{% endif %}>{{ label }}</a>
+  {%- endif -%}
+{%- endif -%}

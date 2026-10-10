@@ -1,0 +1,343 @@
+{% liquid
+  # Blocks to variables
+  assign custom_spacing = section.blocks | where: 'type', 'custom_spacing' | first
+  assign button_blocks = section.blocks | where: 'type', 'button'
+%}
+
+<div
+  id="{{ section.id }}"
+  class="container section-spacing custom-child-for-animation color-{{ section.settings.color_scheme }}"
+  {% if custom_spacing -%}
+  style="--mt: {{ custom_spacing.settings.margin_top | append: 'px' }}; --sm-mt: {{ custom_spacing.settings.sm_margin_top | append: 'px' }}; --pt: {{ custom_spacing.settings.padding_top | append: 'px' }}; --pb: {{ custom_spacing.settings.padding_bottom | append: 'px' }}; --sm-pt: {{ custom_spacing.settings.sm_padding_top | append: 'px' }}; --sm-pb: {{ custom_spacing.settings.sm_padding_bottom | append: 'px' }};"
+  {%- endif %}>
+
+  <div class="grid grid-cols-{{ section.settings.items_per_row_mobile }} sm-grid-cols-{{ section.settings.items_per_row_tablet }} md-grid-cols-{{ section.settings.items_per_row_desktop }}">
+    {% for block in button_blocks %}
+    <button
+      type="button"
+      class="text-button text-button--align-{{ section.settings.text_alignment }} sm-text-button--align-{{ section.settings.sm_text_alignment }} {{ section.settings.size_multiplier }} {{ section.settings.sm_size_multiplier }}"
+      aria-controls="modal-{{ section.id }}"
+      aria-haspopup="dialog"
+      data-open="modal-{{ section.id }}?slide={{ forloop.index }}"
+      style="--text-button-icon-width: {{ section.settings.icon_width }}px; --sm-text-button-icon-width: {{ section.settings.sm_icon_width }}px;"
+      {{ block.shopify_attributes }}>
+      {% if block.settings.button_image %}
+        {{ block.settings.button_image | image_url: width: 480 | image_tag: width: 240 }}
+      {% endif %}
+      <span>{{ block.settings.title }}</span>
+    </button>
+    {% endfor %}
+  </div>
+</div>
+
+{% render 'modal-slider', modal_slides: button_blocks %}
+
+{% schema %}
+{
+  "name": "t:sections.popup-links.name",
+  "class": "section--popup-links anim-custom-child",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "aside"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.popup-links.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "default",
+      "label": "t:sections.colors.color_scheme.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.headers.desktop_layout"
+    },
+    {
+      "type": "range",
+      "id": "sm_icon_width",
+      "label": "t:sections.popup-links.icon_width.label",
+      "min": 16,
+      "max": 240,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "text_alignment",
+      "id": "sm_text_alignment",
+      "label": "t:sections.typography.text_align",
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "items_per_row_desktop",
+      "label": "t:sections.layout.items_per_row",
+      "min": 2,
+      "max": 8,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "sm_size_multiplier",
+      "label": "t:sections.typography.size_options.label",
+      "default": "sm-size--default",
+      "options": [
+        {
+          "value": "sm-size--tiny",
+          "label": "t:sections.typography.size_options.tiny"
+        },
+        {
+          "value": "sm-size--small",
+          "label": "t:sections.typography.size_options.small"
+        },
+        {
+          "value": "sm-size--default",
+          "label": "t:sections.typography.size_options.default"
+        },
+        {
+          "value": "sm-size--large",
+          "label": "t:sections.typography.size_options.large"
+        },
+        {
+          "value": "sm-size--huge",
+          "label": "t:sections.typography.size_options.huge"
+        },
+        {
+          "value": "sm-size--gigantic",
+          "label": "t:sections.typography.size_options.gigantic"
+        },
+        {
+          "value": "sm-size--outrageous",
+          "label": "t:sections.typography.size_options.outrageous"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.headers.tablet_layout"
+    },
+    {
+      "type": "range",
+      "id": "items_per_row_tablet",
+      "label": "t:sections.layout.items_per_row",
+      "min": 2,
+      "max": 6,
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "t:sections.headers.mobile_layout"
+    },
+    {
+      "type": "range",
+      "id": "icon_width",
+      "label": "t:sections.popup-links.icon_width.label",
+      "min": 16,
+      "max": 240,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_alignment",
+      "label": "t:sections.typography.text_align",
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "size_multiplier",
+      "label": "t:sections.typography.size_options.label",
+      "default": "size--default",
+      "options": [
+        {
+          "value": "size--tiny",
+          "label": "t:sections.typography.size_options.tiny"
+        },
+        {
+          "value": "size--small",
+          "label": "t:sections.typography.size_options.small"
+        },
+        {
+          "value": "size--default",
+          "label": "t:sections.typography.size_options.default"
+        },
+        {
+          "value": "size--large",
+          "label": "t:sections.typography.size_options.large"
+        },
+        {
+          "value": "size--huge",
+          "label": "t:sections.typography.size_options.huge"
+        },
+        {
+          "value": "size--gigantic",
+          "label": "t:sections.typography.size_options.gigantic"
+        },
+        {
+          "value": "size--outrageous",
+          "label": "t:sections.typography.size_options.outrageous"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "items_per_row_mobile",
+      "label": "t:sections.layout.items_per_row",
+      "min": 1,
+      "max": 4,
+      "default": 2
+    }
+  ],
+  "blocks":[
+    {
+      "name": "t:sections.popup-links.blocks.popup.name",
+      "type": "button",
+      "limit": 16,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:sections.popup-links.blocks.popup.info"
+        },
+        {
+          "type": "image_picker",
+          "id": "button_image",
+          "label": "t:sections.popup-links.blocks.popup.button_image.label",
+          "info": "t:sections.popup-links.blocks.popup.button_image.info"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "t:inputs.text.button_label",
+          "default": "Button label"
+        },
+        {
+          "type": "header",
+          "content": "t:blocks.popup_content.name"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:blocks.popup_content.info"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:inputs.text.text",
+          "default": "<h3>Slide heading</h3><p>This text with the selected image or video will be shown in a popup when the Popup link is clicked. When image or video is used the pop up is divided to two columns in desktop, in mobile the media will be displayd on top.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:inputs.image_picker.label"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "t:inputs.video.label"
+        }
+      ]
+    },
+    {
+      "name": "t:blocks.custom_spacing.name",
+      "type": "custom_spacing",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:blocks.custom_spacing.info"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.headers.desktop_layout"
+        },
+        {
+          "type": "range",
+          "id": "sm_margin_top",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "t:sections.layout.margin_top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "sm_padding_top",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "t:sections.layout.paddings.top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "sm_padding_bottom",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "t:sections.layout.paddings.bottom",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "t:sections.headers.mobile_layout"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "t:sections.layout.margin_top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "t:sections.layout.paddings.top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "t:sections.layout.paddings.bottom",
+          "default": 0
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.popup-links.name",
+      "blocks":[
+        {
+          "type":"button"
+        },
+        {
+          "type":"button"
+        },
+        {
+          "type":"button"
+        },
+        {
+          "type":"button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,27 @@
+{%- liquid
+  assign upsell_product_1 = block.settings.upsell_product_1
+  assign upsell_product_2 = block.settings.upsell_product_2
+  assign upsell_product_3 = block.settings.upsell_product_3
+  assign upsell_product_4 = block.settings.upsell_product_4
+-%}
+{% if upsell_product_1 != blank or upsell_product_2 != blank or upsell_product_3 != blank or upsell_product_4 != blank -%}
+  {%- if block.settings.title -%}
+    <h2 class="product-block-title mb-24 {{ heading_size_modifiers }}">{{ block.settings.title }}</h2>
+  {%- endif -%}
+  <div class="upsell-products upsell-products-style--{{ block.settings.card_style }}">
+    {%- for i in (1..4) -%}
+      {%- assign setting_key = 'upsell_product_' | append: i -%}
+      {%- assign upsell_product = block.settings[setting_key] -%}
+      {%- if upsell_product != blank -%}
+        {%- render 'card-product-upsell',
+          product: upsell_product,
+          product_form_id: product_form_id,
+          is_preorder: is_preorder,
+          block: block,
+          section: section,
+          cart_recommendations: false
+        -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif %}

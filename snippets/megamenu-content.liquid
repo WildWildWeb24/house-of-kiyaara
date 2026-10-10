@@ -1,0 +1,65 @@
+{% comment %}
+  This snippet is used to render the content of the mega menu. It loops through the blocks in the section and renders the content based on the block type.
+
+  accepts:
+    - current_menu_parent: {String} the menu parent that is currently being hovered over
+    - context: {String} Header || Drawer: the context in which the snippet is being rendered
+
+  todo:
+    - sizes attribute based on banner width
+{% endcomment %}
+{% for block in section.blocks %}
+  {% unless block.settings.menu_parent == current_menu_parent %}
+    {% continue %}
+  {% endunless %}
+  {% case block.type %}
+    {% when 'menu-banner' %}
+      <div class="menu-banner {{ block.settings.order |  prepend: '--' }} text-align-{{ block.settings.text_alignment }}" {{ block.shopify_attributes }}>
+        {% capture banner_content %}
+          {%- render 'picture',
+            image_default: block.settings.image,
+            aspect_ratio: block.settings.image_aspect_ratio,
+            class: 'br-img mb-12'
+          -%}
+          {% if block.settings.subtitle != blank %}
+            <div class="banner-subheading subheading size--tiny style--subdued mb-4">{{ block.settings.subtitle | replace: '[br]', '<br>' }}</div>
+          {% endif %}
+          {% if block.settings.title != blank %}
+            <div class="banner-heading size--small">{{ block.settings.title | replace: '[br]', '<br>' }}</div>
+          {% endif %}
+        {% endcapture %}
+        {%- if block.settings.link != blank -%}
+          <a href="{{ block.settings.link }}" class="mb-24" {% if block.settings.title != blank %}aria-hidden="true"{% endif %}>
+            {{ banner_content }}
+          </a>
+        {%- else -%}
+          {{ banner_content }}
+        {%- endif -%}
+      </div>
+    {% when 'menu-collection' %}
+      {% liquid
+      if block.settings.collection != empty
+        assign menu_products = block.settings.collection.products
+      elsif block.settings.product_list != empty
+        assign menu_products = block.settings.product_list
+      endif
+      %}
+
+      {% for product in menu_products limit: block.settings.product_limit %}
+        <div class="card card--product card--{{ settings.product_card_options }} layout--thumbnail">
+          <a href="{{ product.url }}">
+            {% render 'picture', image_default: product.featured_media, aspect_ratio: settings.product_card_aspect_ratio, sizes: "120px", sizing_rule: settings.product_card_fill_rule %}
+          </a>
+          <div class="card-body {{ settings.product_card_text_alignment }}">
+            <a href="{{ product.url }}" class="card-title {{ settings.product_card_title_font }}">{{ product.title }}</a>
+            {%- render 'price', product: product, price_class: 'size--small mt-4' -%}
+          </div>
+        </div>
+      {% endfor %}
+      {% if block.settings.view_all and block.settings.collection != empty %}
+        <a href="{{ block.settings.collection.url }}" class="btn btn--primary size--small" style="grid-column:1 / -1;">
+          {{ 'sections.featured_collection.view_all' | t }}
+        </a>
+      {% endif %}
+  {% endcase %}
+{% endfor %}

@@ -1,0 +1,762 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_L38hMy": {
+      "type": "hero",
+      "blocks": {
+        "image_3jVTj6": {
+          "type": "image",
+          "settings": {
+            "media_toggle": "show_image",
+            "overlay_opacity": 0,
+            "image": "shopify://shop_images/hok-festive-v3-desktop-HD-001.webp",
+            "image_mobile": "shopify://shop_images/hok-festive-v3-mobile-HD-single.webp"
+          }
+        }
+      },
+      "block_order": [
+        "image_3jVTj6"
+      ],
+      "custom_css": [
+        ".hero-text-container {padding-bottom: 5rem;}",
+        "@media (min-width: 1200px) {.hero-text-container {padding-bottom: 10rem; }}"
+      ],
+      "name": "t:sections.hero.name",
+      "settings": {
+        "color_scheme": "default",
+        "media_link": "shopify://collections/all-bags",
+        "enable_parallax": false,
+        "enable_full_width": true,
+        "sm_section_height": "auto",
+        "sm_pixel_height": 600,
+        "content_width": "col-sm-max-4",
+        "sm_content_position": "sm-vertical-center sm-horizontal-center",
+        "sm_text_alignment": "left",
+        "section_height": "auto",
+        "pixel_height": 520,
+        "content_position": "vertical-bottom horizontal-center",
+        "text_alignment": "center"
+      }
+    },
+    "1788933426f68a5dba": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_6e179c8_wFp7ae": {
+          "type": "ai_gen_block_6e179c8",
+          "settings": {
+            "banner_image": "shopify://shop_images/kiyaara-womens-free-twilly.jpg",
+            "image_alt_text": "",
+            "enable_link": false,
+            "banner_link": "",
+            "padding_top": 0,
+            "padding_bottom": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_6e179c8_wFp7ae"
+      ],
+      "disabled": true,
+      "name": "Image banner",
+      "settings": {}
+    },
+    "17890380486b3ec71f": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_23ec80a_bDBU7M": {
+          "type": "ai_gen_block_23ec80a",
+          "disabled": true,
+          "settings": {
+            "announcement_text": "Complimentary shipping on orders over ₹2,500",
+            "link": "",
+            "link_label": "Shop now",
+            "background_color": "#f4efe6",
+            "text_color": "#000000",
+            "border_color": "#000000",
+            "border_width": 0,
+            "announcement_font": "inter_n3",
+            "text_size": 12,
+            "text_weight": "400",
+            "letter_spacing": 0,
+            "text_alignment": "center",
+            "section_height": 40,
+            "vertical_padding": 8,
+            "horizontal_padding": 24,
+            "content_gap": 8,
+            "desktop_width_percent": 100,
+            "mobile_text_size": 11,
+            "mobile_section_height": 40,
+            "mobile_vertical_padding": 8,
+            "mobile_horizontal_padding": 16,
+            "mobile_content_gap": 6
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_23ec80a_bDBU7M"
+      ],
+      "name": "Free Twilly Announcement Bar",
+      "settings": {}
+    },
+    "1789037340098e63b0": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_f3964f7_aWtKbA": {
+          "type": "ai_gen_block_f3964f7",
+          "settings": {
+            "subheading": "<p>Welcome to Kiyaara</p>",
+            "heading": "It starts with a brushstroke",
+            "body": "<p>Every Kiyaara motif begins as an original hand-painted artwork, thoughtfully transformed into bags made to be carried, loved and lived with every day.</p>",
+            "hide_mark": false,
+            "image": "shopify://shop_images/Group_2.svg",
+            "icon": "diamond",
+            "text_alignment": "center",
+            "content_max_width": 680,
+            "mark_size": 32,
+            "subheading_to_mark": 20,
+            "mark_to_heading": 25,
+            "heading_to_body": 25,
+            "heading_size": 28,
+            "subheading_size": 12,
+            "body_size": 14,
+            "padding_top": 60,
+            "padding_bottom": 30,
+            "mobile_mark_size": 28,
+            "mobile_subheading_to_mark": 15,
+            "mobile_mark_to_heading": 20,
+            "mobile_heading_to_body": 20,
+            "mobile_heading_size": 26,
+            "mobile_subheading_size": 11,
+            "mobile_body_size": 13,
+            "mobile_padding_top": 60,
+            "mobile_padding_bottom": 60,
+            "background_color": "#ffffff",
+            "text_color": "#111111"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_f3964f7_aWtKbA"
+      ],
+      "name": "Kiyaara's Intro",
+      "settings": {}
+    },
+    "featured_collection_or_products_hcf8ej": {
+      "type": "featured-collection-or-products",
+      "blocks": {
+        "custom_spacing_Ry7kCj": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 40,
+            "sm_padding_bottom": 40,
+            "margin_top": 0,
+            "padding_top": 32,
+            "padding_bottom": 32
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_Ry7kCj"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "default",
+        "collection": "all-bags",
+        "product_list": [],
+        "product_limit": 12,
+        "view_all": true,
+        "enable_card_thumbnail": false,
+        "layout_desktop": "slide",
+        "products_per_row_desktop": 4,
+        "products_per_row_tablet": 3,
+        "layout_mobile": "slide",
+        "products_per_row_mobile": 2,
+        "autoplay": true,
+        "autoplay_speed": 8,
+        "sliding_behavior": "image_cycle"
+      }
+    },
+    "multirow_hUQH9c": {
+      "type": "multirow",
+      "blocks": {
+        "row_ti7UCE": {
+          "type": "row",
+          "settings": {
+            "media_width": "7",
+            "video": "shopify://files/videos/10 sec Montage.mp4",
+            "video_autoplay": true,
+            "video_controls": false,
+            "desktop_alignment": "center",
+            "vertical_position": "col-align-items-center",
+            "title": "Every design begins as a hand-drawn sketch",
+            "text": "<p>With pencil, paint and imagination, our artists layer in colour, character and detail, one brushstroke at a time. The finished artwork is then translated onto vegan leather, so every bag carries the character of the original Kiyaara artwork.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
+        "custom_spacing_cpjtbB": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 40
+          }
+        }
+      },
+      "block_order": [
+        "row_ti7UCE",
+        "custom_spacing_cpjtbB"
+      ],
+      "name": "t:sections.multirow.name",
+      "settings": {
+        "color_scheme": "alternative-2",
+        "layout_desktop": "grid",
+        "media_position": "media_last",
+        "even_row_flip": false,
+        "sm_full_width_buttons": false,
+        "heading_sm_size_multiplier": "sm-size--large",
+        "text_sm_size_multiplier": "sm-size--default",
+        "button_sm_size_multiplier": "sm-size--default",
+        "layout_mobile": "grid",
+        "full_width_buttons": false,
+        "heading_size_multiplier": "size--default",
+        "text_size_multiplier": "size--default",
+        "button_size_multiplier": "size--default",
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all"
+      }
+    },
+    "featured_collection_or_products_LLqdVz": {
+      "type": "featured-collection-or-products",
+      "blocks": {
+        "section_header_Vyrki4": {
+          "type": "section_header",
+          "settings": {
+            "subtitle": "Curated to complement each other with a lot more value when you choose them together.",
+            "title": "",
+            "text": "",
+            "text_alignment": "center",
+            "subtitle_tag": "h4",
+            "title_tag": "h2",
+            "sm_size_multiplier": "sm-size--default",
+            "size_multiplier": "size--default"
+          }
+        },
+        "custom_spacing_hRQwyN": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 40,
+            "sm_padding_bottom": 40,
+            "margin_top": 0,
+            "padding_top": 32,
+            "padding_bottom": 32
+          }
+        }
+      },
+      "block_order": [
+        "section_header_Vyrki4",
+        "custom_spacing_hRQwyN"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "default",
+        "collection": "curated-bundles",
+        "product_list": [],
+        "product_limit": 12,
+        "view_all": true,
+        "enable_card_thumbnail": false,
+        "layout_desktop": "slide",
+        "products_per_row_desktop": 4,
+        "products_per_row_tablet": 3,
+        "layout_mobile": "slide",
+        "products_per_row_mobile": 2,
+        "autoplay": true,
+        "autoplay_speed": 3,
+        "sliding_behavior": "image_cycle"
+      }
+    },
+    "multirow_P4qYED": {
+      "type": "multirow",
+      "blocks": {
+        "row_nC3JU9": {
+          "type": "row",
+          "settings": {
+            "media_width": "7",
+            "image": "shopify://shop_images/hok-inside-story-01.webp",
+            "video_autoplay": true,
+            "video_controls": false,
+            "desktop_alignment": "center",
+            "vertical_position": "col-align-items-center",
+            "title": "Even the inside tells a story",
+            "text": "<p>Our love for print doesn’t stop at the surface. Original prints, hand-painted motifs and unexpected colour line every Kiyaara bag. Thoughtful details, inside and out.<br/></p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
+        "custom_spacing_fdVXaQ": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 40
+          }
+        }
+      },
+      "block_order": [
+        "row_nC3JU9",
+        "custom_spacing_fdVXaQ"
+      ],
+      "name": "t:sections.multirow.name",
+      "settings": {
+        "color_scheme": "alternative-2",
+        "layout_desktop": "grid",
+        "media_position": "media_first",
+        "even_row_flip": true,
+        "sm_full_width_buttons": false,
+        "heading_sm_size_multiplier": "sm-size--default",
+        "text_sm_size_multiplier": "sm-size--default",
+        "button_sm_size_multiplier": "sm-size--default",
+        "layout_mobile": "slide",
+        "full_width_buttons": false,
+        "heading_size_multiplier": "size--default",
+        "text_size_multiplier": "size--default",
+        "button_size_multiplier": "size--default",
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all"
+      }
+    },
+    "rich_text_mwQhcd": {
+      "type": "rich-text",
+      "blocks": {
+        "custom_spacing_L4PLeY": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 60,
+            "sm_padding_bottom": 24,
+            "margin_top": 0,
+            "padding_top": 32,
+            "padding_bottom": 16
+          }
+        },
+        "subtitle_xh89p9": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "Kiyaara",
+            "heading_tag": "h3",
+            "sm_size_multiplier": "sm-size--tiny",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--tiny",
+            "margin_top": 0
+          }
+        },
+        "title_JDdYxM": {
+          "type": "title",
+          "settings": {
+            "title": "Carried your way",
+            "heading_tag": "h2",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--default",
+            "margin_top": 0
+          }
+        },
+        "text_AhL6Re": {
+          "type": "text",
+          "settings": {
+            "text": "<p>From everyday plans to dressed-up nights, see how Kiyaara moves with every mood, look and story.</p>",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 12,
+            "size_multiplier": "size--default",
+            "margin_top": 12
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_L4PLeY",
+        "subtitle_xh89p9",
+        "title_JDdYxM",
+        "text_AhL6Re"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "color_scheme": "",
+        "content_width": "default",
+        "sm_content_position": "center",
+        "sm_text_alignment": "center",
+        "text_alignment": "left"
+      }
+    },
+    "promo_grid_and_slideshow_Yd7zmf": {
+      "type": "promo-grid-and-slideshow",
+      "blocks": {
+        "custom_spacing_gPrhqT": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 50,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 24
+          }
+        },
+        "video_ftwpjt": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Auralis Blue.mp4",
+            "video_mobile": "shopify://files/videos/Auralis Blue.mp4",
+            "media_link": "",
+            "title": "",
+            "button_label": "Button label",
+            "button_style": "primary",
+            "color_scheme": "default",
+            "overlay_opacity": 0,
+            "content_alignment": "v-bottom h-left"
+          }
+        },
+        "video_X7PfTP": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/brown bag.mp4",
+            "video_mobile": "shopify://files/videos/brown bag.mp4",
+            "media_link": "",
+            "title": "",
+            "button_label": "Button label",
+            "button_style": "primary",
+            "color_scheme": "default",
+            "overlay_opacity": 0,
+            "content_alignment": "v-bottom h-left"
+          }
+        },
+        "video_DE3Uhi": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/forest green handbag.mp4",
+            "video_mobile": "shopify://files/videos/forest green handbag.mp4",
+            "media_link": "",
+            "title": "",
+            "button_label": "Button label",
+            "button_style": "primary",
+            "color_scheme": "default",
+            "overlay_opacity": 0,
+            "content_alignment": "v-bottom h-left"
+          }
+        },
+        "video_EVAzJt": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Light blue clutch.mp4",
+            "video_mobile": "shopify://files/videos/Light blue clutch.mp4",
+            "media_link": "",
+            "title": "",
+            "button_label": "Button label",
+            "button_style": "primary",
+            "color_scheme": "default",
+            "overlay_opacity": 0,
+            "content_alignment": "v-bottom h-left"
+          }
+        },
+        "video_CCG4fq": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/auralis green.mp4",
+            "video_mobile": "shopify://files/videos/auralis green.mp4",
+            "media_link": "",
+            "title": "",
+            "button_label": "Button label",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 0,
+            "content_alignment": "v-bottom h-left"
+          }
+        },
+        "video_wLmfqA": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Lunar cylindrical.mp4",
+            "video_mobile": "shopify://files/videos/Lunar cylindrical.mp4",
+            "media_link": "",
+            "title": "",
+            "button_label": "Button label",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 0,
+            "content_alignment": "v-bottom h-left"
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_gPrhqT",
+        "video_ftwpjt",
+        "video_X7PfTP",
+        "video_DE3Uhi",
+        "video_EVAzJt",
+        "video_CCG4fq",
+        "video_wLmfqA"
+      ],
+      "name": "t:sections.promo-grid-slideshow.name",
+      "settings": {
+        "color_scheme": "",
+        "sm_block_aspect_ratio": "portrait",
+        "layout_desktop": "slide",
+        "section_columns_desktop": 5,
+        "sm_grid_gap": 12,
+        "sm_padding": 40,
+        "enable_full_width": false,
+        "sm_rounded_corners": true,
+        "section_columns_tablet": 2,
+        "block_aspect_ratio": "portrait",
+        "layout_mobile": "slide",
+        "section_columns_mobile": 2,
+        "grid_gap": 6,
+        "padding": 20,
+        "sm_down_edge_to_edge": true,
+        "rounded_corners": false,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "single"
+      }
+    },
+    "multirow_7YqNMy": {
+      "type": "multirow",
+      "blocks": {
+        "custom_spacing_KDCDFq": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 24
+          }
+        },
+        "row_Yw64ck": {
+          "type": "row",
+          "settings": {
+            "media_width": "7",
+            "image": "shopify://shop_images/hok-product-banner-01.webp",
+            "video_autoplay": true,
+            "video_controls": false,
+            "desktop_alignment": "left",
+            "vertical_position": "col-align-items-center",
+            "title": "For the minimalists",
+            "text": "<p>In the Farasha collection, quietly elegant bags reveal a hidden touch of art inside, a special surprise, just for you.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_KDCDFq",
+        "row_Yw64ck"
+      ],
+      "custom_css": [],
+      "name": "t:sections.multirow.name",
+      "settings": {
+        "color_scheme": "alternative-2",
+        "layout_desktop": "grid",
+        "media_position": "media_first",
+        "even_row_flip": true,
+        "sm_full_width_buttons": false,
+        "heading_sm_size_multiplier": "sm-size--default",
+        "text_sm_size_multiplier": "sm-size--default",
+        "button_sm_size_multiplier": "sm-size--default",
+        "layout_mobile": "slide",
+        "full_width_buttons": false,
+        "heading_size_multiplier": "size--default",
+        "text_size_multiplier": "size--default",
+        "button_size_multiplier": "size--default",
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all"
+      }
+    },
+    "featured_collection_or_products_x3rGmt": {
+      "type": "featured-collection-or-products",
+      "blocks": {
+        "custom_spacing_NPzFNm": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 40,
+            "sm_padding_bottom": 40,
+            "margin_top": 0,
+            "padding_top": 32,
+            "padding_bottom": 32
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_NPzFNm"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "default",
+        "collection": "bestsellers",
+        "product_list": [],
+        "product_limit": 12,
+        "view_all": true,
+        "enable_card_thumbnail": false,
+        "layout_desktop": "slide",
+        "products_per_row_desktop": 4,
+        "products_per_row_tablet": 3,
+        "layout_mobile": "slide",
+        "products_per_row_mobile": 2,
+        "autoplay": true,
+        "autoplay_speed": 8,
+        "sliding_behavior": "image_cycle"
+      }
+    },
+    "featured_collection_or_products_3tfBpj": {
+      "type": "featured-collection-or-products",
+      "blocks": {
+        "custom_spacing_jGDxGH": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 40,
+            "sm_padding_bottom": 40,
+            "margin_top": 0,
+            "padding_top": 24,
+            "padding_bottom": 24
+          }
+        },
+        "section_header_BbUiYL": {
+          "type": "section_header",
+          "settings": {
+            "subtitle": "",
+            "title": "Shop all wallets",
+            "text": "",
+            "text_alignment": "left",
+            "subtitle_tag": "h3",
+            "title_tag": "h2",
+            "sm_size_multiplier": "sm-size--default",
+            "size_multiplier": "size--default"
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_jGDxGH",
+        "section_header_BbUiYL"
+      ],
+      "name": "t:sections.featured-collection-or-products.name",
+      "settings": {
+        "color_scheme": "",
+        "collection": "wallets-for-women",
+        "product_list": [],
+        "product_limit": 8,
+        "view_all": true,
+        "enable_card_thumbnail": false,
+        "layout_desktop": "slide",
+        "products_per_row_desktop": 4,
+        "products_per_row_tablet": 4,
+        "layout_mobile": "slide",
+        "products_per_row_mobile": 2,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all"
+      }
+    },
+    "featured_collection_or_products_z8L9pY": {
+      "type": "featured-collection-or-products",
+      "blocks": {
+        "custom_spacing_HVHLYV": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 40,
+            "sm_padding_bottom": 40,
+            "margin_top": 0,
+            "padding_top": 24,
+            "padding_bottom": 24
+          }
+        },
+        "section_header_HHcQKY": {
+          "type": "section_header",
+          "settings": {
+            "subtitle": "",
+            "title": "Shop all scarves",
+            "text": "",
+            "text_alignment": "left",
+            "subtitle_tag": "h3",
+            "title_tag": "h2",
+            "sm_size_multiplier": "sm-size--default",
+            "size_multiplier": "size--default"
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_HVHLYV",
+        "section_header_HHcQKY"
+      ],
+      "name": "t:sections.featured-collection-or-products.name",
+      "settings": {
+        "color_scheme": "",
+        "collection": "scarves",
+        "product_list": [],
+        "product_limit": 8,
+        "view_all": true,
+        "enable_card_thumbnail": false,
+        "layout_desktop": "slide",
+        "products_per_row_desktop": 4,
+        "products_per_row_tablet": 4,
+        "layout_mobile": "slide",
+        "products_per_row_mobile": 2,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all"
+      }
+    }
+  },
+  "order": [
+    "hero_L38hMy",
+    "1788933426f68a5dba",
+    "17890380486b3ec71f",
+    "1789037340098e63b0",
+    "featured_collection_or_products_hcf8ej",
+    "multirow_hUQH9c",
+    "featured_collection_or_products_LLqdVz",
+    "multirow_P4qYED",
+    "rich_text_mwQhcd",
+    "promo_grid_and_slideshow_Yd7zmf",
+    "multirow_7YqNMy",
+    "featured_collection_or_products_x3rGmt",
+    "featured_collection_or_products_3tfBpj",
+    "featured_collection_or_products_z8L9pY"
+  ]
+}

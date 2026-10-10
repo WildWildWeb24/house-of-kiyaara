@@ -1,0 +1,60 @@
+{%- liquid
+  assign section_blocks = section.blocks | map: 'settings'
+  assign items_to_preload = ipr_array[2] | times: 2
+
+  # Section index check
+  if section.index < 3 and section.location == 'template'
+    assign preload_media = true
+  else
+    assign preload_media = false
+  endif
+
+  # Banner that is set to position 0
+  assign first_banner = section_blocks | where: 'nth_item', 0 | first
+  unless first_banner == blank
+    assign show_first_banner = true
+    if first_banner.only_on_first_page and paginate.current_page > 1
+      assign show_first_banner = false
+    endif
+
+    if show_first_banner == true
+      render 'card-banner', current_block: first_banner, lazyload: false, ipr_array: ipr_array
+      assign items_to_preload = items_to_preload | minus: 1
+    endif
+  endunless
+
+  # Product card image sizes
+  assign ipr_desktop = ipr_array[2]
+  if show_sidebar
+    assign ipr_desktop = ipr_desktop | plus: 1
+  endif
+  capture sizes
+    render 'img_sizes', ipr_mobile: ipr_array[0], ipr_tablet: ipr_array[1], ipr_desktop: ipr_desktop
+  endcapture
+
+	for product in collection.products
+    # Banner that is set to position 1 or higher
+    assign blocks = section_blocks | where: 'nth_item', forloop.index
+    assign current_block = blocks[0]
+
+    assign only_on_first_page = current_block.only_on_first_page
+    assign show_banner = true
+    if only_on_first_page and paginate.current_page > 1
+      assign show_banner = false
+    endif
+
+    assign preload = false
+    if preload_media and forloop.index <= items_to_preload
+      assign preload = true
+    endif
+
+    render 'card-product', product: product, preload: preload, sizes: sizes
+
+    if current_block and show_banner == true
+      render 'card-banner', current_block: current_block, lazyload: lazy_load, ipr_array: ipr_array
+      if forloop.index <= items_to_preload
+        assign items_to_preload = items_to_preload | minus: 1
+      endif
+    endif
+  endfor
+-%}

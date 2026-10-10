@@ -1,0 +1,103 @@
+{%- liquid
+  # ** PURPOSE **
+  # Renders product variant-picker
+
+  # ** PARAMETERS **
+  # product                 =>  REQUIRED | product object (Direct access on product template)
+  # section_id              =>  (REQUIRED) | string | picker_type == 'modal' uses product.id as section_id
+  # product_form_id         =>  REQUIRED | string | unique ID that is used to match options and inputs to a certain form
+  # cross_out_unavailable   =>  OPTIONAL | boolean
+  # update_url              =>  OPTIONAL | boolean | default: false
+  # picker_type             =>  OPTIONAL | string: 'modal', 'button', 'dropdown' | default: 'dropdown'
+  # big_image_media         =>  OPTIONAL | boolean | default: false
+
+  # ** SNIPPETS **
+  # - product-variant-options
+  # - icon-caret
+  # - size-guide (triggering btn here, snippet rendered in the main-product / featured-product)
+
+  assign picker_type = picker_type | default: 'dropdown'
+  if picker_type == 'modal'
+    assign is_modal = true
+    assign section_id = product.id
+    assign picker_type = 'button'
+    assign swatch = 'swatch_with_text'
+  else
+    assign is_modal = false
+  endif
+-%}
+
+{%- unless product.has_only_default_variant -%}
+  <variant-selects
+    id="variant-selects-{{ section_id }}"
+    class="js"
+    data-cross-unavailable="{{ cross_out_unavailable | default: false }}"
+    data-section="{{ section_id }}"
+    data-product-id="{{ product.id }}"
+    data-url="{{ product.url }}"
+    data-update-url="{{ update_url |  default: false }}"
+    data-media-template="{% if big_image_media %}big-image{% else %}default{% endif %}"
+    data-is-preorder="{{ is_preorder | default: false }}"
+    data-modal="{{ is_modal }}"
+    {% if shopify_attributes != blank -%}
+      {{ shopify_attributes }}
+    {%- endif %}
+  >
+    {%- for option in product.options_with_values -%}
+      {%- if picker_type == 'button' -%}
+        {% assign swatch_count = option.values | map: 'swatch' | compact | size %}
+        <fieldset class="js product-option">
+          <legend class="legend flex space-between">
+            <div class="option-label">
+              {{ option.name | append: ':' }}
+              <strong data-variant-legend>
+                {{- option.selected_value -}}
+              </strong>
+            </div>
+            {% if option.name == size_guide_button_pos %}
+              {{ size_guide_button }}
+            {% endif %}
+          </legend>
+          {%- render 'product-variant-options',
+            product: product,
+            product_form_id: product_form_id,
+            option: option,
+            picker_type: picker_type,
+            swatch: swatch,
+            swatch_count: swatch_count
+          -%}
+        </fieldset>
+      {%- else -%}
+        <div class="product-option">
+          <div class="legend flex space-between">
+            <label class="option-label" for="Option-{{ product_form_id }}-{{ forloop.index0 }}">
+              {{- option.name | append: ':' -}}
+            </label>
+            {% if option.name == size_guide_button_pos %}
+              {{ size_guide_button }}
+            {% endif %}
+          </div>
+          <div class="field select" style="--font-size: inherit;">
+            <select
+              id="Option-{{ product_form_id }}-{{ forloop.index0 }}"
+              class="field__input"
+              name="options[{{ option.name | escape }}]"
+              form="{{ product_form_id }}"
+            >
+              {%- render 'product-variant-options',
+                product: product,
+                product_form_id: product_form_id,
+                option: option,
+                picker_type: picker_type
+              -%}
+            </select>
+            {%- render 'icon-caret', direction: 'down' -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+    <script type="application/json" data-selected-variant>
+      {{ product.selected_or_first_available_variant | json }}
+    </script>
+  </variant-selects>
+{%- endunless -%}

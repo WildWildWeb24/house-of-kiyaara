@@ -1,0 +1,70 @@
+{%- comment -%}
+  Entities referenced by @id from Product schema (offers -> seller / return policy).
+  - Homepage + product pages: full Organization
+  - Product pages: MerchantReturnPolicy + Product (see snippets/schema-product.liquid)
+  The header section still prints a basic Organization and the homepage WebSite (sitelinks search box).
+{%- endcomment -%}
+
+{%- if request.page_type == 'index' or request.page_type == 'product' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": {{ shop.url | append: '/#organization' | json }},
+    "name": {{ shop.name | json }},
+    "legalName": "House of Kiyaara Arts Private Limited",
+    "url": {{ shop.url | json }},
+    {%- if shop.brand.logo %}
+    "logo": {
+      "@type": "ImageObject",
+      "url": {{ shop.brand.logo | image_url: width: 500 | prepend: 'https:' | replace: 'https:https:', 'https:' | json }}
+    },
+    {%- endif %}
+    "email": "support@houseofkiyaara.com",
+    "telephone": "+91-9619100226",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "107, Purshottam Thakkar Industrial Estate, 20, Champsi Bhimji Road, Anjirwadi, Mazagaon",
+      "addressLocality": "Mumbai",
+      "addressRegion": "Maharashtra",
+      "postalCode": "400010",
+      "addressCountry": "IN"
+    },
+    "sameAs": [
+      {%- capture same_as_json -%}
+        {{- settings.social_instagram_link | json | append: ',' -}}
+        {{- settings.social_facebook_link | json | append: ',' -}}
+        {{- settings.social_pinterest_link | json | append: ',' -}}
+        {{- settings.social_youtube_link | json -}}
+      {%- endcapture -%}
+      {{ same_as_json | replace: '"",', '' | replace: ',""', '' | strip }}
+    ]
+  }
+  </script>
+{%- endif -%}
+
+{%- if request.page_type == 'product' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MerchantReturnPolicy",
+    "@id": {{ shop.url | append: '/#returnpolicy' | json }},
+    "applicableCountry": "IN",
+    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+    "merchantReturnDays": 7,
+    "returnMethod": "https://schema.org/ReturnByMail",
+    "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+    "refundType": "https://schema.org/StoreCreditRefund",
+    "returnPolicyUrl": {{ shop.url | append: '/policies/refund-policy' | json }},
+    "itemCondition": "https://schema.org/NewCondition",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "returnConditions",
+        "value": "Item must be unused, unworn, with tamper-proof seal, tags, and original packaging intact. Customer must email support@houseofkiyaara.com within 48 hours of delivery with an unboxing video."
+      }
+    ]
+  }
+  </script>
+  {% render 'schema-product' %}
+{%- endif -%}

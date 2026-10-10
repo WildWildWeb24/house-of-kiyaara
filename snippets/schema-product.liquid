@@ -1,0 +1,117 @@
+{%- comment -%}
+  Product JSON-LD (replaces `{{ product | structured_data }}`).
+  Built live from product data. Review data comes from the Judge.me badge metafield,
+  so AggregateRating is only printed when real reviews exist.
+  Organization and MerchantReturnPolicy are defined once in snippets/schema-organization.liquid
+  and referenced here by @id.
+{%- endcomment -%}
+
+{%- liquid
+  assign product_url = shop.url | append: product.url
+  assign current_variant = product.selected_or_first_available_variant
+  assign valid_until = 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d'
+
+  assign rating_value = ''
+  assign review_count = ''
+  assign badge = product.metafields.judgeme.badge | default: ''
+  if badge contains "data-average-rating='"
+    assign rating_value = badge | split: "data-average-rating='" | last | split: "'" | first | plus: 0
+    assign review_count = badge | split: "data-number-of-reviews='" | last | split: "'" | first | plus: 0
+  endif
+
+  assign category_name = ''
+  assign category_collection = collections[product.metafields.breadcrumb.category]
+  if category_collection == blank
+    assign preferred = 'zipper-wallets,card-holder-wallets-for-women,wallets-for-women,printed-twilly-scarves,medium-square-scarves,large-square-satin-scarves,printed-satin-stoles,scarves,curated-bundles,vegan-leather-backpacks,bucket-bags-for-women,shoulder-bags-for-women,tote-bags,clutch-bags-for-women,sling-bags-for-women,crossbody-bags,vegan-leather-handbags,all-bags' | split: ','
+    for handle in preferred
+      for product_collection in product.collections
+        if product_collection.handle == handle
+          assign category_collection = product_collection
+          break
+        endif
+      endfor
+      if category_collection != blank
+        break
+      endif
+    endfor
+  endif
+  if category_collection != blank
+    assign category_name = category_collection.title
+  else
+    assign category_name = product.type
+  endif
+-%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": {{ product_url | append: '#product' | json }},
+  "name": {{ product.title | json }},
+  "description": {{ product.description | strip_html | strip_newlines | truncate: 5000 | json }},
+  "image": [
+    {%- for image in product.images limit: 10 -%}
+      {%- assign image_src = image | image_url: width: 1920 -%}
+      {%- unless image_src contains 'http' -%}{%- assign image_src = image_src | prepend: 'https:' -%}{%- endunless -%}
+      {{ image_src | json }}{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ],
+  {%- if current_variant.sku != blank %}
+  "sku": {{ current_variant.sku | json }},
+  {%- endif %}
+  "brand": {
+    "@type": "Brand",
+    "name": {{ shop.name | json }}
+  },
+  "url": {{ product_url | json }},
+  {%- if category_name != blank %}
+  "category": {{ category_name | json }},
+  {%- endif %}
+  "offers": [
+    {%- for variant in product.variants -%}
+      {%- if variant.price >= 250000 -%}{%- assign shipping_rate = 0 -%}{%- else -%}{%- assign shipping_rate = 9900 -%}{%- endif -%}
+    {
+      "@type": "Offer",
+      "url": {{ product_url | append: '?variant=' | append: variant.id | json }},
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "price": {{ variant.price | divided_by: 100.0 | json }},
+      "availability": "{% if variant.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+      "itemCondition": "https://schema.org/NewCondition",
+      "priceValidUntil": {{ valid_until | json }},
+      {%- if variant.sku != blank %}
+      "sku": {{ variant.sku | json }},
+      {%- endif %}
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": {{ shipping_rate | divided_by: 100.0 | json }},
+          "currency": {{ cart.currency.iso_code | json }}
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "IN"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "DAY" },
+          "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 7, "unitCode": "DAY" }
+        },
+        "doesNotShip": false
+      },
+      "hasMerchantReturnPolicy": { "@id": {{ shop.url | append: '/#returnpolicy' | json }} },
+      "seller": { "@id": {{ shop.url | append: '/#organization' | json }} }
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+  {%- if review_count != blank and review_count > 0 %},
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": {{ rating_value | json }},
+    "reviewCount": {{ review_count | json }},
+    "bestRating": 5,
+    "worstRating": 1
+  }
+  {%- endif %}
+}
+</script>

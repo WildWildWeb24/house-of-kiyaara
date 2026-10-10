@@ -1,0 +1,23 @@
+<div id="drawer-{{ drawer_id }}" class="drawer slide-from-right drawer--wide" data-drawer data-parent style="opacity: 0; display: none;">
+  {% if settings.drawer_appearance == 'modal' %}
+    {% render 'close-button', button_class: 'drawer-close drawer-float-close', context: '{{ drawer_id }}-drawer' %}
+  {% endif %}
+  <div class="drawer-panel user-select-none color-{{ settings.color_scheme_drawers }}">
+    <div class="drawer-header">
+      <h3 class="drawer-title size--small">{{ title | default: page.title }}</h3>
+      {% if settings.drawer_appearance == 'drawer' %}
+        {%- render 'close-button', button_class: 'drawer-close' -%}
+      {% endif %}
+    </div>
+
+    <div class="drawer-content rte scrollbar--hide {{ size_multipliers }}">
+      {% if image != blank -%}
+        {{ image | image_url: width: 1200 | image_tag: widths: '400, 600, 800, 1200', sizes: '(max-width: 767px) 500px, 600px', style: 'height: auto;', class: 'br-img', loading: 'lazy' }}
+      {%- endif %}
+      {{ text }}
+      {{ page.content }}
+      {{ custom_liquid }}
+    </div>
+  </div>
+  <button type="button" class="page-overlay" data-overlay aria-hidden="true" tabindex="-1"></button>
+</div>

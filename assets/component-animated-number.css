@@ -1,0 +1,46 @@
+@property --num {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.section-in-view .animation-target {
+  animation-name: animated-counter;
+  animation-delay: var(--anim-delay);
+  animation-duration: var(--anim-duration);
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-timing-function: cubic-bezier(.33, 0, .1, 1);
+  counter-reset: animated-number var(--num);
+}
+
+.animation-target::after {
+  content: '0';
+}
+
+.section-in-view .animation-target::after {
+  content: counter(animated-number);
+}
+
+
+
+@keyframes animated-counter {
+  from {
+    --num: 0;
+  }
+  to {
+    --num: var(--target-num);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-in-view .animation-target {
+    animation-duration: 0s;
+    animation-delay: 0s;
+  }
+}
+
+/* Fix color scheme bug where color on 'card' class takes priority over inherited color from parent class */
+.card:has(animated-number) {
+  color: inherit;
+}

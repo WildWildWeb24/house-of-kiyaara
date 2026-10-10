@@ -1,0 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "heading_text_align": "left",
+        "sm_size_multiplier": "sm-size--default",
+        "size_multiplier": "size--default"
+      }
+    },
+    "farasha_story_t8CT7p": {
+      "type": "farasha-story",
+      "name": "Farasha garden story",
+      "settings": {
+        "collection_url": "",
+        "header_offset": 0,
+        "shop_label": "Shop the Collection",
+        "sky": "shopify://shop_images/farrasha-bg-sky.png",
+        "mountains": "shopify://shop_images/farrasha-bg-mountains.png",
+        "far_foliage": "shopify://shop_images/farrasha-bg-far-foliage.png",
+        "grass": "shopify://shop_images/farrasha-bg-grass.png",
+        "forground": "shopify://shop_images/farrasha-bg-foreground.png",
+        "light_glow": "shopify://shop_images/farrasha-bg-glow.png",
+        "peach": "shopify://shop_images/farrasha-hero-pink-blooms.png",
+        "blue": "shopify://shop_images/farrasha-hero-blue-blooms.png",
+        "bell": "shopify://shop_images/farrasha-hero-bell-flowers.png",
+        "foliage": "shopify://shop_images/farrasha-hero-foliage.png",
+        "title_0": "The Farrasha Collection",
+        "description_0": "Enter our meadow",
+        "title_1": "A world painted by hand",
+        "description_1": "Farasha began as a dream. A world of curious blooms and wandering butterflies.",
+        "title_2": "Little Bursts of Joy",
+        "description_2": "Pink blooms arrive like small, happy surprises in a meadow. They bring warmth, colour and a little softness to everything around them.",
+        "title_3": "A Little Wildness",
+        "description_3": "Blue flowers are often the ones you notice twice. Cool, unexpected and a little untamed, they make the meadow feel more alive.",
+        "title_4": "Delicate by Nature",
+        "description_4": "Bell flowers hang gently from their stems, moving with the lightest breeze. Quiet and delicate, they bring a soft charm to the meadow.",
+        "title_5": "Between the Blooms",
+        "description_5": "Leaves and berries fill the spaces between the flowers, making the meadow feel full and lived in. They are where the little discoveries are found.",
+        "title_6": "And Then, She Took Flight",
+        "description_6": "Among the flowers appeared Farasha. Colourful, curious and free. The little wonder that gave this meadow its name.",
+        "title_7": "Now, Wear the Story",
+        "description_7": "Every piece carries a little of this hand-painted world with it."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "farasha_story_t8CT7p"
+  ]
+}

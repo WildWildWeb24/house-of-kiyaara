@@ -1,0 +1,350 @@
+/* --------------------------------
+  CARD BASE STRUCTURE
+
+  - card
+    - card media
+    - card body
+    - quickbuy / hotspot
+-------------------------------- */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--card-border-radius);
+  color: var(--color-card-foreground);
+  background: var(--color-card-background);
+  border: 1px solid var(--color-card-borders);
+}
+.card:not(.card--traditional) .btn {
+  color: var(--color-card-button-foreground);
+  background-color: var(--color-card-button-background);
+}
+.card-media {
+  position: relative;
+  overflow: hidden;
+}
+.card-body {
+  padding: var(--card-body-padding);
+}
+
+.card-media-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: var(--card-body-padding);
+}
+
+/* Second image on hover */
+.card-hover-images {
+  position: relative;
+  overflow: hidden;
+}
+.card-hover-images > *:last-child {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Second image on cycle */
+.card.show-second-image .card-hover-images > *:first-child > * {
+  opacity: 0;
+}
+.card.show-second-image .card-hover-images > *:last-child {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .card .media > * {
+    transition: transform 0.4s ease-in-out;
+  }
+  .card:hover .media > * {
+    transform: scale(1.1);
+  }
+  .card.on-hover:hover .card-hover-images > *:first-child > * {
+    opacity: 0;
+  }
+  .card.on-hover:hover .card-hover-images > *:last-child {
+    opacity: 1;
+  }
+}
+
+/* Color utilities */
+.card.bg-transparent {
+  --color-card-background: transparent;
+}
+
+
+/* --------------------------------
+  CARD TYPES
+-------------------------------- */
+
+/* Traditional */
+.card--traditional {
+  background: transparent;
+  color: inherit;
+  border: 0;
+}
+
+.card--traditional .card-media {
+  border-radius: var(--card-border-radius);
+  background: var(--color-card-background);
+  border: 1px solid var(--color-card-borders);
+}
+.card--traditional .card-body {
+  padding: var(--card-body-padding) 0;
+}
+
+/* Banner */
+.card--banner .card-media {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.card--banner .media,
+.card--banner .media img {
+  height: 100%;
+}
+.card--banner .video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+@media only screen and (max-width: 767px) {
+  .card--banner.sm-down-all-cols .card-media {
+    position: relative;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .card--banner.sm-md-all-cols .card-media {
+    position: relative;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .card--banner.md-all-cols .card-media {
+    position: relative;
+  }
+}
+
+/* Testimonial */
+.card--testimonial {
+  --card-body-padding: 4rem;
+}
+.card--testimonial .quotation-mark {
+  height: 70px;
+}
+.testimonial-author-image {
+  width: 70px;
+  margin: 32px auto 12px;
+  border-radius: 50%;
+}
+
+/* Collection */
+.card--collection .badges {
+  position: absolute;
+  top: var(--card-body-padding);
+}
+.card--collection .vertical-top .badges {
+  top: auto;
+  bottom: var(--card-body-padding);
+}
+
+/* Product */
+.card--product .card-title {
+  text-transform: var(--card--product-title-transform);
+}
+.card--product .card-body {
+  gap: 4px;
+}
+.card--product .rating-stars {
+  --font-size: 1.2;
+}
+
+/* Hotspot */
+.card--default:not(.layout--thumbnail) .hotspot {
+  position: absolute !important;
+  top: 20px;
+  right: 20px;
+}
+
+/* --------------------------------
+  QUICK VIEW / QUICK ADD BUTTONS
+-------------------------------- */
+/* Quick view over the image */
+.card-media .quick-view-or-add {
+  position: absolute;
+  bottom: var(--card-body-padding);
+  left: var(--card-body-padding);
+}
+/* Quick view last in card */
+.card > .quick-view-or-add {
+  margin-bottom: var(--card-body-padding);
+}
+.card > .quick-view-or-add .icon {
+  display: none;
+}
+/* Quick view last in card (default card) */
+.card.card--default > .quick-view-or-add {
+  margin: var(--card-body-padding);
+  margin-top: auto;
+}
+
+@media only screen and (max-width: 767px) {
+  /* Quick view position / size */
+  .card-media .quick-view-or-add .btn {
+    padding: 0.4em;
+  }
+  /* Quick view text / icon visibility */
+  .card-media .quick-view-or-add .label {
+    display: none;
+  }
+}
+
+
+@media only screen and (min-width: 768px) {
+  /* Quick view text / icon visibility */
+  .card-media .quick-view-or-add .icon {
+    display: none;
+  }
+  /* Quick view position / size */
+  .card-media .quick-view-or-add {
+    bottom: 0;
+    width: calc(100% - 4rem);
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+  }
+  .card:hover .quick-view-or-add {
+    opacity: 1;
+    bottom: 2rem;
+  }
+}
+
+
+/* --------------------------------
+  CARD THUMBNAIL LAYOUT
+-------------------------------- */
+.layout--thumbnail {
+  --thumbnail-width: 90px;
+  display: grid;
+  grid-template-columns: var(--thumbnail-width) 1fr auto;
+  align-items: center;
+}
+.layout--thumbnail .card-media {
+  margin: 1.6rem 0 1.6rem 1.6rem;
+}
+.layout--thumbnail .card-body {
+  text-align: left;
+  padding: min(16px, var(--card-body-padding));
+}
+.layout--thumbnail .flex {
+  justify-content: flex-start !important;
+}
+.layout--thumbnail .card-media-overlay,
+.layout--thumbnail .card-vendor,
+.layout--thumbnail .swatches {
+  display: none;
+}
+.layout--thumbnail .hotspot {
+  margin-left: auto;
+  margin-right: 16px;
+}
+
+.card-body .badges {
+  margin-top: 4px;
+  display: none;
+}
+.layout--thumbnail .card-body .badges {
+  display: flex;
+}
+.card-body ul {
+  list-style: inside disc;
+}
+.card-body ul li::marker {
+  margin-right: 4px;
+}
+
+/* Quick view in thumbnail layout */
+.card.layout--thumbnail > .quick-view-or-add {
+  margin: auto;
+}
+.card.card--default.layout--thumbnail > .quick-view-or-add {
+  margin-right: min(16px,var(--card-body-padding));
+}
+.card.layout--thumbnail .quick-view-or-add .btn {
+  padding: 0.6rem !important;
+}
+.card.layout--thumbnail .quick-view-or-add .icon {
+  display: revert !important;
+}
+.card.layout--thumbnail .quick-view-or-add .label {
+  display: none !important;
+}
+@media only screen and (min-width: 768px) {
+  .card.layout--thumbnail .card-media .quick-view-or-add {
+    left: 1rem;
+    bottom: 1rem;
+    width: auto;
+  }
+}
+
+/* --------------------------------
+  VARIANT BUTTONS
+-------------------------------- */
+.options-availability {
+  gap: 8px;
+}
+.variant-option-title {
+  position: relative;
+  padding: 2px 6px;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  text-align: center;
+  min-width: 30px;
+  border-radius: var(--button-border-radius);
+}
+.variant-option-title.unavailable {
+  opacity: 0.45;
+}
+.variant-option-title.unavailable::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  transform: rotate(-45deg);
+  border-left: solid 1px var(--color-foreground);
+ }
+
+ /* --------------------------------
+  OTHER
+-------------------------------- */
+
+/* Card Style for various components */
+.card-style {
+  border-radius: var(--card-border-radius);
+  color: var(--color-card-foreground);
+  background: var(--color-card-background);
+  padding: var(--card-body-padding);
+}
+
+.card--product:not(upsell-card) {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card--product:not(upsell-card) .card-body {
+  flex-grow: 1;
+}
+
+.card--product:not(upsell-card) quick-add {
+  margin-top: auto;
+}

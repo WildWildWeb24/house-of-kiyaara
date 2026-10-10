@@ -1,0 +1,2853 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "settings_schema": {
+    "general_layout": {
+      "name": "Layout",
+      "info": "Impostazioni relative alla larghezza e alla spaziatura. Le impostazioni relative alle sezioni possono essere sovrascritte individualmente in ogni sezione con il blocco Spaziatura personalizzata. [Scopri di più.](https://themes.woolman.co/blogs/sampo/general-layout)",
+      "section_padding": {
+        "label": "Spaziatura della sezione",
+        "info": "La spaziatura viene applicata alla parte superiore e inferiore della sezione.",
+        "options": {
+          "extra_small": "XS",
+          "small": "S",
+          "medium": "M",
+          "large": "L",
+          "extra_large": "XL"
+        }
+      },
+      "content_ideal_width": {
+        "label": "Larghezza della pagina"
+      },
+      "content_padding": {
+        "label": "Margine della pagina"
+      },
+      "gutter": {
+        "label": "Gutter"
+      },
+      "grid_gap": {
+        "label": "Gap della griglia",
+        "info": "Utilizzato tra le card e altri elementi ripetuti."
+      },
+      "section_margin": {
+        "label": "Spazio tra le sezioni"
+      }
+    },
+    "colors": {
+      "name": "Colori",
+      "settings": {
+        "paragraph__1": {
+          "content": "Gestisci gli schemi di colori e imposta le impostazioni di colore statiche. I colori dei badge sono gestiti nel menu a tendina \"Badge dei prodotti\". [Scopri di più.](https://themes.woolman.co/blogs/sampo/colors)"
+        },
+        "static_colors": {
+          "content": "Colori statici",
+          "info": "I colori statici non sono influenzati dagli schemi di colori."
+        },
+        "cart_dot": {
+          "label": "Sfondo del punto del carrello"
+        },
+        "review_stars": {
+          "label": "Stelle delle recensioni",
+          "info": "Influenza solo le stelle delle recensioni native del tema e le stelle delle card dei prodotti quando vengono utilizzati i metafield standard per le recensioni."
+        },
+        "sale_price_text": {
+          "label": "Colore del testo del prezzo di vendita",
+          "info": "Colore del testo normale utilizzato quando non è impostato alcun colore."
+        }
+      }
+    },
+    "typography": {
+      "name": "Tipografia",
+      "headers": {
+        "headings": "Titoli",
+        "subheadings": "Sottotitoli",
+        "body_text": "Testo del corpo"
+      },
+      "settings": {
+        "info_paragraph": "Scegli i font per i titoli e il corpo. Imposta la dimensione del font di base e, se necessario, regola finemente la spaziatura delle lettere, l'altezza delle righe e altre impostazioni per tipo di tipografia.",
+        "select_heading_font": "Font del titolo",
+        "select_base_font": "Font del corpo",
+        "info_font_picker": "Il font selezionato può influenzare la velocità del tuo negozio. [Scopri di più.](https://help.shopify.com/en/manual/online-store/themes/theme-structure/theme-settings#typography)",
+        "font_scaling_property": {
+          "label": "Dimensione del font di base mobile",
+          "info": "16 px raccomandato"
+        },
+        "font_scaling_desktop_property": {
+          "label": "Dimensione del font di base desktop",
+          "info": "18 px raccomandato"
+        }
+      }
+    },
+    "navigation": {
+      "name": "Navigazione",
+      "headers": {
+        "drawer_menu": "Menu cassetto",
+        "navigation": "Navigazione",
+        "naviagation_info": "Si applica sia agli elementi di navigazione a discesa che ai cassetti.",
+        "header": "Intestazione",
+        "toolbar": "Barra degli strumenti"
+      },
+      "settings": {
+        "drawer_menu_footer_info": {
+          "label": "Informazioni aggiuntive",
+          "info": "Informazioni opzionali mostrate al primo livello del menu cassetto."
+        },
+        "drawer_navigation_emphasize": {
+          "label": "Evidenzia gli elementi di primo livello del menu cassetto",
+          "info": "Abilita il font del titolo e la dimensione del font enorme per gli elementi principali del menu di primo livello."
+        }
+      }
+    },
+    "buttons": {
+      "name": "Pulsanti",
+      "shape": {
+        "label": "Forma del pulsante",
+        "options": {
+          "square": "Quadrato",
+          "rounded": "Arrotondato",
+          "circle": "Cerchio",
+          "pill": "Pillola",
+          "hexagon": "Esagono",
+          "octagon": "Ottagono",
+          "tilted": "Inclinato",
+          "lined": "Lineare"
+        }
+      },
+      "hotspots": {
+        "header": "Punti caldi",
+        "dot_shape": {
+          "label": "Forma del punto"
+        },
+        "dot_style": {
+          "label": "Stile del punto",
+          "options": {
+            "default": "Predefinito",
+            "minimal": "Minimale"
+          }
+        },
+        "transparent_dot_label_background": {
+          "label": "Sfondo etichetta punto trasparente"
+        }
+      }
+    },
+    "drawers": {
+      "name": "Cassetti",
+      "info": "Impostazioni comuni dei cassetti che vengono utilizzate su tutti i cassetti. I cassetti vengono utilizzati per la navigazione principale, la ricerca, il carrello, il filtraggio delle collezioni e le pagine dei prodotti.",
+      "settings": {
+        "drawer_appearance": {
+          "label": "Aspetto del cassetto",
+          "drawer": "Predefinito",
+          "modal": "Popup"
+        }
+      }
+    },
+    "modals": {
+      "name": "Modal",
+      "info": "I modal appaiono sopra il contenuto principale e tipicamente richiedono l'interazione dell'utente prima di permettere loro di tornare. Utilizzati nelle seguenti sezioni Popup promozionale, Link popup, Galleria media prodotti, Galleria e Immagine con punti caldi. [Scopri di più.](https://themes.woolman.co/blogs/sampo/modals)"
+    },
+    "aesthetics": {
+      "name": "Estetica",
+      "info": "Regola finemente l'aspetto del tuo negozio con le impostazioni estetiche. [Scopri di più.](https://themes.woolman.co/blogs/sampo/aesthetics)",
+      "settings": {
+        "border_radius": {
+          "label": "Raggio del bordo"
+        },
+        "button_padding": {
+          "label": "Spaziatura del pulsante",
+          "option__1": {
+            "label": "Piccolo"
+          },
+          "option__2": {
+            "label": "Medio"
+          },
+          "option__3": {
+            "label": "Grande"
+          },
+          "option__4": {
+            "label": "Molto grande"
+          }
+        },
+        "cards_header": {
+          "content": "Card"
+        },
+        "card_border_radius": {
+          "label": "Raggio del bordo"
+        },
+        "enable_on_images": {
+          "label": "Usa il raggio del bordo sulle immagini",
+          "info": "Questa impostazione non influenza le immagini a schermo intero."
+        },
+        "icons_header": {
+          "content": "Icone"
+        },
+        "special_background_header": {
+          "content": "Sfondo della sezione"
+        },
+        "default_background_graphics": {
+          "label": "Grafica predefinita"
+        },
+        "grain_size": {
+          "label": "Dimensione della grana",
+          "options": {
+            "small": "Piccolo",
+            "medium": "Medio",
+            "large": "Grande"
+          }
+        },
+        "grain_opacity": {
+          "label": "Opacità della grana"
+        },
+        "vignette_opacity": {
+          "label": "Opacità della vignetta"
+        },
+        "icon_stroke": {
+          "label": "Dimensione del tratto dell'icona",
+          "info": "Regola la dimensione del tratto delle icone."
+        },
+        "animations_header": {
+          "content": "Animazioni"
+        },
+        "animate_sections": {
+          "label": "Usa le animazioni delle sezioni",
+          "info": "Animazioni sottili al caricamento della sezione."
+        },
+        "animate_banners": {
+          "label": "Usa le animazioni delle banner",
+          "info": "Animazioni sottili per il contenuto delle banner."
+        },
+        "header__5": {
+          "content": "Indicatori"
+        },
+        "indicators": {
+          "label": "Scegli il tipo di indicatore",
+          "type_bars": "Barre",
+          "type_dots": "Punti"
+        }
+      }
+    },
+    "product_card": {
+      "name": "Card prodotto",
+      "info": "Le impostazioni in questa sezione si applicano a tutte le card dei prodotti in tutto il tema, garantendo un aspetto unificato in diverse sezioni. [Scopri di più.](https://themes.woolman.co/blogs/sampo/modals)",
+      "settings": {
+        "product_card_show_vendor": {
+          "label": "Mostra fornitore"
+        },
+        "product_card_show_secondary_image": {
+          "label": "Mostra seconda immagine al passaggio del mouse"
+        },
+        "product_card_show_rating": {
+          "label": "Stelle di valutazione",
+          "options": {
+            "hide": "Nascondi",
+            "stars": "Stelle",
+            "star_and_value": "Valore"
+          },
+          "info": "Supporta solo le valutazioni tramite definizioni di metafield standard. Assicurati che il tuo fornitore di app per valutazioni/recensioni di prodotti segua le linee guida Shopify."
+        },
+        "header__quick_buy": {
+          "content": "Acquisto rapido"
+        },
+        "product_card_quick_buy": {
+          "label": "Mostra pulsante acquisto rapido"
+        },
+        "product_card_quick_buy_mode": {
+          "label": "Modalità acquisto rapido",
+          "info": "Predefinito su 'Vista rapida' se il prodotto ha più varianti.",
+          "options": {
+            "add": "Aggiungi al carrello",
+            "quick_view": "Vista rapida"
+          }
+        },
+      "product_card_quick_buy_position": {
+        "label": "Posizione pulsante",
+        "info": "Posizione del pulsante di acquisto rapido rispetto alla scheda o all'immagine.",
+        "options": {
+          "card": "Ultimo nella scheda",
+          "image": "Sull'immagine"
+        }
+      },
+        "header__swatches": {
+          "content": "Campioni di colore"
+        },
+        "enable_swatches": {
+          "label": "Mostra campioni di colore",
+          "info": "Si applica alle card dei prodotti. Aggiungi campioni utilizzando [metafield di categoria](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields/using-category-metafields)."
+        },
+        "header__variant_availability": {
+          "content": "Disponibilità varianti"
+        },
+        "show_variant_availability": {
+          "label": "Mostra disponibilità varianti",
+          "info": "Mostra la disponibilità per una singola opzione di variante. Per impostazione predefinita mostra la disponibilità \"Taglia\", che può essere modificata tramite le traduzioni del tema \"Prodotto > Opzione trigger disponibilità card\"."
+        },
+        "header__advanced": {
+          "content": "Avanzato"
+        },
+        "custom_fields": {
+          "label": "Metafield da mostrare",
+          "info": "Mostra informazioni dai metafield dei prodotti. Lista separata da virgole di valori \"namespace.chiave\"."
+        },
+        "custom_aspect_ratio": {
+          "label": "Rapporto d'aspetto personalizzato della card immagine",
+          "info": "Quando impostato sovrascrive quello predefinito. Formato: larghezza/altezza. Esempio: 4.2/5"
+        }
+      }
+    },
+    "collection_card": {
+      "name": "Card collezione",
+      "info": "Le impostazioni in questa sezione si applicano a tutte le card delle collezioni in tutto il tema, garantendo un aspetto unificato in diverse sezioni. [Scopri di più.](https://themes.woolman.co/blogs/sampo/collection-card)"
+    },
+    "article_card": {
+      "name": "Card articolo",
+      "info": "Le impostazioni in questa sezione si applicano a tutte le card degli articoli in tutto il tema, garantendo un aspetto unificato in diverse sezioni. [Scopri di più.](https://themes.woolman.co/blogs/sampo/article-card)",
+      "settings": {
+        "article_card_show_author": {
+          "label": "Mostra autore"
+        },
+        "article_card_show_date": {
+          "label": "Mostra data"
+        },
+        "article_card_show_content": {
+          "label": "Mostra contenuto"
+        }
+      }
+    },
+    "badges": {
+      "name": "Badge prodotti",
+      "settings": {
+        "info_paragraph": "Puoi utilizzare i badge sulle card dei prodotti e sulle pagine dei prodotti. I badge predefiniti sono: Sconto, Nuovo, Preordine e Esaurito. [Scopri di più.](https://themes.woolman.co/blogs/sampo/product-card#product-badges)",
+        "badge_border_radius": {
+          "label": "Raggio del bordo"
+        },
+        "product_card_badges": {
+          "label": "Mostra badge",
+          "info": "Le impostazioni di stile dei badge e le definizioni personalizzate dei badge possono essere trovate in 'Impostazioni tema > Badge prodotti'."
+        },
+        "position_on_cards": {
+          "label": "Posizione sulle card dei prodotti"
+        },
+        "badge_sale_foreground": {
+          "label": "Testo in sconto"
+        },
+        "badge_sale_background": {
+          "label": "Sfondo in sconto"
+        },
+        "badge_new_foreground": {
+          "label": "Testo nuovo"
+        },
+        "badge_new_background": {
+          "label": "Sfondo nuovo"
+        },
+        "badge_preorder_foreground": {
+          "label": "Testo preordine"
+        },
+        "badge_preorder_background": {
+          "label": "Sfondo preordine"
+        },
+        "badge_sold_out_foreground": {
+          "label": "Testo esaurito"
+        },
+        "badge_sold_out_background": {
+          "label": "Sfondo esaurito"
+        },
+        "badge_rating_foreground": {
+          "label": "Testo valutazione"
+        },
+        "badge_rating_background": {
+          "label": "Sfondo valutazione"
+        },
+        "custom_badges": {
+          "label": "Definizioni badge personalizzati",
+          "info": "\"[Tag prodotto]:[Colore badge]:[Colore testo]\". Valori separati con due punti, ogni definizione di badge con un punto e virgola(;)."
+        },
+        "sale_badge_text": {
+          "label": "Testo badge in sconto",
+          "options": {
+            "default": "\"Sconto\"",
+            "savings": "Risparmio",
+            "percentage": "% di sconto"
+          }
+        },
+        "badge_padding": {
+          "label": "Imbottitura",
+          "options": {
+            "none": "Nessuno",
+            "small": "Piccolo",
+            "medium": "Medio"
+          }
+        }
+      }
+    },
+    "currency_format": {
+      "name": "Formato valuta",
+      "settings": {
+        "content": "Codici valuta",
+        "paragraph": "Controlla se i codici valuta vengono visualizzati insieme ai prezzi. I prezzi del carrello e del checkout mostrano sempre i codici valuta. Esempio: $1.00 USD. [Scopri di più.](https://help.shopify.com/en/manual/international/pricing/currency-formatting)",
+        "currency_code_enabled": {
+          "label": "Mostra codici valuta"
+        }
+      }
+    },
+    "cart": {
+      "name": "Carrello",
+      "info": "Impostazioni relative al carrello. [Scopri di più.](https://themes.woolman.co/blogs/sampo/cart)",
+      "settings": {
+        "cart_icon": {
+          "label": "Icona carrello",
+          "options": {
+            "basket": "Cestino",
+            "bag": "Borsa",
+            "cart": "Carrello"
+          }
+        },
+        "cart_button_function": {
+          "label": "Funzione pulsante carrello",
+          "options": {
+            "drawer": "Mostra cassetto carrello",
+            "page": "Mostra pagina carrello"
+          }
+        },
+        "add_to_cart_type": {
+          "label": "Su \"Aggiungi al carrello\"",
+          "options": {
+            "drawer": "Mostra cassetto carrello",
+            "notification": "Mostra notifica semplice",
+            "notification_recommendations": "Mostra notifica con raccomandazioni"
+          },
+          "info": "Scegli cosa mostrare quando un prodotto viene aggiunto al carrello."
+        },
+        "show_accelerated_checkout": {
+          "label": "Mostra pulsanti checkout accelerato",
+          "info": "Utilizzando i metodi di pagamento disponibili nel tuo negozio, i clienti vedono la loro opzione preferita, come PayPal o Apple Pay. [Scopri di più](https://help.shopify.com/manual/payments/accelerated-checkouts)"
+        },
+        "show_cart_recommendations": {
+          "label": "Mostra raccomandazioni carrello",
+          "info": "Mostra raccomandazioni di prodotti sul carrello"
+        },
+        "show_cart_note": {
+          "label": "Mostra nota carrello",
+          "info": "Permette ai clienti di lasciare dettagli aggiuntivi all'ordine"
+        },
+        "show_cart_link": {
+          "label": "Mostra link carrello nel cassetto",
+          "info": "Mostra il link 'Visualizza carrello' nella parte inferiore del cassetto carrello."
+        },
+        "plus_minus_on_mobile": {
+          "label": "Mostra controlli + e - su mobile",
+          "info": "Le icone più e meno della quantità sono sempre visualizzate con schermi più grandi. Con questa impostazione puoi anche renderle visibili sui dispositivi mobili."
+        },
+        "show_empty_cart_haiku": {
+          "label": "Mostra haiku carrello vuoto",
+          "info": "Mostra un haiku quando il carrello è vuoto. L'haiku può essere impostato nelle traduzioni del tema."
+        },
+        "header__1": {
+          "content": "Notifica spedizione gratuita"
+        },
+        "paragraph__1": {
+          "content": "La notifica di spedizione gratuita viene mostrata sul carrello quando il valore dell'ordine è maggiore della soglia. Dovrai anche configurare la configurazione di spedizione corrispondente nelle impostazioni del tuo negozio. [Scopri di più.](https://help.shopify.com/en/manual/shipping/setting-up-and-managing-your-shipping/free-shipping-rates)"
+        },
+        "paragraph__2": {
+          "content": "Inserisci il valore minimo dell'ordine per la spedizione gratuita senza il simbolo della valuta, ad es. 100. Usa la valuta primaria del negozio. Il tasso di conversione viene calcolato automaticamente per qualsiasi valuta aggiuntiva."
+        },
+        "free_shipping_threshold": {
+          "label": "Soglia spedizione gratuita",
+          "info": "Lascia vuoto per disabilitare la notifica di spedizione gratuita sul carrello."
+        }
+      }
+    },
+    "social_media": {
+      "name": "Social media",
+      "info": "Impostazioni relative ai social media. [Scopri di più.](https://themes.woolman.co/blogs/sampo/social-media)",
+      "settings": {
+        "header__1": {
+          "content": "Account social"
+        },
+        "social_facebook_link": {
+          "label": "Facebook",
+          "info": "https://facebook.com/shopify"
+        },
+        "social_instagram_link": {
+          "label": "Instagram",
+          "info": "http://instagram.com/shopify"
+        },
+        "social_linkedin_link": {
+          "label": "LinkedIn",
+          "info": "https://ca.linkedin.com/company/shopify"
+        },
+        "social_pinterest_link": {
+          "label": "Pinterest",
+          "info": "https://pinterest.com/shopify"
+        },
+        "social_snapchat_link": {
+          "label": "Snapchat",
+          "info": "https://www.snapchat.com/add/shopify"
+        },
+        "social_tiktok_link": {
+          "label": "TikTok",
+          "info": "https://tiktok.com/@shopify"
+        },
+        "social_tumblr_link": {
+          "label": "Tumblr",
+          "info": "https://shopify.tumblr.com"
+        },
+        "social_twitch_link": {
+          "label": "Twitch",
+          "info": "https://twitch.tv/shopify"
+        },
+        "social_twitter_link": {
+          "label": "X (Twitter)",
+          "info": "https://twitter.com/shopify"
+        },
+        "social_untappd_link": {
+          "label": "Untappd",
+          "info": "https://untappd.com/shopify"
+        },
+        "social_vimeo_link": {
+          "label": "Vimeo",
+          "info": "https://vimeo.com/shopify"
+        },
+        "social_youtube_link": {
+          "label": "YouTube",
+          "info": "https://www.youtube.com/shopify"
+        }
+      }
+    },
+    "favicon": {
+      "name": "Favicon",
+      "settings": {
+        "favicon": {
+          "label": "Favicon",
+          "info": "Il favicon verrà ridimensionato a 32 x 32px"
+        }
+      }
+    },
+    "search": {
+      "name": "Ricerca",
+      "settings": {
+        "paragraph__1": {
+          "content": "Impostazioni relative alla ricerca. [Scopri di più](https://themes.woolman.co/blogs/sampo/search)"
+        },
+        "enable_search": {
+          "label": "Abilita ricerca"
+        },
+        "search_recommendations": {
+          "label": "Raccomandazioni di ricerca",
+          "info": "Se impostato, mostra termini raccomandati nella ricerca. Una raccomandazione per riga."
+        }
+      }
+    },
+    "advanced": {
+      "name": "Avanzato",
+      "info": "Impostazioni per utenti avanzati e sviluppatori che hanno familiarità con la struttura del documento HTML. [Scopri di più.](https://themes.woolman.co/blogs/sampo/advanced)",
+      "settings": {
+        "head_custom_liquid": {
+          "label": "Liquid personalizzato <head>",
+          "info": "Posizionato appena prima del tag di chiusura </head>."
+        },
+        "body_custom_liquid": {
+          "label": "Liquid personalizzato <body>",
+          "info": "Posizionato appena prima del tag di chiusura </body>."
+        }
+      }
+    }
+  },
+  "inputs": {
+    "required": {
+      "label": "Obbligatorio",
+      "info": "Se abilitato, il campo di input è obbligatorio."
+    },
+    "width": {
+      "label": "Larghezza",
+      "info": "Imposta la larghezza del campo di input.",
+      "half_width": "Mezza larghezza (50 %)",
+      "full_width": "Larghezza completa (100 %)"
+    },
+    "text": {
+      "title": "Titolo",
+      "subtitle": "Sottotitolo",
+      "text": "Testo",
+      "content": "Contenuto",
+      "html": "HTML",
+      "button_label": "Etichetta pulsante",
+      "author": "Autore",
+      "label": "Etichetta",
+      "label_info": "Utilizzato come etichetta per il campo di input."
+    },
+    "text_alignment": {
+      "label": "Allineamento del testo"
+    },
+    "types": {
+      "type": "Seleziona tipo di campo",
+      "text": "Testo breve",
+      "textarea": "Testo lungo",
+      "email": "Email",
+      "number": "Numero",
+      "tel": "Numero di telefono",
+      "date": "Data",
+      "url": "URL",
+      "time": "Ora",
+      "week": "Settimana",
+      "text_group": "Input generici",
+      "date_group": "Input data"
+    },
+    "image_picker": {
+      "label": "Immagine",
+      "label_default": "Immagine predefinita",
+      "label_mobile": "Immagine mobile",
+      "info": "[Raccomandazioni per le immagini](https://themes.woolman.co/blogs/sampo/images-and-videos-in-sections)"
+    },
+    "video": {
+      "label": "Video",
+      "label_default": "Video predefinito",
+      "label_mobile": "Video mobile",
+      "info": "[Raccomandazioni per i video](https://themes.woolman.co/blogs/sampo/videos-and-images-in-sections)"
+    },
+    "video_url": {
+      "label": "Video esterno",
+      "label_mobile": "Video esterno (mobile)",
+      "info": "Supporta Youtube e Vimeo. [Raccomandazioni per i video](https://themes.woolman.co/blogs/sampo/videos-and-images-in-sections)"
+    },
+    "checkbox": {
+      "view_all": "Mostra link 'Visualizza tutto'",
+      "show_author": "Mostra autore articolo",
+      "show_date": "Mostra data pubblicazione",
+      "show_read_time": "Mostra tempo di lettura",
+      "show_excerpt": "Mostra estratto",
+      "show_article_tags": "Mostra tag articolo",
+      "show_as_thumbnail_cards": "Usa layout miniature",
+      "show_arrows": "Mostra frecce",
+      "show_breadcrumb": "Mostra breadcrumb",
+      "show_breadcrumb_info": "Usa metafield per aggiungere più livelli. [Scopri di più](https://themes.woolman.co/blogs/sampo/breadcrumb)",
+      "rounded_corners": "Angoli arrotondati",
+      "card_style": "Usa stile card"
+    },
+    "url": {
+      "label": "Url",
+      "link": "Link",
+      "button_link": "Link pulsante",
+      "media_link": "Link media",
+      "banner_link": "Link banner",
+      "banner_link_info": "Opzionale. Utilizzato per l'hero se i pulsanti non vengono utilizzati.",
+      "video_url": "URL video",
+      "video_url_mobile": "URL video (mobile)",
+      "video_url__info": "Supporta Youtube, Vimeo e file MP4. [Scopri di più.](https://themes.woolman.co/blogs/sampo/videos-and-images-in-sections)"
+    },
+    "product": {
+      "label": "Prodotto"
+    },
+    "collection_list": {
+      "label": "Collezioni"
+    },
+    "collection": {
+      "label": "Collezione"
+    },
+    "article": {
+      "label": "Articolo"
+    },
+    "page": {
+      "label": "Pagina"
+    },
+    "blog": {
+      "label": "Blog"
+    },
+    "range": {
+      "title_size": "Dimensione titolo",
+      "image_height": "Altezza immagine",
+      "image_width": "Larghezza immagine",
+      "grid_gap": "Gap griglia",
+      "grid_gap_info": "Gap tra gli elementi. Imposta su -1 per usare il valore Gutter delle impostazioni del tema come gap."
+    },
+    "color": {
+      "background": "Colore sfondo"
+    },
+    "color_hotspot": {
+      "label_for_icon": "Colore punto caldo",
+      "label_for_label": "Colore etichetta punto caldo",
+      "label_for_scheme": "Schema punto caldo",
+      "options": {
+        "background": "Sfondo",
+        "foreground": "Testo",
+        "button_background": "Sfondo pulsante",
+        "button_foreground": "Testo pulsante"
+      }
+    },
+    "color_background": {
+      "label": "Sfondo gradiente",
+      "section_background": "Sfondo sezione"
+    },
+    "hotspot_color": {
+      "label": "Colore del punto caldo",
+      "info": "Le impostazioni di stile di base per i Punti caldi possono essere impostate in Impostazioni tema > Pulsanti.",
+      "options": {
+        "default": "Predefinito",
+        "invert_dot": "Inverti colori del punto",
+        "invert_title": "Inverti colori del titolo",
+        "invert_all": "Inverti entrambi"
+      }
+    }
+  },
+  "blocks": {
+    "margin_info": "Regola lo spazio tra questo e l'elemento sopra.",
+    "special_background": {
+      "name": "Sfondo sezione",
+      "info": "Aggiunge un livello di sfondo sotto altri elementi della sezione. Per impostazione predefinita utilizza il gradiente di sfondo dello schema di colori e la grafica impostata nelle impostazioni Estetica.",
+      "overwrite_info": "Imposta per sovrascrivere il predefinito.",
+      "header__graphics": {
+        "content": "Grafica"
+      },
+      "background_graphics": {
+        "label": "Grafica",
+        "aesthetics_label": "Grafica di sfondo predefinita",
+        "aesthetics_info": "Utilizzata nelle pagine dei prodotti e in varie sezioni.",
+        "option_groups": {
+          "inherit": "Dalle impostazioni del tema",
+          "overwrite": "Sovrascrivi"
+        },
+        "options": {
+          "none": "Nessuna",
+          "default": "Predefinita",
+          "tilted": "Inclinata",
+          "convex": "Convessa",
+          "concave": "Concava",
+          "elliptic": "Ellittica",
+          "wave": "Onda",
+          "waves": "Onda e linee",
+          "curve": "Curva",
+          "clouds": "Nuvole",
+          "triangles": "Triangoli",
+          "dots": "Punti",
+          "tilted_ripple": "Ripple inclinato"
+        }
+      },
+      "background_height": {
+        "label": "Altezza",
+        "option_groups": {
+          "percentage": "Altezza relativa",
+          "fixed_ratio": "Rapporto d'aspetto fisso"
+        },
+        "options": {
+          "percentage": "Imposta per percentuale",
+          "portrait_2_3": "Ritratto (2:3)",
+          "portrait_3_4": "Ritratto (3:4)",
+          "square": "Quadrato (1:1)",
+          "landscape_4_3": "Paesaggio (4:3)",
+          "landscape_16_9": "Paesaggio (16:9)"
+        }
+      },
+      "background_height_percentage": {
+        "label": "Altezza",
+        "info": "Utilizzato quando \"Imposta per percentuale\" è selezionato come altezza dello sfondo."
+      },
+      "header_effects": {
+        "content": "Effetti"
+      },
+      "vignette": {
+        "label": "Aggiungi vignetta"
+      },
+      "grain": {
+        "label": "Aggiungi grana"
+      },
+      "header_graphics_settings": {
+        "content": "Impostazioni grafica"
+      },
+      "two_tone_graphics": {
+        "label": "Grafica a due toni"
+      },
+      "flip_horizontal": {
+        "label": "Capovolgi orizzontalmente"
+      },
+      "flip_vertical": {
+        "label": "Capovolgi verticalmente"
+      }
+    },
+    "button": {
+      "name": "Pulsante",
+      "info_combined": "Utilizzando più pulsanti si creerà un gruppo di pulsanti che viene mostrato dove è posizionato il primo pulsante."
+    },
+    "article": {
+      "author": "Autore",
+      "date": "Data pubblicazione",
+      "excerpt": "Estratto",
+      "read_time": "Tempo di lettura"
+    },
+    "buttons": {
+      "name": "Pulsanti",
+      "paragraph": "Utilizza fino a tre pulsanti dedicati. Nota che il link Banner dell'immagine sarà disabilitato quando utilizzi i pulsanti.",
+      "header_1": "Primo pulsante",
+      "header_2": "Secondo pulsante",
+      "header_3": "Terzo pulsante"
+    },
+    "image": {
+      "name": "Immagine"
+    },
+    "hotspot": {
+      "name": "Punto caldo",
+      "info": "Il punto caldo è posizionato sopra l'immagine. Cliccando sul punto caldo si aprirà il popup. Rendi i punti caldi dinamici con i metaoggetti. [Scopri di più.](https://themes.woolman.co/blogs/sampo/dynamic-hotspots-with-metaobjects)",
+      "title": {
+        "label": "Etichetta punto caldo",
+        "default": "Etichetta punto caldo"
+      },
+      "title_position": {
+        "label": "Posizione etichetta"
+      },
+      "pos_array": {
+        "label": "Array posizione punti caldi",
+        "info": "Sovrascrive il posizionamento dei punti caldi. Esempio: \"sinistra,10,10|sinistra,20,65|destra,75,75\""
+      }
+    },
+    "popup_content": {
+      "name": "Contenuto popup",
+      "info": "Il contenuto seguente viene mostrato nel popup. Il layout del popup si adatterà al contenuto. L'immagine sarà favorita se sono impostate sia immagine che video."
+    },
+    "image_or_video": {
+      "name": "Immagine o video",
+      "info_paragraph": "Scegli il tipo di media mostrato e seleziona il contenuto predefinito e le impostazioni di conseguenza. Opzionalmente, seleziona media dedicati per mobile.",
+      "info_no_mobile": "Scegli il tipo di media mostrato e seleziona il contenuto predefinito e le impostazioni di conseguenza.",
+      "media_toggle": {
+        "label": "Media mostrato",
+        "options": {
+          "image": "Immagine",
+          "video": "Video",
+          "external_video": "Video esterno"
+        }
+      },
+      "media_type": {
+        "label": "Tipo di media",
+        "options": {
+          "image": "Immagine",
+          "video": "Video",
+          "external_video": "Video esterno"
+        }
+      },
+      "aspect_ratio": {
+        "label": "Rapporto d'aspetto media"
+      },
+      "image": {
+        "header": "Immagine",
+        "info_paragraph": "Scegli un'immagine dalla tua libreria o carica una nuova. [Scopri di più](https://help.shopify.com/en/manual/online-store/os/using-themes/change-the-layout/images#add-an-image-to-a-section)"
+      },
+      "video": {
+        "header": "Video",
+        "info_paragraph": "Scegli un video dalla tua libreria o carica uno nuovo. [Scopri di più](https://help.shopify.com/en/manual/shopify-admin/productivity-tools/file-uploads#recommended-video-specifications)"
+      },
+      "external_video": {
+        "header": "Video esterno",
+        "info_paragraph": "Supporta Youtube, Vimeo e file MP4. [Scopri di più. - TODO](https://themes.woolman.co/blogs/ta)"
+      },
+      "video_autoplay": {
+        "label": "Riproduzione automatica",
+        "info": "Avvia la riproduzione video automaticamente."
+      },
+      "video_controls": {
+        "label": "Mostra controlli",
+        "info": "Se la riproduzione automatica è disabilitata, i controlli sono sempre mostrati."
+      },
+      "info_desktop_settings": "Impostazioni obbligatorie. I media desktop vengono utilizzati per impostazione predefinita secondo il tipo di media mostrato selezionato.",
+      "info_mobile_settings": "Impostazioni opzionali. Le impostazioni mobile ti danno l'opzione di utilizzare contenuti diversi con dispositivi mobili. Le impostazioni desktop vengono utilizzate quando lasciate vuote."
+    },
+    "timer_date": {
+      "name": "Data e ora timer",
+      "the_date": {
+        "label": "Data e ora obiettivo",
+        "info": "Il timer arriverà a zero alla data e ora obiettivo. Per impostazione predefinita viene utilizzato il fuso orario del negozio online. Formato: AAAA-MM-GG HH:MM"
+      },
+      "time_units": {
+        "label": "Unità di tempo",
+        "options": {
+          "hide": "Nascondi",
+          "show_above": "Mostra sopra",
+          "show_below": "Mostra sotto"
+        }
+      },
+      "units_spacing": {
+        "label": "Spaziatura unità",
+        "options": {
+          "narrow": "Stretta",
+          "medium": "Media",
+          "wide": "Larga"
+        }
+      }
+    },
+    "post_timer_message": {
+      "name": "Messaggio post timer",
+      "info": "Questo messaggio verrà mostrato quando il timer arriva a zero. Puoi visualizzare in anteprima questo disabilitando temporaneamente il blocco \"Data e ora timer\"."
+    },
+    "text": {
+      "name": "Testo"
+    },
+    "title": {
+      "name": "Titolo"
+    },
+    "subtitle": {
+      "name": "Sottotitolo"
+    },
+    "video": {
+      "name": "Video",
+      "info": "Questa sezione è ottima per video più lunghi. Il video avrà controlli di riproduzione visibili."
+    },
+    "product": {
+      "name": "Prodotto"
+    },
+    "price": {
+      "name": "Prezzo"
+    },
+    "quantity_selector": {
+      "name": "Selettore quantità",
+      "next_to_add_to_cart": {
+        "label": "Mostra accanto ad \"Aggiungi al carrello\""
+      }
+    },
+    "variant_picker": {
+      "name": "Selettore varianti",
+      "picker_type": {
+        "label": "Stile selettore",
+        "options": {
+          "dropdown": "Menu a tendina",
+          "buttons": "Pulsanti"
+        }
+      },
+      "swatch": {
+        "label": "Campioni",
+        "info": "I campioni vengono mostrati solo quando un campione viene aggiunto a una variante e il selettore di varianti è impostato su \"Pulsanti\". [Aggiungi campioni](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields/using-category-metafields) utilizzando metafield di categoria.",
+        "options": {
+          "swatch_only": "Mostra solo campione",
+          "swatch_with_text": "Mostra campione ed etichetta",
+          "text_only": "Mostra solo etichetta"
+        }
+      },
+      "cross_out_unavailable": {
+        "label": "Barratura varianti non disponibili",
+        "info": "Funziona solo con lo stile selettore varianti a pulsanti. Se abilitato, i pulsanti delle varianti non disponibili saranno visivamente barrati."
+      }
+    },
+    "size_guide": {
+      "name": "Guida taglie",
+      "info": "Aggiunge un pulsante per il popup della guida taglie.",
+      "show_ruler": {
+        "label": "Mostra icona righello"
+      },
+      "trigger": {
+        "header": "Attiva per nome opzione",
+        "label": "Nome opzione",
+        "info": "Opzionale. Se utilizzato la guida taglie verrà mostrata solo quando il nome di un'opzione prodotto corrisponde al valore di attivazione. Sensibile alla casse."
+      },
+      "show_next_to_variant": {
+        "label": "Mostra accanto al selettore varianti correlato",
+        "info": "Richiede che il valore di attivazione sia impostato."
+      }
+    },
+    "inventory_status": {
+      "name": "Stato inventario",
+      "show_available_quantity": {
+        "label": "Mostra quantità disponibile"
+      },
+      "inventory_threshold": {
+        "label": "Soglia inventario basso"
+      },
+      "inventory_transfers_enable": {
+        "label": "Mostra avviso trasferimento inventario",
+        "info": "Scopri come creare trasferimenti di inventario [qui](https://help.shopify.com/en/manual/products/inventory/transfers/create-transfer)"
+      },
+      "additional_descriptions": {
+        "header": "Descrizioni aggiuntive",
+        "info_paragraph": "Puoi fornire informazioni aggiuntive relative a qualsiasi stato di inventario.",
+        "text_inputs": {
+          "additional__in_stock": "Disponibile",
+          "additional__few_on_stock": "Inventario basso",
+          "additional__out_of_stock": "Esaurito",
+          "additional__out_of_stock_continue_selling": "Esaurito (continua vendita)"
+        }
+      }
+    },
+    "buy_buttons": {
+      "name": "Pulsanti di acquisto",
+      "show_dynamic_checkout": {
+        "label": "Mostra pulsanti checkout dinamici",
+        "info": "Utilizzando i metodi di pagamento disponibili nel tuo negozio, i clienti vedono la loro opzione preferita, come PayPal o Apple Pay. [Scopri di più](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
+      },
+      "add_multipliers": {
+        "label": "Aggiungi moltiplicatori",
+        "info": "Valori interi separati da virgola. Mostra pulsanti dedicati per aggiungere più elementi al carrello con un singolo clic."
+      },
+      "add_multipliers_layout": {
+        "label": "Layout moltiplicatori aggiungi",
+        "options": {
+          "single_line": "Linea singola",
+          "stacked": "Impilati"
+        }
+      },
+      "show_gift_card_recipient": {
+        "label": "Mostra modulo informazioni destinatario per carte regalo",
+        "info": "Permette agli acquirenti di inviare carte regalo in una data programmata insieme a un messaggio personale. [Scopri di più](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
+      }
+    },
+    "product_description": {
+      "name": "Descrizione prodotto",
+      "enable_collapsible": "Mostra come elemento pieghevole",
+      "info": "L'intestazione pieghevole può essere modificata tramite il contenuto predefinito del tema"
+    },
+    "badges": {
+      "name": "Badge",
+      "info": "Mostra badge dei prodotti nella pagina prodotto.",
+      "position": {
+        "label": "Posizione",
+        "options": {
+          "over_media": "Sopra i media",
+          "text_column": "Colonna testo"
+        }
+      }
+    },
+    "share": {
+      "name": "Pulsanti condivisione",
+      "hide_on_desktop": {
+        "label": "Nascondi su desktop"
+      }
+    },
+    "similar_collections": {
+      "name": "Collezioni simili",
+      "to_exclude": {
+        "label": "Collezioni da escludere",
+        "info": "Aggiungi una lista separata da virgole di handle di collezione da escludere dalla lista"
+      }
+    },
+    "custom_liquid": {
+      "name": "Liquid personalizzato",
+      "custom_liquid": {
+        "label": "Liquid personalizzato"
+      }
+    },
+    "pickup_availability": {
+      "name": "Disponibilità ritiro",
+      "info": "La disponibilità di ritiro non viene mostrata? [Scopri di più.](https://help.shopify.com/en/manual/shipping/setting-up-and-managing-your-shipping/local-methods/local-pickupy)"
+    },
+    "collapsible_tab": {
+      "name": "Elemento pieghevole",
+      "info": "Utilizza per mostrare informazioni aggiuntive sui prodotti in un menu a tendina. Gli elementi pieghevoli possono essere impostati per aprirsi come cassetti dalle impostazioni della sezione Prodotto. Solo gli elementi con contenuto verranno mostrati, questo è utile quando si utilizzano fonti dinamiche.",
+      "icon": {
+        "label": "Icona",
+        "info": "L'icona predefinita per gli elementi pieghevoli è il simbolo Freccia e quando l'impostazione a livello di sezione \"Apri come cassetto\" è abilitata il simbolo Più viene utilizzato come predefinito.",
+        "options": {
+          "none": "Nessuna icona",
+          "default": "Predefinita",
+          "icon-caret__right": "Freccia (destra)",
+          "icon-caret__down": "Freccia (giù)",
+          "icon-gift": "Regalo",
+          "icon-map-pin": "Puntina mappa",
+          "icon-package": "Pacchetto",
+          "icon-plus": "Più",
+          "icon-truck": "Camion"
+        }
+      },
+      "custom_liquid": {
+        "label": "Liquid personalizzato come contenuto",
+        "info": "Utilizza questo per visualizzare contenuti più complessi con logica personalizzata nell'elemento pieghevole."
+      }
+    },
+    "sku": {
+      "name": "SKU"
+    },
+    "rating": {
+      "name": "Valutazione stelle"
+    },
+    "sibling_products": {
+      "name": "Prodotti correlati",
+      "info": "Mostra un selettore di varianti simile per altri prodotti. Funziona meglio quando diverse varianti di colore o taglia vengono utilizzate come prodotti separati.",
+      "products": {
+        "label": "Prodotti",
+        "info": "Fonte dinamica raccomandata"
+      }
+    },
+    "icons": {
+      "name": "Griglia icone",
+      "info": "Blocco ideale per visualizzare diversi certificati e altri timbri relativi ai prodotti. O per visualizzare loghi di spedizione o provider di pagamento, ecc. Supporta fino a 8 immagini.",
+      "icons_per_row": "Immagini per riga",
+      "header_for_grid_images": "Immagini griglia"
+    },
+    "section_header": {
+      "name": "Intestazione sezione",
+      "info": "Utilizza il blocco Intestazione sezione per titoli e descrizioni prima del contenuto effettivo.",
+      "heading_tags": {
+        "header": "Tag intestazione",
+        "info": "Scegli il tag HTML desiderato da utilizzare nell'intestazione. La selezione influenza la dimensione base dell'intestazione."
+      },
+      "subtitle_tag": "Tag HTML sottotitolo",
+      "title_tag": "Tag HTML intestazione",
+      "tab_title_tag": "Tag HTML titolo tab"
+    },
+    "upsell_products": {
+      "name": "Prodotti di upsell e complementari",
+      "info": "Visualizza i prodotti desiderati in modo che possano essere aggiunti al carrello con il prodotto principale della pagina o separatamente.",
+      "complementary_products_info": "Per utilizzare i prodotti complementari, prima aggiungi definisci i prodotti nell'app Ricerca e scoperta. Secondo, seleziona 'Prodotti complementari' come fonte dinamica per l'input prodotti. [Scopri di più](https://help.shopify.com/manual/online-store/search-and-discovery/product-recommendations)",
+      "products_info": "Seleziona fonte dinamica per i prodotti complementari.",
+      "card_style": {
+        "label": "Stile",
+        "options": {
+          "card": "Scheda",
+          "list": "Elenco"
+        }
+      },
+      "products_label": "Prodotti",
+      "behavior_label": "Comportamento",
+      "behavior_options": {
+        "default": "Aggiungi prodotti con il prodotto principale",
+        "separate": "Aggiungi prodotti separatamente"
+      },
+      "variant_selection_method": {
+        "label": "Metodo di selezione varianti",
+        "options": {
+          "dropdown": "Selettore a discesa",
+          "quick_buy": "Modal di anteprima rapida"
+        }
+      },
+      "info__3": "Quando si utilizza la prima opzione di comportamento, il blocco \"Pulsanti di acquisto\" deve essere attivo. Con la seconda opzione, i prodotti hanno i propri pulsanti aggiungi al carrello.",
+      "info__4": "Il selettore a discesa funziona solo con prodotti che hanno fino a 250 varianti. Per prodotti con più varianti, viene sempre applicato il modal di visualizzazione rapida."
+    },
+    "tab": {
+      "name": "Tab",
+      "info": "Utilizza questo blocco per visualizzare contenuto in un tab.",
+      "title": {
+        "label": "Titolo"
+      },
+      "richtext": {
+        "label": "Richtext"
+      }
+    },
+    "collection-tab": {
+      "name": "Tab collezione",
+      "info": "Utilizza questo blocco per visualizzare contenuto di collezione in un tab.",
+      "title": {
+        "label": "Titolo"
+      }
+    },
+    "products-tab": {
+      "name": "Tab prodotti",
+      "info": "Utilizza questo blocco per visualizzare contenuto di prodotti in un tab.",
+      "title": {
+        "label": "Titolo"
+      }
+    },
+    "vendor": {
+      "name": "Fornitore",
+      "enable_vendor_link": {
+        "label": "Abilita link fornitore",
+        "info": "Se abilitato, il nome del fornitore sarà un link alla collezione del fornitore."
+      }
+    },
+    "custom_spacing": {
+      "name": "Spaziatura personalizzata",
+      "info": "Utilizza questo blocco per sovrascrivere le impostazioni di spaziatura predefinite per questa sezione specifica."
+    },
+    "banner": {
+      "overlay": {
+        "header": "Sovrapposizione",
+        "info": "La sovrapposizione verrà mostrata sopra l'immagine o il video della banner."
+      }
+    },
+    "banner_image": {
+      "name": "Banner / Immagine"
+    },
+    "banner_video": {
+      "name": "Banner / Video"
+    },
+    "banner_text": {
+      "name": "Banner / Testo",
+      "info": "Banner di testo"
+    },
+    "banner_product": {
+      "name": "Banner / Prodotto"
+    },
+    "property_bars": {
+      "name": "Barre proprietà",
+      "info": "Metti in evidenza le proprietà dei prodotti con barre proprietà. Questo blocco funziona meglio con una fonte dinamica. [Scopri di più](https://themes.woolman.co/blogs/sampo/product-metafields)",
+      "bar_definitions": "Definizioni barre",
+      "bar_definitions_info": "Utilizza il formato seguente per ogni proprietà: \"Etichetta inizio|Etichetta fine|Valore\". Il valore deve essere un numero tra 0-100.",
+      "bars": {
+        "1": "Barra 1 / Etichette e valore",
+        "2": "Barra 2 / Etichette e valore",
+        "3": "Barra 3 / Etichette e valore",
+        "4": "Barra 4 / Etichette e valore",
+        "5": "Barra 5 / Etichette e valore"
+      },
+      "properties_array": "Array proprietà",
+      "properties_array_info": "Lista separata da virgole delle proprietà. Utilizza il formato seguente per ogni proprietà: \"Etichetta inizio|Etichetta fine|Valore\"."
+    }
+  },
+  "sections": {
+    "blogs_and_articles": {
+      "articles_per_row": "Articoli per riga",
+      "article_card_layout": {
+        "label": "Layout",
+        "traditional": "Testo sotto immagine",
+        "image": "Testo sopra immagine"
+      }
+    },
+    "cards": {
+      "style": {
+        "label": "Stile",
+        "options": {
+          "card": "Card",
+          "traditional": "Tradizionale"
+        }
+      },
+      "text_position": {
+        "label": "Posizione testo",
+        "groups": {
+          "below_media": "Sotto i media",
+          "overlay": "Sovrapposizione"
+        },
+        "options": {
+          "without_background": "Fuori dalla card",
+          "with_card_background": "All'interno della card"
+        }
+      },
+      "card_background": {
+        "label": "Sfondo card",
+        "options": {
+          "default": "Solido",
+          "gradient": "Gradiente",
+          "transparent": "Trasparente"
+        }
+      },
+      "custom_image": {
+        "label": "Immagine personalizzata",
+        "info": "Opzionale. Sovrascrive l'immagine predefinita."
+      }
+    },
+    "colors": {
+      "foreground": "Testo",
+      "background": "Sfondo",
+      "background_gradient": "Sfondo gradiente",
+      "background_gradient_info": "Utilizzato nelle pagine dei prodotti e in varie sezioni.",
+      "borders": "Bordi",
+      "button_text": "Testo pulsante",
+      "button_background": "Sfondo pulsante",
+      "button_outline": "Pulsante contorno / Link",
+      "card_foreground": "Testo card",
+      "card_background": "Sfondo card",
+      "card_borders": "Bordi card",
+      "card_button_text": "Testo pulsante card",
+      "card_button_background": "Sfondo pulsante card",
+      "heading_color": "Colore intestazione",
+      "text_color": "Colore testo",
+      "overlay_text": "Testo sovrapposizione",
+      "overlay_buttons": "Pulsanti sovrapposizione",
+      "overlay_color": "Colore sovrapposizione",
+      "overlay_opacity": "Opacità sovrapposizione",
+      "overlay_blur": "Sfocatura sovrapposizione",
+      "color_scheme": {
+        "label": "Schema colori",
+        "overwrite_info": "Quando impostato sovrascrive il valore predefinito degli schemi di colori"
+      },
+      "media_bg": {
+        "label": "Sfondo media"
+      },
+      "light": "Chiaro",
+      "dark": "Scuro"
+    },
+    "indicators": {
+      "label": "Indicatori",
+      "dots": "Punti",
+      "progress_bars": "Barre",
+      "hide": "Nascondi",
+      "top": "Alto",
+      "bottom": "Basso"
+    },
+    "typography": {
+      "select_font": "Seleziona font",
+      "use_base_font": "Font corpo",
+      "use_base_font_bold": "Font corpo (grassetto)",
+      "use_heading_font": "Font intestazione",
+      "use_subheading_font": "Font sottotitolo",
+      "font_size": "Dimensione font",
+      "heading_size": "Dimensione intestazione",
+      "font_size_multiplier": "Dimensione font",
+      "line_height": "Altezza riga",
+      "letter_spacing": "Spaziatura lettere",
+      "uppercase": "Abilita maiuscolo",
+      "text_align": "Allineamento testo",
+      "style_options": {
+        "heading_style_label": "Stile intestazione",
+        "question_style_label": "Stile domanda",
+        "text_group": "Stili testo",
+        "heading": "Intestazione",
+        "subheading": "Sottotitolo",
+        "body_text": "Testo corpo",
+        "body_text_bold": "Testo corpo (grassetto)",
+        "button_group": "Stili pulsanti",
+        "primary_button": "Primario",
+        "secondary_button": "Secondario",
+        "link": "Link",
+        "tab_title_style_label": "Stile titolo tab"
+      },
+      "weight_options": {
+        "label": "Peso font",
+        "normal": "Normale",
+        "bold": "Grassetto"
+      },
+      "size_options": {
+        "label": "Modificatore dimensione",
+        "label_mobile": "Modificatore dimensione mobile",
+        "label_desktop": "Modificatore dimensione desktop",
+        "label_heading": "Modificatore dimensione intestazione",
+        "label_text": "Modificatore dimensione testo",
+        "label_button": "Modificatore dimensione pulsante",
+        "tiny": "Minuscolo",
+        "small": "Piccolo",
+        "regular": "Regolare",
+        "default": "Predefinito",
+        "normal": "Normale",
+        "medium": "Medio",
+        "large": "Grande",
+        "huge": "Enorme",
+        "gigantic": "Gigantesco",
+        "outrageous": "Straordinario"
+      },
+      "heading_tag": {
+        "label": "Tag HTML",
+        "info": "Scegli il tag HTML desiderato da utilizzare nell'intestazione. La selezione influenza la dimensione base dell'intestazione.",
+        "h1": "H1",
+        "h2": "H2",
+        "h3": "H3",
+        "h4": "H4",
+        "h5": "H5",
+        "h6": "H6"
+      },
+      "text_transform": {
+        "label": "Stile testo",
+        "none": "Normale",
+        "uppercase": "Maiuscolo"
+      },
+      "link_icon": {
+        "show_label": "Mostra freccia link"
+      }
+    },
+    "buttons": {
+      "color_scheme": "Schema colori pulsante",
+      "invert_colors": {
+        "label": "Colori pulsante invertiti",
+        "info": "Non influenza il pulsante stilizzato come link"
+      },
+      "style": {
+        "label": "Stile pulsante",
+        "primary": "Primario",
+        "secondary": "Secondario",
+        "link": "Link"
+      },
+      "width": {
+        "label": "Larghezza pulsante",
+        "full": "Completo",
+        "inline": "Normale"
+      },
+      "button_group": {
+        "full_width_buttons": {
+          "label": "Pulsanti larghezza completa"
+        }
+      }
+    },
+    "images": {
+      "bg_image": "Immagine sfondo",
+      "bg_image__info": "Se il video è impostato, l'immagine viene utilizzata come immagine di anteprima per il video.",
+      "bg_video": "Video sfondo",
+      "cover_image": "Immagine copertina",
+      "aspect_ratio": {
+        "label": "Rapporto d'aspetto immagine",
+        "info": "Lascia il rapporto d'aspetto come 'Naturale' per disabilitare la forzatura del rapporto d'aspetto",
+        "natural": "Naturale",
+        "portrait_2_3": "Ritratto (2:3)",
+        "portrait_3_4": "Ritratto (3:4)",
+        "square": "Quadrato (1:1)",
+        "landscape_4_3": "Paesaggio (4:3)",
+        "landscape_16_9": "Paesaggio (16:9)"
+      },
+      "fill_rule": {
+        "label": "Adattamento media",
+        "contain": "Originale",
+        "cover": "Riempi"
+      },
+      "focal_point": {
+        "label": "Punto focale",
+        "image_label": "Punto focale immagine",
+        "video_label": "Punto focale video",
+        "info": "Regola il punto focale per mantenere il soggetto dell'immagine in vista."
+      },
+      "media_toggle": {
+        "label": "Media mostrato",
+        "show_image": "Immagine",
+        "show_video": "Video",
+        "info": "Utilizzato sia su mobile che su desktop."
+      },
+      "image_height": "Altezza immagine",
+      "image_link": "Link immagine",
+      "recommendations": {
+        "landscape": "Rapporto d'aspetto paesaggio raccomandato",
+        "portrait": "Rapporto d'aspetto ritratto raccomandato"
+      },
+      "svg": {
+        "label": "Immagine SVG",
+        "info": "Immagine SVG opzionale. [Scopri di più.](https://themes.woolman.co/blogs/sampo/videos-and-images-in-sections#using-svgs)"
+      }
+    },
+    "layout": {
+      "grid_gap": "Gap griglia",
+      "item_gap": "Gap elemento",
+      "image_gap": "Gap immagine",
+      "columns": "Colonne",
+      "direction": {
+        "label": "Direzione",
+        "ltr": "Da sinistra a destra",
+        "rtl": "Da destra a sinistra"
+      },
+      "position": {
+        "content_label": "Posizione contenuto",
+        "heading_label": "Posizione intestazione",
+        "text_label": "Posizione testo",
+        "groups": {
+          "overlay": "Sovrapposizione",
+          "by_side": "Affiancato"
+        },
+        "options": {
+          "top": "Alto",
+          "middle": "Centro",
+          "bottom": "Basso",
+          "left": "Sinistra",
+          "center": "Centro",
+          "right": "Destra",
+          "top_left": "Alto sinistra",
+          "top_center": "Alto centro",
+          "top_right": "Alto destra",
+          "middle_left": "Centro sinistra",
+          "middle_center": "Centro centro",
+          "middle_right": "Centro destra",
+          "bottom_left": "Basso sinistra",
+          "bottom_center": "Basso centro",
+          "bottom_right": "Basso destra",
+          "above": "Sopra",
+          "below": "Sotto",
+          "below_left": "Sotto sinistra",
+          "below_center": "Sotto centro",
+          "below_right": "Sotto destra",
+          "below_justified": "Sotto giustificato",
+          "justify": "Giustifica",
+          "justify_with_buttons": "Giustifica (con pulsanti)",
+          "arrow_up": "↑",
+          "arrow_down": "↓",
+          "arrow_left": "←",
+          "arrow_right": "→"
+        }
+      },
+      "x_y_position": {
+        "vertical_label": "Posizione verticale",
+        "horizontal_label": "Posizione orizzontale",
+        "vertical_info": "0% alto, 100% basso",
+        "horizontal_info": "0% sinistra, 100% destra"
+      },
+      "fractions": {
+        "one_half": "Una metà (1/2)",
+        "one_third": "Un terzo (1/3)",
+        "two_thirds": "Due terzi (2/3)",
+        "one_fourth": "Un quarto (1/4)",
+        "two_fourths": "Due quarti (2/4)",
+        "three_fourth": "Tre quarti (3/4)"
+      },
+      "sizes": {
+        "natural": "Naturale",
+        "adapt": "Adatta",
+        "small": "Piccolo",
+        "medium": "Medio",
+        "large": "Grande"
+      },
+      "margin_top": "Margine superiore",
+      "margin_bottom": "Margine inferiore",
+      "padding": "Spaziatura",
+      "paddings": {
+        "top": "Spaziatura superiore",
+        "right": "Spaziatura destra",
+        "bottom": "Spaziatura inferiore",
+        "left": "Spaziatura sinistra",
+        "banner": "Spaziatura banner"
+      },
+      "section_width": {
+        "label": "Larghezza sezione",
+        "full_width": "Larghezza completa",
+        "contained": "Contenuto",
+        "wide": "Largo",
+        "narrow": "Stretto",
+        "edge_to_edge": "Bordo a bordo"
+      },
+      "content_width": {
+        "label": "Larghezza contenuto testo",
+        "label_max_width": "Larghezza massima contenuto testo",
+        "full": "Completo",
+        "wide": "Largo",
+        "default": "Predefinito",
+        "narrow": "Stretto",
+        "12_columns": "Completo",
+        "10_columns": "Molto largo",
+        "8_columns": "Largo",
+        "6_columns": "Medio",
+        "4_columns": "Stretto"
+      },
+      "media_width": {
+        "label": "Larghezza media",
+        "extra_large": "Molto largo",
+        "large": "Largo",
+        "medium": "Medio",
+        "small": "Piccolo"
+      },
+      "section_height": {
+        "label": "Altezza sezione",
+        "pixel_height_label": "Altezza sezione in pixel",
+        "group": {
+          "by_pixels": "Per pixel",
+          "static": "Statico",
+          "relative": "Relativo"
+        },
+        "auto": "Naturale",
+        "250px": "250px",
+        "350px": "350px",
+        "450px": "450px",
+        "550px": "550px",
+        "750px": "750px",
+        "100vh": "Schermo completo"
+      },
+      "collections_per_row": "Collezioni per riga",
+      "items_per_row": "Elementi per riga",
+      "columns_per_row": "Colonne per riga",
+      "products_per_row": "Prodotti per riga",
+      "display_type": {
+        "label": "Tipo di visualizzazione",
+        "grid": "Griglia",
+        "slider": "Presentazione",
+        "slider_peek": "Presentazione (Elementi che sbirciano)",
+        "tablet_paragraph": "Le impostazioni predefinite del tablet ereditano dalle impostazioni desktop."
+      },
+      "media_position": {
+        "label": "Posizione media",
+        "info": "Posizione media relativa agli altri contenuti della sezione.",
+        "media_first": "Media prima",
+        "media_last": "Media dopo",
+        "media_left": "Sinistra",
+        "media_right": "Destra",
+        "media_top": "Sopra",
+        "media_below": "Sotto"
+      }
+    },
+    "banners": {
+      "label": "Banner",
+      "info": "Evidenzia prodotti specifici, promozioni o messaggi del brand. [Scopri di più.](https://themes.woolman.co/blogs/sampo/product-grid-banners)",
+      "banner_width": {
+        "label": "Larghezza banner"
+      },
+      "column_span": {
+        "label": "Larghezza colonna banner",
+        "info": "Non può superare la quantità di elementi per riga."
+      },
+      "banner_height": {
+        "label": "Altezza banner",
+        "full_screen": "Schermo completo"
+      },
+      "media_content": {
+        "header": "Contenuto media"
+      },
+      "visibility": {
+        "header": "Visibilità",
+        "nth_item": "Mostra banner dopo l'n-esimo elemento nella pagina",
+        "nth_item__info": "Se la griglia non ha abbastanza elementi nella pagina per posizionare il banner nella posizione desiderata, il banner sarà nascosto.",
+        "only_on_first_page": "Mostra solo nella prima pagina",
+        "only_on_first_page__info": "Se disabilitato, mostra il banner in tutte le pagine nella posizione definita."
+      }
+    },
+    "headers": {
+      "content": "Contenuto",
+      "overlay_content": "Contenuto sovrapposizione",
+      "layout": "Layout",
+      "text_content": "Contenuto testo",
+      "button": "Pulsante",
+      "products": "Prodotti",
+      "section_header": "Intestazione sezione",
+      "color": "Impostazioni colori",
+      "style": "Impostazioni stile",
+      "style_and_layout": "Stile e layout",
+      "hotspot": "Punto caldo",
+      "advanced": "Avanzato",
+      "motion": "Impostazioni movimento",
+      "mobile_layout": "Layout mobile",
+      "tablet_layout": "Layout tablet",
+      "desktop_layout": "Layout desktop",
+      "mobile_settings": "Impostazioni mobile",
+      "tablet_settings": "Impostazioni tablet",
+      "desktop_settings": "Impostazioni desktop",
+      "custom_settings": "Impostazioni personalizzate",
+      "custom_settings_info": "Impostazioni personalizzate obbligatorie per sovrascrivere l'aspetto predefinito.",
+      "slideshow_settings": "Impostazioni presentazione",
+      "tab_title_settings": "Impostazioni titolo tab",
+      "tab_title_settings_info": "Questi controllano gli stili del titolo del tab collezione e del tab prodotti",
+      "tab_title_desktop_layout": "Layout titolo tab desktop",
+      "tab_title_mobile_layout": "Layout titolo tab mobile"
+    },
+    "paragraphs": {
+      "tablet_layout_info": "Predefiniti dalle impostazioni di layout desktop.",
+      "advanced_info": "Impostazioni avanzate per utenti esperti e sviluppatori."
+    },
+    "sliders": {
+      "slideshow_toggle_info": "Utilizzato con il tipo di visualizzazione \"Presentazione\".",
+      "enable_autoplay": {
+        "label": "Abilita riproduzione automatica"
+      },
+      "autoplay_speed": {
+        "label": "Intervallo riproduzione automatica",
+        "info": "La presentazione ruota nell'intervallo dato"
+      },
+      "sliding_behavior": {
+        "label": "Comportamento scorrimento",
+        "info": "Seleziona quanti slide copre un singolo movimento di scorrimento. Utilizzato con riproduzione automatica e frecce.",
+        "options": {
+          "single": "Uno per volta",
+          "all": "Tutti visibili",
+          "image_cycle": "Ciclo immagini"
+        }
+      },
+      "slider_overflow": {
+        "label": "Visibilità overflow",
+        "info": "Seleziona come visualizzare gli elementi fuori dal slider. Effetto visibile su schermi grandi.",
+        "options": {
+          "hidden": "Nascosto",
+          "visible": "Visibile"
+        }
+      }
+    },
+    "gallery": {
+      "name": "Galleria",
+      "info": "Utilizza questa sezione per mostrare immagini e video in un layout stile masonry. [Scopri di più.](https://themes.woolman.co/blogs/sampo/gallery)",
+      "settings": {
+        "item_width": {
+          "label": "Larghezza elemento",
+          "options": {
+            "full": "Larghezza completa",
+            "half": "Una metà (1/2)",
+            "one_third": "Un terzo (1/3)",
+            "two_thirds": "Due terzi (2/3)",
+            "one_quarter": "Un quarto (1/4)",
+            "three_quarters": "Tre quarti (3/4)",
+            "one_sixth": "Un sesto (1/6)"
+          }
+        }
+      }
+    },
+    "promo-grid-slideshow": {
+      "name": "Griglia promozionale e presentazione",
+      "info": "Utilizza questa sezione per evidenziare vari contenuti in un layout a griglia o presentazione. Il contenuto può essere gestito tramite i blocchi della sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/banner-grid)",
+      "settings": {
+        "block_aspect_ratio": {
+          "label": "Rapporto d'aspetto banner",
+          "info": "Rapporto d'aspetto minimo per tutti i banner. I banner di testo e prodotto possono estendere l'altezza del banner della riga oltre questa impostazione."
+        },
+        "block_width": {
+          "label": "Larghezza blocco",
+          "info": "Non supererà il valore delle colonne."
+        }
+      },
+      "blocks": {
+        "media_link__info": "L'intera area del banner funzionerà come link indipendentemente dal contenuto della sovrapposizione.",
+        "title_style__info": "I pulsanti appariranno come disabilitati se il link del banner non è impostato.",
+        "product__paragraph": "Utilizza le opzioni sotto per cambiare l'aspetto del banner prodotto. L'opzione predefinita si riferisce ai valori delle impostazioni del tema.",
+        "product_card_content": {
+          "label": "Contenuto testo card",
+          "options": {
+            "default": "Predefinito",
+            "group__theme_settings": "Impostazioni tema",
+            "group__overwrite": "Sovrascrivi",
+            "name_and_price": "Mostra nome e prezzo",
+            "name_only": "Mostra solo nome",
+            "hide_all": "Nascondi tutto"
+          }
+        }
+      }
+    },
+    "collection-list": {
+      "name": "Lista collezioni",
+      "info": "Utilizza questa sezione per mostrare le collezioni di prodotti nel tuo negozio. [Scopri di più.](https://themes.woolman.co/blogs/sampo/collection-list)"
+    },
+    "collection-or-products-switcher": {
+      "name": "Commutatore collezioni",
+      "info": "Puoi scegliere tra una collezione o una lista di prodotti impostata manualmente. [Scopri di più.](https://themes.woolman.co/blogs/sampo/collection-switcher)",
+      "settings": {
+        "collection": {
+          "label": "Per collezione"
+        },
+        "product_list": {
+          "label": "Per lista manuale",
+          "info": "Seleziona e organizza manualmente i prodotti mostrati."
+        },
+        "product_limit": {
+          "label": "Numero massimo di prodotti da mostrare"
+        },
+        "view_all": {
+          "info": "Disponibile con il tab collezione."
+        }
+      }
+    },
+    "contact-form": {
+      "name": "Modulo di contatto",
+      "info": "Utilizza questa sezione per fornire un modulo di contatto per i tuoi clienti. [Scopri di più.](https://themes.woolman.co/blogs/sampo/contact-page)",
+      "email": {
+        "input": "Campo email",
+        "label": "Email",
+        "info": "Indirizzo email dove verranno inviati i messaggi del modulo. Questo è un blocco obbligatorio."
+      },
+      "input": {
+        "label": "Campo personalizzato",
+        "info": "Aggiungi un nuovo campo di input personalizzato al modulo."
+      }
+    },
+    "custom-liquid": {
+      "name": "Liquid personalizzato",
+      "info": "Utilizza questa sezione per aggiungere soluzioni personalizzate che richiedono logica Liquid, come modifiche rapide del tema o inserimenti di app. [Scopri di più.](https://themes.woolman.co/blogs/sampo/custom-liquid)",
+      "settings": {
+        "custom_liquid": {
+          "label": "Liquid personalizzato"
+        }
+      }
+    },
+    "faq": {
+      "name": "Pieghevole / FAQ",
+      "info": "Utilizza questa sezione per mostrare risposte a domande frequenti. [Scopri di più.](https://themes.woolman.co/blogs/sampo/collapsible-faq)",
+      "settings": {
+        "hide_image": {
+          "label": "Nascondi immagine su mobile"
+        }
+      },
+      "blocks": {
+        "question": {
+          "name": "Domanda",
+          "media_header": "Media (opzionale)"
+        },
+        "subheading": {
+          "name": "Sottotitolo",
+          "info": "Utilizza questo blocco per dividere le domande in gruppi."
+        }
+      }
+    },
+    "featured-blog": {
+      "name": "Post del blog",
+      "info": "Utilizza questa sezione per evidenziare i tuoi post del blog. Puoi scegliere di visualizzarli come presentazione o griglia. [Scopri di più.](https://themes.woolman.co/blogs/sampo/featured-blog-posts)",
+      "settings": {
+        "article_limit": {
+          "label": "Numero di articoli da mostrare"
+        },
+        "header_for_article_card_settings": {
+          "content": "Impostazioni card articolo"
+        }
+      }
+    },
+    "featured-collection-or-products": {
+      "name": "Collezione in evidenza",
+      "info": "Puoi scegliere tra una collezione o una lista di prodotti impostata manualmente. [Scopri di più.](https://themes.woolman.co/blogs/sampo/featured-collection)",
+      "settings": {
+        "collection": {
+          "label": "Per collezione",
+          "info": "Lascia vuoto per utilizzare la lista di prodotti manuale sotto."
+        },
+        "product_list": {
+          "label": "Per lista manuale",
+          "info": "Seleziona e organizza manualmente i prodotti mostrati."
+        },
+        "product_limit": {
+          "label": "Numero massimo di prodotti da mostrare"
+        },
+        "view_all": {
+          "info": "Disponibile con la selezione della collezione."
+        }
+      }
+    },
+    "featured-look": {
+      "name": "Look in evidenza",
+      "info": "Mostra un look in evidenza con un'immagine di prodotto e una lista di prodotti. [Scopri di più.](https://themes.woolman.co/blogs/sampo/featured-look)",
+      "settings": {
+        "image": {
+          "label": "L'immagine del look"
+        }
+      }
+    },
+    "featured-product": {
+      "name": "Prodotto in evidenza",
+      "info": "Mostra un prodotto in evidenza. [Scopri di più.](https://themes.woolman.co/blogs/sampo/featured-product)",
+      "custom_liquid_reference_info": "Per fare riferimento al prodotto della sezione, devi utilizzare il riferimento 'section.settings.product' nell'input Liquid personalizzato.",
+      "settings": {
+        "product_image_aspect_ratio": {
+          "label": "Rapporto d'aspetto immagine prodotto"
+        },
+        "image_grid_gap": {
+          "label": "Spazio tra elementi media"
+        },
+        "style_header": {
+          "content": "Impostazioni stile"
+        },
+        "style_paragraph": {
+          "content": "La selezione dello schema colori viene utilizzata per definire i colori di base. Inoltre puoi utilizzare colori di sfondo personalizzati per diverse parti della sezione."
+        },
+        "media_border_radius": {
+          "label": "Raggio bordo media"
+        },
+        "section_bg": {
+          "label": "Sfondo sezione",
+          "info": "Sovrascrive il colore dello schema"
+        },
+        "media_col_width": {
+          "label": "Larghezza colonna media",
+          "options": {
+            "narrow": "Stretta",
+            "medium": "Media",
+            "wide": "Larga",
+            "extra_wide": "Extra larga"
+          }
+        },
+        "desktop_info": {
+          "content": "Cambia le impostazioni di layout dell'immagine e della colonna per adattarsi meglio ai tuoi contenuti e immagini."
+        },
+        "media_zoom": {
+          "label": "Zoom media",
+          "options": {
+            "disabled": "Disabilitato",
+            "column": "Colonna",
+            "slider": "Slider"
+          },
+          "info": "Scegli il comportamento di zoom desiderato."
+        },
+        "media_layout": {
+          "label": "Layout media",
+          "options": {
+            "one-column": "Una colonna",
+            "two-columns": "Due colonne",
+            "two-columns-stacked": "Due colonne (primo elemento completo)",
+            "traditional-below-as-grid": "Miniature griglia sotto i media",
+            "traditional-below": "Miniature slider sotto i media",
+            "traditional-next-to": "Miniature slider accanto ai media",
+            "traditional-no-thumbnails": "Nessuna miniatura"
+          },
+          "groups": {
+            "grid": "Griglia",
+            "traditional": "Slider"
+          }
+        },
+        "media_gap": {
+          "label": "Spazio media prodotto",
+          "info": "Spazio tra i media del prodotto"
+        },
+        "show_thumbnails": {
+          "label": "Mostra miniature"
+        },
+        "mobile_info": {
+          "content": "I media del prodotto saranno presentati in uno slider su mobile."
+        },
+        "slider_peek": {
+          "label": "Utilizza elementi media che sbirciano"
+        },
+        "tabs": {
+          "info": "Blocchi tab"
+        }
+      }
+    },
+    "product-media-gallery": {
+      "name": "Galleria media prodotto",
+      "info": "Media del prodotto mostrati in una vista galleria. [Scopri di più.](https://themes.woolman.co/blogs/sampo/product-media-gallery)",
+      "settings": {
+        "media_bg": {
+          "label": "Sfondo media",
+          "options": {
+            "card": "Sfondo card",
+            "transparent": "Trasparente"
+          }
+        },
+        "variant_images": {
+          "label": "Immagini variante",
+          "info": "L'opzione \"Mostra gruppo selezionato\" mostrerà l'immagine della variante selezionata e tutte le immagini seguenti fino alla prossima immagine variante.",
+          "options": {
+            "all": "Mostra tutto",
+            "selected": "Mostra selezionata",
+            "selected_group": "Mostra gruppo selezionato"
+          }
+        }
+      }
+    },
+    "footer": {
+      "name": "Footer",
+      "info": "Gestisci il layout e lo stile del footer. Mostra icone di pagamento, icone social media, selettori di lingua e paese. Aggiungi contenuto del footer con [blocchi](https://themes.woolman.co/blogs/sampo/blocks-footer). [Scopri di più.](https://themes.woolman.co/blogs/sampo/layout-footer)",
+      "settings": {
+        "payment_enable": {
+          "label": "Mostra icone di pagamento"
+        },
+        "show_copyright": {
+          "label": "Mostra copyright"
+        },
+        "copyright_text": {
+          "label": "Testo copyright"
+        },
+        "header_for_social_media": {
+          "content": "Icone social media",
+          "info": "Per visualizzare i tuoi account social media, collegali nelle impostazioni del tuo tema."
+        },
+        "show_social": {
+          "label": "Mostra icone social media"
+        },
+        "header_for_language_selector": {
+          "content": "Selettore lingua",
+          "info": "Per aggiungere una lingua, vai alle tue [impostazioni lingua.](/admin/settings/languages)"
+        },
+        "enable_language_selector": {
+          "label": "Mostra selettore lingua"
+        },
+        "header_for_country_selector": {
+          "content": "Selettore paese/regione",
+          "info": "Per aggiungere un paese/regione, vai alle tue [impostazioni mercato.](/admin/settings/markets)"
+        },
+        "enable_country_selector": {
+          "label": "Mostra selettore paese/regione"
+        },
+        "enable_follow_on_shop_header": {
+          "content": "Segui su Shop",
+          "info": "Per permettere ai clienti di seguire il tuo negozio sull'app Shop dal tuo storefront, Shop Pay deve essere abilitato. [Scopri di più](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)"
+        },
+        "show_top_border": {
+          "label": "Mostra bordo superiore",
+          "info": "Mostrato sopra gli elementi Blocco Footer."
+        },
+        "show_bottom_border": {
+          "label": "Mostra bordo inferiore",
+          "info": "Mostrato sotto gli elementi Blocco Footer."
+        },
+        "show_back_to_top": {
+          "label": "Mostra link \"Torna in cima\""
+        },
+        "enable_follow_on_shop": {
+          "label": "Abilita Segui su Shop"
+        }
+      },
+      "blocks": {
+        "block_width": {
+          "label": "Larghezza colonna desktop",
+          "options": {
+            "one_fourth": "1/4 larghezza sito",
+            "one_third": "1/3 larghezza sito",
+            "one_half": "1/2 larghezza sito",
+            "two_thirds": "2/3 larghezza sito",
+            "full_width": "Larghezza completa"
+          }
+        },
+        "link_list": {
+          "name": "Navigazione",
+          "menu": {
+            "label": "Link rapidi"
+          }
+        },
+        "newsletter": {
+          "name": "Newsletter"
+        },
+        "image": {
+          "name": "Immagine",
+          "paragraph": "Aggiungi un'immagine personalizzata o SVG al Footer del sito.",
+          "image": {
+            "label": "Immagine"
+          },
+          "image_width": {
+            "label": "Larghezza immagine"
+          }
+        },
+        "custom_payment_icon": {
+          "name": "Icona pagamento personalizzata",
+          "paragraph": "Mostrata solo quando l'opzione Mostra icone di pagamento è attiva. Aggiungi un'immagine o codice SVG.",
+          "image": {
+            "label": "Immagine",
+            "info": "Dimensione consigliata 76x48 pixel. L'immagine viene visualizzata alla metà della dimensione in pixel."
+          },
+          "svg": {
+            "label": "SVG",
+            "info": "Dimensione consigliata 38x24 pixel."
+          }
+        }
+      }
+    },
+    "header": {
+      "name": "Header",
+      "info": "Gestisci la navigazione dell'header, il layout e lo stile. Aggiungi logo, impostazioni di sovrapposizione, contenuto nel menu e annunci tramite i blocchi della sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/layout-options)",
+      "settings": {
+        "header_for_navigation": {
+          "content": "Navigazione",
+          "info": "La navigazione include funzionalità robuste che ti permettono di costruire menu visivamente piacevoli. [Scopri di più.](https://themes.woolman.co/blogs/sampo/header-and-navigation)"
+        },
+        "drawer_menu": {
+          "label": "Menu primario",
+          "info": "Il menu primario mostra gli elementi del primo livello su desktop come scorciatoie"
+        },
+        "desktop_submenu_type": {
+          "label": "Tipo sottomenu desktop",
+          "options": {
+            "dropdown": "Dropdown",
+            "drawer": "Drawer"
+          }
+        },
+        "desktop_full_width": {
+          "label": "Desktop larghezza completa",
+          "info": "Espande la larghezza dell'header oltre la larghezza della pagina impostata in Impostazioni Tema > Layout."
+        },
+        "drawer_secondary_menu": {
+          "label": "Menu secondario",
+          "info": "Gli elementi del menu secondario sono mostrati solo nel drawer sotto gli elementi primari."
+        },
+        "color_schemes": {
+          "header": "Schema colori header",
+          "menu_drawer": "Schema colori menu drawer",
+          "toolbar": "Schema colori toolbar"
+        },
+        "header_for_toolbar": {
+          "content": "Toolbar",
+          "info": "Gli annunci e gli elementi di navigazione aggiuntivi sono mostrati nella Toolbar"
+        },
+        "secondary_menu": {
+          "label": "Link toolbar",
+          "info": "Questo menu non mostrerà elementi dropdown."
+        },
+        "announcements_type": {
+          "label": "Animazione annunci",
+          "options": {
+            "sliding_text": "Movimento lineare",
+            "slideshow": "Pausa e movimento"
+          }
+        },
+        "announcements_speed": {
+          "label": "Velocità annunci"
+        },
+        "languages_and_regions_header": {
+          "header": "Lingue e regioni",
+          "info": "Impostazioni utilizzate quando il negozio ha più opzioni configurate. Per aggiungere un paese/regione, vai alle tue [impostazioni mercato.](/admin/settings/markets). Per aggiungere lingue, vai alle tue [impostazioni lingua](/admin/settings/languages)."
+        },
+        "language_and_region_select": {
+          "label": "Selettore",
+          "options": {
+            "hide": "Nascondi",
+            "show_in_toolbar": "Mostra nella Toolbar",
+            "show_in_header": "Mostra nell'Header"
+          }
+        },
+        "show_social_icons": {
+          "label": "Mostra icone social"
+        },
+        "show_region_button": {
+          "label": "Mostra paese/regione",
+          "info": "Per aggiungere un paese/regione, vai alle tue [impostazioni mercato](/admin/settings/markets)."
+        },
+        "show_language_button": {
+          "label": "Mostra lingua",
+          "info": "Per aggiungere lingue, vai alle tue [impostazioni lingua](/admin/settings/languages)."
+        },
+        "region_menu": {
+          "label": "Stile paese/regione",
+          "info": "Per aggiungere un paese/regione, vai alle tue [impostazioni mercato.](/admin/settings/markets)",
+          "options": {
+            "hide": "Nascondi",
+            "globe": "Globo",
+            "neutral_flag": "Bandiera neutra",
+            "country_flag": "Bandiera paese",
+            "text": "Testo"
+          }
+        },
+        "region_group_by_continents": {
+          "label": "Raggruppa per continenti",
+          "info": "Raggruppa paesi/regioni per il loro continente"
+        },
+        "header_layout": {
+          "label": "Layout header",
+          "options": {
+            "logo_left_menu_left": "Logo a sinistra, menu a sinistra",
+            "logo_left_menu_center": "Logo a sinistra, menu al centro",
+            "logo_left_menu_drawer": "Logo a sinistra, menu drawer",
+            "logo_center_menu_left": "Logo al centro, menu a sinistra",
+            "logo_center_menu_below": "Logo al centro, menu sotto",
+            "logo_center_menu_drawer": "Logo al centro, menu drawer"
+          }
+        },
+        "header_sticky_behavior": {
+          "label": "Header sticky",
+          "options": {
+            "none": "Nessuno",
+            "fixed": "Sempre",
+            "scroll": "Su scorrimento verso l'alto"
+          }
+        },
+        "shortcut_limit": {
+          "label": "Quantità di link scorciatoia mostrati su desktop",
+          "info": "Imposta a 0 per nascondere i link scorciatoia su desktop"
+        },
+        "header_border_style": {
+          "label": "Bordo",
+          "options": {
+            "none": "Nessuno",
+            "shadow": "Ombra",
+            "default": "Predefinito"
+          }
+        },
+        "action_buttons_type": {
+          "label": "Pulsanti",
+          "info": "\"Icona\" utilizzata su mobile",
+          "options": {
+            "text": "Etichetta",
+            "icon": "Icona",
+            "icon_and_text": "Entrambi"
+          }
+        },
+        "dropdown_menu_cols": {
+          "label": "Colonne nei dropdown",
+          "info": "Quantità di colonne nel menu dropdown. Imposta a 0 per disabilitare."
+        }
+      },
+      "blocks": {
+        "logo": {
+          "name": "Header / Logo",
+          "info": "Aggiungi il logo del tuo negozio e regola la dimensione e il padding del logo. [Scopri di più.](https://themes.woolman.co/blogs/sampo/logo)",
+          "image": {
+            "label": "Immagine logo",
+            "info": ".png o .svg con sfondo trasparente consigliato."
+          },
+          "max_width_desktop": {
+            "label": "Larghezza logo desktop"
+          },
+          "padding_desktop": {
+            "label": "Padding desktop"
+          },
+          "max_width": {
+            "label": "Larghezza logo mobile"
+          },
+          "padding": {
+            "label": "Padding mobile"
+          }
+        },
+        "overlay": {
+          "name": "Header / Impostazioni sovrapposizione",
+          "info": "Quando si utilizza l'opzione sovrapposizione, l'header verrà visualizzato sopra la prima sezione con uno sfondo trasparente. Nota che quando la sovrapposizione è abilitata, l'header potrebbe coprire alcuni degli elementi nella tua prima sezione del template. [Scopri di più.](https://themes.woolman.co/blogs/sampo/overlay-options)",
+          "index": {
+            "label": "Sovrapposizione sulla home page"
+          },
+          "collection": {
+            "label": "Sovrapposizione sulle pagine collezione"
+          },
+          "product": {
+            "label": "Sovrapposizione sulle pagine prodotto"
+          },
+          "header_overlay_style": "Opzioni stile",
+          "inverted_colors": {
+            "label": "Colori invertiti",
+            "info": "Quando abilitato, i colori di sfondo e testo della sovrapposizione vengono scambiati."
+          },
+          "background_opacity": {
+            "label": "Opacità sfondo"
+          },
+          "logo_with_inverted_colors": {
+            "label": "Logo per colori invertiti",
+            "info": "Opzionale. Utilizzato se i colori invertiti sono attivi. È consigliato utilizzare le stesse dimensioni dell'immagine e formato file come in \"Header / Logo\"."
+          },
+          "templates": {
+            "label": "Sovrapposizione per template",
+            "info": "Lista di template di pagina. Separati da cambio riga. Controlla il colore utilizzato con il suffisso \":default\" o \":inverted\". Può anche includere il suffisso del template separato da un punto."
+          },
+          "disabled_templates": {
+            "label": "Disabilitato per template",
+            "info": "Lista di template di pagina. Separati da cambio riga. Può anche includere il suffisso del template separato da un punto."
+          },
+          "handles": {
+            "label": "Sovrapposizione per pagine",
+            "info": "Lista di handle di pagina. Separati da cambio riga."
+          }
+        },
+        "announcement": {
+          "name": "Toolbar / Annuncio",
+          "info": "Utilizza il blocco annuncio per visualizzare informazioni importanti ai tuoi clienti. [Scopri di più.](https://themes.woolman.co/blogs/sampo/announcements)"
+        },
+        "menu-banner": {
+          "name": "Megamenu / Banner",
+          "settings": {
+            "info_paragraph": {
+              "content": "Contenuto nel menu. Utilizza banner megamenu per migliorare l'esperienza di navigazione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/mega-menu)"
+            },
+            "menu_parent": {
+              "label": "Titolo elemento menu genitore",
+              "info": "Obbligatorio. Il contenuto del blocco è mostrato sotto l'elemento menu genitore. Sensibile alle maiuscole."
+            },
+            "order": {
+              "label": "Ordine",
+              "options": {
+                "before": "Prima dei link del menu",
+                "after": "Dopo i link del menu"
+              }
+            },
+            "header_for_image": {
+              "content": "Immagine"
+            },
+            "image_aspect_ratio": {
+              "info": "Nota: Utilizzare vari rapporti d'aspetto nei banner può causare layout irregolari."
+            },
+            "header_dropdown_layout": "Layout a discesa",
+            "header_drawer_layout": "Layout cassetto"
+          }
+        },
+        "menu-collection": {
+          "name": "Megamenu / Collezione",
+          "info": "Utilizza questo blocco per mostrare elementi di una collezione nel megamenu. [Scopri di più](https://themes.woolman.co/blogs/sampo/header-and-navigation#mega-menu)",
+          "settings": {
+            "menu_parent": {
+              "label": "Titolo elemento menu genitore",
+              "info": "Obbligatorio. Il contenuto del blocco è mostrato sotto l'elemento menu genitore. Sensibile alle maiuscole."
+            },
+            "collection": {
+              "label": "Seleziona collezione",
+              "info": "Seleziona una collezione da dove verranno mostrati i prodotti."
+            },
+            "product_list": {
+              "label": "Seleziona prodotti",
+              "info": "Seleziona e organizza manualmente i prodotti mostrati."
+            },
+            "product_limit": {
+              "label": "Numero di prodotti da mostrare"
+            }
+          }
+        }
+      }
+    },
+    "countdown": {
+      "name": "Conto alla rovescia",
+      "info": "Evidenzia eventi attuali come lanci di prodotti e collezioni, campagne di vendita, ecc. [Scopri di più.](https://themes.woolman.co/blogs/sampo/countdown)",
+      "settings": {
+        "end_date": {
+          "label": "Data di scadenza",
+          "info": "Formato: AAAA-MM-GG HH:MM (GTM). Se vuoto, il contenuto della data post verrà renderizzato."
+        },
+        "header_for_pre_date_content": {
+          "content": "Contenuto pre-data"
+        },
+        "header_for_post_date_content": {
+          "content": "Contenuto post-data"
+        }
+      }
+    },
+    "hero": {
+      "name": "Hero promozionale",
+      "info": "Gestisci il contenuto tramite i blocchi della sezione. Utilizza le opzioni sotto per cambiare lo stile e il layout della sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/hero-banner)",
+      "parallax_effect": {
+        "label": "Abilita effetto parallax",
+        "info": "Quando abilitato, il media del hero si muoverà più lentamente del contenuto quando si scorre."
+      }
+    },
+    "image-with-text": {
+      "name": "Immagine con testo",
+      "info": "Gestisci il contenuto della sezione tramite i blocchi della sezione. E utilizza le opzioni sotto per cambiare lo stile e il layout generale di questa sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/image-with-text)",
+      "presets": {
+        "title": "Immagine con testo",
+        "text": "<p>Utilizza il blocco \"Sfondo sezione\" per dare alla sezione più profondità e carattere. Funziona meglio con un'immagine che ha uno sfondo trasparente. Puoi anche scegliere di visualizzare contenuto video invece di un'immagine.</p>",
+        "button_label": "Etichetta pulsante"
+      }
+    },
+    "image-with-hotspots": {
+      "name": "Immagine con hotspot",
+      "info": "Gestisci il contenuto della sezione tramite i blocchi della sezione. E utilizza le opzioni sotto per cambiare lo stile e il layout generale di questa sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/image-with-hotspots)",
+      "numbered_hotspots": "Hotspot numerati",
+      "image_info": "I media selezionati verranno visualizzati nel loro rapporto d'aspetto naturale."
+    },
+    "popup-links": {
+      "name": "Link popup",
+      "info": "Gestisci il contenuto della sezione tramite i blocchi della sezione. Utilizza le opzioni sotto per cambiare lo stile e il layout generale di questa sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/popup-links)",
+      "icon_width": {
+        "label": "Larghezza icona pulsante"
+      },
+      "blocks": {
+        "popup": {
+          "name": "Pulsante e popup",
+          "info": "Cambia l'etichetta e l'immagine icona del pulsante popup. Aggiungi contenuto al popup. Ti consigliamo di utilizzare l'icona su tutti o nessuno dei pulsanti con lo stesso rapporto d'aspetto.",
+          "button_image": {
+            "label": "Icona pulsante",
+            "info": "Immagine di 480px di larghezza consigliata."
+          }
+        }
+      }
+    },
+    "main-404": {
+      "name": "Pagine 404"
+    },
+    "main-article": {
+      "name": "Articolo",
+      "info": "Gestisci il contenuto della sezione tramite i blocchi della sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/article)",
+      "blocks": {
+        "featured_image": {
+          "name": "Immagine in evidenza",
+          "full_screen_info": "Abilitare Schermo intero forzerà l'Immagine in evidenza in cima."
+        },
+        "content": {
+          "name": "Contenuto"
+        },
+        "title": {
+          "name": "Titolo"
+        },
+        "details": {
+          "name": "Dettagli"
+        },
+        "tags": {
+          "name": "Tag"
+        },
+        "hr": {
+          "name": "Linea orizzontale"
+        }
+      }
+    },
+    "main-blog": {
+      "name": "Blog",
+      "info": "Template blog che visualizza articoli da un blog specifico. Personalizza utilizzando blocchi, sezioni e impostazioni. [Scopri di più.](https://themes.woolman.co/blogs/sampo/blog-posts)",
+      "settings": {
+        "posts_per_page": {
+          "label": "Articoli per pagina"
+        },
+        "articles_per_row": {
+          "label": "Articoli per riga"
+        },
+        "show_blog_title": {
+          "label": "Mostra titolo blog"
+        },
+        "enable_filtering": {
+          "label": "Mostra filtri tag",
+          "info": "Se il blog non ha tag impostati, i filtri saranno nascosti."
+        },
+        "center_text": {
+          "label": "Centra titolo"
+        },
+        "grid_gap": {
+          "label": "Spazio tra articoli"
+        }
+      }
+    },
+    "article-navigation": {
+      "name": "Navigazione articolo",
+      "settings": {
+        "show_back_to_blog": "Mostra link \"Torna al blog\"",
+        "show_article_images": "Mostra immagini articolo",
+        "article_width": "Larghezza articolo"
+      }
+    },
+    "main-cart": {
+      "name": "Carrello"
+    },
+    "main-collection-banner": {
+      "name": "Header collezione",
+      "info": "Aggiungi una descrizione o un'immagine modificando la tua collezione. [Scopri di più](https://themes.woolman.co/blogs/sampo/collection-header)",
+      "settings": {
+        "show_image": {
+          "label": "Mostra immagine collezione"
+        },
+        "show_collection_image":{
+          "label": "Mostra immagine collezione",
+          "info": "Mostra l'immagine della collezione come sfondo dell'intestazione."
+        },
+        "center_text": {
+          "label": "Centra titolo e descrizione"
+        }
+      }
+    },
+    "main-collection-product-grid": {
+      "name": "Griglia prodotti",
+      "info": "Gestisci le impostazioni della griglia prodotti e aggiungi banner griglia utilizzando i blocchi della sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/product-grid)",
+      "settings": {
+        "products_per_page": {
+          "label": "Prodotti per pagina"
+        },
+        "show_count": {
+          "label": "Mostra conteggio prodotti"
+        },
+        "enable_sorting": {
+          "label": "Mostra opzioni di ordinamento"
+        },
+        "enable_filtering": {
+          "label": "Mostra opzioni di filtro"
+        },
+        "enable_swatches": {
+          "label": "Mostra campioni colore nelle opzioni di filtro",
+          "info": "Aggiungi campioni utilizzando [metafield categoria](https://help.shopify.com/en/manual/custom-data/metafields/category-metafields/using-category-metafields)."
+        },
+        "pagination": {
+          "label": "Paginazione",
+          "options": {
+            "default": "Pagine",
+            "load_more": "Pulsante",
+            "infinite": "Scorrimento infinito"
+          }
+        }
+      }
+    },
+    "main-list-collections": {
+      "name": "Lista tutte le collezioni",
+      "settings": {
+        "aspect_ratio": {
+          "label": "Rapporto d'aspetto card collezione"
+        },
+        "sort": {
+          "label": "Ordina per",
+          "options": {
+            "alphabetical": "Alfabetico (A-Z)",
+            "alphabetical_reversed": "Alfabetico (Z-A)",
+            "date_reversed": "Data, più recente prima",
+            "date": "Data, più vecchia prima",
+            "products_high": "Conteggio prodotti, più alto prima",
+            "products_low": "Conteggio prodotti, più basso prima"
+          }
+        },
+        "collections_per_row_desktop": {
+          "label": "Collezioni per riga (desktop)"
+        },
+        "collections_per_row_mobile": {
+          "label": "Collezioni per riga (mobile)"
+        }
+      }
+    },
+    "main-login": {
+      "name": "Modulo di accesso"
+    },
+    "main-page": {
+      "name": "Contenuto pagina",
+      "settings": {
+        "heading_text_align": {
+          "label": "Allineamento testo titolo"
+        },
+        "heading_size_multiplier": {
+          "label": "Dimensione titolo"
+        }
+      }
+    },
+    "main-product": {
+      "name": "Prodotto",
+      "info": "Gestisci il contenuto dai blocchi e le impostazioni generali da queste impostazioni. [Scopri di più.](https://themes.woolman.co/blogs/sampo/media-and-layout-traditional)",
+      "settings": {
+        "product_image_aspect_ratio": {
+          "label": "Rapporto d'aspetto immagine prodotto"
+        },
+        "image_grid_gap": {
+          "label": "Spazio tra elementi media"
+        },
+        "style_header": {
+          "content": "Impostazioni stile"
+        },
+        "container_border_radius": {
+          "label": "Raggio bordo contenitore"
+        },
+        "media_border_radius": {
+          "label": "Raggio bordo media"
+        },
+        "collapsible_row_header": {
+          "content": "Righe pieghevoli"
+        },
+        "open_as_drawer": {
+          "label": "Apri come drawer",
+          "info": "Quando abilitato, le righe pieghevoli aggiunte verranno aperte come drawer invece di un elemento pieghevole."
+        },
+        "sticky_buy_bar": {
+          "header": "Barra acquisti sticky",
+          "label": "Mostra barra acquisti sticky",
+          "info": "Il pulsante Aggiungi al carrello della barra acquisti sticky aggiungerà la variante attualmente selezionata nel carrello."
+        },
+        "media_col_width": {
+          "label": "Larghezza colonna media",
+          "options": {
+            "narrow": "Stretta",
+            "medium": "Media",
+            "wide": "Larga",
+            "extra_wide": "Extra larga"
+          }
+        },
+        "media_zoom": {
+          "label": "Zoom media",
+          "options": {
+            "disabled": "Disabilitato",
+            "column": "Colonna",
+            "slider": "Slider"
+          },
+          "info": "Scegli il comportamento di zoom desiderato."
+        },
+        "media_layout": {
+          "label": "Layout media",
+          "options": {
+            "one-column": "Una colonna",
+            "two-columns": "Due colonne",
+            "two-columns-stacked": "Due colonne (primo elemento completo)",
+            "traditional-below-as-grid": "Miniature griglia sotto i media",
+            "traditional-below": "Miniature slider sotto i media",
+            "traditional-next-to": "Miniature slider accanto ai media",
+            "traditional-no-thumbnails": "Nessuna miniatura"
+          },
+          "groups": {
+            "grid": "Griglia",
+            "traditional": "Slider"
+          }
+        },
+        "media_gap": {
+          "label": "Spazio media prodotto",
+          "info": "Spazio tra i media del prodotto"
+        },
+        "show_thumbnails": {
+          "label": "Mostra miniature"
+        },
+        "mobile_info": {
+          "content": "I media del prodotto saranno presentati in uno slider su mobile."
+        },
+        "slider_peek": {
+          "label": "Utilizza elementi media che sbirciano"
+        }
+      }
+    },
+    "main-product-big-image": {
+      "info": "Costruito per evidenziare l'immagine in evidenza e le caratteristiche del prodotto. Gli hotspot possono essere posizionati sopra l'immagine in evidenza. [Scopri di più.](https://themes.woolman.co/blogs/sampo/media-and-layout-big-image)",
+      "desktop_layout_info": "Quando l'immagine è in posizione centrale, le colonne del contenuto saranno divise a sinistra e a destra.",
+      "tablet_layout_info": "Su tablet e dispositivi mobile le colonne del contenuto verranno visualizzate sotto l'immagine in evidenza.",
+      "mobile_layout_info": "Sui dispositivi mobili i blocchi di contenuto verranno visualizzati in un'unica colonna sotto l'immagine in evidenza, nell'ordine in cui appaiono.",
+      "image_position": {
+      "label": "Posizione immagine",
+      "options": {
+        "left": "Sinistra",
+        "right": "Destra",
+        "center": "Centro"
+        }
+      },
+      "image_background": {
+        "label": "Sfondo immagine"
+      },
+      "image_offset": {
+        "label": "Offset orizzontale immagine"
+      },
+      "allow_overlap": {
+        "label": "Consenti al contenuto di sovrapporsi all'immagine",
+        "info": "Quando abilitato, l'immagine può sovrapporsi alle colonne del contenuto."
+      },
+      "image_size": {
+        "label": "Dimensione immagine",
+        "info": "Più grande è l'immagine più si sovrapporrà con altro contenuto.",
+        "options": {
+          "extra_small": "XS",
+          "small": "S",
+          "medium": "M",
+          "large": "L",
+          "extra_large": "XL"
+        }
+      },
+      "first_content_column_top_margin": {
+        "label": "Margine superiore prima colonna contenuto",
+        "info": "Applicato solo al layout desktop."
+      },
+      "second_content_column_top_margin": {
+        "label": "Margine superiore seconda colonna contenuto"
+      },
+      "extend_tablet_breakpoint": {
+        "label": "Estendi breakpoint tablet",
+        "info": "Quando abilitato, il layout tablet verrà utilizzato fino ai viewport di 1200px. Questo darà più spazio per le colonne del contenuto."
+      },
+      "tablet_single_column": {
+        "label": "Layout a colonna singola",
+        "info": "Quando abilitato, le colonne del contenuto divise verranno visualizzate in una singola colonna su tablet e dispositivi mobili."
+      },
+      "block_column": {
+        "label": "Colonna blocco",
+        "info": "Ogni blocco può essere posizionato su entrambi i lati dell'immagine in evidenza. Nota che i blocchi verranno impilati uno sopra l'altro su mobile.",
+        "options": {
+          "left": "Sinistra",
+          "right": "Destra"
+        }
+      }
+    },
+    "main-register": {
+      "name": "Modulo di registrazione"
+    },
+    "main-search": {
+      "name": "Pagina di ricerca",
+      "settings": {
+        "results_per_page": {
+          "label": "Risultati per pagina"
+        },
+        "results_per_row_desktop": {
+          "label": "Risultati per riga (desktop)"
+        },
+        "results_per_row_mobile": {
+          "label": "Risultati per riga (mobile)"
+        },
+        "show_count": {
+          "label": "Mostra conteggio risultati"
+        },
+        "enable_sorting": {
+          "label": "Mostra opzioni di ordinamento"
+        },
+        "enable_filtering": {
+          "label": "Mostra opzioni di filtro"
+        }
+      }
+    },
+    "popup-newsletter": {
+      "name": "Popup promozionale",
+      "settings": {
+        "test_mode": {
+          "label": "Abilita modalità test",
+          "info": "Se abilitato, le opzioni di visualizzazione verranno ignorate e il popup verrà visualizzato ad ogni caricamento della pagina. ATTENZIONE! Utilizza questo solo per i test e mai su un sito live."
+        },
+        "header_for_display_options": {
+          "content": "Opzioni di visualizzazione",
+          "info": "Se il negozio ha il banner cookie abilitato, il ritardo inizia a scorrere dopo che è stato dato il consenso ai cookie. Il tema riconosce solo il banner cookie che utilizza l'API Privacy Cliente di Shopify. [Leggi di più.](https://shopify.dev/api/consent-tracking)"
+        },
+        "delay": {
+          "label": "Ritardo",
+          "info": "Se il negozio ha il banner cookie abilitato, il ritardo inizia a scorrere dopo che è stato dato il consenso ai cookie. Il tema riconosce solo il banner cookie che utilizza l'API Privacy Cliente di Shopify. [Leggi di più.](https://shopify.dev/api/consent-tracking)"
+        },
+        "frequency": {
+          "label": "Frequenza",
+          "info": "Ritardo prima che il popup venga visualizzato",
+          "options": {
+            "once": "Una volta per visita",
+            "1_day": "Una volta al giorno",
+            "3_days": "Una volta ogni 3 giorni",
+            "7_days": "Una volta ogni 7 giorni",
+            "14_days": "Una volta ogni 14 giorni",
+            "30_days": "Una volta ogni 30 giorni",
+            "60_days": "Una volta ogni 60 giorni",
+            "90_days": "Una volta ogni 90 giorni"
+          }
+        }
+      },
+      "blocks": {
+        "btn_link_info": "Se lasciato vuoto, il pulsante chiuderà il popup.",
+        "newsletter_name": "Newsletter"
+      }
+    },
+    "newsletter": {
+      "name": "Newsletter",
+      "info": "I clienti che si iscrivono avranno il loro indirizzo email aggiunto alla [lista clienti](https://themes.woolman.co/blogs/sampo/newsletter) 'accetta marketing'. [Scopri di più.](https://themes.woolman.co/blogs/sampo/newsletter)",
+      "email_form_name": "Modulo",
+      "additional_info": "Informazioni aggiuntive",
+      "justify_on_desktop": {
+        "label": "Giustifica su desktop"
+      }
+    },
+    "password-footer": {
+      "name": "Footer"
+    },
+    "password-header": {
+      "name": "Header",
+      "settings": {
+        "header_for_logo": {
+          "content": "Logo",
+          "info": "Aggiungi il tuo logo come immagine o codice SVG."
+        },
+        "logo": {
+          "label": "Logo immagine",
+          "info": ".png con sfondo trasparente consigliato."
+        },
+        "logo_max_width": {
+          "label": "Larghezza logo"
+        }
+      }
+    },
+    "product-recommendations": {
+      "name": "Raccomandazioni prodotto",
+      "info": "Le raccomandazioni dinamiche utilizzano informazioni sugli ordini e sui prodotti per cambiare e migliorare nel tempo. [Scopri di più](https://help.shopify.com/themes/development/recommended-products)",
+      "settings": {
+        "product_limit": {
+          "label": "Numero di prodotti da mostrare"
+        }
+      }
+    },
+    "recently-viewed": {
+      "name": "Prodotti visualizzati di recente",
+      "info": "Questa sezione visualizza una lista di prodotti visualizzati di recente. Fino a un totale di 10 prodotti possono essere visti contemporaneamente. Se l'utente non ha prodotti visualizzati di recente, questa sezione non verrà visualizzata. [Scopri di più.](https://themes.woolman.co/blogs/sampo/recently-viewed-products)"
+    },
+    "rich-text": {
+      "name": "Testo ricco",
+      "info": "Sezione solo testo semplice. Aggiungi e modifica contenuto nei blocchi della sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/rich-text)",
+      "settings": {
+        "content_width": {
+          "label": "Larghezza contenuto"
+        },
+        "sm_content_position": {
+          "label": "Posizione contenuto"
+        }
+      }
+    },
+    "sliding-text": {
+      "name": "Testo e immagine scorrevoli",
+      "info": "Gestisci contenuto e impostazioni tramite i campi sotto. [Scopri di più.](https://themes.woolman.co/blogs/sampo/sliding-text)",
+      "settings": {
+        "speed": {
+          "label": "Velocità"
+        },
+        "pause_on_hover": {
+          "label": "Metti in pausa l'animazione al passaggio del mouse"
+        }
+      }
+    },
+    "testimonials": {
+      "name": "Testimonianze",
+      "info": "Le testimonianze possono essere gestite tramite i blocchi della sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/testimonials)",
+      "testimonials_per_row": "Testimonianze per riga",
+      "settings": {
+        "icon": {
+          "label": "Icona",
+          "options": {
+            "none": "Nessuna",
+            "stars": "Valutazione stelle",
+            "quotation_mark": "Virgolette"
+          }
+        },
+        "stars": {
+          "label": "Numero stelle valutazione",
+          "info": "Numero di stelle da mostrare nella valutazione. Visibile solo se l'icona è impostata su Valutazione stelle."
+        },
+        "autoplay": {
+          "label": "Abilita riproduzione automatica"
+        },
+        "autoplay_speed": {
+          "label": "Intervallo riproduzione automatica",
+          "info": "Le testimonianze ruotano nell'intervallo dato"
+        }
+      },
+      "blocks": {
+        "testimonial": {
+          "name": "Testimonianza"
+        }
+      }
+    },
+    "top_product_reviews": {
+      "name": "Recensioni prodotto top",
+      "info": "Le recensioni prodotto top possono essere gestite tramite i blocchi della sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/top-product-reviews)",
+      "testimonials_per_row": "Recensioni prodotto top per riga",
+      "settings": {
+        "icon": {
+          "label": "Icona",
+          "options": {
+            "none": "Nessuna",
+            "stars": "Valutazione stelle",
+            "quotation_mark": "Virgolette"
+          }
+        },
+        "stars": {
+          "label": "Numero stelle valutazione",
+          "info": "Numero di stelle da mostrare nella valutazione. Visibile solo se l'icona è impostata su Valutazione stelle."
+        },
+        "autoplay": {
+          "label": "Abilita riproduzione automatica"
+        },
+        "autoplay_speed": {
+          "label": "Intervallo riproduzione automatica",
+          "info": "Le recensioni ruotano nell'intervallo dato"
+        }
+      },
+      "blocks": {
+        "testimonial": {
+          "name": "Recensione prodotto top"
+        }
+      }
+    },
+    "animated_stats": {
+      "name": "Statistiche animate",
+      "info": "Testo e numeri animati possono essere gestiti tramite i blocchi della sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/text-with-animated-numbers)",
+      "items_per_row": "Elementi per riga",
+      "settings": {
+        "autoplay": {
+          "label": "Abilita riproduzione automatica"
+        },
+        "autoplay_speed": {
+          "label": "Intervallo riproduzione automatica",
+          "info": "Le recensioni ruotano nell'intervallo dato"
+        },
+        "animation_duration": {
+          "label": "Durata animazione"
+        },
+        "animation_delay": {
+          "label": "Ritardo animazione"
+        }
+      },
+      "blocks": {
+        "text_with_animated_number": {
+          "name": "Testo con numero animato",
+          "settings": {
+            "animated_number": {
+              "label": "Numero animato",
+              "info": "Nessun decimale per ora, solo numeri interi"
+            },
+            "prefix": {
+              "label": "Prefisso"
+            },
+            "suffix": {
+              "label": "Suffisso"
+            }
+          }
+        }
+      }
+    },
+    "multicolumn": {
+      "name": "Multicolonna",
+      "info": "Gestisci contenuto tramite i blocchi della sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/multicolumn)",
+      "presets": {
+        "title": "Titolo colonna",
+        "text": "<p>Utilizza le impostazioni del blocco per gestire media, testo e contenuto del pulsante per ogni colonna. Utilizza le impostazioni della sezione per cambiare le impostazioni di visualizzazione per tutte le colonne.</p>"
+      },
+      "headers": {
+        "media": "Media",
+        "text": "Testo",
+        "button_1": "Primo pulsante",
+        "button_2": "Secondo pulsante"
+      },
+      "blocks": {
+        "column": {
+          "name": "Colonna",
+          "info": "Aggiungi contenuto desiderato alla colonna. Tutti i campi sono opzionali. Se sia immagine che video sono impostati, il contenuto video verrà utilizzato."
+        }
+      }
+    },
+    "multirow": {
+      "name": "Multiriga",
+      "info": "Gestisci contenuto tramite i blocchi della sezione. [Scopri di più.](https://themes.woolman.co/blogs/sampo/multicolumn)",
+      "presets": {
+        "title": "Titolo riga",
+        "text": "<p>Utilizza le impostazioni del blocco per gestire media, testo e contenuto del pulsante per ogni riga. Utilizza le impostazioni della sezione per cambiare le impostazioni di visualizzazione per tutte le righe.</p>"
+      },
+      "headers": {
+        "media": "Media",
+        "text": "Testo",
+        "button_1": "Primo pulsante",
+        "button_2": "Secondo pulsante"
+      },
+      "blocks": {
+        "row": {
+          "name": "Riga",
+          "info": "Aggiungi contenuto desiderato alla riga. È consigliato utilizzare sia contenuto media che testo per ogni riga. Se sia immagine che video sono impostati, il contenuto video verrà utilizzato."
+        }
+      }
+    },
+    "video": {
+      "name": "Video",
+      "info": "Il lettore video ti permette di aggiungere un video a una pagina. [Scopri di più.](https://themes.woolman.co/blogs/sampo/video)"
+    },
+    "main-account": {
+      "name": "Account"
+    },
+    "main-addresses": {
+      "name": "Indirizzi"
+    },
+    "main-order": {
+      "name": "Ordine"
+    },
+    "ai_section": {
+      "name": "Sezione AI",
+      "info": "Crea la tua sezione personalizzata con AI. Scegli \"Aggiungi blocco\" e seleziona \"Genera\" per iniziare."
+    }
+  },
+  "section_groups": {
+    "header": "Gruppo header",
+    "aside": "Gruppo aside",
+    "footer": "Gruppo footer"
+  }
+}

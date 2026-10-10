@@ -1,0 +1,138 @@
+{%- comment -%}
+  Generates the main menu used in the header on desktop viewport.
+
+  Accepts:
+  - main_menu:              {Object} Linklist object (required)
+  - desktop_sub_menu_type:  {String} 'dropdown' or 'drawer', defaults to 'drawer' (optional)
+  - content_menu_titles:    {Array} Array of menu titles that have content (optional)
+
+  Used in:
+  - sections/header.liquid: Site header
+
+  Notes:
+  - Menu titles can have special characters to indicate different style of menu items
+    - ':::' at the end of the title indicates a badge style
+    - '***' at the end of the title indicates an emphasized link
+    - No special characters indicate a regular link
+{%- endcomment -%}
+
+{% liquid
+  if section.settings.dropdown_menu_cols != blank
+    assign dropdown_cols = section.settings.dropdown_menu_cols | split: ','
+  endif
+%}
+
+<nav class="header-main-menu position--{{ menu_position }}{% if menu_position == 'below' %} pb-16{% endif %}">
+  {% for menu_item in main_menu.links -%}
+
+    {%- liquid
+      if menu_item.title contains '---'
+        # '---' stands for a separator so skip this menu item
+        continue
+      elsif menu_item.title contains ':::'
+        assign menu_item_split = menu_item.title | split: ':::'
+        assign menu_item_title = menu_item_split[0] | strip
+        assign menu_item_style = 'style--badge-' | append: menu_item_split[1] | downcase | strip
+      elsif menu_item.title contains '***'
+        assign menu_item_title = menu_item.title | remove: '***' | strip
+        assign menu_item_style = 'style--emphasize'
+      else
+        assign menu_item_title = menu_item.title
+        assign menu_item_style = 'style--link'
+      endif
+
+      if menu_item.links != empty or content_menu_titles contains menu_item_title
+        assign has_subitems = true
+      else
+        assign has_subitems = false
+      endif
+    -%}
+
+    {%- if desktop_submenu_type == 'dropdown' and has_subitems -%}
+      {% liquid
+        assign menu_item_col_count = 1
+
+        if dropdown_cols[forloop.index0] != blank
+          assign menu_item_col_count = dropdown_cols[forloop.index0] | times: 1
+        endif
+      %}
+      <header-dropdown>
+        <details class="header-dropdown {% if menu_item_col_count == 1 %}--single{% endif %}" data-no-accordion-logic>
+          <summary class="header-main-menu-link --with-submenu {{ menu_item_style }}" aria-expanded="false">
+            {% if menu_item.url == '#' %}
+              {{ menu_item_title }}
+            {% else %}
+              <a href="{{ menu_item.url }}">{{ menu_item_title }}</a>
+            {% endif %}
+            {% render 'icon-chevron-down--small' %}
+          </summary>
+          <div class="sub-menu-content {% if menu_item_col_count == 1 %}--single{% elsif section.settings.enable_full_width %}--full full-width container{% else %}--full container{% endif %}">
+
+            {% if menu_item_col_count != 1 %}
+            <div class="grid grid-cols-{{ menu_item_col_count }}">
+            {% endif %}
+              {%- for sub_menu_item in menu_item.links -%}
+                {%- liquid
+                  if sub_menu_item.title contains '---'
+                    echo '<hr class="menu-divider"/>'
+                    continue
+                  elsif sub_menu_item.title contains ':::'
+                    assign sub_menu_item_split = sub_menu_item.title | split: ':::'
+                    assign sub_menu_item_title = sub_menu_item_split[0] | strip
+                    assign sub_menu_item_style = 'style--badge-' | append: sub_menu_item_split[1] | downcase | strip
+                  elsif sub_menu_item.title contains '***'
+                    assign sub_menu_item_title = sub_menu_item.title | remove: '***' | strip
+                    assign sub_menu_item_style = 'style--emphasize'
+                  else
+                    assign sub_menu_item_title = sub_menu_item.title
+                    assign sub_menu_item_style = 'style--link'
+                  endif
+                -%}
+                <div class="sub-menu">
+                  {% if sub_menu_item.url != '#' %}
+                    <a class="sub-menu-item" href="{{ sub_menu_item.url }}"><span class="{{ sub_menu_item_style }}">{{ sub_menu_item_title }}</span></a>
+                  {% else %}
+                    <div class="sub-menu-item">
+                      <span class="{{ sub_menu_item_style | replace: '--link', '--text' }}">{{ sub_menu_item_title }}</span>
+                    </div>
+                  {% endif %}
+                  {% if sub_menu_item.links != empty %}
+                    <div class="sub-sub-menu mt-4">
+                      {%- for sub_sub_menu_item in sub_menu_item.links -%}
+                        {%- liquid
+                          if sub_sub_menu_item.title contains '---'
+                            echo '<hr class="menu-divider"/>'
+                            continue
+                          elsif sub_sub_menu_item.title contains '***'
+                            assign sub_sub_menu_item_title = sub_menu_item.title | remove: '***' | strip
+                            assign sub_sub_menu_item_style = 'style--emphasize'
+                          else
+                            assign sub_sub_menu_item_title = sub_sub_menu_item.title
+                            assign sub_sub_menu_item_style = 'style--link'
+                          endif
+                        -%}
+                        <a class="sub-sub-menu-item size--small" href="{{ sub_sub_menu_item.url }}"><span class="{{ sub_sub_menu_item_style }}">{{ sub_sub_menu_item_title }}</span></a>
+                      {%- endfor -%}
+                    </div>
+                  {% endif %}
+                </div>
+              {%- endfor -%}
+
+              {% render 'megamenu-content', current_menu_parent: menu_item_title %}
+
+            {% if menu_item_col_count != 1 %}
+            </div>
+            {% endif %}
+          </div>
+        </details>
+      </header-dropdown>
+    {%- elsif has_subitems -%}
+      <button class="header-main-menu-link {{ menu_item_style }} --with-submenu js" data-drawer-submenu-open="{{ menu_item.url }}">{{ menu_item_title }} {% render 'icon-plus--small' %}</button>
+      <noscript>
+        <a role="button" class="header-main-menu-link --with-submenu no-js" href="{{ menu_item.url }}">{{ menu_item_title }}</a>
+      </noscript>
+    {%- else -%}
+      <a class="header-main-menu-link {{ menu_item_style }}" href="{{ menu_item.url }}">{{ menu_item_title }}</a>
+    {%- endif -%}
+  {%- endfor %}
+</nav>

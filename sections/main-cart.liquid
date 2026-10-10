@@ -1,0 +1,136 @@
+{%- liquid
+  # Blocks to variables
+  assign custom_spacing = section.blocks | where: 'type', 'custom_spacing' | first
+-%}
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+
+<div
+  id="{{ section.id }}"
+  data-id="{{ section.id }}"
+  class="main-cart container section-spacing color-{{ section.settings.color_scheme }}"
+  {% if custom_spacing -%}
+  style="--mt: {{ custom_spacing.settings.margin_top | append: 'px' }}; --sm-mt: {{ custom_spacing.settings.sm_margin_top | append: 'px' }}; --pt: {{ custom_spacing.settings.padding_top | append: 'px' }}; --pb: {{ custom_spacing.settings.padding_bottom | append: 'px' }}; --sm-pt: {{ custom_spacing.settings.sm_padding_top | append: 'px' }}; --sm-pb: {{ custom_spacing.settings.sm_padding_bottom | append: 'px' }};"
+  {%- endif %}>
+  <div class="grid">
+    <div class="cart-column col-12 {%- if settings.show_cart_recommendations %} col-md-8{% endif %}">
+      <header class="flex space-between vertical-bottom" style="gap: 24px;">
+        <h1>{{ 'templates.cart.shopping_cart' | t }}</h1>
+        <a class="link size--small" href="{{ routes.root_url }}">{{ 'general.continue_shopping' | t }}</a>
+      </header>
+
+      <form id="cart" action="{{ routes.cart_url }}" method="post">
+        {%- render 'cart-items' -%}
+        {%- render 'cart-shipping-notification' -%}
+        <div class="flex space-between mt-40">
+          {%- if settings.show_cart_note -%}
+            {%- render 'cart-note' -%}
+          {%- endif -%}
+          {%- render 'cart-footer', show_cart_link: false -%}
+        </div>
+      </form>
+    </div>
+
+    {%- if settings.show_cart_recommendations -%}
+    <div class="recommendations-column col-12 col-md-4">
+      {%- render 'cart-recommendations' -%}
+    </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart.name",
+  "class": "section--cart",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "default",
+      "label": "t:sections.colors.color_scheme.label"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "t:blocks.custom_spacing.name",
+      "type": "custom_spacing",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:blocks.custom_spacing.info"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.headers.desktop_layout"
+        },
+        {
+          "type": "range",
+          "id": "sm_margin_top",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "t:sections.layout.margin_top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "sm_padding_top",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "t:sections.layout.paddings.top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "sm_padding_bottom",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "t:sections.layout.paddings.bottom",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "t:sections.headers.mobile_layout"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "t:sections.layout.margin_top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "t:sections.layout.paddings.top",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "t:sections.layout.paddings.bottom",
+          "default": 0
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

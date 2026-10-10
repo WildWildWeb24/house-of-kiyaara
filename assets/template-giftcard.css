@@ -1,0 +1,120 @@
+.gift-card-container {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px var(--container-margin);
+  align-items: center;
+  justify-content: center;
+}
+.gift-card,
+.gift-card-info-and-actions {
+  width: min(100%, 330px);
+}
+
+.gift-card {
+  display: grid;
+  gap: 12px;
+  padding: 30px;
+  background: linear-gradient(45deg, var(--card-bg) 30%, var(--card-bg-with-transparency), var(--card-bg) 100%), radial-gradient( var(--card-bg-transparent), var(--card-bg-with-transparency) 125%);
+  color: var(--card-color);
+  border-radius: 20px;
+  box-shadow: 0 20px 12px rgba(0,0,0,0.15);
+  position: relative;
+  backdrop-filter: blur(20px);
+}
+.gift-card .logo {
+  max-width: 200px;
+}
+.gift-card-balance-info {
+  margin-bottom: 120px;
+}
+.the-qr-code {
+  width: 160px;
+  height: 160px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #FFF;
+  max-width: 160px;
+}
+.the-qr-code > * {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  width: 120px;
+  height: 120px;
+}
+.the-qr-code.loaded > * {
+  opacity: 1;
+}
+.gift-cards-actions {
+  display: grid;
+  gap: 12px;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: auto;
+}
+.gift-card-apple-wallet {
+  display: block;
+}
+.button-success-message {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--success);
+  color: #FFF;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.35);
+  top: 100%;
+  transition: top 0.3s cubic-bezier(0.61, 0.01, 0.32, 0.99);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.show-success-message .button-success-message {
+  top: 0;
+}
+
+
+@media (max-width: 767px) {
+  .gift-card-code {
+    order: 4;
+    text-align: center;
+  }
+  .the-qr-code {
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .gift-card,
+  .gift-card-info-and-actions {
+    width: min(100%, 660px);
+  }
+  .gift-card-container {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  .gift-card {
+    min-height: 360px;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto 1fr;
+  }
+  .gift-card-balance-info {
+    grid-column: 2 / 3;
+    margin: 0;
+  }
+  .gift-card-code {
+    grid-row: 2 / 3;
+    place-content: end;
+  }
+  .gift-card-qr-code {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    place-self: end;
+  }
+  .gift-cards-actions {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+  }
+}

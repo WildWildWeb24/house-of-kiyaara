@@ -1,0 +1,89 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tab-titles {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  white-space: nowrap;
+}
+
+.tab-titles::-webkit-scrollbar:horizontal {
+  height: 6px;
+  background-color: color-mix(in srgb, currentColor 5%, transparent);
+}
+
+.tab-titles::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 3px solid color-mix(in srgb, currentColor 25%, transparent);
+  background-color: color-mix(in srgb, currentColor 25%, transparent);
+}
+
+.tab-titles::-webkit-scrollbar {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+@media screen and (min-width: 768px) {
+  .tab-titles {
+    flex-wrap: wrap;
+    overflow-x: hidden;
+  }
+}
+
+.tab-title {
+  position: relative;
+  cursor: pointer;
+}
+.tab-title:not(.is-active) {
+  text-decoration: none;
+}
+
+.tab-contents {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.tab-content {
+  grid-row-start: 1;
+  grid-column-start: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .collection-switcher .tab-titles {
+    column-gap: 24px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .collection-switcher .tab-title:last-child {
+    padding-right: 24px;
+  }
+}
+
+.collection-switcher .tab-title > * {
+  position: relative;
+}
+
+.collection-switcher .tab-title > *::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  border-bottom: 1px solid currentColor;
+  transform: scale(0);
+}
+
+.collection-switcher .tab-title.is-active > *::after {
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}

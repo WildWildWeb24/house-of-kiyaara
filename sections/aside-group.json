@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:section_groups.aside",
+  "type": "aside",
+  "sections": {
+    "popup-newsletter": {
+      "type": "newsletter-popup",
+      "blocks": {
+        "the-title": {
+          "type": "title",
+          "settings": {
+            "title": "Get 20% off"
+          }
+        },
+        "the-image": {
+          "type": "image",
+          "settings": {}
+        },
+        "the-text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Sign up to our newsletter and get 20% off your first order.</p>",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--default",
+            "margin_top": 8
+          }
+        },
+        "the-newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "margin_top": 8
+          }
+        }
+      },
+      "block_order": [
+        "the-title",
+        "the-image",
+        "the-text",
+        "the-newsletter"
+      ],
+      "disabled": true,
+      "settings": {
+        "test_mode": false,
+        "delay": 5,
+        "frequency": "once"
+      }
+    }
+  },
+  "order": [
+    "popup-newsletter"
+  ]
+}

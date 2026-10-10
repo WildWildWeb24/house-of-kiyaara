@@ -1,0 +1,60 @@
+{%- if settings.free_shipping_threshold != blank -%}
+  {{ 'component-level.css' | asset_url | stylesheet_tag }}
+
+  {%- liquid
+    # Free shipping threshold is multiplied by 100 to match the cart.total_price that is in cents.
+    # Note that the treshold is set in shop.currency and the cart amount can be in localized currency.
+    # If localized currency and shop currency are the same, we can calculate the values in liquid.
+    # If they are different, we need to make the calculations in JS where the cart total value is converted to localized currency.
+
+    assign free_shipping_threshold = settings.free_shipping_threshold | times: 100
+    assign missing_amount = free_shipping_threshold | minus: cart.total_price | money
+    assign threshold_reached = false
+    assign level_fill = 0
+    assign calc_in_liquid = true
+
+    if shop.currency != localization.country.currency.iso_code
+      assign calc_in_liquid = false
+    endif
+
+    if free_shipping_threshold < 0 or cart.item_count == 0
+      assign hide_shipping_banner = true
+    endif
+
+    if calc_in_liquid
+      if cart.total_price < free_shipping_threshold
+        assign level_fill = cart.total_price | times: 1.00 | divided_by: free_shipping_threshold | times: 100
+      else
+        assign level_fill = 100
+        assign threshold_reached = true
+      endif
+    endif
+  -%}
+
+<div id="cart-shipping-notification">
+  <shipping-notification
+    data-free-shipping-notification
+    data-cart-total="{{- cart.total_price -}}"
+    data-threshold="{{- free_shipping_threshold -}}"
+    data-shop-currency="{{- shop.currency -}}"
+    data-target-currency="{{- localization.country.currency.iso_code -}}"
+    {% unless calc_in_liquid -%}
+    data-calc-in-js
+    {%- endunless %}
+    class="shipping-notification {% if threshold_reached -%} threshold-reached {%- endif %}"
+    {% if hide_shipping_banner %}hidden{% endif %}>
+      <p class="free-shipping-message size--small mb-8">
+        {%- if calc_in_liquid and threshold_reached -%}
+          {{ 'sections.cart.shipping_free' | t }}
+        {%- elsif calc_in_liquid -%}
+          {{ 'sections.cart.shipping_not_free_html' | t: amount: missing_amount }}
+        {%- else -%}
+          -
+        {%- endif -%}
+      </p>
+    <div class="level-bar">
+      <div class="level-bar-fill color--success" style="--fill-width: {{ level_fill }}%;"></div>
+    </div>
+  </shipping-notification>
+</div>
+{%- endif -%}

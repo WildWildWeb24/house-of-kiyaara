@@ -1,0 +1,81 @@
+{%- capture content -%}
+  {%- if settings.social_facebook_link != blank -%}
+    <a target="_blank" rel="nofollow noreferrer" href="{{ settings.social_facebook_link }}" class="some-link">
+      {%- render 'icon-facebook' -%}
+      <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+    </a>
+  {%- endif -%}
+  {%- if settings.social_instagram_link != blank -%}
+    <a target="_blank" rel="nofollow noreferrer" href="{{ settings.social_instagram_link }}" class="some-link">
+      {%- render 'icon-instagram' -%}
+      <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+    </a>
+  {%- endif -%}
+  {%- if settings.social_linkedin_link != blank -%}
+    <a target="_blank" rel="nofollow noreferrer" href="{{ settings.social_linkedin_link }}" class="some-link">
+      {%- render 'icon-linkedin' -%}
+      <span class="visually-hidden">{{ 'general.social.links.linkedin' | t }}</span>
+    </a>
+  {%- endif -%}
+  {%- if settings.social_pinterest_link != blank -%}
+    <a target="_blank" rel="nofollow noreferrer" href="{{ settings.social_pinterest_link }}" class="some-link">
+      {%- render 'icon-pinterest' -%}
+      <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+    </a>
+  {%- endif -%}
+  {%- if settings.social_snapchat_link != blank -%}
+    <a target="_blank" rel="nofollow noreferrer" href="{{ settings.social_snapchat_link }}" class="some-link">
+      {%- render 'icon-snapchat' -%}
+      <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+    </a>
+  {%- endif -%}
+  {%- if settings.social_tiktok_link != blank -%}
+    <a target="_blank" rel="nofollow noreferrer" href="{{ settings.social_tiktok_link }}" class="some-link">
+      {%- render 'icon-tiktok' -%}
+      <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+    </a>
+  {%- endif -%}
+  {%- if settings.social_tumblr_link != blank -%}
+    <a target="_blank" rel="nofollow noreferrer" href="{{ settings.social_tumblr_link }}" class="some-link">
+      {%- render 'icon-tumblr' -%}
+      <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+    </a>
+  {%- endif -%}
+  {%- if settings.social_twitch_link != blank -%}
+    <a target="_blank" rel="nofollow noreferrer" href="{{ settings.social_twitch_link }}" class="some-link">
+      {%- render 'icon-twitch' -%}
+      <span class="visually-hidden">{{ 'general.social.links.twitch' | t }}</span>
+    </a>
+  {%- endif -%}
+  {%- if settings.social_untappd_link != blank -%}
+    <a target="_blank" rel="nofollow noreferrer" href="{{ settings.social_untappd_link }}" class="some-link">
+      {%- render 'icon-untappd' -%}
+      <span class="visually-hidden">{{ 'general.social.links.untappd' | t }}</span>
+    </a>
+  {%- endif -%}
+  {%- if settings.social_vimeo_link != blank -%}
+    <a target="_blank" rel="nofollow noreferrer" href="{{ settings.social_vimeo_link }}" class="some-link">
+      {%- render 'icon-vimeo' -%}
+      <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+    </a>
+  {%- endif -%}
+  {%- if settings.social_twitter_link != blank -%}
+    <a target="_blank" rel="nofollow noreferrer" href="{{ settings.social_twitter_link }}" class="some-link">
+      {%- render 'icon-twitter' -%}
+      <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+    </a>
+  {%- endif -%}
+  {%- if settings.social_youtube_link != blank -%}
+    <a target="_blank" rel="nofollow noreferrer" href="{{ settings.social_youtube_link }}" class="some-link">
+      {%- render 'icon-youtube' -%}
+      <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+    </a>
+  {%- endif -%}
+{%- endcapture -%}
+{%- if use_nav_tag -%}
+<nav class="some-links flex">
+  {{ content }}
+</nav>
+{%- else -%}
+{{ content }}
+{%- endif -%}

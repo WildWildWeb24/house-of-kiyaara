@@ -1,0 +1,82 @@
+{%- comment -%}
+  Renders the "Same Day Delivery Checker" block on the product page.
+  Expects: block (the section block, with its settings)
+{%- endcomment -%}
+
+<div class="same-day-checker same-day-checker--{{ block.id }}">
+  <p class="same-day-checker__heading h6">{{ block.settings.heading }}</p>
+  <div class="same-day-checker__row">
+    <input
+      type="tel"
+      inputmode="numeric"
+      maxlength="6"
+      class="same-day-checker__input"
+      placeholder="{{ block.settings.placeholder_text }}"
+      aria-label="{{ block.settings.placeholder_text }}"
+    >
+    <button type="button" class="same-day-checker__button">{{ block.settings.button_text }}</button>
+  </div>
+  <p class="same-day-checker__result" hidden></p>
+</div>
+
+<style>
+  .same-day-checker--{{ block.id }} { margin-block: 1rem; }
+  .same-day-checker--{{ block.id }} .same-day-checker__heading { margin: 0 0 8px 0; font-weight: 600; }
+  .same-day-checker--{{ block.id }} .same-day-checker__row {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d9d9d9;
+    border-radius: 0px;
+    overflow: hidden;
+  }
+  .same-day-checker--{{ block.id }} .same-day-checker__input {
+    flex: 1 1 auto;
+    border: none;
+    padding: 12px 14px;
+    font-size: 14px;
+    outline: none;
+    min-width: 0;
+  }
+  .same-day-checker--{{ block.id }} .same-day-checker__button {
+    flex: 0 0 auto;
+    border: none;
+    border-left: 1px solid #d9d9d9;
+    background: transparent;
+    padding: 12px 18px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+  .same-day-checker--{{ block.id }} .same-day-checker__result {
+    margin: 10px 0 0 0;
+    font-size: 14px;
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest('.same-day-checker--{{ block.id }} .same-day-checker__button');
+    if (!button) return;
+
+    var container = button.closest('.same-day-checker--{{ block.id }}');
+    var input = container.querySelector('.same-day-checker__input');
+    var result = container.querySelector('.same-day-checker__result');
+    var pincode = (input.value || '').trim();
+
+    if (!pincode) return;
+
+    var eligiblePincodes = {{ block.settings.pincodes | remove: ' ' | split: ',' | json }};
+
+    if (eligiblePincodes.indexOf(pincode) > -1) {
+      result.textContent = {{ block.settings.available_message | json }};
+      result.style.color = {{ block.settings.available_color | json }};
+    } else {
+      result.textContent = {{ block.settings.unavailable_message | json }};
+      result.style.color = {{ block.settings.unavailable_color | json }};
+    }
+
+    result.hidden = false;
+  });
+</script>

@@ -1,0 +1,164 @@
+{%- liquid
+  if menu_item.title contains ':::'
+    assign menu_item_split = menu_item.title | split: ':::'
+    assign menu_item_title = menu_item_split[0] | strip
+    assign menu_item_style = 'style--badge-' | append: menu_item_split[1] | downcase | strip
+  elsif menu_item.title contains '***'
+    assign menu_item_title = menu_item.title | remove: '***' | strip
+    assign menu_item_style = 'style--link style--bold'
+  else
+    assign menu_item_title = menu_item.title
+    assign menu_item_style = 'style--link'
+  endif
+
+  if menu_item.links != blank or content_menu_titles contains menu_item_title
+    assign has_subitems = true
+  else
+    assign has_subitems = false
+  endif
+
+  case current_level
+    when 1
+      assign link_class_name = 'menu-item'
+    when 2
+      assign link_class_name = 'sub-menu-item'
+    when 3
+      assign link_class_name = 'sub-sub-menu-item'
+  endcase
+
+  if settings.drawer_navigation_emphasize == true and current_level == 1 and menu_priority == 'main'
+    assign style_modifiers = 'h3 size--huge font-heading'
+  elsif current_level == 3
+    assign style_modifiers = 'size--small'
+  else
+    assign style_modifiers = ''
+  endif
+-%}
+
+{% if menu_item_title contains '---' %}
+  {%- comment -%} Divider element {%- endcomment -%}
+  <hr class="menu-divider"/>
+{% elsif has_subitems %}
+  {%- comment -%} Drawer menu item with content {%- endcomment -%}
+  {%- liquid
+    assign first_link_class = link_class_name
+    assign new_current_level = current_level | plus: 1
+
+    capture drawer_content
+      for sublink in menu_item.links
+        render 'drawer-menu-items', menu_item: sublink, current_level: new_current_level, context: context,
+      endfor
+    endcapture
+  -%}
+
+  {%- if current_level == 1 -%}
+    {%- comment -%} Accordion Link, menu item has children {%- endcomment -%}
+    <div data-accordion-item class="drilldown">
+
+      {%- assign panel_id = 'panel-' | append: menu_item.handle | append: '-' | append: link_class_name | append: '-' | append: context | handleize -%}
+      <input role="button" data-href="{{ menu_item.url }}" data-open-submenu class="{{ link_class_name | append: '__input' }}" id="{{ panel_id }}" type="checkbox">
+      <label data-href="{{ menu_item.url }}" class="{{ link_class_name }} {%- if style_modifiers != blank %} {{ style_modifiers }}{% endif %}" for="{{ panel_id }}" aria-label="{{ 'accessibility.view_something_menu' | t: something: menu_item_title }}">
+        <span class="{{ menu_item_style }}">{{ menu_item_title | strip }}</span>
+        {%- if current_level == 1 -%}
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
+        {%- else -%}
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        {%- endif -%}
+      </label>
+
+      <div id="{{ panel_id | append: '-container' }}" data-accordion-panel class="drawer-submenu__panel-container {{ context }} {%- if has_subitems %} --content{% endif %}">
+        <div class="drawer-content drawer-submenu__panel scrollbar--hide">
+          {% if current_level == 1 and context == 'js' %}
+            {%- comment -%} Submenu Panel - Go back to main level {%- endcomment -%}
+            <button class="close--submenu medium-up--hide size--small" title="{{ 'accessibility.hide_something_menu' | t: something: menu_item_title }}" aria-label="{{ 'accessibility.hide_something_menu' | t: something: menu_item_title }}" type="button" data-drawer-submenu-close="{{ panel_id }}">
+              {% render 'icon-chevron-left--small' %} <span>{{ 'accessibility.drawer_menu_back_label' | t }}</span>
+            </button>
+          {% endif %}
+
+          {%- if has_subitems -%}
+            {% for block in section.blocks %}
+              {% if block.settings.menu_parent == menu_item_title %}
+                {%- if block.type == 'menu-banner' -%}
+
+                  {% capture banner_content %}
+                    {%- render 'picture',
+                      image_default: block.settings.image,
+                      aspect_ratio: block.settings.drawer_image_aspect_ratio,
+                      sizes: '(max-width: 767px) 80vw, 384px',
+                      class: 'br-img mb-12'
+                    -%}
+                    {% if block.settings.subtitle != blank %}
+                      <div class="banner-subheading subheading size--tiny style--subdued mb-4">{{ block.settings.subtitle | replace: '[br]', '<br>' }}</div>
+                    {% endif %}
+                    {% if block.settings.title != blank %}
+                      <div class="banner-heading size--small">{{ block.settings.title | replace: '[br]', '<br>' }}</div>
+                    {% endif %}
+                  {% endcapture %}
+
+                  {% if block.settings.link != blank %}
+                    <a href="{{ block.settings.link }}" class="menu-banner text-align-{{ block.settings.text_alignment }} {{ block.settings.order | prepend: '--' }}" {{ block.shopify_attributes }} {% if block.settings.title != blank %}aria-hidden="true"{% endif %}>
+                      {{ banner_content }}
+                    </a>
+                  {% else %}
+                    <div class="menu-banner {{ block.settings.order | prepend: '--' }}" {{ block.shopify_attributes }}>
+                      {{ banner_content }}
+                    </div>
+                  {% endif %}
+
+                {%- elsif block.type == 'menu-collection' -%}
+
+                  <div class="menu-collection flex vertical">
+                  {% liquid
+                  if block.settings.collection != empty
+                    assign menu_products = block.settings.collection.products
+                  elsif block.settings.product_list != empty
+                    assign menu_products = block.settings.product_list
+                    assign context = "product_list"
+                  endif
+                  %}
+
+                  {% for product in menu_products %}
+                    <div class="card card--product card--{{ settings.product_card_options }} layout--thumbnail">
+                      <a href="{{ product.url }}">
+                        {% render 'picture', image_default: product.featured_media, aspect_ratio: settings.product_card_aspect_ratio, sizes: "120px", sizing_rule: settings.product_card_fill_rule %}
+                      </a>
+                      <div class="card-body {{ settings.product_card_text_alignment }}">
+                        <a href="{{ product.url }}" class="card-title {{ settings.product_card_title_font }}">{{ product.title }}</a>
+                        {%- render 'price', product: product, price_class: 'size--small mt-4' -%}
+                      </div>
+                    </div>
+                  {% endfor %}
+                  </div>
+
+                {%- endif -%}
+              {% endif %}
+            {% endfor %}
+            <div class="menu-links">{{ drawer_content }}</div>
+          {%- else -%}
+            {{ drawer_content }}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- else -%}
+    <div class="sub-menu">
+      {% if menu_item.url != '#' %}
+        <a href="{{ menu_item.url }}" class="{{ first_link_class }}" aria-label="{{ 'accessibility.navigate_to_something' | t: something: menu_item_title }}" title="{{ 'accessibility.navigate_to_something' | t: something: menu_item_title }}">
+          <span class="{{ menu_item_style }}">{{- menu_item_title -}}</span>
+        </a>
+      {% else %}
+        <div class="{{ first_link_class }}">
+          <span class="{{ menu_item_style | replace: '--link', '--text' }}">{{- menu_item_title -}}</span>
+        </div>
+      {% endif %}
+      <div class="sub-sub-menu">
+        {{ drawer_content }}
+      </div>
+    </div>
+  {%- endif -%}
+{% else %}
+  {%- comment -%} Direct Link, menu item has no children {%- endcomment -%}
+  <a href="{{ menu_item.url }}" class="{{ link_class_name }} {%- if style_modifiers != blank %} {{ style_modifiers }}{% endif %}" aria-label="{{ 'accessibility.navigate_to_something' | t: something: menu_item_title }}" title="{{ 'accessibility.navigate_to_something' | t: something: menu_item_title }}">
+    <span class="{{ menu_item_style }}">{{- menu_item_title -}}</span>
+  </a>
+{% endif %}

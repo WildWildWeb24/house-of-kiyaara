@@ -1,0 +1,71 @@
+{%- comment -%}
+  Generates a section background with optional grain, vignette, and gradient effects.
+
+  Accepts:
+  - height_unit: {String} The unit of the height (optional)
+  - block: {Object} The block object, with following settings
+    - gradient: {Color} The background gradient color (optional)
+    - grain: {Boolean} Enable grain effect (optional)
+    - vignette: {Boolean} Enable vignette effect (optional)
+    - graphics: {Array} The background graphics (optional)
+    - height: {Number} The height of the background as a percentage (optional)
+    - sm_height: {Number} The height of the background as a percentage after sm breakpoint (optional)
+    - two_tone_graphics: {Boolean} Enable two-tone graphics (optional)
+
+  Used in:
+  - sections/main-product-big-image.liquid
+  - sections/main-product.liquid
+  - sections/main-image-with-text.liquid
+
+  Notes:
+  - Limit usage to 1 per section
+  - Place as the first child of the <div clas="container">
+{%- endcomment -%}
+
+
+{% liquid
+  assign height_unit = height_unit | default: '%'
+  assign graphics = block.settings.graphics | default: 'default'
+  assign two_tone_graphics = block.settings.two_tone_graphics
+  assign grain = block.settings.grain
+  assign vignette = block.settings.vignette
+
+  if block.settings.height != blank
+    assign height_css_var = '--bg-height: ' | append: block.settings.height | append: height_unit | append: ';'
+  else
+    assign height_css_var = '--bg-height: 50%;'
+  endif
+
+  if block.settings.sm_height != blank
+    assign sm_height_css_var = '--sm-bg-height: ' | append: block.settings.sm_height | append: height_unit | append: ';'
+  else
+    assign sm_height_css_var = '--sm-bg-height: 50%;'
+  endif
+
+  if block.settings.gradient != blank
+    assign gradient = block.settings.gradient
+  else
+    assign gradient = 'var(--color-background-gradient)'
+  endif
+
+
+  # Flip controls
+  if block.settings.flip_horizontal and block.settings.flip_vertical
+    assign flip_class = 'flip-both'
+  elsif block.settings.flip_vertical
+    assign flip_class = 'flip-vertical'
+  elsif block.settings.flip_horizontal
+    assign flip_class = 'flip-horizontal'
+  else
+    assign flip_class = ''
+  endif
+%}
+
+<div
+  class="section-background {%- if flip_class != blank %} {{ flip_class }}{% endif %} {%- if grain %} grain-overlay{% endif %} {%- if vignette %} vignette-overlay{% endif %}"
+  style="{{ height_css_var }} {{ sm_height_css_var }}">
+  <span class="section-background-gradient" style="background: {{ gradient }};"></span>
+  {% if block.settings.graphics != 'none' %}
+    {% render 'graphics', graphics: graphics, second_layer: two_tone_graphics, fill: 'var(--color-background)' %}
+  {% endif %}
+</div>

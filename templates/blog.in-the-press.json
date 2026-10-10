@@ -1,0 +1,153 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "disabled": true,
+      "custom_css": [
+        "/* Hide the image slot entirely on cards that have no real image */.card-media:has(.placeholder-svg) {display: none !important;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "posts_per_page": 16,
+        "show_blog_title": true,
+        "enable_filtering": true,
+        "center_text": false,
+        "grid_gap": 24,
+        "md_items_per_row": 4,
+        "sm_items_per_row": 4
+      }
+    },
+    "rich_text_pVUzxH": {
+      "type": "rich-text",
+      "blocks": {
+        "title_RPpDzV": {
+          "type": "title",
+          "settings": {
+            "title": "Fresh Off The Press",
+            "heading_tag": "h2",
+            "sm_size_multiplier": "sm-size--gigantic",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--huge",
+            "margin_top": 0
+          }
+        }
+      },
+      "block_order": [
+        "title_RPpDzV"
+      ],
+      "custom_css": [
+        ".section-spacing {padding-bottom: 15px !important;}"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "color_scheme": "",
+        "content_width": "default",
+        "sm_content_position": "center",
+        "sm_text_alignment": "center",
+        "text_alignment": "center"
+      }
+    },
+    "custom_liquid_3iCm6A": {
+      "type": "custom-liquid",
+      "blocks": {
+        "custom_spacing_xVNEBG": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
+            "margin_top": 0,
+            "padding_top": 0,
+            "padding_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_xVNEBG"
+      ],
+      "name": "t:sections.custom-liquid.name",
+      "settings": {
+        "color_scheme": "",
+        "custom_liquid": "{% assign icon_image_url = 'https://cdn.shopify.com/s/files/1/0567/8661/6449/files/Asset_1.png?v=1791549330' %}\n{% assign icon_size = 50 %}\n{% assign divider_color = '#777777' %}\n{% assign background_color = '#ffffff' %}\n\n<style>\n  #kiyaara-divider-{{ section.id }} {\n    padding: 0;\n    margin: 0;\n  }\n\n  #kiyaara-divider-{{ section.id }} .kiyaara-divider-row {\n    display: flex;\n    align-items: center;\n    width: 100%;\n    max-width: 1400px;\n    margin: 0 auto;\n    padding: 0;\n  }\n\n  #kiyaara-divider-{{ section.id }} .kiyaara-divider-line {\n    display: block;\n    flex: 1;\n    min-width: 0;\n    border-top: 1px solid {{ divider_color }};\n  }\n\n  #kiyaara-divider-{{ section.id }} .kiyaara-divider-icon {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex: 0 0 {{ icon_size }}px;\n    width: {{ icon_size }}px;\n    height: {{ icon_size }}px;\n    margin: 0;\n    padding: 0;\n    border: 1px solid {{ divider_color }};\n    border-radius: 50%;\n    background: {{ background_color }};\n    box-sizing: border-box;\n    overflow: hidden;\n  }\n\n  #kiyaara-divider-{{ section.id }} .kiyaara-divider-icon img {\n    display: block;\n    width: 100%;\n    height: 100%;\n    max-width: none;\n    margin: 0;\n    padding: 0;\n    object-fit: cover;\n    border-radius: 50%;\n  }\n</style>\n\n<div id=\"kiyaara-divider-{{ section.id }}\" aria-hidden=\"true\">\n  <div class=\"kiyaara-divider-row\">\n    <span class=\"kiyaara-divider-line\"></span>\n\n    <span class=\"kiyaara-divider-icon\">\n      <img\n        src=\"{{ icon_image_url | escape }}\"\n        alt=\"\"\n        width=\"{{ icon_size }}\"\n        height=\"{{ icon_size }}\"\n        loading=\"lazy\"\n      >\n    </span>\n\n    <span class=\"kiyaara-divider-line\"></span>\n  </div>\n</div>",
+        "enable_full_width": true
+      }
+    },
+    "multicolumn_P39AXY": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_rN8N8a": {
+          "type": "column",
+          "settings": {
+            "press_date": "September, 2026",
+            "press_logo": "shopify://shop_images/Free-press-journal-logo.webp",
+            "image": "shopify://shop_images/Press-01.webp",
+            "video_autoplay": false,
+            "video_controls": false,
+            "title": "East-West Bag Is Trending Again: How Indian Brands Are Reimagining The Silhouette",
+            "text": "<p>“I think consumers are moving away from extremes, though not necessarily abandoning them. Micro bags are expressive, while oversized totes are practical, but a mid-sized bag fits more naturally into everyday life. Today’s customer is increasingly asking, ‘How often will I actually use this?’ That is making versatility just as important as visual appeal,”&nbsp;~ Dr Zaenab Imaduddin</p>",
+            "button_label": "Read More",
+            "button_link": "https://www.freepressjournal.in/lifestyle/east-west-bag-is-trending-again-how-indian-brands-are-reimagining-the-silhouette",
+            "button_style": "link",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
+        "column_67a3N8": {
+          "type": "column",
+          "settings": {
+            "press_date": "September, 2026",
+            "press_logo": "shopify://shop_images/Indulge-digital-black.webp",
+            "image": "shopify://shop_images/Press_02.webp",
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "House of Kiyaara introduces wearable art to everyday accessories",
+            "text": "<p>Accessories don’t have to play supporting roles. House of Kiyaara treats them as the main event —turning handbags, clutches and scarves into wearable canvases for colour, illustration and storytelling. The Mumbai-based label, founded by Zaenab Imaduddin, takes an art-first approach to everyday dressing, where original artwork meets functional design.&nbsp;</p>",
+            "button_label": "Read More",
+            "button_link": "https://www.indulgexpress.com/amp/story/fashion/new-launches/2026/Sep/12/house-of-kiyaara-introduces-wearable-art-to-everyday-accessories",
+            "button_style": "link",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_rN8N8a",
+        "column_67a3N8"
+      ],
+      "custom_css": [
+        ".section-spacing {padding-top: 40px !important;}"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "color_scheme": "",
+        "alignment": "left",
+        "layout_desktop": "grid",
+        "items_per_row_desktop": 3,
+        "sm_media_aspect_ratio": "natural",
+        "items_per_row_tablet": 2,
+        "layout_mobile": "grid",
+        "media_aspect_ratio": "natural",
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_pVUzxH",
+    "custom_liquid_3iCm6A",
+    "multicolumn_P39AXY"
+  ]
+}

@@ -1,0 +1,368 @@
+{{ 'farasha-story.css' | asset_url | stylesheet_tag }}
+<farasha-garden class="farasha-story story" id="Farasha-{{ section.id }}" data-section-id="{{ section.id }}" style="--farasha-header-offset: {{ section.settings.header_offset }}px" aria-label="{{ 'farasha.story.story_label' | t }}" tabindex="-1">
+ <div class="world" aria-hidden="true">
+  {% if section.settings.sky != blank %}<img class="sky" src="{{ section.settings.sky | image_url: width: 1672 }}" width="1672" height="941" alt="">{% else %}<img class="sky" src="{{ 'farrasha-bg-sky.png' | file_url }}" width="1672" height="941" alt="">{% endif %}
+  <div class="clouds">
+   {% if section.settings.cloud_1 != blank %}<img src="{{ section.settings.cloud_1 | image_url: width: 730 }}" width="730" height="295" class="cloud c1" alt="">{% else %}<img src="{{ 'farrasha-cloud-1.png' | file_url }}" width="730" height="295" class="cloud c1" alt="">{% endif %}
+   {% if section.settings.cloud_2 != blank %}<img src="{{ section.settings.cloud_2 | image_url: width: 696 }}" width="696" height="333" class="cloud c2" alt="">{% else %}<img src="{{ 'farrasha-cloud-2.png' | file_url }}" width="696" height="333" class="cloud c2" alt="">{% endif %}
+   {% if section.settings.cloud_3 != blank %}<img src="{{ section.settings.cloud_3 | image_url: width: 391 }}" width="391" height="146" class="cloud c3" alt="">{% else %}<img src="{{ 'farrasha-cloud-3.png' | file_url }}" width="391" height="146" class="cloud c3" alt="">{% endif %}
+   {% if section.settings.cloud_4 != blank %}<img src="{{ section.settings.cloud_4 | image_url: width: 522 }}" width="522" height="168" class="cloud c4" alt="">{% else %}<img src="{{ 'farrasha-cloud-4.png' | file_url }}" width="522" height="168" class="cloud c4" alt="">{% endif %}
+   {% if section.settings.cloud_5 != blank %}<img src="{{ section.settings.cloud_5 | image_url: width: 610 }}" width="610" height="139" class="cloud c5" alt="">{% else %}<img src="{{ 'farrasha-cloud-5.png' | file_url }}" width="610" height="139" class="cloud c5" alt="">{% endif %}
+   {% if section.settings.cloud_6 != blank %}<img src="{{ section.settings.cloud_6 | image_url: width: 325 }}" width="325" height="63" class="cloud c6" alt="">{% else %}<img src="{{ 'farrasha-cloud-6.png' | file_url }}" width="325" height="63" class="cloud c6" alt="">{% endif %}
+   {% if section.settings.cloud_7 != blank %}<img src="{{ section.settings.cloud_7 | image_url: width: 580 }}" width="580" height="191" class="cloud c7" alt="">{% else %}<img src="{{ 'farrasha-cloud-7.png' | file_url }}" width="580" height="191" class="cloud c7" alt="">{% endif %}
+  </div>
+  {% if section.settings.mountains != blank %}<img class="land mountains" src="{{ section.settings.mountains | image_url: width: 2172 }}" width="2172" height="724" alt="">{% else %}<img class="land mountains" src="{{ 'farrasha-bg-mountains.png' | file_url }}" width="2172" height="724" alt="">{% endif %}
+  {% if section.settings.far_foliage != blank %}<img class="land distant" src="{{ section.settings.far_foliage | image_url: width: 2103 }}" width="2103" height="748" alt="">{% else %}<img class="land distant" src="{{ 'farrasha-bg-far-foliage.png' | file_url }}" width="2103" height="748" alt="">{% endif %}
+  {% if section.settings.grass != blank %}<img class="land grass" src="{{ section.settings.grass | image_url: width: 2172 }}" width="2172" height="724" alt="">{% else %}<img class="land grass" src="{{ 'farrasha-bg-grass.png' | file_url }}" width="2172" height="724" alt="">{% endif %}
+  {% if section.settings.light_glow != blank %}<img class="sunshine" src="{{ section.settings.light_glow | image_url: width: 1536 }}" width="1536" height="1024" alt="">{% else %}<img class="sunshine" src="{{ 'farrasha-bg-glow.png' | file_url }}" width="1536" height="1024" alt="">{% endif %}
+  {% if section.settings.forground != blank %}<img class="land foreground" src="{{ section.settings.forground | image_url: width: 2172 }}" width="2172" height="724" alt="">{% else %}<img class="land foreground" src="{{ 'farrasha-bg-foreground.png' | file_url }}" width="2172" height="724" alt="">{% endif %}
+  </div>
+  <div class="flyer" data-role="flyer" aria-hidden="true"><div class="butterfly-body" data-role="butterflyBody">
+    <canvas class="butterfly-v" data-role="butterflyV" width="200" height="150"></canvas>
+    {% if section.settings.butterfly_side_frames != blank %}<img data-role="butterflySideFrames" src="{{ section.settings.butterfly_side_frames | image_url: width: 2925 }}" width="2925" height="915" alt="" hidden>{% else %}<img data-role="butterflySideFrames" src="{{ 'farrasha-butterfly-side-frames.png' | file_url }}" width="2925" height="915" alt="" hidden>{% endif %}
+    {% if section.settings.chapter_butterfly_frames != blank %}<img data-role="chapterButterflyFrames" src="{{ section.settings.chapter_butterfly_frames | image_url: width: 2520 }}" width="2520" height="948" alt="" hidden>{% else %}<img data-role="chapterButterflyFrames" src="{{ 'farrasha-butterfly-chapter-frames.png' | file_url }}" width="2520" height="948" alt="" hidden>{% endif %}
+    {% if section.settings.butterfly_v_frames != blank %}<img data-role="butterflyFrames" src="{{ section.settings.butterfly_v_frames | image_url: width: 2520 }}" width="2520" height="948" alt="" hidden>{% else %}<img data-role="butterflyFrames" src="{{ 'farrasha-butterfly-v-frames.png' | file_url }}" width="2520" height="948" alt="" hidden>{% endif %}
+  </div></div>
+  <div class="sun-bloom" data-role="sunBloom" aria-hidden="true"></div>
+  <div class="white-finish" data-role="whiteFinish" aria-hidden="true"></div>
+  <video class="finale-background-video" data-role="finaleVideo" loop muted playsinline preload="auto" src="{% if section.settings.finale_video != blank %}{{ section.settings.finale_video.sources[1].url | default: section.settings.finale_video.sources[0].url }}{% elsif section.settings.finale_video_url != blank %}{{ section.settings.finale_video_url }}{% else %}{{ 'farrasha-finale-video.mp4' | file_url }}{% endif %}"></video>
+  <div class="finale-video-shade" data-role="finaleShade"></div>
+  <img class="finale-background-poster" data-role="finalePoster" src="{% if section.settings.finale_video_poster != blank %}{{ section.settings.finale_video_poster | image_url: width: 1920 }}{% else %}{{ 'farrasha-video-poster.png' | file_url }}{% endif %}" width="1920" height="1080" alt="">
+  <div class="chapters" data-role="chapters"></div>
+  <nav class="story-nav" aria-label="Chapter navigation">
+    <button class="arrow" data-role="previous" aria-label="Previous chapter">←</button>
+    <div class="dots" data-role="dots"></div>
+    <button class="arrow" data-role="next" aria-label="Next chapter">→</button>
+  </nav>
+  <p class="instruction" data-role="instruction">Scroll or click to begin</p>
+  <button class="motion-control" data-role="motion" aria-label="Pause ambient animation" aria-pressed="false">Pause motion</button>
+  <span data-role="announcement" class="sr-only" aria-live="polite"></span>
+  <script type="application/json" data-role="config">{"collectionUrl":{{ section.settings.collection_url | json | replace: '<', '\u003c' }},"finaleVideoUrl":{% if section.settings.finale_video != blank %}{{ section.settings.finale_video.sources[1].url | default: section.settings.finale_video.sources[0].url | json | replace: '<', '\u003c' }}{% elsif section.settings.finale_video_url != blank %}{{ section.settings.finale_video_url | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-finale-video.mp4' | file_url | json | replace: '<', '\u003c' }}{% endif %},"transitionMs":1150,"finaleMs":1150,"finaleOverlayOpacity":{{ section.settings.finale_overlay_opacity | default: 40 | divided_by: 100.0 }},"labels":{"story_label":"The Farrasha Collection: an illustrated story","chapter_nav":"Chapter navigation","previous":"Previous chapter","next":"Next chapter","continue_page":"Continue down the page","begin":"Scroll or click to begin","continue":"Scroll or click to continue","end":"Scroll to continue","pause":"Pause motion","resume":"Resume motion","pause_label":"Pause ambient animation","resume_label":"Resume ambient animation","unlinked":"Set a collection link in section settings","presents":"Presents","position":"of","products_alt":"Three bags from the Farasha collection","label_0":"WELCOME","label_1":"A WORLD PAINTED BY HAND","label_2":"THE PEACHY BLOOMS","label_3":"THE BLUE BLOOMS","label_4":"THE BELL FLOWERS","label_5":"THE FOLIAGE","label_6":"THE BUTTERFLY","label_7":"THE FARASHA COLLECTION"},"chapters":[{% if section.blocks.size > 0 %}{% for block in section.blocks %}{% assign c_type = block.settings.chapter_type | default: "motif" %}{% assign is_hidden = block.settings.hide_chapter | default: false %}{"originalIndex":{{ forloop.index0 }},"hidden":{{ is_hidden | json }},"chapterType":{{ c_type | json }},"label":{{ block.settings.label | json }},"title":{{ block.settings.title | json }},"description":{{ block.settings.description | json }},"button":{{ block.settings.button_label | json }}{% if c_type == 'welcome' or forloop.index0 == 0 %},"intro":true,"kiyaaraLogo":{% if section.settings.kiyaara_logo != blank %}{{ section.settings.kiyaara_logo | image_url: width: 400 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-logo-kiyaara.png' | file_url | json | replace: '<', '\u003c' }}{% endif %}{% elsif c_type == 'collection_intro' or forloop.index0 == 1 %},"collectionLogo":{% if section.settings.collection_logo != blank %}{{ section.settings.collection_logo | image_url: width: 400 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-logo-collection.png' | file_url | json | replace: '<', '\u003c' }}{% endif %},"videoPoster":{% if section.settings.video_poster != blank %}{{ section.settings.video_poster | image_url: width: 800 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-video-poster.png' | file_url | json | replace: '<', '\u003c' }}{% endif %},"videoUrl":{% if section.settings.video != blank %}{{ section.settings.video.sources[1].url | default: section.settings.video.sources[0].url | json | replace: '<', '\u003c' }}{% elsif section.settings.video_url != blank %}{{ section.settings.video_url | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-collection-video.mp4' | file_url | json | replace: '<', '\u003c' }}{% endif %}{% elsif c_type == 'butterfly_mascot' or forloop.index0 == 6 %},"image":"butterfly.png"{% elsif c_type == 'collection_bags' or forloop.index0 == 7 %},"finale":true{% if block.settings.image != blank %},"image":{{ block.settings.image | image_url: width: 650 | json | replace: '<', '\u003c' }}{% endif %}{% else %},"image":{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 650 | json | replace: '<', '\u003c' }}{% else %}{% if forloop.index0 == 2 %}{% if section.settings.peach != blank %}{{ section.settings.peach | image_url: width: 650 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-hero-pink-blooms.png' | file_url | json | replace: '<', '\u003c' }}{% endif %}{% elsif forloop.index0 == 3 %}{% if section.settings.blue != blank %}{{ section.settings.blue | image_url: width: 650 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-hero-blue-blooms.png' | file_url | json | replace: '<', '\u003c' }}{% endif %}{% elsif forloop.index0 == 4 %}{% if section.settings.bell != blank %}{{ section.settings.bell | image_url: width: 650 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-hero-bell-flowers.png' | file_url | json | replace: '<', '\u003c' }}{% endif %}{% else %}{% if section.settings.foliage != blank %}{{ section.settings.foliage | image_url: width: 650 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-hero-foliage.png' | file_url | json | replace: '<', '\u003c' }}{% endif %}{% endif %}{% endif %}{% endif %}}{% unless forloop.last %},{% endunless %}{% endfor %}{% else %}{"originalIndex":0,"label":"WELCOME","title":"Welcome","description":"Enter our meadow","intro":true,"button":"Enter our meadow","kiyaaraLogo":{% if section.settings.kiyaara_logo != blank %}{{ section.settings.kiyaara_logo | image_url: width: 400 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-logo-kiyaara.png' | file_url | json | replace: '<', '\u003c' }}{% endif %}},{"originalIndex":1,"label":"A WORLD PAINTED BY HAND","title":"A world painted by hand","description":"A world painted by hand. Farasha began as a dream. A world of curious blooms and wandering butterflies.","collectionLogo":{% if section.settings.collection_logo != blank %}{{ section.settings.collection_logo | image_url: width: 400 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-logo-collection.png' | file_url | json | replace: '<', '\u003c' }}{% endif %},"videoPoster":{% if section.settings.video_poster != blank %}{{ section.settings.video_poster | image_url: width: 800 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-video-poster.png' | file_url | json | replace: '<', '\u003c' }}{% endif %},"videoUrl":{% if section.settings.video != blank %}{{ section.settings.video.sources[1].url | default: section.settings.video.sources[0].url | json | replace: '<', '\u003c' }}{% elsif section.settings.video_url != blank %}{{ section.settings.video_url | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-collection-video.mp4' | file_url | json | replace: '<', '\u003c' }}{% endif %}},{"originalIndex":2,"label":"THE PEACHY BLOOMS","title":"Little Bursts of Joy","description":"Pink blooms arrive like small, happy surprises in a meadow. They bring warmth, colour and a little softness to everything around them.","image":{% if section.settings.peach != blank %}{{ section.settings.peach | image_url: width: 650 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-hero-pink-blooms.png' | file_url | json | replace: '<', '\u003c' }}{% endif %}},{"originalIndex":3,"label":"THE BLUE BLOOMS","title":"A Little Wildness","description":"Blue flowers are often the ones you notice twice. Cool, unexpected and a little untamed, they make the meadow feel more alive.","image":{% if section.settings.blue != blank %}{{ section.settings.blue | image_url: width: 650 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-hero-blue-blooms.png' | file_url | json | replace: '<', '\u003c' }}{% endif %}},{"originalIndex":4,"label":"THE BELL FLOWERS","title":"Delicate by Nature","description":"Bell flowers hang gently from their stems, moving with the lightest breeze. Quiet and delicate, they bring a soft charm to the meadow.","image":{% if section.settings.bell != blank %}{{ section.settings.bell | image_url: width: 650 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-hero-bell-flowers.png' | file_url | json | replace: '<', '\u003c' }}{% endif %}},{"originalIndex":5,"label":"THE FOLIAGE","title":"Between the Blooms","description":"Leaves and berries fill the spaces between the flowers, making the meadow feel full and lived in. They are where the little discoveries are found.","image":{% if section.settings.foliage != blank %}{{ section.settings.foliage | image_url: width: 650 | json | replace: '<', '\u003c' }}{% else %}{{ 'farrasha-hero-foliage.png' | file_url | json | replace: '<', '\u003c' }}{% endif %}},{"originalIndex":6,"label":"THE BUTTERFLY","title":"And Then, She Took Flight","description":"Among the flowers appeared Farasha. Colourful, curious and free. The little wonder that gave this meadow its name.","image":"butterfly.png"},{"originalIndex":7,"label":"THE FARASHA COLLECTION","title":"Now, Wear the Story","description":"Every piece carries a little of this hand-painted world with it.","finale":true,"button":{{ section.settings.shop_label | json | replace: '<', '\u003c' }}}{% endif %}]}</script>
+</farasha-garden>
+
+<script src="{{ 'farasha-story.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Farasha garden story",
+  "tag": "section",
+  "class": "farasha-section",
+  "enabled_on": {
+    "templates": [
+      "page"
+    ]
+  },
+  "settings": [
+    {
+      "type": "url",
+      "id": "collection_url",
+      "label": "Shop the Collection link"
+    },
+    {
+      "type": "range",
+      "id": "header_offset",
+      "label": "Sticky header height",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "shop_label",
+      "label": "Collection button",
+      "default": "Shop the Collection"
+    },
+    {
+      "type": "header",
+      "content": "Opening Logos & Video"
+    },
+    {
+      "type": "image_picker",
+      "id": "kiyaara_logo",
+      "label": "Kiyaara Welcome Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "collection_logo",
+      "label": "Collection Intro Logo"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Collection Video (Shopify Upload)"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Collection Video Link (MP4 URL)"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_poster",
+      "label": "Video Poster Image"
+    },
+    {
+      "type": "header",
+      "content": "Finale Video Background"
+    },
+    {
+      "type": "video",
+      "id": "finale_video",
+      "label": "Finale Video (Shopify Upload)"
+    },
+    {
+      "type": "url",
+      "id": "finale_video_url",
+      "label": "Finale Video Link (MP4 URL)"
+    },
+    {
+      "type": "image_picker",
+      "id": "finale_video_poster",
+      "label": "Finale Video Poster Image"
+    },
+    {
+      "type": "range",
+      "id": "finale_overlay_opacity",
+      "label": "Finale Video White Overlay Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Background Layers"
+    },
+    {
+      "type": "image_picker",
+      "id": "sky",
+      "label": "Bg sky"
+    },
+    {
+      "type": "image_picker",
+      "id": "mountains",
+      "label": "Bg mountains"
+    },
+    {
+      "type": "image_picker",
+      "id": "far_foliage",
+      "label": "Bg far foliage"
+    },
+    {
+      "type": "image_picker",
+      "id": "grass",
+      "label": "Bg grass"
+    },
+    {
+      "type": "image_picker",
+      "id": "forground",
+      "label": "Bg foreground"
+    },
+    {
+      "type": "image_picker",
+      "id": "light_glow",
+      "label": "Bg glow"
+    },
+    {
+      "type": "header",
+      "content": "Chapter Artwork"
+    },
+    {
+      "type": "image_picker",
+      "id": "peach",
+      "label": "Hero pink blooms"
+    },
+    {
+      "type": "image_picker",
+      "id": "blue",
+      "label": "Hero blue blooms"
+    },
+    {
+      "type": "image_picker",
+      "id": "bell",
+      "label": "Hero bell flowers"
+    },
+    {
+      "type": "image_picker",
+      "id": "foliage",
+      "label": "Hero foliage"
+    },
+    {
+      "type": "image_picker",
+      "id": "butterfly",
+      "label": "Butterfly mascot"
+    },
+    {
+      "type": "image_picker",
+      "id": "chapter_butterfly_frames",
+      "label": "In-Place Butterfly Animation Sheet"
+    },
+    {
+      "type": "image_picker",
+      "id": "collection",
+      "label": "Finale bags"
+    },
+    {
+      "type": "image_picker",
+      "id": "butterfly_v_frames",
+      "label": "Butterfly v frames"
+    },
+    {
+      "type": "image_picker",
+      "id": "butterfly_side_frames",
+      "label": "Butterfly side frames"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "chapter",
+      "name": "Story Chapter",
+      "settings": [
+        {
+          "type": "select",
+          "id": "chapter_type",
+          "label": "Chapter Slide Style",
+          "options": [
+            {
+              "value": "welcome",
+              "label": "Welcome Slide (Intro)"
+            },
+            {
+              "value": "collection_intro",
+              "label": "Collection Video Intro"
+            },
+            {
+              "value": "motif",
+              "label": "Motif / Artwork Slide"
+            },
+            {
+              "value": "butterfly_mascot",
+              "label": "Animated Butterfly Slide"
+            },
+            {
+              "value": "collection_bags",
+              "label": "Shop Collection Finale Slide"
+            }
+          ],
+          "default": "motif"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_chapter",
+          "label": "Hide this chapter",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Eyebrow Label (e.g. THE PEACHY BLOOMS)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Chapter Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description Paragraph"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Chapter Artwork / Motif Image"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Text (for Welcome or Finale)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Farasha garden story",
+      "blocks": [
+        {
+          "type": "chapter",
+          "settings": {
+            "chapter_type": "welcome",
+            "label": "WELCOME",
+            "title": "Welcome",
+            "description": "Enter our meadow",
+            "button_label": "Enter our meadow"
+          }
+        },
+        {
+          "type": "chapter",
+          "settings": {
+            "chapter_type": "collection_intro",
+            "label": "A WORLD PAINTED BY HAND",
+            "title": "A world painted by hand",
+            "description": "A world painted by hand. Farasha began as a dream. A world of curious blooms and wandering butterflies."
+          }
+        },
+        {
+          "type": "chapter",
+          "settings": {
+            "chapter_type": "motif",
+            "label": "THE PEACHY BLOOMS",
+            "title": "Little Bursts of Joy",
+            "description": "Pink blooms arrive like small, happy surprises in a meadow. They bring warmth, colour and a little softness to everything around them."
+          }
+        },
+        {
+          "type": "chapter",
+          "settings": {
+            "chapter_type": "motif",
+            "label": "THE BLUE BLOOMS",
+            "title": "A Little Wildness",
+            "description": "Blue flowers are often the ones you notice twice. Cool, unexpected and a little untamed, they make the meadow feel more alive."
+          }
+        },
+        {
+          "type": "chapter",
+          "settings": {
+            "chapter_type": "motif",
+            "label": "THE BELL FLOWERS",
+            "title": "Delicate by Nature",
+            "description": "Bell flowers hang gently from their stems, moving with the lightest breeze. Quiet and delicate, they bring a soft charm to the meadow."
+          }
+        },
+        {
+          "type": "chapter",
+          "settings": {
+            "chapter_type": "motif",
+            "label": "THE FOLIAGE",
+            "title": "Between the Blooms",
+            "description": "Leaves and berries fill the spaces between the flowers, making the meadow feel full and lived in. They are where the little discoveries are found."
+          }
+        },
+        {
+          "type": "chapter",
+          "settings": {
+            "chapter_type": "butterfly_mascot",
+            "label": "THE BUTTERFLY",
+            "title": "And Then, She Took Flight",
+            "description": "Among the flowers appeared Farasha. Colourful, curious and free. The little wonder that gave this meadow its name."
+          }
+        },
+        {
+          "type": "chapter",
+          "settings": {
+            "chapter_type": "collection_bags",
+            "label": "THE FARASHA COLLECTION",
+            "title": "Now, Wear the Story",
+            "description": "Every piece carries a little of this hand-painted world with it.",
+            "button_label": "Shop the Collection"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

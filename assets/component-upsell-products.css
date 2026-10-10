@@ -1,0 +1,114 @@
+.upsell-products {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+upsell-card {
+  padding-right: 16px;
+}
+upsell-card .product-form__submit {
+  padding: 1.2rem !important;
+  min-height: 0 !important;
+}
+upsell-card .product-form__submit .icon-plus {
+  --size: 12px;
+
+  position: absolute;
+  background-color: var(--color-button-foreground);
+  color: var(--color-button-background);
+  fill: var(--color-button-background);
+  border-radius: var(--button-border-radius);
+
+  width: var(--size);
+  height: var(--size);
+
+  bottom: 1rem;
+  right: 1rem;
+}
+.upsell-products .br-img {
+  border-radius: min(12px, var(--br-img));
+}
+.no-js .upsell-products quantity-input {
+  display: none;
+}
+.upsell-products quantity-input.quantity {
+  font-size: 14px;
+}
+.upsell-products .select {
+  position: relative;
+  color: var(--input-foreground);
+}
+
+.upsell-products .select select {
+  width: 100%;
+  padding: 6px 30px 6px 12px;
+  cursor: pointer;
+
+  border: solid var(--input-border-width) var(--input-border-color);
+  background-color: var(--input-background);
+  border-radius: var(--input-border-radius);
+  box-shadow: var(--input-box-shadow);
+  color: var(--input-foreground);
+  letter-spacing: var(--input-letter-spacing);
+}
+
+.upsell-products .select svg {
+  position: absolute;
+  right: 6px;
+  border-radius: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.upsell-products .card--product {
+  --thumbnail-width: 72px;
+  grid-template-columns: var(--thumbnail-width) 1fr;
+}
+
+.upsell-products .upsell-body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .upsell-products quantity-input.quantity {
+    font-size: 16px;
+  }
+}
+
+/* Cart recommendations in drawer and main-cart */
+.drawer-cart cart-recommendations upsell-card.card,
+.main-cart cart-recommendations upsell-card.card {
+  background-color: #fff;
+  border-radius: 0;
+}
+.drawer-cart cart-recommendations upsell-card .upsell-body,
+.main-cart cart-recommendations upsell-card .upsell-body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+.drawer-cart cart-recommendations upsell-card.layout--thumbnail .card-body,
+.main-cart cart-recommendations upsell-card.layout--thumbnail .card-body {
+  padding: 0;
+}
+.drawer-cart .cart-recommendation-item product-form form,
+.main-cart .cart-recommendation-item product-form form {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+/* List style */
+.upsell-products-style--list {
+  gap: 0;
+}
+.upsell-products-style--list .card--product {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  border-radius: 0;
+  border-top: 1px solid var(--color-borders);
+}

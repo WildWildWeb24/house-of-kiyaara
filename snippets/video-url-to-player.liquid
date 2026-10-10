@@ -1,0 +1,26 @@
+{% comment %}
+  Converts VideoURLDrop into a player iFrame.
+  
+  Note: Shopify video related filters don't work without this conversion. VideoURLDrop is different from the media item object that you'll get in the product media when referring to external videos.
+
+  Accepts:
+    - video_url: {Object} The video URL object from the settings schema.
+{% endcomment %}
+
+{%- liquid  
+  if video_url.type == 'youtube'  
+    assign src = "https://www.youtube.com/embed/" | append: video_url.id | append: '?controls=0&modestbranding=1&rel=0'
+  else
+    assign src = "https://player.vimeo.com/video/" | append: video_url.id | append: '?byline=0&title=0'
+  endif
+-%}
+
+<iframe
+  class="external-video external-video--{{ video_url.type }}"
+  src="{{ src }}"
+  width="1920"
+  height="1080"
+  frameborder="0"
+  loading="lazy"
+  referrerpolicy="no-referrer"
+  allowfullscreen></iframe>

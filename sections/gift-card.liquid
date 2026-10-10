@@ -1,0 +1,145 @@
+{% liquid
+  if settings.currency_code_enabled
+    assign initial_value = gift_card.initial_value | money_with_currency
+    assign gift_card_balance = gift_card.balance | money_with_currency
+  else
+    assign initial_value = gift_card.initial_value | money
+    assign gift_card_balance = gift_card.balance | money
+  endif
+
+  assign card_bg = section.settings.color_card_background
+  assign card_bg_with_transparency = card_bg | append: '88'
+  assign card_bg_transparent = card_bg | append: '00'
+%}
+
+<div class="gift-card-container color-{{ section.settings.color_scheme }}">
+  {% if section.settings.show_section_background -%}
+    {% render 'block--section-background' %}
+  {%- endif %}
+  <div class="gift-card" style="--card-bg: {{ card_bg }}; --card-bg-with-transparency: {{ card_bg_with_transparency }}; --card-bg-transparent: {{ card_bg_transparent }}; --card-color: {{ section.settings.color_card_foreground }};">
+    <div class="git-card-header">
+      {% if section.settings.logo %}
+        {{ section.settings.logo | image_url: width: 600 | image_tag: width: 300, preload: true, alt: 'shop.name', class: 'logo' }}
+      {% else %}
+        <h1 class="size--tiny">{{ shop.name }}</h1>
+      {% endif %}
+      <h5 class="gift-card-subheadin subheading">{{ 'gift_cards.title' | t }}</h5>
+    </div>
+
+    <div class="gift-card-balance-info sm-text-align-right">
+      <p class="h2 size--large gift-card-initial-amount">{{- initial_value -}}</p>
+      {% if gift_card.balance != gift_card.initial_value -%}
+        <p class="h5 subheading gift-card-remaining">{{ 'gift_cards.remaining_html' | t: balance: gift_card_balance }}</p>
+      {%- endif %}
+    </div>
+
+    <div class="gift-card-code">
+      <p class="h4 size--large subheading">{{ gift_card.code | format_code }}</p>
+    </div>
+    <div class="gift-card-qr-code">
+      <div id="QRCode" class="the-qr-code" data-identifier="{{ gift_card.qr_identifier }}"></div>
+    </div>
+
+  </div>
+
+  <div class="gift-card-info-and-actions text-align-center">
+    {% if gift_card.enabled == false or gift_card.expired -%}
+      <p class="gift-card-info expired mt-24 mb-24 sm-mt-32 sm-mb-32" style="color: var(--error);">{{ 'gift_cards.expired_info' | t }}</p>
+    {% else %}
+      <p class="gift-card-info mt-24 mb-24 sm-mt-32 sm-mb-32">{{ 'gift_cards.info' | t }}</p>
+    {% endif %}
+
+    <div class="gift-cards-actions">
+      <button class="btn btn--primary btn--full sm-size--large" id="copyCodeButton" data-code="{{ gift_card.code | format_code }}">{{ 'gift_cards.copy_code' | t }}<span aria-hidden="true" class="button-success-message">{{ 'gift_cards.copy_code_success' | t }}</span></button>
+      <a href="{{ shop.url }}" class="btn btn--secondary btn--full sm-size--large" target="_blank" rel="noopener" aria-describedby="a11y-new-window-message">
+        {{- 'gift_cards.shop_link' | t -}}
+      </a>
+    </div>
+    {% if gift_card.pass_url -%}
+      <a href="{{ gift_card.pass_url }}" class="gift-card-apple-wallet mt-12 sm-mt-32">
+        <img src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="{{ 'gift_cards.add_to_apple_wallet' | t }}" loading="lazy">
+      </a>
+    {%- endif %}
+  </div>
+</div>
+
+<script>
+  console.log("Gift Card init");
+  const string = { qrImageAlt: {{ 'gift_cards.qr_image_alt' | t | json }} };
+  document.addEventListener('DOMContentLoaded', function() {
+    new QRCode(document.getElementById('QRCode'), {
+      text: document.getElementById('QRCode').dataset.identifier,
+      width: 220,
+      height: 220,
+      imageAltText: string.qrImageAlt
+    });
+
+    setTimeout(function() {
+      document.getElementById('QRCode').classList.add('loaded');
+    }, 500);
+  });
+
+  const copyButton = document.getElementById("copyCodeButton");
+
+  copyButton.addEventListener("click", (e) => {
+    console.log("Copy Button init");
+    const codeToCopy = copyButton.getAttribute("data-code");
+    const successMessage = copyButton.querySelector(".copy-success");
+
+    navigator.clipboard.writeText(codeToCopy).then(() => {
+        // Show success message
+        copyButton.classList.add("show-success-message");
+
+        // Hide message after 2 seconds
+        setTimeout(() => {
+          copyButton.classList.remove("show-success-message");
+        }, 2000);
+    }).catch(err => {
+        console.error("Failed to copy text: ", err);
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Gift card",
+  "class": "section--featured-product main-product featured-product anim-custom-child",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.header.blocks.logo.image.label",
+      "info": "t:sections.header.blocks.logo.image.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "default",
+      "label": "t:sections.colors.color_scheme.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_background",
+      "label": "Show section background",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Gift card colors"
+    },
+    {
+      "type": "color",
+      "id": "color_card_foreground",
+      "label": "Card Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_card_background",
+      "label": "Card Background",
+      "default": "#000000"
+    }
+  ]
+}
+{% endschema %}

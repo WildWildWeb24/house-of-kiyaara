@@ -1,0 +1,40 @@
+<drawer-cart
+  id="drawer-cart"
+  data-id="{{ section.id }}"
+  class="drawer slide-from-right drawer-cart color-{{ settings.color_scheme_drawers }}"
+  data-drawer
+  data-parent
+  style="opacity: 0; display: none;"
+>
+{% if settings.drawer_appearance == 'modal' %}
+  {% render 'close-button', button_class: 'drawer-close drawer-float-close', context: 'cart-drawer' %}
+{% endif %}
+  <div class="drawer-panel slide-from-right user-select-none color-{{ settings.color_scheme_drawers }}">
+    <header class="drawer-header">
+      <h2 class="drawer-title h1">{{ 'sections.cart.title' | t }}</h2>
+      {% if settings.drawer_appearance == 'drawer' %}
+        {%- render 'close-button', button_class: 'drawer-close' -%}
+      {% endif %}
+    </header>
+    <div class="drawer-content">
+      <form id="cart" action="{{ routes.cart_url }}" method="post">
+        {% render 'cart-items' %}
+        {%- if settings.show_cart_note -%}
+          {%- render 'cart-note' -%}
+        {%- endif %}
+      </form>
+      {%- render 'cart-gift-note' -%}
+      {% if settings.show_cart_recommendations -%}
+        {% render 'cart-recommendations' %}
+      {%- endif %}
+     
+    </div>
+
+    <footer class="drawer-footer">
+      {%- render 'cart-shipping-notification', cart: cart -%}
+      {%- render 'cart-footer', show_cart_link: settings.show_cart_link -%}
+    </footer>
+  </div>
+  {% comment %} Background, click to close {% endcomment %}
+  <button type="button" class="page-overlay" data-overlay aria-hidden="true" tabindex="-1"></button>
+</drawer-cart>

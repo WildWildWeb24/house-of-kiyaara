@@ -1,0 +1,98 @@
+{% doc %}
+  @prompt
+    Create a customizable centered icon or small image block for use inside a Rich text section. It should sit between the subheading and main heading, support selecting an image or icon, allow control of its size and spacing above and below, and match a clean minimalist brand layout like the provided reference., Replace the currently selected “Centered mark” block with a new standalone section that recreates the reference layout. The section should have a centered, narrow content column with empty space on both sides.
+    
+    Include these customizable elements in this order:
+    
+    A small top text line or subheading
+    A centered icon or image
+    A large main heading
+    Centered body text
+    Make every element editable in the theme editor. The icon/image should support image selection, custom sizing, optional hiding, and spacing controls. Add settings for the subheading, heading, body text, text alignment, content max-width, icon/image size, spacing between each element, top and bottom section padding, background color, text color, and mobile-specific sizing and spacing.
+    
+    Keep the design minimal and elegant, matching the reference: white or selectable background, black or selectable text, generous whitespace, centered typography, and no borders or extra decorative elements. The final result must be a standalone section, not a block that depends on the existing Rich text section. Replace the current “Centered mark” block rather than creating a duplicate.⠋
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% style %}
+  .ai-editorial-intro-{{ ai_gen_id }} { display:block; width:100%; background:{{ block.settings.background_color }}; color:{{ block.settings.text_color }}; padding:{{ block.settings.padding_top }}px 24px {{ block.settings.padding_bottom }}px; }
+  .ai-editorial-intro-{{ ai_gen_id }}__inner { width:100%; max-width:{{ block.settings.content_max_width }}px; margin:0 auto; text-align:{{ block.settings.text_alignment }}; }
+  .ai-editorial-intro-{{ ai_gen_id }}__subheading,.ai-editorial-intro-{{ ai_gen_id }}__body { margin:0; }
+  .ai-editorial-intro-{{ ai_gen_id }}__subheading { font-family:var(--font-body-family); font-size:{{ block.settings.subheading_size }}px; line-height:1.4; letter-spacing:.12em; text-transform:uppercase; }
+  .ai-editorial-intro-{{ ai_gen_id }}__mark { margin-top:{{ block.settings.subheading_to_mark }}px; margin-bottom:{{ block.settings.mark_to_heading }}px; line-height:0; }
+  .ai-editorial-intro-{{ ai_gen_id }}__mark img,.ai-editorial-intro-{{ ai_gen_id }}__mark svg { display:inline-block; width:{{ block.settings.mark_size }}px; height:{{ block.settings.mark_size }}px; object-fit:contain; vertical-align:middle; }
+  .ai-editorial-intro-{{ ai_gen_id }}__mark svg { fill:none; stroke:currentColor; stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round; }
+  .ai-editorial-intro-{{ ai_gen_id }}__heading { margin:0; font-family:var(--font-heading-family); font-size:{{ block.settings.heading_size }}px; font-weight:400; line-height:1.1; }
+  .ai-editorial-intro-{{ ai_gen_id }}__body { margin-top:{{ block.settings.heading_to_body }}px; font-family:var(--font-body-family); font-size:{{ block.settings.body_size }}px; line-height:1.65; }
+  .ai-editorial-intro-{{ ai_gen_id }}__body p { margin:0; }
+  @media screen and (max-width:749px) {
+    .ai-editorial-intro-{{ ai_gen_id }} { padding:{{ block.settings.mobile_padding_top }}px 20px {{ block.settings.mobile_padding_bottom }}px; }
+    .ai-editorial-intro-{{ ai_gen_id }}__subheading { font-size:{{ block.settings.mobile_subheading_size }}px; }
+    .ai-editorial-intro-{{ ai_gen_id }}__mark { margin-top:{{ block.settings.mobile_subheading_to_mark }}px; margin-bottom:{{ block.settings.mobile_mark_to_heading }}px; }
+    .ai-editorial-intro-{{ ai_gen_id }}__mark img,.ai-editorial-intro-{{ ai_gen_id }}__mark svg { width:{{ block.settings.mobile_mark_size }}px; height:{{ block.settings.mobile_mark_size }}px; }
+    .ai-editorial-intro-{{ ai_gen_id }}__heading { font-size:{{ block.settings.mobile_heading_size }}px; }
+    .ai-editorial-intro-{{ ai_gen_id }}__body { margin-top:{{ block.settings.mobile_heading_to_body }}px; font-size:{{ block.settings.mobile_body_size }}px; }
+  }
+{% endstyle %}
+<div class="ai-editorial-intro-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-editorial-intro-{{ ai_gen_id }}__inner">
+    {% if block.settings.subheading != blank %}<div class="ai-editorial-intro-{{ ai_gen_id }}__subheading">{{ block.settings.subheading }}</div>{% endif %}
+    {% unless block.settings.hide_mark %}
+      <div class="ai-editorial-intro-{{ ai_gen_id }}__mark" aria-hidden="true">
+        {% if block.settings.image != blank %}<img src="{{ block.settings.image | image_url: width: 300 }}" alt="" loading="lazy">
+        {% else %}
+          {% case block.settings.icon %}
+            {% when 'diamond' %}<svg viewBox="0 0 40 40"><path d="M20 3 37 20 20 37 3 20 20 3Z"></path><path d="m13 20 5 5 10-10"></path></svg>
+            {% when 'flower' %}<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="4"></circle><path d="M20 16c-7-2-9-7-6-10 3-3 8-1 10 6 2-7 7-9 10-6 3 3 1 8-6 10 7 2 9 7 6 10-3 3-8 1-10-6-2 7-7 9-10 6-3-3-1-8 6-10Z"></path></svg>
+            {% when 'star' %}<svg viewBox="0 0 40 40"><path d="m20 4 4.9 10 11.1 1.6-8 7.8 1.9 11-9.9-5.2-9.9 5.2 1.9-11-8-7.8L15.1 14 20 4Z"></path></svg>
+            {% when 'circle' %}<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14"></circle><circle cx="20" cy="20" r="3"></circle></svg>
+          {% endcase %}
+        {% endif %}
+      </div>
+    {% endunless %}
+    {% if block.settings.heading != blank %}<h2 class="ai-editorial-intro-{{ ai_gen_id }}__heading">{{ block.settings.heading | escape }}</h2>{% endif %}
+    {% if block.settings.body != blank %}<div class="ai-editorial-intro-{{ ai_gen_id }}__body">{{ block.settings.body }}</div>{% endif %}
+  </div>
+</div>
+{% schema %}
+{
+  "name":"Editorial intro",
+  "settings":[
+    {"type":"header","content":"Content"},
+    {"type":"richtext","id":"subheading","label":"Subheading","default":"<p>House of Kiyaara</p>"},
+    {"type":"text","id":"heading","label":"Heading","default":"Designed for the moments that matter"},
+    {"type":"richtext","id":"body","label":"Body text","default":"<p>Thoughtfully crafted pieces with a quiet sense of luxury.</p>"},
+    {"type":"header","content":"Icon or image"},
+    {"type":"checkbox","id":"hide_mark","label":"Hide icon or image","default":false},
+    {"type":"image_picker","id":"image","label":"Image"},
+    {"type":"select","id":"icon","label":"Icon","options":[{"value":"diamond","label":"Diamond"},{"value":"flower","label":"Flower"},{"value":"star","label":"Star"},{"value":"circle","label":"Circle"}],"default":"diamond"},
+    {"type":"header","content":"Desktop layout"},
+    {"type":"select","id":"text_alignment","label":"Text alignment","options":[{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}],"default":"center"},
+    {"type":"range","id":"content_max_width","label":"Content max-width","min":320,"max":1200,"step":20,"unit":"px","default":680},
+    {"type":"range","id":"mark_size","label":"Icon or image size","min":12,"max":100,"step":2,"unit":"px","default":32},
+    {"type":"range","id":"subheading_to_mark","label":"Subheading to icon","min":0,"max":100,"step":5,"unit":"px","default":20},
+    {"type":"range","id":"mark_to_heading","label":"Icon to heading","min":0,"max":100,"step":5,"unit":"px","default":25},
+    {"type":"range","id":"heading_to_body","label":"Heading to body","min":0,"max":100,"step":5,"unit":"px","default":25},
+    {"type":"range","id":"heading_size","label":"Heading size","min":28,"max":100,"step":2,"unit":"px","default":56},
+    {"type":"range","id":"subheading_size","label":"Subheading size","min":8,"max":24,"step":1,"unit":"px","default":12},
+    {"type":"range","id":"body_size","label":"Body size","min":12,"max":24,"step":1,"unit":"px","default":16},
+    {"type":"range","id":"padding_top","label":"Top padding","min":0,"max":200,"step":10,"unit":"px","default":80},
+    {"type":"range","id":"padding_bottom","label":"Bottom padding","min":0,"max":200,"step":10,"unit":"px","default":80},
+    {"type":"header","content":"Mobile layout"},
+    {"type":"range","id":"mobile_mark_size","label":"Icon or image size","min":12,"max":80,"step":2,"unit":"px","default":28},
+    {"type":"range","id":"mobile_subheading_to_mark","label":"Subheading to icon","min":0,"max":80,"step":5,"unit":"px","default":15},
+    {"type":"range","id":"mobile_mark_to_heading","label":"Icon to heading","min":0,"max":80,"step":5,"unit":"px","default":20},
+    {"type":"range","id":"mobile_heading_to_body","label":"Heading to body","min":0,"max":80,"step":5,"unit":"px","default":20},
+    {"type":"range","id":"mobile_heading_size","label":"Heading size","min":24,"max":64,"step":2,"unit":"px","default":40},
+    {"type":"range","id":"mobile_subheading_size","label":"Subheading size","min":8,"max":20,"step":1,"unit":"px","default":11},
+    {"type":"range","id":"mobile_body_size","label":"Body size","min":12,"max":22,"step":1,"unit":"px","default":15},
+    {"type":"range","id":"mobile_padding_top","label":"Top padding","min":0,"max":140,"step":10,"unit":"px","default":60},
+    {"type":"range","id":"mobile_padding_bottom","label":"Bottom padding","min":0,"max":140,"step":10,"unit":"px","default":60},
+    {"type":"header","content":"Colors"},
+    {"type":"color","id":"background_color","label":"Background","default":"#FFFFFF"},
+    {"type":"color","id":"text_color","label":"Text","default":"#111111"}
+  ],
+  "presets":[{"name":"Editorial intro"}],
+  "tag":null,
+  "class":"editorial-intro-block"
+}
+{% endschema %}

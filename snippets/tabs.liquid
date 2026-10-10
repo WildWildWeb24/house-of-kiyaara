@@ -1,0 +1,47 @@
+{% liquid
+  # ** Purpose **
+  # Snippet for handling content as tabs.
+
+  # ** Parameters **
+  # blocks                => REQUIRED | object array: the tab blocks to be rendered
+  # title_style           => OPTIONAL | string: 'h3', 'subheading', ... | default: 'h3'
+
+  assign tab_ids = blocks | map: 'id'
+  assign tab_settings = blocks | map: 'settings'
+  assign tab_titles = tab_settings | map: 'title'
+  assign tab_contents = tab_settings | map: 'content'
+
+  # Generate unique IDs for accessibility
+  assign container_id = 'tabs-' | append: tab_ids[0]
+%}
+
+<tab-container class="tabs" role="tablist" aria-label="{{ 'accessibility.tab_navigation' | t }}">
+  <div class="tab-titles btn-group width-auto pb-16" data-tab-titles>
+    {% for title in tab_titles %}
+      {% assign button_id = container_id | append: '-button-' | append: forloop.index %}
+      {% assign panel_id = container_id | append: '-panel-' | append: forloop.index %}
+      <button
+        id="{{ button_id }}"
+        class="tab-title btn--link{% if forloop.first %} is-active{% else %} style--subdued{% endif %}"
+        data-tab-title="{{ tab_ids[forloop.index0] }}"
+        aria-controls="{{ panel_id }}"
+        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+        role="tab">
+        {{- title -}}
+      </button>
+    {% endfor %}
+  </div>
+  <div class="tab-contents">
+    {% for content in tab_contents %}
+      {% assign panel_id = container_id | append: '-panel-' | append: forloop.index %}
+      <div
+        id="{{ panel_id }}"
+        class="tab-content rte content pt-8 pb-16{% unless forloop.first %} hidden{% endunless %}"
+        data-tab-content="{{ tab_ids[forloop.index0] }}"
+        role="tabpanel"
+        aria-labelledby="{{ container_id }}-button-{{ forloop.index }}">
+        {{ content }}
+      </div>
+    {% endfor %}
+  </div>
+</tab-container>

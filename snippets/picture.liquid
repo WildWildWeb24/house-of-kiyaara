@@ -1,0 +1,60 @@
+{% comment %}
+  Image snippet that supports separate image sources for mobile and desktop.
+
+  Accepts:
+  - image_default: {Object} Image object (required)
+  - image_mobile: {Object} Image object used to generate <source> tag for mobile use (optional)
+  - item_id: {String} Unique identifier for the picture element (optional)
+  - class: {String} Additional classes for the picture element (optional)
+  - sizing_rule: {String} 'cover', 'contain' (optional)
+  - aspect_ratio: {String} 'portrait', 'landscape', 'square' (optional)
+  - sizes: {String} Image sizes attribute (optional)
+  - preload: {Boolean} Preload the image (optional)
+  - placeholder: {String} Placeholder image name (optional)
+{% endcomment %}
+
+{% liquid
+  # Default values
+  assign sizing_rule = sizing_rule | default: 'cover'
+  assign aspect_ratio = aspect_ratio | default: 'natural'
+  assign class = class | append: ' media media--picture' | append: ' ' | append: sizing_rule | append: ' ' | append: aspect_ratio | strip
+  assign placeholder = placeholder | default: 'image'
+  assign sizes = sizes | default: '100vw'
+  assign style_attr = ''
+
+  # Background color
+  if background_color
+    assign style_attr = style_attr | append: 'background-color: ' | append: background_color | append: ';'
+  endif
+
+  # Mobile source class
+  if image_default and image_mobile
+    assign class = class | append: ' has-mobile-image'
+    assign style_attr = style_attr | append: ' --mobile-image-focal-point: ' | append: image_mobile.presentation.focal_point | default: '50% 50%' | append: ';' | strip
+  endif
+
+  # Lazyloading
+  if preload and preload == true
+    assign preload = true
+    assign loading = 'eager'
+    assign fetchpriority = 'high'
+  else
+    assign preload = false
+    assign loading = 'lazy'
+    assign fetchpriority = 'low'
+  endif
+%}
+
+{%- if image_default != blank -%}
+<picture {% if item_id != blank -%}id="{{ item_id }}" {% endif %}class="{{ class }}"{% if style_attr != blank %} style="{{ style_attr }}"{% endif %}>
+  {% if image_mobile -%}
+    <source media="(max-width: 414px)" srcset="{{ image_mobile | image_url: width: 414 }}, {{ image_mobile | image_url: width: 828 }} 2x">
+    <source media="(max-width: 767px)" srcset="{{ image_mobile | image_url: width: 767 }}, {{ image_mobile | image_url: width: 1534 }} 2x">
+  {%- endif %}
+  {{ image_default | image_url: width: 2048 | image_tag: preload: preload, loading: loading, sizes: sizes, widths: '220, 352, 412, 480, 768, 1024, 1200, 1440, 1920, 2048', fetchpriority: fetchpriority }}
+</picture>
+{% else %}
+  <picture class="media media--empty {{ class }}">
+    {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+  </picture>
+{% endif %}

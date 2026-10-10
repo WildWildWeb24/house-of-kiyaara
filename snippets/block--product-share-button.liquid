@@ -1,0 +1,21 @@
+<share-button data-text="{{ product.title }}" id="Share-{{ section.id }}" class="share-button{% if block.settings.hide_on_desktop %} small-up--hide{% endif %}" {{ block.shopify_attributes }}>
+  <details id="Details-{{ block.id }}-{{ section.id }}">
+    <summary>
+      <span>{{ block.settings.share_label | escape }}</span>
+      {%- render 'icon-share' -%}
+    </summary>
+    <div id="Product-share-{{ section.id }}" class="content rte">
+      <div class="flex vertical">
+        <div class="field">
+          <input type="text" class="field__input" id="url" value="{{ product.selected_variant.url | default: product.url | prepend: request.origin }}" placeholder="{{ 'general.share.share_url' | t }}" onclick="this.select();" readonly>
+          <label class="form__label field__label" for="url">URL</label>
+        </div>
+        <button class="btn btn--link size--small mt-12 js">
+          {{ 'general.share.copy_to_clipboard' | t }}
+        </button>
+        <span id="ShareMessage-{{ section.id }}" class="text-align-center share-button__message hidden" role="status"></span>
+      </div>
+    </div>
+  </details>
+</share-button>
+<script src="{{ 'component-share.js' | asset_url }}" defer></script>

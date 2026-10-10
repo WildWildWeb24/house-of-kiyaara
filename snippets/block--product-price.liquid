@@ -1,0 +1,43 @@
+{%- liquid
+  # Block snippet for product price
+  
+  # ** PARAMETERS **
+  # block              =>  REQUIRED | block object
+  # product            =>  REQUIRED | product object (Direct access on product template)
+
+  # Size Multipliers
+  assign sizing_classes = block.settings.size_multiplier | append: ' ' | append: block.settings.sm_size_multiplier
+  
+  # The Price
+  capture the_price
+    render 'price', product: product, use_variant: true, price_class: sizing_classes
+  endcapture
+-%}
+
+<div class="js" id="price-{{ section.id }}" role="status">
+  {%- unless product.selected_or_first_available_variant == nil -%}
+    {%- if block.settings.font_weight == 'bold' -%}
+      <strong>{{ the_price }}</strong>
+    {%- else -%}
+      {{ the_price }}
+    {%- endif -%}
+    {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
+      <div class="product__tax size--nano style--subdued">
+        {%- if cart.taxes_included -%}
+          {{ 'products.product.include_taxes' | t }}
+        {%- endif -%}
+        {%- if shop.shipping_policy.body != blank -%}
+          {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  {% endunless %}
+</div>
+
+{%- unless product == nil -%}
+  {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+  {%- form 'product', product, id: product_form_installment_id, class: 'installment' -%}
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+    {{ form | payment_terms }}
+  {%- endform -%}
+{%- endunless -%}
