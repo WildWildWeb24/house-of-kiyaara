@@ -138,7 +138,7 @@
         "same_day_pincode_checker_VNqrLy": {
           "type": "same_day_pincode_checker",
           "settings": {
-            "heading": "Order delivered within 24 hours across Mumbai",
+            "heading": "Prepaid orders delivered within 24 hours across Mumbai",
             "placeholder_text": "Enter pincode to check",
             "button_text": "CHECK",
             "pincodes": "400001,400002,400003,400004,400005,400006,400007,400008,400009,400010,400011,400012,400013,400014,400015,400016,400017,400018,400019,400020,400021,400022,400024,400025,400026,400027,400028,400029,400030,400031,400032,400033,400034,400035,400037,400042,400043,400047,400049,400050,400051,400052,400053,400054,400055,400056,400057,400058,400059,400060,400061,400063,400064,400065,400066,400067,400068,400069,400070,400071,400072,400074,400075,400076,400077,400078,400079,400080,400081,400082,400083,400084,400085,400086,400087,400088,400089,400091,400092,400093,400094,400095,400096,400097,400098,400099,400101,400102,400103,400104,400111,400113,400114,400118,400171,400183,400186,400604,400703,400705,400706,401107,410206",
@@ -311,7 +311,7 @@
           "name": "Terms & Conditions",
           "settings": {
             "title": "Terms & Conditions",
-            "content": "<p><strong>Terms & Conditions - Promotions, Rewards & Benefits</strong></p><p>House of Kiyaara may, from time to time, offer promotions, rewards, and benefits for purchases of bags and accessories, for a limited period. The terms and conditions of such promotions, rewards, and benefits will be specified separately at the time of the offer. &nbsp;&nbsp;</p><p>House of Kiyaara reserves the right to withdraw, modify, or change the terms and conditions of promotions, rewards, and benefits for online purchases at any time without prior notice. Any changes will be effective immediately upon posting to the website.</p><p><br/><strong>T&C Apply:&nbsp;</strong></p><ul><li>Only one free product can be claimed per order, regardless of the number of bags or accessories purchased in that single order.</li><li>Festival of Joy, up to 40% discount on selected styles.&nbsp;</li><li>Use code FESTIVE10 to enjoy a 10% discount on selected items only.</li><li>Discount codes applicable on non-sale items only.</li><li>Same day delivery in Mumbai for orders placed before 2pm.</li></ul>",
+            "content": "<p><strong>Terms & Conditions - Promotions, Rewards & Benefits</strong></p><p>House of Kiyaara may, from time to time, offer promotions, rewards, and benefits for purchases of bags and accessories, for a limited period. The terms and conditions of such promotions, rewards, and benefits will be specified separately at the time of the offer. &nbsp;&nbsp;</p><p>House of Kiyaara reserves the right to withdraw, modify, or change the terms and conditions of promotions, rewards, and benefits for online purchases at any time without prior notice. Any changes will be effective immediately upon posting to the website.</p><p><br/><strong>T&C Apply:&nbsp;</strong></p><ul><li>Only one free product can be claimed per order, regardless of the number of bags or accessories purchased in that single order.</li><li>Festival of Joy, up to 40% discount on selected styles.&nbsp;</li><li>Use code FESTIVE10 to enjoy a 10% discount on selected items only.</li><li>Discount codes applicable on non-sale items only.</li><li>Prepaid orders delivered within 24 hours across Mumbai</li></ul>",
             "page": "",
             "icon": "default",
             "sm_margin_top": 8,
