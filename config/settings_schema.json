@@ -1925,6 +1925,28 @@
       },
       {
         "type": "header",
+        "content": "Birthday discount"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_cart_birthday",
+        "label": "Show birthday discount field",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "cart_birthday_heading",
+        "label": "Heading",
+        "default": "For a birthday discount!"
+      },
+      {
+        "type": "text",
+        "id": "cart_birthday_subtext",
+        "label": "Subtext",
+        "default": "Enter your birthdate to unlock an exclusive treat on your birthday."
+      },
+      {
+        "type": "header",
         "content": "t:settings_schema.cart.settings.header__1.content"
       },
       {

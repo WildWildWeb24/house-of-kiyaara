@@ -1,0 +1,373 @@
+{%- comment -%}
+  Cart Birthday Attribute:
+  Allows customers to input their birthdate in the cart drawer / cart page
+  to receive a birthday discount.
+  Disallows current date and future dates.
+  Saves the value as cart attribute "Birthdate" (attributes[Birthdate]).
+{%- endcomment -%}
+
+{%- if settings.show_cart_birthday == nil or settings.show_cart_birthday -%}
+  {%- liquid
+    assign yesterday_timestamp = 'now' | date: '%s' | minus: 86400
+    assign max_birthdate = yesterday_timestamp | date: '%Y-%m-%d'
+  -%}
+
+  <div class="cart-birthdate{% if cart.item_count == 0 %} hide{% endif %}" id="cart-birthdate">
+    <div class="cart-birthdate__header">
+      <span class="cart-birthdate__icon" aria-hidden="true">
+        {%- render 'icon-gift' -%}
+      </span>
+      <label class="cart-birthdate__heading h6 subheading size--tiny" for="cart-birthdate-input">
+        {{- settings.cart_birthday_heading | default: 'For a birthday discount!' -}}
+      </label>
+    </div>
+
+    {%- if settings.cart_birthday_subtext != blank -%}
+      <p class="cart-birthdate__subtext size--tiny style--subdued">
+        {{- settings.cart_birthday_subtext -}}
+      </p>
+    {%- endif -%}
+
+    <div class="cart-birthdate__field">
+      <input
+        type="date"
+        class="cart-birthdate__input field__input"
+        id="cart-birthdate-input"
+        name="attributes[Birthdate]"
+        form="cart"
+        value="{{ cart.attributes['Birthdate'] | escape }}"
+        min="1900-01-01"
+        max="{{ max_birthdate }}"
+        aria-label="{{ settings.cart_birthday_heading | default: 'For a birthday discount!' }}"
+      >
+    </div>
+
+    <div class="cart-birthdate__feedback">
+      <div class="cart-birthdate__saved size--tiny{% if cart.attributes['Birthdate'] == blank %} hide{% endif %}">
+        {%- render 'icon-checkmark' -%}
+        <span>Saved for your birthday discount!</span>
+        <button type="button" class="cart-birthdate__clear-btn" aria-label="Clear birthdate">Clear</button>
+      </div>
+      <p class="cart-birthdate__error size--tiny hide" role="alert"></p>
+    </div>
+  </div>
+
+  <style>
+    .cart-birthdate {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-borders);
+      padding-bottom: 16px;
+    }
+
+    .cart-birthdate.hide {
+      display: none !important;
+    }
+
+    .cart-birthdate__header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .cart-birthdate__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-foreground);
+      flex-shrink: 0;
+    }
+
+    .cart-birthdate__icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .cart-birthdate__heading {
+      margin: 0;
+      font-weight: 600;
+      color: var(--color-foreground);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+    }
+
+    .cart-birthdate__subtext {
+      margin: 0 0 10px 0;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      color: var(--color-foreground);
+      opacity: 0.75;
+    }
+
+    .cart-birthdate__field {
+      position: relative;
+      width: 100%;
+    }
+
+    .cart-birthdate__input {
+      width: 100%;
+      box-sizing: border-box;
+      font-family: inherit;
+      font-size: 1.4rem;
+      line-height: 1.4;
+      color: var(--color-foreground, #000000);
+      background-color: var(--input-background, #ffffff);
+      border: 1px solid var(--color-borders, #dddddd);
+      border-radius: var(--input-border-radius, 4px);
+      padding: 10px 14px;
+      min-height: 44px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .cart-birthdate__input:focus {
+      outline: none;
+      border-color: var(--color-foreground, #000000);
+      box-shadow: 0 0 0 1px var(--color-foreground, #000000);
+    }
+
+    .cart-birthdate__input.is-invalid {
+      border-color: var(--error, #dd4242) !important;
+      box-shadow: 0 0 0 1px var(--error, #dd4242) !important;
+    }
+
+    .cart-birthdate__input::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+      opacity: 0.65;
+      padding: 4px;
+      margin-right: -4px;
+      transition: opacity 0.2s ease;
+    }
+
+    .cart-birthdate__input:hover::-webkit-calendar-picker-indicator,
+    .cart-birthdate__input:focus::-webkit-calendar-picker-indicator {
+      opacity: 1;
+    }
+
+    .cart-birthdate__feedback {
+      min-height: 20px;
+      margin-top: 6px;
+    }
+
+    .cart-birthdate__saved {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--success, #31862d);
+      font-size: 1.2rem;
+      line-height: 1.4;
+    }
+
+    .cart-birthdate__saved .icon,
+    .cart-birthdate__saved svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      stroke: var(--success, #31862d);
+    }
+
+    .cart-birthdate__clear-btn {
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin-left: 8px;
+      color: var(--color-foreground, #000000);
+      opacity: 0.6;
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-family: inherit;
+      transition: opacity 0.2s ease;
+    }
+
+    .cart-birthdate__clear-btn:hover {
+      opacity: 1;
+    }
+
+    .cart-birthdate__error {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--error, #dd4242);
+      font-size: 1.2rem;
+      margin: 0;
+      line-height: 1.4;
+    }
+  </style>
+
+  <script>
+    (function () {
+      function getYesterdayDateStr() {
+        var now = new Date();
+        now.setDate(now.getDate() - 1);
+        var y = now.getFullYear();
+        var m = String(now.getMonth() + 1).padStart(2, '0');
+        var d = String(now.getDate()).padStart(2, '0');
+        return y + '-' + m + '-' + d;
+      }
+
+      function initCartBirthdate() {
+        var containers = document.querySelectorAll('.cart-birthdate');
+        if (!containers.length) return;
+
+        var maxDateStr = getYesterdayDateStr();
+
+        containers.forEach(function (container) {
+          if (container.dataset.initialized === 'true') return;
+          container.dataset.initialized = 'true';
+
+          var input = container.querySelector('.cart-birthdate__input');
+          var errorEl = container.querySelector('.cart-birthdate__error');
+          var savedEl = container.querySelector('.cart-birthdate__saved');
+          var clearBtn = container.querySelector('.cart-birthdate__clear-btn');
+          if (!input) return;
+
+          input.setAttribute('max', maxDateStr);
+
+          var saveTimeout;
+
+          function showError(msg) {
+            if (errorEl) {
+              errorEl.textContent = msg;
+              errorEl.classList.remove('hide');
+            }
+            if (savedEl) savedEl.classList.add('hide');
+            input.classList.add('is-invalid');
+          }
+
+          function clearError() {
+            if (errorEl) {
+              errorEl.textContent = '';
+              errorEl.classList.add('hide');
+            }
+            input.classList.remove('is-invalid');
+          }
+
+          function showSaved() {
+            clearError();
+            if (savedEl) savedEl.classList.remove('hide');
+          }
+
+          function clearSaved() {
+            if (savedEl) savedEl.classList.add('hide');
+          }
+
+          function sendCartUpdate(birthdate) {
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(function () {
+              var updateUrl = (window.routes && window.routes.cart_update_url) ? window.routes.cart_update_url : '/cart/update.js';
+              fetch(updateUrl, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Accept: 'application/json',
+                },
+                body: JSON.stringify({
+                  attributes: {
+                    Birthdate: birthdate,
+                  },
+                }),
+                keepalive: true,
+              }).catch(function (err) {
+                console.error('Error updating birthday cart attribute:', err);
+              });
+            }, 300);
+          }
+
+          function validateAndHandle(val) {
+            if (!val) {
+              clearError();
+              clearSaved();
+              sendCartUpdate('');
+              return;
+            }
+
+            // Disallow current date and future dates
+            if (val > maxDateStr) {
+              showError('Please select a valid birthdate (today and future dates are not allowed).');
+              input.value = '';
+              clearSaved();
+              sendCartUpdate('');
+              return;
+            }
+
+            if (val < '1900-01-01') {
+              showError('Please enter a valid birthdate.');
+              input.value = '';
+              clearSaved();
+              sendCartUpdate('');
+              return;
+            }
+
+            clearError();
+            showSaved();
+            sendCartUpdate(val);
+          }
+
+          input.addEventListener('change', function () {
+            validateAndHandle(this.value);
+          });
+
+          input.addEventListener('input', function () {
+            if (this.value && this.value.length === 10) {
+              validateAndHandle(this.value);
+            } else if (!this.value) {
+              clearError();
+              clearSaved();
+              sendCartUpdate('');
+            }
+          });
+
+          input.addEventListener('click', function () {
+            if (typeof this.showPicker === 'function') {
+              try {
+                this.showPicker();
+              } catch (e) {}
+            }
+          });
+
+          if (clearBtn) {
+            clearBtn.addEventListener('click', function (e) {
+              e.preventDefault();
+              input.value = '';
+              clearError();
+              clearSaved();
+              sendCartUpdate('');
+            });
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCartBirthdate);
+      } else {
+        initCartBirthdate();
+      }
+
+      document.addEventListener('cart:update', function (e) {
+        var count = e && e.detail ? e.detail.item_count : null;
+        var containers = document.querySelectorAll('.cart-birthdate');
+        containers.forEach(function (c) {
+          if (count === 0) {
+            c.classList.add('hide');
+          } else if (count > 0) {
+            c.classList.remove('hide');
+          }
+        });
+        initCartBirthdate();
+      });
+
+      document.addEventListener('ajaxProduct:added', function () {
+        var containers = document.querySelectorAll('.cart-birthdate');
+        containers.forEach(function (c) {
+          c.classList.remove('hide');
+        });
+        initCartBirthdate();
+      });
+    })();
+  </script>
+{%- endif -%}

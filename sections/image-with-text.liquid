@@ -24,8 +24,22 @@
 
   # Text column width
   assign md_text_col_width = 12 | minus: section.settings.media_width
+
+  assign render_section = true
+  if media_block != blank
+    if media_block.settings.media_toggle == 'show_video' and media_block.settings.video == blank
+      unless request.design_mode
+        assign render_section = false
+      endunless
+    elsif media_block.settings.media_toggle == 'show_image' and media_block.settings.image == blank
+      unless request.design_mode
+        assign render_section = false
+      endunless
+    endif
+  endif
 -%}
 
+{%- if render_section -%}
 {{ 'section--image-with-text.css' | asset_url |  stylesheet_tag  }}
 
 <div
@@ -70,6 +84,7 @@
     </div>
   </div>
 </div>
+{%- endif -%}
 
 {% schema %}
 {

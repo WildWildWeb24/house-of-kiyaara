@@ -22,9 +22,12 @@
         {%- render 'cart-items' -%}
         {%- render 'cart-shipping-notification' -%}
         <div class="flex space-between mt-40">
-          {%- if settings.show_cart_note -%}
-            {%- render 'cart-note' -%}
-          {%- endif -%}
+          <div class="cart-attributes-wrapper" style="flex: 1; max-width: 450px; margin-right: 24px;">
+            {%- if settings.show_cart_note -%}
+              {%- render 'cart-note' -%}
+            {%- endif -%}
+            {%- render 'cart-birthdate' -%}
+          </div>
           {%- render 'cart-footer', show_cart_link: false -%}
         </div>
       </form>
