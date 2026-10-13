@@ -17,7 +17,7 @@
       <span class="cart-birthdate__icon" aria-hidden="true">
         {%- render 'icon-gift' -%}
       </span>
-      <label class="cart-birthdate__heading h6 subheading size--tiny" for="cart-birthdate-input">
+      <label class="cart-birthdate__heading" for="cart-birthdate-input">
         {{- settings.cart_birthday_heading | default: 'For a birthday discount!' -}}
       </label>
     </div>
@@ -88,9 +88,9 @@
       margin: 0;
       font-weight: 600;
       color: var(--color-foreground);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-size: 1.2rem;
+      letter-spacing: normal;
+      text-transform: none !important;
+      font-size: 1.3rem;
     }
 
     .cart-birthdate__subtext {
