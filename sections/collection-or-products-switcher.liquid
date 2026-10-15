@@ -82,7 +82,7 @@
   {% assign first_tab_title = true %}
   <div class="tab-titles scrollbar--hide width-auto mb-16" data-tab-titles>
     {% for block in section.blocks %}
-      {% unless block.type == 'section_header' %}
+      {% unless block.type == 'section_header' or block.type == 'custom_spacing' %}
         <button class="tab-title pt-16 pb-16 pl-24 sm-pl-0{% if first_tab_title %} is-active{% endif %}{% unless first_tab_title %} style--subdued{% endunless %}"
           data-tab-title="{{ block.id }}"
         >

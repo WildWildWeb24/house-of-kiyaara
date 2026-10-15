@@ -1,0 +1,375 @@
+{{ 'page-gift-shop.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign total_cards = section.blocks.size
+  assign total_padded = total_cards
+  if total_cards < 10
+    assign total_padded = '0' | append: total_cards
+  endif
+-%}
+
+<div
+  id="{{ section.id }}"
+  class="gift-shop-deck-section color-{{ section.settings.color_scheme }}"
+  style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px; --sm-pt: {{ section.settings.md_padding_top }}px; --sm-pb: {{ section.settings.md_padding_bottom }}px;"
+  data-gift-deck-section="{{ section.id }}">
+  <div class="container">
+    <div class="gift-deck__grid">
+      {%- comment -%} Left on Desktop / Top on Mobile: 1:1 Stacked Card Deck {%- endcomment -%}
+      <div class="gift-deck__visual-col">
+        <div class="gift-deck__stage" data-gift-deck-stage>
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign index_num = forloop.index
+              if index_num < 10
+                assign index_padded = '0' | append: index_num
+              else
+                assign index_padded = index_num
+              endif
+              assign stack_pos = forloop.index0
+            -%}
+            <div
+              class="gift-deck__card{% if forloop.first %} is-active{% endif %}"
+              data-gift-deck-card="{{ forloop.index0 }}"
+              data-stack-pos="{{ stack_pos }}"
+              {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                <div class="gift-deck__card-media">
+                  {{
+                    block.settings.image
+                    | image_url: width: 1080
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '400, 600, 800, 1080',
+                      sizes: '(max-width: 767px) 85vw, 480px',
+                      class: 'gift-deck__card-img'
+                  }}
+                </div>
+              {%- else -%}
+                <div class="gift-deck__card-placeholder">
+                  {%- if block.settings.placeholder_label != blank -%}
+                    <span class="gift-deck__placeholder-tag">{{ block.settings.placeholder_label | escape }}</span>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.show_card_overlay or block.settings.image == blank -%}
+                <div class="gift-deck__card-overlay">
+                  <span class="gift-deck__card-counter">{{ index_padded }} / {{ total_padded }}</span>
+                  {%- if block.settings.card_caption != blank -%}
+                    <p class="gift-deck__card-quote">{{ block.settings.card_caption | escape }}</p>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- comment -%} Right on Desktop / Bottom on Mobile: Heading + 01-05 Interactive List + CTA {%- endcomment -%}
+      <div class="gift-deck__content-col">
+        {%- if section.settings.title != blank -%}
+          <div class="gift-deck__header">
+            <h2 class="gift-deck__title {{ section.settings.heading_size }}">
+              {{ section.settings.title | replace: '[br]', '<br/>' }}
+            </h2>
+            <span class="gift-deck__title-rule" aria-hidden="true"></span>
+          </div>
+        {%- endif -%}
+
+        <div class="gift-deck__list" role="tablist" aria-label="{{ section.settings.title | strip_html | escape }}">
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign index_num = forloop.index
+              if index_num < 10
+                assign index_padded = '0' | append: index_num
+              else
+                assign index_padded = index_num
+              endif
+            -%}
+            <button
+              type="button"
+              role="tab"
+              aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+              class="gift-deck__item{% if forloop.first %} is-active{% endif %}"
+              data-gift-deck-trigger="{{ forloop.index0 }}"
+              {{ block.shopify_attributes }}>
+              <span class="gift-deck__item-num">{{ index_padded }}</span>
+              <span class="gift-deck__item-body">
+                <span class="gift-deck__item-title">{{ block.settings.title | escape }}</span>
+                {%- if block.settings.text != blank -%}
+                  <span class="gift-deck__item-text">{{ block.settings.text }}</span>
+                {%- endif -%}
+              </span>
+            </button>
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.button_label != blank -%}
+          <div class="gift-deck__cta-wrap">
+            <a href="{{ section.settings.button_link | default: '#shopify-section-collection_switcher_gift_curated' }}" class="gift-deck__cta-link">
+              <span>{{ section.settings.button_label | escape }}</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M6 1.5V10.5M6 10.5L2.25 6.75M6 10.5L9.75 6.75" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    function initGiftDeck(sectionEl) {
+      if (!sectionEl) return;
+      var triggers = Array.prototype.slice.call(sectionEl.querySelectorAll('[data-gift-deck-trigger]'));
+      var cards = Array.prototype.slice.call(sectionEl.querySelectorAll('[data-gift-deck-card]'));
+      var total = cards.length;
+      if (!total) return;
+
+      function setActive(activeIndex) {
+        triggers.forEach(function(btn, idx) {
+          var isActive = idx === activeIndex;
+          btn.classList.toggle('is-active', isActive);
+          btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        cards.forEach(function(card, idx) {
+          var isActive = idx === activeIndex;
+          var relativePos = (idx - activeIndex + total) % total;
+          card.classList.toggle('is-active', isActive);
+          card.setAttribute('data-stack-pos', String(relativePos));
+        });
+      }
+
+      triggers.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var idx = parseInt(btn.getAttribute('data-gift-deck-trigger'), 10);
+          if (!isNaN(idx)) setActive(idx);
+        });
+      });
+
+      cards.forEach(function(card) {
+        card.addEventListener('click', function() {
+          var idx = parseInt(card.getAttribute('data-gift-deck-card'), 10);
+          var pos = parseInt(card.getAttribute('data-stack-pos'), 10);
+          if (pos === 0 && total > 1) {
+            setActive((idx + 1) % total);
+          } else if (!isNaN(idx)) {
+            setActive(idx);
+          }
+        });
+      });
+
+      sectionEl.addEventListener('shopify:block:select', function(event) {
+        var target = event.target;
+        var idxAttr = target.getAttribute('data-gift-deck-trigger') || target.getAttribute('data-gift-deck-card');
+        if (idxAttr !== null) {
+          var idx = parseInt(idxAttr, 10);
+          if (!isNaN(idx)) setActive(idx);
+        }
+      });
+    }
+
+    var sectionEl = document.querySelector('[data-gift-deck-section="{{ section.id }}"]');
+    initGiftDeck(sectionEl);
+
+    document.addEventListener('shopify:section:load', function(event) {
+      var loaded = event.target.querySelector('[data-gift-deck-section]');
+      if (loaded) initGiftDeck(loaded);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Gift shop feature deck",
+  "tag": "section",
+  "class": "section-gift-shop-deck",
+  "disabled_on": {
+    "groups": ["header", "footer", "aside"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "Why a Kiyaara gift feels different"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Link label",
+      "default": "EXPLORE OUR BUNDLES"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link URL"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "default"
+    },
+    {
+      "type": "header",
+      "content": "Desktop spacing"
+    },
+    {
+      "type": "range",
+      "id": "md_padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "Top padding (desktop)",
+      "default": 112
+    },
+    {
+      "type": "range",
+      "id": "md_padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 8,
+      "unit": "px",
+      "label": "Bottom padding (desktop)",
+      "default": 112
+    },
+    {
+      "type": "header",
+      "content": "Mobile spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "label": "Top padding (mobile)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "label": "Bottom padding (mobile)",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Feature card",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Art-led"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Description",
+          "default": "Every design begins as original hand-painted artwork, so no two collections look like anyone else's. There's art on the bag linings, too."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card image (1:1 square recommended)"
+        },
+        {
+          "type": "text",
+          "id": "placeholder_label",
+          "label": "Placeholder label (shown when no image)",
+          "default": "[ ART-LED PACKAGING ]"
+        },
+        {
+          "type": "text",
+          "id": "card_caption",
+          "label": "Card overlay quote",
+          "default": "\"Every design begins as original hand-painted artwork.\""
+        },
+        {
+          "type": "checkbox",
+          "id": "show_card_overlay",
+          "label": "Show counter & quote overlay on image",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift shop feature deck",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Art-led",
+            "text": "Every design begins as original hand-painted artwork, so no two collections look like anyone else's. There's art on the bag linings, too.",
+            "placeholder_label": "[ ART-LED PACKAGING ]",
+            "card_caption": "\"Every design begins as original hand-painted artwork.\""
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "It's kind.",
+            "text": "Vegan leather, cruelty free, and made for someone who cares about that too.",
+            "placeholder_label": "[ VEGAN LEATHER CRAFTSMANSHIP ]",
+            "card_caption": "\"Vegan leather, cruelty free, and made with care.\""
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Made to be personal",
+            "text": "Add custom note cards, packaging and personalised inserts so every gift carries your message.",
+            "placeholder_label": "[ CUSTOM NOTE CARDS & INSERTS ]",
+            "card_caption": "\"Every gift carries your personal message.\""
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Wrapped in joy",
+            "text": "Every gift arrives in our signature wrapped box, with wearable art inside waiting to be discovered.",
+            "placeholder_label": "[ SIGNATURE WRAPPED BOX ]",
+            "card_caption": "\"Wearable art inside waiting to be discovered.\""
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Gifting made easy",
+            "text": "A dedicated gifting team, smooth coordination and reliable delivery across India, whether you're gifting ten people or a hundred.",
+            "placeholder_label": "[ PAN-INDIA GIFTING CONCIERGE ]",
+            "card_caption": "\"Smooth coordination and reliable delivery across India.\""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

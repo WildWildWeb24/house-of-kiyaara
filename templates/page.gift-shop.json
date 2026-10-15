@@ -1,0 +1,528 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "image_with_text_gift_hero": {
+      "type": "image-with-text",
+      "blocks": {
+        "image_hero": {
+          "type": "image",
+          "settings": {
+            "media_toggle": "show_image",
+            "media_aspect_ratio": "square",
+            "video_autoplay": true,
+            "video_controls": false
+          }
+        },
+        "title_hero": {
+          "type": "title",
+          "settings": {
+            "title": "The joy of gifting,[br]<em>with Kiyaara</em>",
+            "heading_tag": "h1",
+            "sm_size_multiplier": "sm-size--huge",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--huge",
+            "margin_top": 0
+          }
+        },
+        "text_hero": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Some gifts get thanked and forgotten. Ours are meant to get carried everyday. Every Kiyaara piece begins with a hand-painted story, so what you give is a little bit of art, wrapped in joy, for the people who matter to your work, your family or your celebration.</p><p><em>From festive and wedding gifting, to team milestones and client thank-yous, all delivered across India.</em></p><p><strong>Bulk and custom wrapping welcome.</strong></p>",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 16,
+            "size_multiplier": "size--default",
+            "margin_top": 16
+          }
+        },
+        "button_hero": {
+          "type": "button",
+          "settings": {
+            "button_label": "LET'S PLAN YOUR GIFTING TOGETHER",
+            "button_link": "#shopify-section-rich_text_gift_concierge",
+            "button_style": "",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 32,
+            "size_multiplier": "size--default",
+            "margin_top": 24
+          }
+        },
+        "spacing_hero": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 80,
+            "sm_padding_bottom": 80,
+            "margin_top": 0,
+            "padding_top": 32,
+            "padding_bottom": 48
+          }
+        }
+      },
+      "block_order": [
+        "image_hero",
+        "title_hero",
+        "text_hero",
+        "button_hero",
+        "spacing_hero"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "media_position": "media_last",
+        "media_width": "6",
+        "desktop_alignment": "left",
+        "vertical_position": "col-align-items-center",
+        "sm_full_width_buttons": false,
+        "mobile_alignment": "left",
+        "full_width_buttons": true
+      }
+    },
+    "rich_text_gift_who": {
+      "type": "rich-text",
+      "blocks": {
+        "title_who": {
+          "type": "title",
+          "settings": {
+            "title": "Who are you gifting?",
+            "heading_tag": "h2",
+            "sm_size_multiplier": "sm-size--large",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--large",
+            "margin_top": 0
+          }
+        },
+        "spacing_who": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 88,
+            "sm_padding_bottom": 16,
+            "margin_top": 0,
+            "padding_top": 56,
+            "padding_bottom": 8
+          }
+        }
+      },
+      "block_order": [
+        "title_who",
+        "spacing_who"
+      ],
+      "settings": {
+        "color_scheme": "alternative-2",
+        "content_width": "default",
+        "sm_content_position": "center",
+        "sm_text_alignment": "center",
+        "text_alignment": "center"
+      }
+    },
+    "multicolumn_gift_who": {
+      "type": "multicolumn",
+      "blocks": {
+        "col_team": {
+          "type": "column",
+          "settings": {
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "Your team",
+            "text": "<p>For the promotion, the anniversary, the quiet win that deserved more than an email. Something they'll actually use, and smile each time.</p>",
+            "button_label": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_style": ""
+          }
+        },
+        "col_clients": {
+          "type": "column",
+          "settings": {
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "Your clients & partners",
+            "text": "<p>A thank-you that doesn't look like every other hamper on the desk. Beautiful original art, vegan leather, and a story to tell.</p>",
+            "button_label": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_style": ""
+          }
+        },
+        "col_festive": {
+          "type": "column",
+          "settings": {
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "The festive season",
+            "text": "<p>Gifting lists get long. We make them shorter and fun to plan, with gifts people are happy to receive and easy for you to send.</p>",
+            "button_label": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_style": ""
+          }
+        },
+        "col_wedding": {
+          "type": "column",
+          "settings": {
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "The wedding",
+            "text": "<p>Thoughtful gifts for the couple, the bridesmaids, the family and everyone who made the celebration possible. Pieces that outlast.</p>",
+            "button_label": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_style": ""
+          }
+        },
+        "spacing_pillars": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 32,
+            "sm_padding_bottom": 96,
+            "margin_top": 0,
+            "padding_top": 24,
+            "padding_bottom": 64
+          }
+        }
+      },
+      "block_order": [
+        "col_team",
+        "col_clients",
+        "col_festive",
+        "col_wedding",
+        "spacing_pillars"
+      ],
+      "settings": {
+        "color_scheme": "alternative-2",
+        "alignment": "center",
+        "layout_desktop": "grid",
+        "items_per_row_desktop": 4,
+        "sm_media_aspect_ratio": "square",
+        "items_per_row_tablet": 2,
+        "layout_mobile": "grid",
+        "media_aspect_ratio": "square",
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all"
+      }
+    },
+    "gift_shop_deck": {
+      "type": "gift-shop-deck",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "Art-led",
+            "text": "Every design begins as original hand-painted artwork, so no two collections look like anyone else's. There's art on the bag linings, too.",
+            "placeholder_label": "[ ART-LED PACKAGING ]",
+            "card_caption": "\"Every design begins as original hand-painted artwork.\"",
+            "show_card_overlay": true
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "It's kind.",
+            "text": "Vegan leather, cruelty free, and made for someone who cares about that too.",
+            "placeholder_label": "[ VEGAN LEATHER CRAFTSMANSHIP ]",
+            "card_caption": "\"Vegan leather, cruelty free, and made with care.\"",
+            "show_card_overlay": true
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "title": "Made to be personal",
+            "text": "Add custom note cards, packaging and personalised inserts so every gift carries your message.",
+            "placeholder_label": "[ CUSTOM NOTE CARDS & INSERTS ]",
+            "card_caption": "\"Every gift carries your personal message.\"",
+            "show_card_overlay": true
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "title": "Wrapped in joy",
+            "text": "Every gift arrives in our signature wrapped box, with wearable art inside waiting to be discovered.",
+            "placeholder_label": "[ SIGNATURE WRAPPED BOX ]",
+            "card_caption": "\"Wearable art inside waiting to be discovered.\"",
+            "show_card_overlay": true
+          }
+        },
+        "card_5": {
+          "type": "card",
+          "settings": {
+            "title": "Gifting made easy",
+            "text": "A dedicated gifting team, smooth coordination and reliable delivery across India, whether you're gifting ten people or a hundred.",
+            "placeholder_label": "[ PAN-INDIA GIFTING CONCIERGE ]",
+            "card_caption": "\"Smooth coordination and reliable delivery across India.\"",
+            "show_card_overlay": true
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5"
+      ],
+      "settings": {
+        "title": "Why a Kiyaara gift feels different",
+        "heading_size": "h2",
+        "button_label": "EXPLORE OUR BUNDLES",
+        "button_link": "#shopify-section-collection_switcher_gift_curated",
+        "color_scheme": "default",
+        "md_padding_top": 112,
+        "md_padding_bottom": 112,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "collection_switcher_gift_curated": {
+      "type": "collection-or-products-switcher",
+      "blocks": {
+        "header_curated": {
+          "type": "section_header",
+          "settings": {
+            "subtitle": "",
+            "title": "Curated with love",
+            "text": "<p>From small tokens to statement sets, there's a Kiyaara gift for every list and every budget.</p>",
+            "text_alignment": "center",
+            "subtitle_tag": "h3",
+            "title_tag": "h2",
+            "sm_size_multiplier": "sm-size--default",
+            "size_multiplier": "size--default"
+          }
+        },
+        "tab_tier_1": {
+          "type": "collection-tab",
+          "settings": {
+            "tab_title": "FROM INR 1,650",
+            "collection": "wallets-for-women"
+          }
+        },
+        "tab_tier_2": {
+          "type": "collection-tab",
+          "settings": {
+            "tab_title": "FROM INR 4,000",
+            "collection": "curated-bundles"
+          }
+        },
+        "tab_tier_3": {
+          "type": "collection-tab",
+          "settings": {
+            "tab_title": "FROM 7,000+",
+            "collection": "all-bags"
+          }
+        },
+        "spacing_curated": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 96,
+            "sm_padding_bottom": 96,
+            "margin_top": 0,
+            "padding_top": 64,
+            "padding_bottom": 64
+          }
+        }
+      },
+      "block_order": [
+        "header_curated",
+        "tab_tier_1",
+        "tab_tier_2",
+        "tab_tier_3",
+        "spacing_curated"
+      ],
+      "settings": {
+        "color_scheme": "alternative-2",
+        "product_limit": 6,
+        "view_all": false,
+        "enable_card_thumbnail": false,
+        "layout_desktop": "slide",
+        "products_per_row_desktop": 3,
+        "products_per_row_tablet": 2,
+        "layout_mobile": "slide",
+        "products_per_row_mobile": 1,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all",
+        "tab_title_style": "subheading",
+        "tab_title_tag": "h3",
+        "text_alignment": "text-align-center",
+        "sm_size_multiplier": "sm-size--small",
+        "size_multiplier": "size--small"
+      }
+    },
+    "image_with_text_gift_bespoke": {
+      "type": "image-with-text",
+      "blocks": {
+        "image_bespoke": {
+          "type": "image",
+          "settings": {
+            "media_toggle": "show_image",
+            "media_aspect_ratio": "portrait",
+            "video_autoplay": true,
+            "video_controls": false
+          }
+        },
+        "title_bespoke": {
+          "type": "title",
+          "settings": {
+            "title": "Made to feel like yours",
+            "heading_tag": "h2",
+            "sm_size_multiplier": "sm-size--large",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--large",
+            "margin_top": 0
+          }
+        },
+        "text_bespoke": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Whether you're gifting ten people or two hundred, we can tailor the details so every box feels personal to you and the moment you're celebrating.</p><ul><li><strong>Your logo, our art</strong>Add your logo to the packaging, sitting alongside the Kiyaara mark.</li><li><strong>A personal note</strong>Include a printed card with your message, written the way you'd actually say it.</li><li><strong>Picked for your list</strong>Mix pieces across styles and price points, or build a custom bundle for the occasion.</li><li><strong>Wrapped and delivered</strong>Sent to your office for a handover, or individually to every doorstep on your list.</li></ul>",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 16,
+            "size_multiplier": "size--default",
+            "margin_top": 16
+          }
+        },
+        "spacing_bespoke": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 104,
+            "sm_padding_bottom": 104,
+            "margin_top": 0,
+            "padding_top": 64,
+            "padding_bottom": 64
+          }
+        }
+      },
+      "block_order": [
+        "image_bespoke",
+        "title_bespoke",
+        "text_bespoke",
+        "spacing_bespoke"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "media_position": "media_last",
+        "media_width": "6",
+        "desktop_alignment": "left",
+        "vertical_position": "col-align-items-center",
+        "sm_full_width_buttons": false,
+        "mobile_alignment": "left",
+        "full_width_buttons": false
+      }
+    },
+    "rich_text_gift_concierge": {
+      "type": "rich-text",
+      "blocks": {
+        "title_concierge": {
+          "type": "title",
+          "settings": {
+            "title": "Let's plan your gifting",
+            "heading_tag": "h2",
+            "sm_size_multiplier": "sm-size--large",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--large",
+            "margin_top": 0
+          }
+        },
+        "text_concierge": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Tell us what you have in mind and we'll take it from there. Share your details to customise your gifts. You can reach out to us with your request on:</p>",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 16,
+            "size_multiplier": "size--default",
+            "margin_top": 16
+          }
+        },
+        "btn_email": {
+          "type": "button",
+          "settings": {
+            "button_label": "hello@houseofkiyaara.com",
+            "button_link": "mailto:hello@houseofkiyaara.com",
+            "button_style": "secondary",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--default",
+            "margin_top": 0
+          }
+        },
+        "btn_whatsapp": {
+          "type": "button",
+          "settings": {
+            "button_label": "+91 96191 00226",
+            "button_link": "https://wa.me/919619100226",
+            "button_style": "secondary",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--default",
+            "margin_top": 0
+          }
+        },
+        "btn_phone": {
+          "type": "button",
+          "settings": {
+            "button_label": "+91 96191 00226",
+            "button_link": "tel:+919619100226",
+            "button_style": "secondary",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--default",
+            "margin_top": 0
+          }
+        },
+        "spacing_concierge": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 96,
+            "sm_padding_bottom": 96,
+            "margin_top": 0,
+            "padding_top": 64,
+            "padding_bottom": 64
+          }
+        }
+      },
+      "block_order": [
+        "title_concierge",
+        "text_concierge",
+        "btn_email",
+        "btn_whatsapp",
+        "btn_phone",
+        "spacing_concierge"
+      ],
+      "settings": {
+        "color_scheme": "alternative-2",
+        "content_width": "full",
+        "sm_content_position": "left",
+        "sm_text_alignment": "left",
+        "text_alignment": "left"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_gift_hero",
+    "rich_text_gift_who",
+    "multicolumn_gift_who",
+    "gift_shop_deck",
+    "collection_switcher_gift_curated",
+    "image_with_text_gift_bespoke",
+    "rich_text_gift_concierge"
+  ]
+}

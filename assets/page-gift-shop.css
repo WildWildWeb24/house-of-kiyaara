@@ -1,0 +1,1118 @@
+/* ==========================================================================
+   Kiyaara Gift Shop Page Styles (templates/page.gift-shop.json)
+   Reuses native theme sections (image-with-text, rich-text, multicolumn,
+   collection-or-products-switcher) + custom gift-shop-deck section.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. HERO SECTION (#shopify-section-image_with_text_gift_hero)
+   -------------------------------------------------------------------------- */
+#shopify-section-image_with_text_gift_hero {
+  background-color: #ffffff;
+  border-bottom: 1px solid #f3ede2;
+}
+
+#image_with_text_gift_hero.container {
+  max-width: 1440px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+  #image_with_text_gift_hero.container {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #image_with_text_gift_hero.container {
+    padding-left: 96px;
+    padding-right: 96px;
+  }
+}
+
+#image_with_text_gift_hero .grid {
+  align-items: center;
+  row-gap: 40px;
+}
+
+@media (min-width: 768px) {
+  #image_with_text_gift_hero .grid {
+    column-gap: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #image_with_text_gift_hero .grid {
+    column-gap: 80px;
+  }
+}
+
+/* Mobile order: Text + CTA on top, Hero square image below */
+@media (max-width: 767px) {
+  #image_with_text_gift_hero .grid > .content-blocks {
+    order: -1;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #image_with_text_gift_hero .grid > .sm-br-img {
+    order: 2;
+  }
+}
+
+#image_with_text_gift_hero .blocks-title {
+  font-size: clamp(36px, 3.8vw, 56px);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  color: #22201e;
+  margin-bottom: 24px;
+}
+
+#image_with_text_gift_hero .blocks-title em {
+  font-style: italic;
+  color: #c46d5e;
+}
+
+#image_with_text_gift_hero .blocks-rte {
+  max-width: 540px;
+}
+
+#image_with_text_gift_hero .blocks-rte p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #736b66;
+  margin: 0 0 18px;
+}
+
+@media (min-width: 768px) {
+  #image_with_text_gift_hero .blocks-rte p {
+    font-size: 16px;
+  }
+}
+
+#image_with_text_gift_hero .blocks-rte p em {
+  font-style: italic;
+  color: #22201e;
+  font-size: 15px;
+  line-height: 1.65;
+  display: block;
+}
+
+#image_with_text_gift_hero .blocks-rte p strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #22201e;
+  margin-top: 4px;
+}
+
+#image_with_text_gift_hero .blocks-rte p strong::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #c46d5e;
+  flex-shrink: 0;
+}
+
+#image_with_text_gift_hero .btn-group {
+  margin-top: 32px;
+}
+
+#image_with_text_gift_hero .btn {
+  background-color: #22201e;
+  color: #ffffff;
+  border: 1px solid #22201e;
+  border-radius: 0;
+  padding: 18px 32px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+#image_with_text_gift_hero .btn::after {
+  content: "→";
+  font-size: 14px;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+#image_with_text_gift_hero .btn:hover {
+  background-color: #383430;
+  border-color: #383430;
+}
+
+#image_with_text_gift_hero .btn:hover::after {
+  transform: translateX(4px);
+}
+
+@media (max-width: 767px) {
+  #image_with_text_gift_hero .btn {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 11px;
+  }
+}
+
+/* Editorial placeholder styling when no hero image is selected yet */
+#image_with_text_gift_hero .media.square,
+#image_with_text_gift_hero .media--square {
+  position: relative;
+  background-color: #ded3c0;
+  aspect-ratio: 1 / 1;
+  display: block;
+  overflow: hidden;
+}
+
+#image_with_text_gift_hero .media:has(.placeholder-svg)::before {
+  content: "";
+  position: absolute;
+  inset: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  pointer-events: none;
+  z-index: 2;
+}
+
+#image_with_text_gift_hero .media:has(.placeholder-svg)::after {
+  content: "[ HERO EDITORIAL GIFT PHOTOGRAPHY ]";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.88);
+  color: #736b66;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  padding: 10px 20px;
+  white-space: nowrap;
+  z-index: 3;
+  pointer-events: none;
+}
+
+#image_with_text_gift_hero .placeholder-svg {
+  opacity: 0;
+}
+
+/* --------------------------------------------------------------------------
+   2. WHO ARE YOU GIFTING? (#rich_text_gift_who + #multicolumn_gift_who)
+   -------------------------------------------------------------------------- */
+#shopify-section-rich_text_gift_who,
+#shopify-section-multicolumn_gift_who {
+  background-color: #faf7f2;
+}
+
+#shopify-section-multicolumn_gift_who {
+  border-bottom: 1px solid #f3ede2;
+}
+
+#rich_text_gift_who .blocks-title {
+  font-size: clamp(32px, 3vw, 40px);
+  line-height: 1.2;
+  font-weight: 400;
+  color: #22201e;
+  margin-bottom: 0;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+#rich_text_gift_who .blocks-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background-color: #c46d5e;
+}
+
+#multicolumn_gift_who.container {
+  max-width: 1440px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 1200px) {
+  #multicolumn_gift_who.container {
+    padding-left: 96px;
+    padding-right: 96px;
+  }
+}
+
+#multicolumn_gift_who .gridy-track {
+  row-gap: 40px !important;
+  --gap: 32px !important;
+}
+
+@media (max-width: 767px) {
+  #multicolumn_gift_who .gridy-track {
+    grid-template-columns: 1fr !important;
+    row-gap: 36px !important;
+  }
+}
+
+#multicolumn_gift_who .multicolumn-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Circular 64px icon badge above each pillar when no custom image is set */
+#multicolumn_gift_who .multicolumn-item:not(:has(.column-media))::before {
+  content: "";
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid #ebd8d0;
+  margin-bottom: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px 24px;
+  flex-shrink: 0;
+}
+
+/* Pillar 1: Your team (User icon) */
+#multicolumn_gift_who .multicolumn-item:nth-child(1):not(:has(.column-media))::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+}
+
+/* Pillar 2: Your clients & partners (Calendar/briefcase icon) */
+#multicolumn_gift_who .multicolumn-item:nth-child(2):not(:has(.column-media))::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='16' rx='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+}
+
+/* Pillar 3: The festive season (4-point sparkle star icon) */
+#multicolumn_gift_who .multicolumn-item:nth-child(3):not(:has(.column-media))::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z'/%3E%3C/svg%3E");
+}
+
+/* Pillar 4: The wedding (Heart celebration icon) */
+#multicolumn_gift_who .multicolumn-item:nth-child(4):not(:has(.column-media))::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+}
+
+#multicolumn_gift_who .column-media {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid #ebd8d0;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#multicolumn_gift_who .blocks-title {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 400;
+  color: #22201e;
+  margin: 0 0 12px !important;
+}
+
+#multicolumn_gift_who .rte p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #736b66;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   3. WHY A KIYAARA GIFT FEELS DIFFERENT (.gift-shop-deck-section)
+   -------------------------------------------------------------------------- */
+.gift-shop-deck-section {
+  background-color: #ffffff;
+  border-bottom: 1px solid #f3ede2;
+  padding-top: var(--pt, 64px);
+  padding-bottom: var(--pb, 64px);
+}
+
+@media (min-width: 768px) {
+  .gift-shop-deck-section {
+    padding-top: var(--sm-pt, 112px);
+    padding-bottom: var(--sm-pb, 112px);
+  }
+}
+
+.gift-shop-deck-section .container {
+  max-width: 1440px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+  .gift-shop-deck-section .container {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .gift-shop-deck-section .container {
+    padding-left: 96px;
+    padding-right: 96px;
+  }
+}
+
+.gift-deck__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .gift-deck__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 80px;
+  }
+}
+
+.gift-deck__visual-col {
+  width: 100%;
+}
+
+/* 1:1 Square Stacked Deck with room on right & bottom for 4 stepped cards */
+.gift-deck__stage {
+  position: relative;
+  width: calc(100% - 48px);
+  max-width: 480px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 48px 0;
+}
+
+@media (min-width: 768px) {
+  .gift-deck__stage {
+    width: calc(100% - 80px);
+    max-width: 500px;
+    margin-bottom: 80px;
+  }
+}
+
+.gift-deck__card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #eae1d7;
+  border: 1px solid #ffffff;
+  box-shadow: 0 12px 30px rgba(34, 32, 30, 0.06);
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.35s ease,
+    box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Mobile stepped offsets (12px increments) */
+.gift-deck__card[data-stack-pos="0"] {
+  transform: translate3d(0, 0, 0);
+  z-index: 5;
+  background-color: #eae1d7;
+}
+.gift-deck__card[data-stack-pos="1"] {
+  transform: translate3d(12px, 12px, 0);
+  z-index: 4;
+  background-color: #e4dbd0;
+}
+.gift-deck__card[data-stack-pos="2"] {
+  transform: translate3d(24px, 24px, 0);
+  z-index: 3;
+  background-color: #ded4c8;
+}
+.gift-deck__card[data-stack-pos="3"] {
+  transform: translate3d(36px, 36px, 0);
+  z-index: 2;
+  background-color: #d8cebf;
+}
+.gift-deck__card[data-stack-pos="4"] {
+  transform: translate3d(48px, 48px, 0);
+  z-index: 1;
+  background-color: #d2c7b7;
+}
+
+/* Desktop stepped offsets (20px increments) */
+@media (min-width: 768px) {
+  .gift-deck__card[data-stack-pos="1"] {
+    transform: translate3d(20px, 20px, 0);
+  }
+  .gift-deck__card[data-stack-pos="2"] {
+    transform: translate3d(40px, 40px, 0);
+  }
+  .gift-deck__card[data-stack-pos="3"] {
+    transform: translate3d(60px, 60px, 0);
+  }
+  .gift-deck__card[data-stack-pos="4"] {
+    transform: translate3d(80px, 80px, 0);
+  }
+}
+
+.gift-deck__card-media,
+.gift-deck__card-placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.gift-deck__card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gift-deck__card-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.gift-deck__placeholder-tag {
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #736b66;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  padding: 8px 16px;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gift-deck__card.is-active .gift-deck__placeholder-tag {
+  opacity: 1;
+}
+
+.gift-deck__card-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 28px 24px;
+  background: linear-gradient(to top, rgba(20, 18, 16, 0.55) 0%, rgba(20, 18, 16, 0) 100%);
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .gift-deck__card-overlay {
+    padding: 36px 32px;
+  }
+}
+
+.gift-deck__card.is-active .gift-deck__card-overlay {
+  opacity: 1;
+}
+
+.gift-deck__card-counter {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 8px;
+}
+
+.gift-deck__card-quote {
+  font-family: var(--font-heading-family);
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.4;
+  color: #ffffff;
+  margin: 0;
+}
+
+.gift-deck__header {
+  margin-bottom: 32px;
+}
+
+.gift-deck__title {
+  font-size: clamp(32px, 3vw, 40px);
+  line-height: 1.2;
+  font-weight: 400;
+  color: #22201e;
+  margin: 0 0 18px;
+}
+
+.gift-deck__title-rule {
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: #c46d5e;
+}
+
+.gift-deck__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gift-deck__item {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-left: 1px solid #f3ede2;
+  padding: 2px 0 2px 24px;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  column-gap: 12px;
+  align-items: baseline;
+  cursor: pointer;
+  transition: border-color 0.25s ease;
+}
+
+.gift-deck__item.is-active {
+  border-left: 2px solid #c46d5e;
+  padding-left: 23px;
+}
+
+.gift-deck__item-num {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #a39b95;
+  transition: color 0.25s ease;
+}
+
+.gift-deck__item.is-active .gift-deck__item-num {
+  color: #c46d5e;
+}
+
+.gift-deck__item-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gift-deck__item-title {
+  font-family: var(--font-heading-family);
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 400;
+  color: #736b66;
+  transition: color 0.25s ease;
+}
+
+.gift-deck__item.is-active .gift-deck__item-title {
+  color: #22201e;
+}
+
+.gift-deck__item-text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #a39b95;
+  transition: color 0.25s ease;
+}
+
+.gift-deck__item.is-active .gift-deck__item-text {
+  color: #736b66;
+}
+
+.gift-deck__cta-wrap {
+  margin-top: 36px;
+}
+
+.gift-deck__cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #22201e;
+  text-decoration: none;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #22201e;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.gift-deck__cta-link:hover {
+  color: #c46d5e;
+  border-bottom-color: #c46d5e;
+}
+
+/* --------------------------------------------------------------------------
+   4. CURATED WITH LOVE (#shopify-section-collection_switcher_gift_curated)
+   -------------------------------------------------------------------------- */
+#shopify-section-collection_switcher_gift_curated {
+  background-color: #faf7f2;
+  border-bottom: 1px solid #f3ede2;
+}
+
+#collection_switcher_gift_curated .container {
+  max-width: 1440px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 1200px) {
+  #collection_switcher_gift_curated .container {
+    padding-left: 96px;
+    padding-right: 96px;
+  }
+}
+
+#collection_switcher_gift_curated .section-header .h2,
+#collection_switcher_gift_curated .section-header h2 {
+  font-size: clamp(32px, 3vw, 40px);
+  font-weight: 400;
+  color: #22201e;
+  margin-bottom: 12px;
+}
+
+#collection_switcher_gift_curated .section-header p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #736b66;
+  max-width: 520px;
+  margin: 0 auto 28px;
+}
+
+#collection_switcher_gift_curated .tab-titles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #ebd8d0;
+  margin: 0 auto 36px;
+  padding: 0 8px;
+  width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@media (min-width: 768px) {
+  #collection_switcher_gift_curated .tab-titles {
+    gap: 40px;
+    padding: 0 16px;
+  }
+}
+
+#collection_switcher_gift_curated .tab-title {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: 0 4px 14px !important;
+  margin: 0 !important;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+#collection_switcher_gift_curated .tab-title > * {
+  font-family: var(--font-body-family) !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: #736b66 !important;
+  margin: 0 !important;
+}
+
+@media (min-width: 768px) {
+  #collection_switcher_gift_curated .tab-title > * {
+    font-size: 12px !important;
+  }
+}
+
+#collection_switcher_gift_curated .tab-title.is-active {
+  border-bottom-color: #c46d5e;
+  opacity: 1 !important;
+}
+
+#collection_switcher_gift_curated .tab-title.is-active > * {
+  color: #22201e !important;
+  font-weight: 500 !important;
+}
+
+#collection_switcher_gift_curated .card--product {
+  background-color: #ffffff;
+  border: 1px solid #f3ede2;
+  padding-bottom: 20px;
+  transition: box-shadow 0.25s ease;
+}
+
+#collection_switcher_gift_curated .card--product:hover {
+  box-shadow: 0 10px 28px rgba(34, 32, 30, 0.05);
+}
+
+#collection_switcher_gift_curated .card__info,
+#collection_switcher_gift_curated .card-body {
+  text-align: center;
+  padding: 16px 16px 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. MADE TO FEEL LIKE YOURS (#shopify-section-image_with_text_gift_bespoke)
+   -------------------------------------------------------------------------- */
+#shopify-section-image_with_text_gift_bespoke {
+  background-color: #ffffff;
+  border-bottom: 1px solid #f3ede2;
+}
+
+#image_with_text_gift_bespoke.container {
+  max-width: 1440px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+  #image_with_text_gift_bespoke.container {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #image_with_text_gift_bespoke.container {
+    padding-left: 96px;
+    padding-right: 96px;
+  }
+}
+
+#image_with_text_gift_bespoke .grid {
+  align-items: center;
+  row-gap: 40px;
+}
+
+@media (min-width: 1024px) {
+  #image_with_text_gift_bespoke .grid {
+    column-gap: 80px;
+  }
+}
+
+#image_with_text_gift_bespoke .blocks-title {
+  font-size: clamp(32px, 3vw, 40px);
+  line-height: 1.2;
+  font-weight: 400;
+  color: #22201e;
+  margin-bottom: 16px;
+}
+
+#image_with_text_gift_bespoke .blocks-rte > p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #736b66;
+  margin: 0 0 32px;
+  max-width: 520px;
+}
+
+/* Transform the native richtext <ul> into the 4 numbered customization cards */
+#image_with_text_gift_bespoke .blocks-rte ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: bespoke-step;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#image_with_text_gift_bespoke .blocks-rte ul li {
+  counter-increment: bespoke-step;
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #f3ede2;
+  padding: 20px 24px 20px 64px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #736b66;
+  margin: 0;
+}
+
+#image_with_text_gift_bespoke .blocks-rte ul li::before {
+  content: "0" counter(bespoke-step);
+  position: absolute;
+  top: 22px;
+  left: 24px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #c46d5e;
+}
+
+#image_with_text_gift_bespoke .blocks-rte ul li strong {
+  display: block;
+  font-family: var(--font-heading-family);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #22201e;
+  margin-bottom: 4px;
+}
+
+/* Bespoke Packaging Image + Floating "Signature Finish" Badge */
+#image_with_text_gift_bespoke .sm-br-img {
+  position: relative;
+}
+
+#image_with_text_gift_bespoke .media {
+  position: relative;
+  background-color: #e6ddd2;
+  overflow: hidden;
+}
+
+#image_with_text_gift_bespoke .media:has(.placeholder-svg)::before {
+  content: "[ BESPOKE PACKAGING & NOTE CARDS ]";
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.88);
+  color: #736b66;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  padding: 10px 20px;
+  white-space: nowrap;
+  z-index: 2;
+  pointer-events: none;
+}
+
+#image_with_text_gift_bespoke .placeholder-svg {
+  opacity: 0;
+}
+
+/* Floating "Signature Finish" card at bottom-left of Bespoke image */
+#image_with_text_gift_bespoke .sm-br-img::after {
+  content: "SIGNATURE FINISH\A\"Every piece arrives in our keepsake box\"";
+  white-space: pre-wrap;
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  max-width: 240px;
+  background-color: #ffffff;
+  border: 1px solid #f3ede2;
+  padding: 18px 22px;
+  box-shadow: 0 10px 28px rgba(34, 32, 30, 0.08);
+  font-family: var(--font-heading-family);
+  font-size: 14px;
+  line-height: 1.45;
+  color: #22201e;
+  z-index: 4;
+  pointer-events: none;
+  background-image: linear-gradient(#c46d5e, #c46d5e);
+  background-repeat: no-repeat;
+  background-size: 28px 2px;
+  background-position: 22px 18px;
+  padding-top: 28px;
+}
+
+@media (min-width: 768px) {
+  #image_with_text_gift_bespoke .sm-br-img::after {
+    bottom: 32px;
+    left: 32px;
+    max-width: 260px;
+    padding: 30px 24px 20px;
+    background-position: 24px 18px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. LET'S PLAN YOUR GIFTING (#shopify-section-rich_text_gift_concierge)
+   -------------------------------------------------------------------------- */
+#shopify-section-rich_text_gift_concierge {
+  background-color: #faf7f2;
+}
+
+#rich_text_gift_concierge.container {
+  max-width: 1440px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+  #rich_text_gift_concierge.container {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #rich_text_gift_concierge.container {
+    padding-left: 96px;
+    padding-right: 96px;
+  }
+}
+
+#rich_text_gift_concierge .content-blocks {
+  background-color: #ffffff;
+  border: 1px solid #ebd8d0;
+  padding: 36px 24px;
+  text-align: left !important;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  #rich_text_gift_concierge .content-blocks {
+    padding: 64px 72px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    column-gap: 72px;
+    row-gap: 16px;
+  }
+
+  #rich_text_gift_concierge .blocks-title {
+    grid-column: 1;
+    align-self: end;
+  }
+
+  #rich_text_gift_concierge .blocks-rte {
+    grid-column: 1;
+    align-self: start;
+  }
+
+  #rich_text_gift_concierge .btn-group {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin-top: 0 !important;
+  }
+}
+
+#rich_text_gift_concierge .blocks-title {
+  font-size: clamp(32px, 3vw, 40px);
+  line-height: 1.2;
+  font-weight: 400;
+  color: #22201e;
+  margin: 0;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+#rich_text_gift_concierge .blocks-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #c46d5e;
+}
+
+#rich_text_gift_concierge .blocks-rte p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #736b66;
+  margin: 0;
+  max-width: 440px;
+}
+
+#rich_text_gift_concierge .btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+#rich_text_gift_concierge .btn-group .btn {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #f3ede2;
+  border-radius: 0;
+  padding: 36px 48px 18px 84px;
+  font-family: var(--font-heading-family);
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #22201e;
+  text-align: left;
+  justify-content: flex-start;
+  position: relative;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+#rich_text_gift_concierge .btn-group .btn:hover {
+  border-color: #c46d5e;
+  box-shadow: 0 8px 24px rgba(34, 32, 30, 0.05);
+}
+
+/* Circular 48px cream icon on the left of each concierge contact card */
+#rich_text_gift_concierge .btn-group .btn::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #faf7f2;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+}
+
+/* Contact 1: Email icon + label */
+#rich_text_gift_concierge .btn-group .btn:nth-child(1)::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpath d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'/%3E%3C/svg%3E");
+}
+
+#rich_text_gift_concierge .btn-group .btn:nth-child(1)::after {
+  content: "EMAIL US AT";
+}
+
+/* Contact 2: WhatsApp chat icon + label */
+#rich_text_gift_concierge .btn-group .btn:nth-child(2)::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z'/%3E%3C/svg%3E");
+}
+
+#rich_text_gift_concierge .btn-group .btn:nth-child(2)::after {
+  content: "CHAT WITH US ON WHATSAPP";
+}
+
+/* Contact 3: Phone call icon + label */
+#rich_text_gift_concierge .btn-group .btn:nth-child(3)::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z'/%3E%3C/svg%3E");
+}
+
+#rich_text_gift_concierge .btn-group .btn:nth-child(3)::after {
+  content: "CALL US ON";
+}
+
+#rich_text_gift_concierge .btn-group .btn::after {
+  position: absolute;
+  top: 16px;
+  left: 84px;
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: #a39b95;
+  line-height: 1;
+}
+
+/* Right arrow indicator on each contact card */
+#rich_text_gift_concierge .btn-group .btn {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 22px center;
+  background-size: 16px 16px;
+}

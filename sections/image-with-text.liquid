@@ -26,7 +26,7 @@
   assign md_text_col_width = 12 | minus: section.settings.media_width
 
   assign render_section = true
-  if media_block != blank
+  if template.name == 'product' and media_block != blank
     if media_block.settings.media_toggle == 'show_video' and media_block.settings.video == blank
       unless request.design_mode
         assign render_section = false
