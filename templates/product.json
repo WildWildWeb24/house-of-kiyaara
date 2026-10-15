@@ -189,8 +189,10 @@
             "title": "",
             "icons_per_row": 2,
             "grid_gap": 3,
-            "first_image": "{{ product.metafields.custom.influener_img_01.value }}",
-            "second_image": "{{ product.metafields.custom.influener_img_02.value }}",
+            "first_image": "{{ product.metafields.custom.influencer_img_01.value }}",
+            "second_image": "{{ product.metafields.custom.influencer_img_02.value }}",
+            "third_image": "{{ product.metafields.custom.influencer_img_03.value }}",
+            "fourth_image": "{{ product.metafields.custom.influencer_img_04.value }}",
             "sm_margin_top": 40,
             "block_column": "left",
             "margin_top": 24
