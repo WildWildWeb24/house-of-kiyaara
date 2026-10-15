@@ -57,17 +57,27 @@
           <div class="btn-group mt sm-mt {{ btn_group_width_classes }}" style="--mt: {{ buttons[0].settings.margin_top | append: 'px' }}; --sm-mt: {{ buttons[0].settings.sm_margin_top | append: 'px' }}">
             {% for button in buttons %}
               {%- assign classes = button.settings.size_multiplier | append: ' ' | append: button.settings.sm_size_multiplier | append: ' ' | append: single_button_classes | strip -%}
+              {%- assign btn_attrs = button.shopify_attributes -%}
+              {%- if button.settings.button_sublabel != blank -%}
+                {%- assign sublabel_escaped = button.settings.button_sublabel | escape -%}
+                {%- assign btn_attrs = btn_attrs | append: ' data-sublabel="' | append: sublabel_escaped | append: '"' -%}
+              {%- endif -%}
               {% render 'button',
                 label: button.settings.button_label,
                 link: button.settings.button_link,
                 style: button.settings.button_style,
                 color_scheme: color_scheme,
                 classes: classes,
-                attributes: button.shopify_attributes %}
+                attributes: btn_attrs %}
             {% endfor %}
           </div>
         {% else %}
           {%- assign classes = block.settings.size_multiplier | append: ' ' | append: block.settings.sm_size_multiplier | append: ' ' | append: single_button_classes | strip -%}
+          {%- assign btn_attrs = block.shopify_attributes -%}
+          {%- if block.settings.button_sublabel != blank -%}
+            {%- assign sublabel_escaped = block.settings.button_sublabel | escape -%}
+            {%- assign btn_attrs = btn_attrs | append: ' data-sublabel="' | append: sublabel_escaped | append: '"' -%}
+          {%- endif -%}
           <div class="mt sm-mt" style="--mt: {{ block.settings.margin_top | append: 'px' }}; --sm-mt: {{ block.settings.sm_margin_top | append: 'px' }}">
             {% render 'button',
               label: block.settings.button_label,
@@ -75,7 +85,7 @@
               style: block.settings.button_style,
               color_scheme: color_scheme,
               classes: classes,
-              attributes: block.shopify_attributes %}
+              attributes: btn_attrs %}
           </div>
         {% endif %}
       {%- when 'email_form' or 'newsletter' -%}

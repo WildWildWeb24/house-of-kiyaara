@@ -31,6 +31,7 @@
   endcase
 %}
 
+{% render 'section-custom-colors', section: section %}
 <div
   id="{{ section.id }}"
   class="container section-spacing color-{{ section.settings.color_scheme }}"
@@ -133,6 +134,70 @@
       "id": "text_alignment",
       "label": "t:sections.typography.text_align",
       "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Custom colors & borders"
+    },
+    {
+      "type": "color",
+      "id": "custom_bg_color",
+      "label": "Background color"
+    },
+    {
+      "type": "color",
+      "id": "custom_card_bg_color",
+      "label": "Card / box background color"
+    },
+    {
+      "type": "color",
+      "id": "custom_border_color",
+      "label": "Section border color"
+    },
+    {
+      "type": "color",
+      "id": "custom_card_border_color",
+      "label": "Card / badge border color"
+    },
+    {
+      "type": "range",
+      "id": "custom_border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 8,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "custom_accent_color",
+      "label": "Accent color (subtitles, badges, icons)"
+    },
+    {
+      "type": "color",
+      "id": "custom_heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "custom_text_color",
+      "label": "Body text color"
+    },
+    {
+      "type": "color",
+      "id": "custom_btn_bg_color",
+      "label": "Button background color"
+    },
+    {
+      "type": "color",
+      "id": "custom_btn_text_color",
+      "label": "Button text color"
+    },
+    {
+      "type": "color",
+      "id": "custom_btn_border_color",
+      "label": "Button border color"
     }
   ],
   "blocks" : [
@@ -770,6 +835,11 @@
           "id": "button_label",
           "label": "t:inputs.text.button_label",
           "default": "Button label"
+        },
+        {
+          "type": "text",
+          "id": "button_sublabel",
+          "label": "Button sublabel (optional)"
         },
         {
           "type": "url",

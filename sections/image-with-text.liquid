@@ -41,6 +41,7 @@
 
 {%- if render_section -%}
 {{ 'section--image-with-text.css' | asset_url |  stylesheet_tag  }}
+{% render 'section-custom-colors', section: section %}
 
 <div
   id="{{ section.id }}"
@@ -73,6 +74,16 @@
             -%}
         {%- endcase -%}
       {%- if media_block.settings.media_link -%}</a>{%- endif -%}
+      {%- if media_block.settings.badge_subtitle != blank or media_block.settings.badge_text != blank -%}
+        <div class="iwt-floating-badge">
+          {%- if media_block.settings.badge_subtitle != blank -%}
+            <span class="iwt-floating-badge__subtitle">{{ media_block.settings.badge_subtitle | escape }}</span>
+          {%- endif -%}
+          {%- if media_block.settings.badge_text != blank -%}
+            <p class="iwt-floating-badge__text">{{ media_block.settings.badge_text | escape }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
     </div>
     <div class="col-12 col-sm-6 col-md-{{ md_text_col_width }} p-page sm-p-0 text-align-{{ section.settings.mobile_alignment }} sm-text-align-{{ section.settings.desktop_alignment }}">
       {% render 'content-blocks',
@@ -192,6 +203,70 @@
       "id": "full_width_buttons",
       "label": "t:sections.buttons.button_group.full_width_buttons.label",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Custom colors & borders"
+    },
+    {
+      "type": "color",
+      "id": "custom_bg_color",
+      "label": "Section background color"
+    },
+    {
+      "type": "color",
+      "id": "custom_card_bg_color",
+      "label": "Card / inner box background color"
+    },
+    {
+      "type": "color",
+      "id": "custom_border_color",
+      "label": "Border color (section & cards)"
+    },
+    {
+      "type": "color",
+      "id": "custom_card_border_color",
+      "label": "Badge / container border color"
+    },
+    {
+      "type": "range",
+      "id": "custom_border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "custom_accent_color",
+      "label": "Accent color (italic text, numbers, lines)"
+    },
+    {
+      "type": "color",
+      "id": "custom_heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "custom_text_color",
+      "label": "Body text color"
+    },
+    {
+      "type": "color",
+      "id": "custom_btn_bg_color",
+      "label": "Button background color"
+    },
+    {
+      "type": "color",
+      "id": "custom_btn_text_color",
+      "label": "Button text color"
+    },
+    {
+      "type": "color",
+      "id": "custom_btn_border_color",
+      "label": "Button border color"
     }
   ],
   "blocks":[
@@ -419,6 +494,20 @@
           "label": "t:blocks.image_or_video.video_controls.label",
           "info": "t:blocks.image_or_video.video_controls.info",
           "default": false
+        },
+        {
+          "type": "header",
+          "content": "Floating badge (optional)"
+        },
+        {
+          "type": "text",
+          "id": "badge_subtitle",
+          "label": "Badge subtitle"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge text"
         }
       ]
     },

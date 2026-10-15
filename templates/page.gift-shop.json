@@ -12,12 +12,7 @@
     "main": {
       "type": "main-page",
       "disabled": true,
-      "settings": {
-        "color_scheme": "",
-        "heading_text_align": "left",
-        "sm_size_multiplier": "sm-size--default",
-        "size_multiplier": "size--default"
-      }
+      "settings": {}
     },
     "image_with_text_gift_hero": {
       "type": "image-with-text",
@@ -28,7 +23,9 @@
             "media_toggle": "show_image",
             "media_aspect_ratio": "square",
             "video_autoplay": true,
-            "video_controls": false
+            "video_controls": false,
+            "badge_subtitle": "",
+            "badge_text": ""
           }
         },
         "title_hero": {
@@ -91,7 +88,18 @@
         "vertical_position": "col-align-items-center",
         "sm_full_width_buttons": false,
         "mobile_alignment": "left",
-        "full_width_buttons": true
+        "full_width_buttons": true,
+        "custom_bg_color": "#ffffff",
+        "custom_card_bg_color": "#ded3c0",
+        "custom_border_color": "#f3ede2",
+        "custom_card_border_color": "#f3ede2",
+        "custom_border_width": 1,
+        "custom_accent_color": "#c46d5e",
+        "custom_heading_color": "#22201e",
+        "custom_text_color": "#736b66",
+        "custom_btn_bg_color": "#22201e",
+        "custom_btn_text_color": "#ffffff",
+        "custom_btn_border_color": "#22201e"
       }
     },
     "rich_text_gift_who": {
@@ -129,7 +137,11 @@
         "content_width": "default",
         "sm_content_position": "center",
         "sm_text_alignment": "center",
-        "text_alignment": "center"
+        "text_alignment": "center",
+        "custom_bg_color": "#faf7f2",
+        "custom_border_width": 1,
+        "custom_accent_color": "#c46d5e",
+        "custom_heading_color": "#22201e"
       }
     },
     "multicolumn_gift_who": {
@@ -138,64 +150,52 @@
         "col_team": {
           "type": "column",
           "settings": {
-            "press_date": "",
             "video_autoplay": true,
             "video_controls": false,
             "title": "Your team",
             "text": "<p>For the promotion, the anniversary, the quiet win that deserved more than an email. Something they'll actually use, and smile each time.</p>",
             "button_label": "",
-            "button_link": "",
             "button_style": "",
             "button_2_label": "",
-            "button_2_link": "",
             "button_2_style": ""
           }
         },
         "col_clients": {
           "type": "column",
           "settings": {
-            "press_date": "",
             "video_autoplay": true,
             "video_controls": false,
             "title": "Your clients & partners",
             "text": "<p>A thank-you that doesn't look like every other hamper on the desk. Beautiful original art, vegan leather, and a story to tell.</p>",
             "button_label": "",
-            "button_link": "",
             "button_style": "",
             "button_2_label": "",
-            "button_2_link": "",
             "button_2_style": ""
           }
         },
         "col_festive": {
           "type": "column",
           "settings": {
-            "press_date": "",
             "video_autoplay": true,
             "video_controls": false,
             "title": "The festive season",
             "text": "<p>Gifting lists get long. We make them shorter and fun to plan, with gifts people are happy to receive and easy for you to send.</p>",
             "button_label": "",
-            "button_link": "",
             "button_style": "",
             "button_2_label": "",
-            "button_2_link": "",
             "button_2_style": ""
           }
         },
         "col_wedding": {
           "type": "column",
           "settings": {
-            "press_date": "",
             "video_autoplay": true,
             "video_controls": false,
             "title": "The wedding",
             "text": "<p>Thoughtful gifts for the couple, the bridesmaids, the family and everyone who made the celebration possible. Pieces that outlast.</p>",
             "button_label": "",
-            "button_link": "",
             "button_style": "",
             "button_2_label": "",
-            "button_2_link": "",
             "button_2_style": ""
           }
         },
@@ -229,7 +229,15 @@
         "media_aspect_ratio": "square",
         "autoplay": false,
         "autoplay_speed": 5,
-        "sliding_behavior": "all"
+        "sliding_behavior": "all",
+        "custom_bg_color": "#faf7f2",
+        "custom_card_bg_color": "#ffffff",
+        "custom_border_color": "#f3ede2",
+        "custom_card_border_color": "#ebd8d0",
+        "custom_border_width": 1,
+        "custom_accent_color": "#c46d5e",
+        "custom_heading_color": "#22201e",
+        "custom_text_color": "#736b66"
       }
     },
     "gift_shop_deck": {
@@ -302,7 +310,17 @@
         "md_padding_top": 112,
         "md_padding_bottom": 112,
         "padding_top": 64,
-        "padding_bottom": 64
+        "padding_bottom": 64,
+        "custom_bg_color": "#ffffff",
+        "custom_card_bg_color": "#eae1d7",
+        "custom_border_color": "#f3ede2",
+        "custom_card_border_color": "#ffffff",
+        "custom_border_width": 1,
+        "custom_accent_color": "#c46d5e",
+        "custom_heading_color": "#22201e",
+        "custom_text_color": "#736b66",
+        "custom_btn_text_color": "#22201e",
+        "custom_btn_border_color": "#22201e"
       }
     },
     "collection_switcher_gift_curated": {
@@ -324,21 +342,21 @@
         "tab_tier_1": {
           "type": "collection-tab",
           "settings": {
-            "tab_title": "Wallets",
+            "tab_title": "FROM INR 1,650",
             "collection": "wallets-for-women"
           }
         },
         "tab_tier_2": {
           "type": "collection-tab",
           "settings": {
-            "tab_title": "Bundles",
+            "tab_title": "FROM INR 4,000",
             "collection": "curated-bundles"
           }
         },
         "tab_tier_3": {
           "type": "collection-tab",
           "settings": {
-            "tab_title": "Bags",
+            "tab_title": "FROM 7,000+",
             "collection": "all-bags"
           }
         },
@@ -362,7 +380,7 @@
         "spacing_curated"
       ],
       "settings": {
-        "color_scheme": "default",
+        "color_scheme": "alternative-2",
         "product_limit": 6,
         "view_all": false,
         "enable_card_thumbnail": false,
@@ -378,7 +396,15 @@
         "tab_title_tag": "h3",
         "text_alignment": "text-align-center",
         "sm_size_multiplier": "sm-size--small",
-        "size_multiplier": "size--small"
+        "size_multiplier": "size--small",
+        "custom_bg_color": "#faf7f2",
+        "custom_card_bg_color": "#ffffff",
+        "custom_border_color": "#f3ede2",
+        "custom_card_border_color": "#ebd8d0",
+        "custom_border_width": 1,
+        "custom_accent_color": "#c46d5e",
+        "custom_heading_color": "#22201e",
+        "custom_text_color": "#736b66"
       }
     },
     "image_with_text_gift_bespoke": {
@@ -389,9 +415,10 @@
           "settings": {
             "media_toggle": "show_image",
             "media_aspect_ratio": "portrait",
-            "image": "shopify://shop_images/kiyaara-NSTB-M-HOK-0001-Noa-Shoulder-Bag-Mustard-08.webp",
             "video_autoplay": true,
-            "video_controls": false
+            "video_controls": false,
+            "badge_subtitle": "SIGNATURE FINISH",
+            "badge_text": "\"Every piece arrives in our keepsake box\""
           }
         },
         "title_bespoke": {
@@ -441,7 +468,15 @@
         "vertical_position": "col-align-items-center",
         "sm_full_width_buttons": false,
         "mobile_alignment": "left",
-        "full_width_buttons": false
+        "full_width_buttons": false,
+        "custom_bg_color": "#ffffff",
+        "custom_card_bg_color": "#ffffff",
+        "custom_border_color": "#f3ede2",
+        "custom_card_border_color": "#f3ede2",
+        "custom_border_width": 1,
+        "custom_accent_color": "#c46d5e",
+        "custom_heading_color": "#22201e",
+        "custom_text_color": "#736b66"
       }
     },
     "rich_text_gift_concierge": {
@@ -472,6 +507,7 @@
           "type": "button",
           "settings": {
             "button_label": "hello@houseofkiyaara.com",
+            "button_sublabel": "EMAIL US AT",
             "button_link": "mailto:hello@houseofkiyaara.com",
             "button_style": "secondary",
             "sm_size_multiplier": "sm-size--default",
@@ -484,6 +520,7 @@
           "type": "button",
           "settings": {
             "button_label": "+91 96191 00226",
+            "button_sublabel": "CHAT WITH US ON WHATSAPP",
             "button_link": "https://wa.me/919619100226",
             "button_style": "secondary",
             "sm_size_multiplier": "sm-size--default",
@@ -496,6 +533,7 @@
           "type": "button",
           "settings": {
             "button_label": "+91 96191 00226",
+            "button_sublabel": "CALL US ON",
             "button_link": "tel:+919619100226",
             "button_style": "secondary",
             "sm_size_multiplier": "sm-size--default",
@@ -525,11 +563,22 @@
         "spacing_concierge"
       ],
       "settings": {
-        "color_scheme": "default",
+        "color_scheme": "alternative-2",
         "content_width": "full",
         "sm_content_position": "left",
         "sm_text_alignment": "left",
-        "text_alignment": "left"
+        "text_alignment": "left",
+        "custom_bg_color": "#faf7f2",
+        "custom_card_bg_color": "#ffffff",
+        "custom_border_color": "#f3ede2",
+        "custom_card_border_color": "#ebd8d0",
+        "custom_border_width": 1,
+        "custom_accent_color": "#c46d5e",
+        "custom_heading_color": "#22201e",
+        "custom_text_color": "#736b66",
+        "custom_btn_bg_color": "#ffffff",
+        "custom_btn_text_color": "#22201e",
+        "custom_btn_border_color": "#f3ede2"
       }
     }
   },

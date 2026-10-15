@@ -2,20 +2,38 @@
    Kiyaara Gift Shop Page Styles (templates/page.gift-shop.json)
    Uses suffix attribute selectors [id$="..."] so rules match both Shopify's
    generated section IDs (template--12345__<key>) and local preview IDs (<key>).
+   All colors and borders are wired to Theme Editor CSS custom properties
+   (--gs-bg, --gs-card-bg, --gs-border, --gs-card-border, --gs-border-width,
+   --gs-accent, --gs-heading, --gs-text, --gs-btn-bg, --gs-btn-text, --gs-btn-border).
    ========================================================================== */
+
+/* Shared Subheading / Eyebrow Accent Override */
+[id^="shopify-section-"][id$="image_with_text_gift_hero"] .subheading,
+[id^="shopify-section-"][id$="rich_text_gift_who"] .subheading,
+[id^="shopify-section-"][id$="collection_switcher_gift_curated"] .subheading,
+[id^="shopify-section-"][id$="image_with_text_gift_bespoke"] .subheading,
+[id^="shopify-section-"][id$="rich_text_gift_concierge"] .subheading,
+.container[id$="image_with_text_gift_hero"] .subheading,
+.container[id$="rich_text_gift_who"] .subheading,
+[id$="collection_switcher_gift_curated"] .subheading,
+.container[id$="image_with_text_gift_bespoke"] .subheading,
+.container[id$="rich_text_gift_concierge"] .subheading {
+  color: var(--gs-accent, #c46d5e) !important;
+}
 
 /* --------------------------------------------------------------------------
    1. HERO SECTION (image_with_text_gift_hero)
    -------------------------------------------------------------------------- */
 [id^="shopify-section-"][id$="image_with_text_gift_hero"] {
-  background-color: #ffffff;
-  border-bottom: 1px solid #f3ede2;
+  background-color: var(--gs-bg, #ffffff);
+  border-bottom: var(--gs-border-width, 1px) solid var(--gs-border, #f3ede2);
 }
 
 .container[id$="image_with_text_gift_hero"] {
   max-width: 1440px;
   padding-left: 24px;
   padding-right: 24px;
+  background-color: var(--gs-bg, transparent);
 }
 
 @media (min-width: 768px) {
@@ -67,13 +85,13 @@
   line-height: 1.14;
   letter-spacing: -0.02em;
   font-weight: 400;
-  color: #22201e;
+  color: var(--gs-heading, #22201e);
   margin-bottom: 24px;
 }
 
 .container[id$="image_with_text_gift_hero"] .blocks-title em {
   font-style: italic;
-  color: #c46d5e;
+  color: var(--gs-accent, #c46d5e);
 }
 
 .container[id$="image_with_text_gift_hero"] .blocks-rte {
@@ -83,7 +101,7 @@
 .container[id$="image_with_text_gift_hero"] .blocks-rte p {
   font-size: 15px;
   line-height: 1.75;
-  color: #736b66;
+  color: var(--gs-text, #736b66);
   margin: 0 0 18px;
 }
 
@@ -95,7 +113,7 @@
 
 .container[id$="image_with_text_gift_hero"] .blocks-rte p em {
   font-style: italic;
-  color: #22201e;
+  color: var(--gs-heading, #22201e);
   font-size: 15px;
   line-height: 1.65;
   display: block;
@@ -107,7 +125,7 @@
   gap: 10px;
   font-size: 14px;
   font-weight: 500;
-  color: #22201e;
+  color: var(--gs-heading, #22201e);
   margin-top: 4px;
 }
 
@@ -116,14 +134,14 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #c46d5e;
+  background-color: var(--gs-accent, #c46d5e);
   flex-shrink: 0;
 }
 
 .container[id$="image_with_text_gift_hero"] .btn {
-  background-color: #22201e !important;
-  color: #ffffff !important;
-  border: 1px solid #22201e !important;
+  background-color: var(--gs-btn-bg, #22201e) !important;
+  color: var(--gs-btn-text, #ffffff) !important;
+  border: var(--gs-border-width, 1px) solid var(--gs-btn-border, var(--gs-btn-bg, #22201e)) !important;
   border-radius: 0 !important;
   padding: 18px 32px !important;
   font-size: 12px !important;
@@ -134,7 +152,7 @@
   align-items: center !important;
   justify-content: center !important;
   gap: 12px;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .container[id$="image_with_text_gift_hero"] .btn::after {
@@ -145,8 +163,7 @@
 }
 
 .container[id$="image_with_text_gift_hero"] .btn:hover {
-  background-color: #383430 !important;
-  border-color: #383430 !important;
+  opacity: 0.9;
 }
 
 .container[id$="image_with_text_gift_hero"] .btn:hover::after {
@@ -165,7 +182,8 @@
 .container[id$="image_with_text_gift_hero"] .media.square,
 .container[id$="image_with_text_gift_hero"] .media--square {
   position: relative;
-  background-color: #ded3c0;
+  background-color: var(--gs-card-bg, #ded3c0);
+  border: var(--gs-border-width, 0px) solid var(--gs-card-border, transparent);
   aspect-ratio: 1 / 1;
   display: block;
   overflow: hidden;
@@ -187,7 +205,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.88);
-  color: #736b66;
+  color: var(--gs-text, #736b66);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -206,18 +224,18 @@
    -------------------------------------------------------------------------- */
 [id^="shopify-section-"][id$="rich_text_gift_who"],
 [id^="shopify-section-"][id$="multicolumn_gift_who"] {
-  background-color: #faf7f2;
+  background-color: var(--gs-bg, #faf7f2);
 }
 
 [id^="shopify-section-"][id$="multicolumn_gift_who"] {
-  border-bottom: 1px solid #f3ede2;
+  border-bottom: var(--gs-border-width, 1px) solid var(--gs-border, #f3ede2);
 }
 
 .container[id$="rich_text_gift_who"] .blocks-title {
   font-size: clamp(32px, 3vw, 40px);
   line-height: 1.2;
   font-weight: 400;
-  color: #22201e;
+  color: var(--gs-heading, #22201e);
   margin-bottom: 0;
   position: relative;
   padding-bottom: 20px;
@@ -231,7 +249,7 @@
   transform: translateX(-50%);
   width: 40px;
   height: 2px;
-  background-color: #c46d5e;
+  background-color: var(--gs-accent, #c46d5e);
 }
 
 .container[id$="multicolumn_gift_who"] {
@@ -272,8 +290,8 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background-color: #ffffff;
-  border: 1px solid #ebd8d0;
+  background-color: var(--gs-card-bg, #ffffff);
+  border: var(--gs-border-width, 1px) solid var(--gs-card-border, #ebd8d0);
   margin-bottom: 24px;
   background-repeat: no-repeat;
   background-position: center;
@@ -305,8 +323,8 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background-color: #ffffff;
-  border: 1px solid #ebd8d0;
+  background-color: var(--gs-card-bg, #ffffff);
+  border: var(--gs-border-width, 1px) solid var(--gs-card-border, #ebd8d0);
   margin: 0 auto 24px;
   display: flex;
   align-items: center;
@@ -318,14 +336,14 @@
   font-size: 20px;
   line-height: 1.3;
   font-weight: 400;
-  color: #22201e;
+  color: var(--gs-heading, #22201e);
   margin: 0 0 12px !important;
 }
 
 .container[id$="multicolumn_gift_who"] .rte p {
   font-size: 14px;
   line-height: 1.65;
-  color: #736b66;
+  color: var(--gs-text, #736b66);
   max-width: 280px;
   margin: 0 auto;
 }
@@ -334,8 +352,8 @@
    3. WHY A KIYAARA GIFT FEELS DIFFERENT (.gift-shop-deck-section)
    -------------------------------------------------------------------------- */
 .gift-shop-deck-section {
-  background-color: #ffffff;
-  border-bottom: 1px solid #f3ede2;
+  background-color: var(--gs-bg, #ffffff);
+  border-bottom: var(--gs-border-width, 1px) solid var(--gs-border, #f3ede2);
   padding-top: var(--pt, 64px);
   padding-bottom: var(--pb, 64px);
 }
@@ -413,8 +431,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  background-color: #eae1d7;
-  border: 1px solid #ffffff;
+  background-color: var(--gs-card-bg, #eae1d7);
+  border: var(--gs-border-width, 1px) solid var(--gs-card-border, #ffffff);
   box-shadow: 0 12px 30px rgba(34, 32, 30, 0.06);
   overflow: hidden;
   cursor: pointer;
@@ -431,7 +449,7 @@
 .gift-deck__card[data-stack-pos="0"] {
   transform: translate3d(0, 0, 0);
   z-index: 5;
-  background-color: #eae1d7;
+  background-color: var(--gs-card-bg, #eae1d7);
 }
 .gift-deck__card[data-stack-pos="1"] {
   transform: translate3d(12px, 12px, 0);
@@ -494,7 +512,7 @@
 
 .gift-deck__placeholder-tag {
   background-color: rgba(255, 255, 255, 0.85);
-  color: #736b66;
+  color: var(--gs-text, #736b66);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -552,7 +570,7 @@
   font-size: clamp(32px, 3vw, 40px);
   line-height: 1.2;
   font-weight: 400;
-  color: #22201e;
+  color: var(--gs-heading, #22201e);
   margin: 0 0 18px;
 }
 
@@ -560,7 +578,7 @@
   display: block;
   width: 40px;
   height: 2px;
-  background-color: #c46d5e;
+  background-color: var(--gs-accent, #c46d5e);
 }
 
 .gift-deck__list {
@@ -573,7 +591,7 @@
   appearance: none;
   background: transparent;
   border: 0;
-  border-left: 1px solid #f3ede2;
+  border-left: var(--gs-border-width, 1px) solid var(--gs-border, #f3ede2);
   padding: 2px 0 2px 24px;
   text-align: left;
   display: grid;
@@ -585,7 +603,7 @@
 }
 
 .gift-deck__item.is-active {
-  border-left: 2px solid #c46d5e;
+  border-left: 2px solid var(--gs-accent, #c46d5e);
   padding-left: 23px;
 }
 
@@ -598,7 +616,7 @@
 }
 
 .gift-deck__item.is-active .gift-deck__item-num {
-  color: #c46d5e;
+  color: var(--gs-accent, #c46d5e);
 }
 
 .gift-deck__item-body {
@@ -612,12 +630,12 @@
   font-size: 20px;
   line-height: 1.3;
   font-weight: 400;
-  color: #736b66;
+  color: var(--gs-text, #736b66);
   transition: color 0.25s ease;
 }
 
 .gift-deck__item.is-active .gift-deck__item-title {
-  color: #22201e;
+  color: var(--gs-heading, #22201e);
 }
 
 .gift-deck__item-text {
@@ -628,7 +646,7 @@
 }
 
 .gift-deck__item.is-active .gift-deck__item-text {
-  color: #736b66;
+  color: var(--gs-text, #736b66);
 }
 
 .gift-deck__cta-wrap {
@@ -643,24 +661,24 @@
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #22201e;
+  color: var(--gs-btn-text, var(--gs-heading, #22201e));
   text-decoration: none;
   padding-bottom: 6px;
-  border-bottom: 1px solid #22201e;
+  border-bottom: var(--gs-border-width, 1px) solid var(--gs-btn-border, var(--gs-heading, #22201e));
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .gift-deck__cta-link:hover {
-  color: #c46d5e;
-  border-bottom-color: #c46d5e;
+  color: var(--gs-accent, #c46d5e);
+  border-bottom-color: var(--gs-accent, #c46d5e);
 }
 
 /* --------------------------------------------------------------------------
    4. CURATED WITH LOVE (collection_switcher_gift_curated)
    -------------------------------------------------------------------------- */
 [id^="shopify-section-"][id$="collection_switcher_gift_curated"] {
-  background-color: #faf7f2;
-  border-bottom: 1px solid #f3ede2;
+  background-color: var(--gs-bg, #faf7f2);
+  border-bottom: var(--gs-border-width, 1px) solid var(--gs-border, #f3ede2);
 }
 
 [id$="collection_switcher_gift_curated"] .container {
@@ -680,14 +698,14 @@
 [id$="collection_switcher_gift_curated"] .section-header h2 {
   font-size: clamp(32px, 3vw, 40px);
   font-weight: 400;
-  color: #22201e;
+  color: var(--gs-heading, #22201e);
   margin-bottom: 12px;
 }
 
 [id$="collection_switcher_gift_curated"] .section-header p {
   font-size: 15px;
   line-height: 1.65;
-  color: #736b66;
+  color: var(--gs-text, #736b66);
   max-width: 520px;
   margin: 0 auto 28px;
 }
@@ -697,7 +715,7 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  border-bottom: 1px solid #ebd8d0;
+  border-bottom: var(--gs-border-width, 1px) solid var(--gs-card-border, #ebd8d0);
   margin: 0 auto 36px;
   padding: 0 8px;
   width: fit-content;
@@ -730,7 +748,7 @@
   font-weight: 400 !important;
   letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
-  color: #736b66 !important;
+  color: var(--gs-text, #736b66) !important;
   margin: 0 !important;
 }
 
@@ -741,18 +759,18 @@
 }
 
 [id$="collection_switcher_gift_curated"] .tab-title.is-active {
-  border-bottom-color: #c46d5e;
+  border-bottom-color: var(--gs-accent, #c46d5e);
   opacity: 1 !important;
 }
 
 [id$="collection_switcher_gift_curated"] .tab-title.is-active > * {
-  color: #22201e !important;
+  color: var(--gs-heading, #22201e) !important;
   font-weight: 500 !important;
 }
 
 [id$="collection_switcher_gift_curated"] .card--product {
-  background-color: #ffffff;
-  border: 1px solid #f3ede2;
+  background-color: var(--gs-card-bg, #ffffff);
+  border: var(--gs-border-width, 1px) solid var(--gs-card-border, var(--gs-border, #f3ede2));
   padding-bottom: 20px;
   transition: box-shadow 0.25s ease;
 }
@@ -771,8 +789,8 @@
    5. MADE TO FEEL LIKE YOURS (image_with_text_gift_bespoke)
    -------------------------------------------------------------------------- */
 [id^="shopify-section-"][id$="image_with_text_gift_bespoke"] {
-  background-color: #ffffff;
-  border-bottom: 1px solid #f3ede2;
+  background-color: var(--gs-bg, #ffffff);
+  border-bottom: var(--gs-border-width, 1px) solid var(--gs-border, #f3ede2);
 }
 
 .container[id$="image_with_text_gift_bespoke"] {
@@ -810,14 +828,14 @@
   font-size: clamp(32px, 3vw, 40px);
   line-height: 1.2;
   font-weight: 400;
-  color: #22201e;
+  color: var(--gs-heading, #22201e);
   margin-bottom: 16px;
 }
 
 .container[id$="image_with_text_gift_bespoke"] .blocks-rte > p {
   font-size: 15px;
   line-height: 1.7;
-  color: #736b66;
+  color: var(--gs-text, #736b66);
   margin: 0 0 32px;
   max-width: 520px;
 }
@@ -836,12 +854,12 @@
 .container[id$="image_with_text_gift_bespoke"] .blocks-rte ul li {
   counter-increment: bespoke-step;
   position: relative;
-  background-color: #ffffff;
-  border: 1px solid #f3ede2;
+  background-color: var(--gs-card-bg, #ffffff);
+  border: var(--gs-border-width, 1px) solid var(--gs-card-border, var(--gs-border, #f3ede2));
   padding: 20px 24px 20px 64px;
   font-size: 14px;
   line-height: 1.6;
-  color: #736b66;
+  color: var(--gs-text, #736b66);
   margin: 0;
 }
 
@@ -853,7 +871,7 @@
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.08em;
-  color: #c46d5e;
+  color: var(--gs-accent, #c46d5e);
 }
 
 .container[id$="image_with_text_gift_bespoke"] .blocks-rte ul li strong {
@@ -862,7 +880,7 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 1.3;
-  color: #22201e;
+  color: var(--gs-heading, #22201e);
   margin-bottom: 4px;
 }
 
@@ -886,7 +904,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.88);
-  color: #736b66;
+  color: var(--gs-text, #736b66);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -900,32 +918,73 @@
   opacity: 0;
 }
 
-/* Floating "Signature Finish" card at bottom-left of Bespoke image */
-.container[id$="image_with_text_gift_bespoke"] .sm-br-img::after {
+/* Editable Floating Badge (.iwt-floating-badge) or CSS Fallback */
+.iwt-floating-badge {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  max-width: 240px;
+  background-color: var(--gs-card-bg, #ffffff);
+  border: var(--gs-border-width, 1px) solid var(--gs-card-border, var(--gs-border, #f3ede2));
+  padding: 18px 22px;
+  box-shadow: 0 10px 28px rgba(34, 32, 30, 0.08);
+  z-index: 4;
+  text-align: left;
+}
+
+.iwt-floating-badge__subtitle {
+  display: block;
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gs-accent, #c46d5e);
+  margin-bottom: 6px;
+}
+
+.iwt-floating-badge__text {
+  font-family: var(--font-heading-family);
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--gs-heading, #22201e);
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .iwt-floating-badge {
+    bottom: 32px;
+    left: 32px;
+    max-width: 260px;
+    padding: 20px 24px;
+  }
+}
+
+.container[id$="image_with_text_gift_bespoke"] .sm-br-img:not(:has(.iwt-floating-badge))::after {
   content: "SIGNATURE FINISH\A\"Every piece arrives in our keepsake box\"";
   white-space: pre-wrap;
   position: absolute;
   bottom: 24px;
   left: 24px;
   max-width: 240px;
-  background-color: #ffffff;
-  border: 1px solid #f3ede2;
+  background-color: var(--gs-card-bg, #ffffff);
+  border: var(--gs-border-width, 1px) solid var(--gs-card-border, var(--gs-border, #f3ede2));
   padding: 28px 22px 18px;
   box-shadow: 0 10px 28px rgba(34, 32, 30, 0.08);
   font-family: var(--font-heading-family);
   font-size: 14px;
   line-height: 1.45;
-  color: #22201e;
+  color: var(--gs-heading, #22201e);
   z-index: 4;
   pointer-events: none;
-  background-image: linear-gradient(#c46d5e, #c46d5e);
+  background-image: linear-gradient(var(--gs-accent, #c46d5e), var(--gs-accent, #c46d5e));
   background-repeat: no-repeat;
   background-size: 28px 2px;
   background-position: 22px 18px;
 }
 
 @media (min-width: 768px) {
-  .container[id$="image_with_text_gift_bespoke"] .sm-br-img::after {
+  .container[id$="image_with_text_gift_bespoke"] .sm-br-img:not(:has(.iwt-floating-badge))::after {
     bottom: 32px;
     left: 32px;
     max-width: 260px;
@@ -938,7 +997,8 @@
    6. LET'S PLAN YOUR GIFTING (rich_text_gift_concierge)
    -------------------------------------------------------------------------- */
 [id^="shopify-section-"][id$="rich_text_gift_concierge"] {
-  background-color: #faf7f2;
+  background-color: var(--gs-bg, #faf7f2);
+  border-bottom: var(--gs-border-width, 0px) solid var(--gs-border, transparent);
 }
 
 .container[id$="rich_text_gift_concierge"] {
@@ -962,8 +1022,8 @@
 }
 
 .container[id$="rich_text_gift_concierge"] .content-blocks {
-  background-color: #ffffff;
-  border: 1px solid #ebd8d0;
+  background-color: var(--gs-card-bg, #ffffff);
+  border: var(--gs-border-width, 1px) solid var(--gs-card-border, #ebd8d0);
   padding: 36px 24px;
   text-align: left !important;
   display: grid !important;
@@ -1011,7 +1071,7 @@
   font-size: clamp(32px, 3vw, 40px);
   line-height: 1.2;
   font-weight: 400;
-  color: #22201e;
+  color: var(--gs-heading, #22201e);
   margin: 0;
   padding-bottom: 20px;
   position: relative;
@@ -1024,13 +1084,13 @@
   left: 0;
   width: 40px;
   height: 2px;
-  background-color: #c46d5e;
+  background-color: var(--gs-accent, #c46d5e);
 }
 
 .container[id$="rich_text_gift_concierge"] .blocks-rte p {
   font-size: 15px;
   line-height: 1.75;
-  color: #736b66;
+  color: var(--gs-text, #736b66);
   margin: 0;
   max-width: 440px;
 }
@@ -1045,8 +1105,8 @@
 
 .container[id$="rich_text_gift_concierge"] .btn-group .btn {
   width: 100% !important;
-  background-color: #ffffff !important;
-  border: 1px solid #f3ede2 !important;
+  background-color: var(--gs-btn-bg, #ffffff) !important;
+  border: var(--gs-border-width, 1px) solid var(--gs-btn-border, var(--gs-border, #f3ede2)) !important;
   border-radius: 0 !important;
   padding: 36px 48px 18px 84px !important;
   font-family: var(--font-heading-family) !important;
@@ -1054,7 +1114,7 @@
   font-weight: 400 !important;
   letter-spacing: 0 !important;
   text-transform: none !important;
-  color: #22201e !important;
+  color: var(--gs-btn-text, var(--gs-heading, #22201e)) !important;
   text-align: left !important;
   justify-content: flex-start !important;
   position: relative;
@@ -1065,7 +1125,7 @@
 }
 
 .container[id$="rich_text_gift_concierge"] .btn-group .btn:hover {
-  border-color: #c46d5e !important;
+  border-color: var(--gs-accent, #c46d5e) !important;
   box-shadow: 0 8px 24px rgba(34, 32, 30, 0.05) !important;
 }
 
@@ -1079,7 +1139,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: #faf7f2;
+  background-color: var(--gs-bg, #faf7f2);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 20px 20px;
@@ -1110,6 +1170,11 @@
 
 .container[id$="rich_text_gift_concierge"] .btn-group .btn:nth-child(3)::after {
   content: "CALL US ON";
+}
+
+/* Override with custom sublabel from Theme Editor when set */
+.container[id$="rich_text_gift_concierge"] .btn-group .btn[data-sublabel]::after {
+  content: attr(data-sublabel) !important;
 }
 
 .container[id$="rich_text_gift_concierge"] .btn-group .btn::after {
