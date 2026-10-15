@@ -106,7 +106,6 @@
         "custom_liquid_KbBNk4": {
           "type": "custom_liquid",
           "name": "Free Twilly Banner",
-          "disabled": true,
           "settings": {
             "custom_liquid": "<img src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/free-twilly-offer-pdp-01.jpg?v=1784690340\" alt=\"free-twilly-banner\" style=\"display:block;width:100%;height:auto;margin:0;padding:0;border:0;box-shadow:none;max-width:100%;\">",
             "sm_margin_top": 20,
