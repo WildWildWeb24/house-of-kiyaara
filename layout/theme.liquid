@@ -288,14 +288,31 @@
 
 {% render 'razorpay-magic-checkout' %}
 
-{% assign gift_eligible_collection = collections['free-twilly-eligible-products'] %}
+{%- liquid
+  assign gift_eligible_collection = collections['free-twilly-eligible-products']
+  assign gift_product = settings.free_gift_product
+  if gift_product == blank or gift_product.id == nil
+    assign gift_product = all_products['dottie-twilly-sky-blue']
+  endif
+  assign gift_threshold_paise = settings.free_gift_threshold | default: 1000 | times: 100
+  assign gift_end_date_raw = settings.free_gift_end_date | strip
+  assign gift_end_iso = ''
+  if gift_end_date_raw != blank
+    if gift_end_date_raw contains 'T'
+      assign gift_end_iso = gift_end_date_raw
+    else
+      assign gift_end_iso = gift_end_date_raw | append: 'T23:59:59+05:30'
+    endif
+  endif
+-%}
 <script>
   window.freeGiftConfig = {
-    giftProductId: {{ all_products['dottie-twilly-sky-blue'].id | json }},
-    giftVariantId: {{ all_products['dottie-twilly-sky-blue'].variants[0].id | json }},
-    giftPrice: {{ all_products['dottie-twilly-sky-blue'].price | json }},
-    giftThreshold: 100000,
-    offerEndsAt: '2026-10-22T23:59:59+05:30',
+    enabled: {{ settings.enable_free_gift | json }},
+    giftProductId: {{ gift_product.id | json }},
+    giftVariantId: {{ gift_product.variants[0].id | json }},
+    giftPrice: {{ gift_product.price | json }},
+    giftThreshold: {{ gift_threshold_paise | json }},
+    offerEndsAt: {{ gift_end_iso | json }},
     eligibleProductIds: [
       {%- for p in gift_eligible_collection.products -%}
         {{ p.id }}{% unless forloop.last %},{% endunless %}

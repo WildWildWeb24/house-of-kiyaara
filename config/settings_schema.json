@@ -1947,6 +1947,37 @@
       },
       {
         "type": "header",
+        "content": "Free gift promotion"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_free_gift",
+        "label": "Enable free gift promotion",
+        "default": true
+      },
+      {
+        "type": "product",
+        "id": "free_gift_product",
+        "label": "Free gift product",
+        "info": "Must be priced at ₹0 while the offer is active."
+      },
+      {
+        "type": "number",
+        "id": "free_gift_threshold",
+        "label": "Minimum cart value (₹)",
+        "default": 1000,
+        "info": "Cart subtotal in rupees required to unlock the free gift."
+      },
+      {
+        "type": "text",
+        "id": "free_gift_end_date",
+        "label": "Offer end date (YYYY-MM-DD)",
+        "default": "2026-10-22",
+        "placeholder": "2026-10-22",
+        "info": "Ends at 11:59:59 PM IST on this date. Leave blank for no end date."
+      },
+      {
+        "type": "header",
         "content": "t:settings_schema.cart.settings.header__1.content"
       },
       {

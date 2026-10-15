@@ -34,6 +34,7 @@
  */
 (function () {
   var CONFIG = window.freeGiftConfig || {};
+  var OFFER_ENABLED = CONFIG.enabled !== false;
   var GIFT_PRODUCT_ID = Number(CONFIG.giftProductId);
   var GIFT_VARIANT_ID = Number(CONFIG.giftVariantId); // defaults to the Midnight Blue Twilly variant — swap freely, all 3 colors are priced ₹0
   var GIFT_PRICE = typeof CONFIG.giftPrice === 'number' ? CONFIG.giftPrice : 0;
@@ -52,6 +53,7 @@
   }
 
   function isOfferActive() {
+    if (!OFFER_ENABLED) return false;
     if (OFFER_ENDS_AT && !isNaN(OFFER_ENDS_AT) && Date.now() > OFFER_ENDS_AT) return false;
     if (GIFT_PRICE > 0) return false;
     return true;
