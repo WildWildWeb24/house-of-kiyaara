@@ -36,9 +36,11 @@
   var CONFIG = window.freeGiftConfig || {};
   var GIFT_PRODUCT_ID = Number(CONFIG.giftProductId);
   var GIFT_VARIANT_ID = Number(CONFIG.giftVariantId); // defaults to the Midnight Blue Twilly variant — swap freely, all 3 colors are priced ₹0
+  var GIFT_PRICE = typeof CONFIG.giftPrice === 'number' ? CONFIG.giftPrice : 0;
+  var OFFER_ENDS_AT = CONFIG.offerEndsAt ? Date.parse(CONFIG.offerEndsAt) : null;
   var ELIGIBLE_PRODUCT_IDS = (CONFIG.eligibleProductIds || []).map(Number);
   var GIFT_THRESHOLD = Number(CONFIG.giftThreshold) || 100000;
-    var GIFT_PROPERTY_KEY = '_free_gift';
+  var GIFT_PROPERTY_KEY = '_free_gift';
   var SYNC_HEADER = 'X-Free-Gift-Sync';
 
   var busy = false;
@@ -47,6 +49,12 @@
   if (!GIFT_PRODUCT_ID || !GIFT_VARIANT_ID) {
     console.warn('[free-gift] giftProductId / giftVariantId missing from window.freeGiftConfig — script disabled.');
     return;
+  }
+
+  function isOfferActive() {
+    if (OFFER_ENDS_AT && !isNaN(OFFER_ENDS_AT) && Date.now() > OFFER_ENDS_AT) return false;
+    if (GIFT_PRICE > 0) return false;
+    return true;
   }
 
   function getCart() {
@@ -60,13 +68,16 @@
   }
 
   function cartQualifies(cart) {
-      var qualifyingSubtotal = 0;
-        cart.items.forEach(function (item) {
-            if (item.product_id === GIFT_PRODUCT_ID) return;
-                qualifyingSubtotal += item.line_price;
-                  });
-                    return qualifyingSubtotal >= GIFT_THRESHOLD;
-                }                    
+    if (!isOfferActive()) return false;
+    var giftLine = findGiftLine(cart);
+    if (giftLine && giftLine.price > 0) return false;
+    var qualifyingSubtotal = 0;
+    cart.items.forEach(function (item) {
+      if (item.product_id === GIFT_PRODUCT_ID) return;
+      qualifyingSubtotal += item.line_price;
+    });
+    return qualifyingSubtotal >= GIFT_THRESHOLD;
+  }
 
   function isGiftItem(item) {
     return item.product_id === GIFT_PRODUCT_ID && item.properties && item.properties[GIFT_PROPERTY_KEY] === 'true';

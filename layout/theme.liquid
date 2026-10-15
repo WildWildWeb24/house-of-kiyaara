@@ -293,7 +293,9 @@
   window.freeGiftConfig = {
     giftProductId: {{ all_products['dottie-twilly-sky-blue'].id | json }},
     giftVariantId: {{ all_products['dottie-twilly-sky-blue'].variants[0].id | json }},
+    giftPrice: {{ all_products['dottie-twilly-sky-blue'].price | json }},
     giftThreshold: 100000,
+    offerEndsAt: '2026-10-22T23:59:59+05:30',
     eligibleProductIds: [
       {%- for p in gift_eligible_collection.products -%}
         {{ p.id }}{% unless forloop.last %},{% endunless %}

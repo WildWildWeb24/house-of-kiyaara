@@ -55,7 +55,7 @@
       {%- endif -%}
 
       <div class="product-form__buttons">
-{%- if product.id == all_products['twilly'].id or product.id == all_products['dottie-twilly-sky-blue'].id -%}
+{%- if product.price == 0 or product.selected_or_first_available_variant.price == 0 -%}
 
   <p class="product-form__gift-only-notice">
     This item is only available as a free gift with qualifying orders — it can't be purchased separately.
