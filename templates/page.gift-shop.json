@@ -12,7 +12,12 @@
     "main": {
       "type": "main-page",
       "disabled": true,
-      "settings": {}
+      "settings": {
+        "color_scheme": "",
+        "heading_text_align": "left",
+        "sm_size_multiplier": "sm-size--default",
+        "size_multiplier": "size--default"
+      }
     },
     "image_with_text_gift_hero": {
       "type": "image-with-text",
@@ -133,52 +138,64 @@
         "col_team": {
           "type": "column",
           "settings": {
+            "press_date": "",
             "video_autoplay": true,
             "video_controls": false,
             "title": "Your team",
             "text": "<p>For the promotion, the anniversary, the quiet win that deserved more than an email. Something they'll actually use, and smile each time.</p>",
             "button_label": "",
+            "button_link": "",
             "button_style": "",
             "button_2_label": "",
+            "button_2_link": "",
             "button_2_style": ""
           }
         },
         "col_clients": {
           "type": "column",
           "settings": {
+            "press_date": "",
             "video_autoplay": true,
             "video_controls": false,
             "title": "Your clients & partners",
             "text": "<p>A thank-you that doesn't look like every other hamper on the desk. Beautiful original art, vegan leather, and a story to tell.</p>",
             "button_label": "",
+            "button_link": "",
             "button_style": "",
             "button_2_label": "",
+            "button_2_link": "",
             "button_2_style": ""
           }
         },
         "col_festive": {
           "type": "column",
           "settings": {
+            "press_date": "",
             "video_autoplay": true,
             "video_controls": false,
             "title": "The festive season",
             "text": "<p>Gifting lists get long. We make them shorter and fun to plan, with gifts people are happy to receive and easy for you to send.</p>",
             "button_label": "",
+            "button_link": "",
             "button_style": "",
             "button_2_label": "",
+            "button_2_link": "",
             "button_2_style": ""
           }
         },
         "col_wedding": {
           "type": "column",
           "settings": {
+            "press_date": "",
             "video_autoplay": true,
             "video_controls": false,
             "title": "The wedding",
             "text": "<p>Thoughtful gifts for the couple, the bridesmaids, the family and everyone who made the celebration possible. Pieces that outlast.</p>",
             "button_label": "",
+            "button_link": "",
             "button_style": "",
             "button_2_label": "",
+            "button_2_link": "",
             "button_2_style": ""
           }
         },
@@ -345,7 +362,7 @@
         "spacing_curated"
       ],
       "settings": {
-        "color_scheme": "alternative-2",
+        "color_scheme": "default",
         "product_limit": 6,
         "view_all": false,
         "enable_card_thumbnail": false,
@@ -372,6 +389,7 @@
           "settings": {
             "media_toggle": "show_image",
             "media_aspect_ratio": "portrait",
+            "image": "shopify://shop_images/kiyaara-NSTB-M-HOK-0001-Noa-Shoulder-Bag-Mustard-08.webp",
             "video_autoplay": true,
             "video_controls": false
           }
@@ -507,7 +525,7 @@
         "spacing_concierge"
       ],
       "settings": {
-        "color_scheme": "alternative-2",
+        "color_scheme": "default",
         "content_width": "full",
         "sm_content_position": "left",
         "sm_text_alignment": "left",
