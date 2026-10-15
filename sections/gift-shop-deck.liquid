@@ -180,6 +180,18 @@
       var loaded = event.target.querySelector('[data-gift-deck-section]');
       if (loaded) initGiftDeck(loaded);
     });
+
+    document.addEventListener('click', function(event) {
+      var link = event.target.closest('a[href^="#shopify-section-"]');
+      if (!link) return;
+      var suffix = link.getAttribute('href').replace('#shopify-section-', '');
+      if (!suffix) return;
+      var target = document.getElementById('shopify-section-' + suffix) || document.querySelector('[id^="shopify-section-"][id$="' + suffix + '"]');
+      if (target) {
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   })();
 </script>
 

@@ -1,68 +1,68 @@
 /* ==========================================================================
    Kiyaara Gift Shop Page Styles (templates/page.gift-shop.json)
-   Reuses native theme sections (image-with-text, rich-text, multicolumn,
-   collection-or-products-switcher) + custom gift-shop-deck section.
+   Uses suffix attribute selectors [id$="..."] so rules match both Shopify's
+   generated section IDs (template--12345__<key>) and local preview IDs (<key>).
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. HERO SECTION (#shopify-section-image_with_text_gift_hero)
+   1. HERO SECTION (image_with_text_gift_hero)
    -------------------------------------------------------------------------- */
-#shopify-section-image_with_text_gift_hero {
+[id^="shopify-section-"][id$="image_with_text_gift_hero"] {
   background-color: #ffffff;
   border-bottom: 1px solid #f3ede2;
 }
 
-#image_with_text_gift_hero.container {
+.container[id$="image_with_text_gift_hero"] {
   max-width: 1440px;
   padding-left: 24px;
   padding-right: 24px;
 }
 
 @media (min-width: 768px) {
-  #image_with_text_gift_hero.container {
+  .container[id$="image_with_text_gift_hero"] {
     padding-left: 48px;
     padding-right: 48px;
   }
 }
 
 @media (min-width: 1200px) {
-  #image_with_text_gift_hero.container {
+  .container[id$="image_with_text_gift_hero"] {
     padding-left: 96px;
     padding-right: 96px;
   }
 }
 
-#image_with_text_gift_hero .grid {
+.container[id$="image_with_text_gift_hero"] .grid {
   align-items: center;
   row-gap: 40px;
 }
 
 @media (min-width: 768px) {
-  #image_with_text_gift_hero .grid {
+  .container[id$="image_with_text_gift_hero"] .grid {
     column-gap: 48px;
   }
 }
 
 @media (min-width: 1024px) {
-  #image_with_text_gift_hero .grid {
+  .container[id$="image_with_text_gift_hero"] .grid {
     column-gap: 80px;
   }
 }
 
 /* Mobile order: Text + CTA on top, Hero square image below */
 @media (max-width: 767px) {
-  #image_with_text_gift_hero .grid > .content-blocks {
+  .container[id$="image_with_text_gift_hero"] .grid > div:not(.sm-br-img) {
     order: -1;
     padding-left: 0;
     padding-right: 0;
   }
 
-  #image_with_text_gift_hero .grid > .sm-br-img {
+  .container[id$="image_with_text_gift_hero"] .grid > .sm-br-img {
     order: 2;
   }
 }
 
-#image_with_text_gift_hero .blocks-title {
+.container[id$="image_with_text_gift_hero"] .blocks-title {
   font-size: clamp(36px, 3.8vw, 56px);
   line-height: 1.14;
   letter-spacing: -0.02em;
@@ -71,16 +71,16 @@
   margin-bottom: 24px;
 }
 
-#image_with_text_gift_hero .blocks-title em {
+.container[id$="image_with_text_gift_hero"] .blocks-title em {
   font-style: italic;
   color: #c46d5e;
 }
 
-#image_with_text_gift_hero .blocks-rte {
+.container[id$="image_with_text_gift_hero"] .blocks-rte {
   max-width: 540px;
 }
 
-#image_with_text_gift_hero .blocks-rte p {
+.container[id$="image_with_text_gift_hero"] .blocks-rte p {
   font-size: 15px;
   line-height: 1.75;
   color: #736b66;
@@ -88,12 +88,12 @@
 }
 
 @media (min-width: 768px) {
-  #image_with_text_gift_hero .blocks-rte p {
+  .container[id$="image_with_text_gift_hero"] .blocks-rte p {
     font-size: 16px;
   }
 }
 
-#image_with_text_gift_hero .blocks-rte p em {
+.container[id$="image_with_text_gift_hero"] .blocks-rte p em {
   font-style: italic;
   color: #22201e;
   font-size: 15px;
@@ -101,7 +101,7 @@
   display: block;
 }
 
-#image_with_text_gift_hero .blocks-rte p strong {
+.container[id$="image_with_text_gift_hero"] .blocks-rte p strong {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -111,7 +111,7 @@
   margin-top: 4px;
 }
 
-#image_with_text_gift_hero .blocks-rte p strong::before {
+.container[id$="image_with_text_gift_hero"] .blocks-rte p strong::before {
   content: "";
   width: 6px;
   height: 6px;
@@ -120,54 +120,50 @@
   flex-shrink: 0;
 }
 
-#image_with_text_gift_hero .btn-group {
-  margin-top: 32px;
-}
-
-#image_with_text_gift_hero .btn {
-  background-color: #22201e;
-  color: #ffffff;
-  border: 1px solid #22201e;
-  border-radius: 0;
-  padding: 18px 32px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.container[id$="image_with_text_gift_hero"] .btn {
+  background-color: #22201e !important;
+  color: #ffffff !important;
+  border: 1px solid #22201e !important;
+  border-radius: 0 !important;
+  padding: 18px 32px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   gap: 12px;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-#image_with_text_gift_hero .btn::after {
+.container[id$="image_with_text_gift_hero"] .btn::after {
   content: "→";
   font-size: 14px;
   line-height: 1;
   transition: transform 0.25s ease;
 }
 
-#image_with_text_gift_hero .btn:hover {
-  background-color: #383430;
-  border-color: #383430;
+.container[id$="image_with_text_gift_hero"] .btn:hover {
+  background-color: #383430 !important;
+  border-color: #383430 !important;
 }
 
-#image_with_text_gift_hero .btn:hover::after {
+.container[id$="image_with_text_gift_hero"] .btn:hover::after {
   transform: translateX(4px);
 }
 
 @media (max-width: 767px) {
-  #image_with_text_gift_hero .btn {
-    width: 100%;
-    padding: 16px 20px;
-    font-size: 11px;
+  .container[id$="image_with_text_gift_hero"] .btn {
+    width: 100% !important;
+    padding: 16px 20px !important;
+    font-size: 11px !important;
   }
 }
 
 /* Editorial placeholder styling when no hero image is selected yet */
-#image_with_text_gift_hero .media.square,
-#image_with_text_gift_hero .media--square {
+.container[id$="image_with_text_gift_hero"] .media.square,
+.container[id$="image_with_text_gift_hero"] .media--square {
   position: relative;
   background-color: #ded3c0;
   aspect-ratio: 1 / 1;
@@ -175,7 +171,7 @@
   overflow: hidden;
 }
 
-#image_with_text_gift_hero .media:has(.placeholder-svg)::before {
+.container[id$="image_with_text_gift_hero"] .media:has(.placeholder-svg)::before {
   content: "";
   position: absolute;
   inset: 24px;
@@ -184,7 +180,7 @@
   z-index: 2;
 }
 
-#image_with_text_gift_hero .media:has(.placeholder-svg)::after {
+.container[id$="image_with_text_gift_hero"] .media:has(.placeholder-svg)::after {
   content: "[ HERO EDITORIAL GIFT PHOTOGRAPHY ]";
   position: absolute;
   top: 50%;
@@ -201,23 +197,23 @@
   pointer-events: none;
 }
 
-#image_with_text_gift_hero .placeholder-svg {
+.container[id$="image_with_text_gift_hero"] .placeholder-svg {
   opacity: 0;
 }
 
 /* --------------------------------------------------------------------------
-   2. WHO ARE YOU GIFTING? (#rich_text_gift_who + #multicolumn_gift_who)
+   2. WHO ARE YOU GIFTING? (rich_text_gift_who + multicolumn_gift_who)
    -------------------------------------------------------------------------- */
-#shopify-section-rich_text_gift_who,
-#shopify-section-multicolumn_gift_who {
+[id^="shopify-section-"][id$="rich_text_gift_who"],
+[id^="shopify-section-"][id$="multicolumn_gift_who"] {
   background-color: #faf7f2;
 }
 
-#shopify-section-multicolumn_gift_who {
+[id^="shopify-section-"][id$="multicolumn_gift_who"] {
   border-bottom: 1px solid #f3ede2;
 }
 
-#rich_text_gift_who .blocks-title {
+.container[id$="rich_text_gift_who"] .blocks-title {
   font-size: clamp(32px, 3vw, 40px);
   line-height: 1.2;
   font-weight: 400;
@@ -227,7 +223,7 @@
   padding-bottom: 20px;
 }
 
-#rich_text_gift_who .blocks-title::after {
+.container[id$="rich_text_gift_who"] .blocks-title::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -238,32 +234,32 @@
   background-color: #c46d5e;
 }
 
-#multicolumn_gift_who.container {
+.container[id$="multicolumn_gift_who"] {
   max-width: 1440px;
   padding-left: 24px;
   padding-right: 24px;
 }
 
 @media (min-width: 1200px) {
-  #multicolumn_gift_who.container {
+  .container[id$="multicolumn_gift_who"] {
     padding-left: 96px;
     padding-right: 96px;
   }
 }
 
-#multicolumn_gift_who .gridy-track {
+.container[id$="multicolumn_gift_who"] .gridy-track {
   row-gap: 40px !important;
   --gap: 32px !important;
 }
 
 @media (max-width: 767px) {
-  #multicolumn_gift_who .gridy-track {
+  .container[id$="multicolumn_gift_who"] .gridy-track {
     grid-template-columns: 1fr !important;
     row-gap: 36px !important;
   }
 }
 
-#multicolumn_gift_who .multicolumn-item {
+.container[id$="multicolumn_gift_who"] .multicolumn-item {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -271,7 +267,7 @@
 }
 
 /* Circular 64px icon badge above each pillar when no custom image is set */
-#multicolumn_gift_who .multicolumn-item:not(:has(.column-media))::before {
+.container[id$="multicolumn_gift_who"] .multicolumn-item:not(:has(.column-media))::before {
   content: "";
   width: 64px;
   height: 64px;
@@ -286,26 +282,26 @@
 }
 
 /* Pillar 1: Your team (User icon) */
-#multicolumn_gift_who .multicolumn-item:nth-child(1):not(:has(.column-media))::before {
+.container[id$="multicolumn_gift_who"] .multicolumn-item:nth-child(1):not(:has(.column-media))::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
 }
 
 /* Pillar 2: Your clients & partners (Calendar/briefcase icon) */
-#multicolumn_gift_who .multicolumn-item:nth-child(2):not(:has(.column-media))::before {
+.container[id$="multicolumn_gift_who"] .multicolumn-item:nth-child(2):not(:has(.column-media))::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='16' rx='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
 }
 
 /* Pillar 3: The festive season (4-point sparkle star icon) */
-#multicolumn_gift_who .multicolumn-item:nth-child(3):not(:has(.column-media))::before {
+.container[id$="multicolumn_gift_who"] .multicolumn-item:nth-child(3):not(:has(.column-media))::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z'/%3E%3C/svg%3E");
 }
 
 /* Pillar 4: The wedding (Heart celebration icon) */
-#multicolumn_gift_who .multicolumn-item:nth-child(4):not(:has(.column-media))::before {
+.container[id$="multicolumn_gift_who"] .multicolumn-item:nth-child(4):not(:has(.column-media))::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
 }
 
-#multicolumn_gift_who .column-media {
+.container[id$="multicolumn_gift_who"] .column-media {
   width: 64px;
   height: 64px;
   border-radius: 50%;
@@ -318,7 +314,7 @@
   overflow: hidden;
 }
 
-#multicolumn_gift_who .blocks-title {
+.container[id$="multicolumn_gift_who"] .blocks-title {
   font-size: 20px;
   line-height: 1.3;
   font-weight: 400;
@@ -326,7 +322,7 @@
   margin: 0 0 12px !important;
 }
 
-#multicolumn_gift_who .rte p {
+.container[id$="multicolumn_gift_who"] .rte p {
   font-size: 14px;
   line-height: 1.65;
   color: #736b66;
@@ -378,9 +374,15 @@
   align-items: center;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 768px) {
   .gift-deck__grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 56px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gift-deck__grid {
     gap: 80px;
   }
 }
@@ -654,35 +656,35 @@
 }
 
 /* --------------------------------------------------------------------------
-   4. CURATED WITH LOVE (#shopify-section-collection_switcher_gift_curated)
+   4. CURATED WITH LOVE (collection_switcher_gift_curated)
    -------------------------------------------------------------------------- */
-#shopify-section-collection_switcher_gift_curated {
+[id^="shopify-section-"][id$="collection_switcher_gift_curated"] {
   background-color: #faf7f2;
   border-bottom: 1px solid #f3ede2;
 }
 
-#collection_switcher_gift_curated .container {
+[id$="collection_switcher_gift_curated"] .container {
   max-width: 1440px;
   padding-left: 24px;
   padding-right: 24px;
 }
 
 @media (min-width: 1200px) {
-  #collection_switcher_gift_curated .container {
+  [id$="collection_switcher_gift_curated"] .container {
     padding-left: 96px;
     padding-right: 96px;
   }
 }
 
-#collection_switcher_gift_curated .section-header .h2,
-#collection_switcher_gift_curated .section-header h2 {
+[id$="collection_switcher_gift_curated"] .section-header .h2,
+[id$="collection_switcher_gift_curated"] .section-header h2 {
   font-size: clamp(32px, 3vw, 40px);
   font-weight: 400;
   color: #22201e;
   margin-bottom: 12px;
 }
 
-#collection_switcher_gift_curated .section-header p {
+[id$="collection_switcher_gift_curated"] .section-header p {
   font-size: 15px;
   line-height: 1.65;
   color: #736b66;
@@ -690,7 +692,7 @@
   margin: 0 auto 28px;
 }
 
-#collection_switcher_gift_curated .tab-titles {
+[id$="collection_switcher_gift_curated"] .tab-titles {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -704,13 +706,13 @@
 }
 
 @media (min-width: 768px) {
-  #collection_switcher_gift_curated .tab-titles {
+  [id$="collection_switcher_gift_curated"] .tab-titles {
     gap: 40px;
     padding: 0 16px;
   }
 }
 
-#collection_switcher_gift_curated .tab-title {
+[id$="collection_switcher_gift_curated"] .tab-title {
   appearance: none;
   background: transparent;
   border: 0;
@@ -722,7 +724,7 @@
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-#collection_switcher_gift_curated .tab-title > * {
+[id$="collection_switcher_gift_curated"] .tab-title > * {
   font-family: var(--font-body-family) !important;
   font-size: 11px !important;
   font-weight: 400 !important;
@@ -733,78 +735,78 @@
 }
 
 @media (min-width: 768px) {
-  #collection_switcher_gift_curated .tab-title > * {
+  [id$="collection_switcher_gift_curated"] .tab-title > * {
     font-size: 12px !important;
   }
 }
 
-#collection_switcher_gift_curated .tab-title.is-active {
+[id$="collection_switcher_gift_curated"] .tab-title.is-active {
   border-bottom-color: #c46d5e;
   opacity: 1 !important;
 }
 
-#collection_switcher_gift_curated .tab-title.is-active > * {
+[id$="collection_switcher_gift_curated"] .tab-title.is-active > * {
   color: #22201e !important;
   font-weight: 500 !important;
 }
 
-#collection_switcher_gift_curated .card--product {
+[id$="collection_switcher_gift_curated"] .card--product {
   background-color: #ffffff;
   border: 1px solid #f3ede2;
   padding-bottom: 20px;
   transition: box-shadow 0.25s ease;
 }
 
-#collection_switcher_gift_curated .card--product:hover {
+[id$="collection_switcher_gift_curated"] .card--product:hover {
   box-shadow: 0 10px 28px rgba(34, 32, 30, 0.05);
 }
 
-#collection_switcher_gift_curated .card__info,
-#collection_switcher_gift_curated .card-body {
+[id$="collection_switcher_gift_curated"] .card__info,
+[id$="collection_switcher_gift_curated"] .card-body {
   text-align: center;
   padding: 16px 16px 0;
 }
 
 /* --------------------------------------------------------------------------
-   5. MADE TO FEEL LIKE YOURS (#shopify-section-image_with_text_gift_bespoke)
+   5. MADE TO FEEL LIKE YOURS (image_with_text_gift_bespoke)
    -------------------------------------------------------------------------- */
-#shopify-section-image_with_text_gift_bespoke {
+[id^="shopify-section-"][id$="image_with_text_gift_bespoke"] {
   background-color: #ffffff;
   border-bottom: 1px solid #f3ede2;
 }
 
-#image_with_text_gift_bespoke.container {
+.container[id$="image_with_text_gift_bespoke"] {
   max-width: 1440px;
   padding-left: 24px;
   padding-right: 24px;
 }
 
 @media (min-width: 768px) {
-  #image_with_text_gift_bespoke.container {
+  .container[id$="image_with_text_gift_bespoke"] {
     padding-left: 48px;
     padding-right: 48px;
   }
 }
 
 @media (min-width: 1200px) {
-  #image_with_text_gift_bespoke.container {
+  .container[id$="image_with_text_gift_bespoke"] {
     padding-left: 96px;
     padding-right: 96px;
   }
 }
 
-#image_with_text_gift_bespoke .grid {
+.container[id$="image_with_text_gift_bespoke"] .grid {
   align-items: center;
   row-gap: 40px;
 }
 
 @media (min-width: 1024px) {
-  #image_with_text_gift_bespoke .grid {
+  .container[id$="image_with_text_gift_bespoke"] .grid {
     column-gap: 80px;
   }
 }
 
-#image_with_text_gift_bespoke .blocks-title {
+.container[id$="image_with_text_gift_bespoke"] .blocks-title {
   font-size: clamp(32px, 3vw, 40px);
   line-height: 1.2;
   font-weight: 400;
@@ -812,7 +814,7 @@
   margin-bottom: 16px;
 }
 
-#image_with_text_gift_bespoke .blocks-rte > p {
+.container[id$="image_with_text_gift_bespoke"] .blocks-rte > p {
   font-size: 15px;
   line-height: 1.7;
   color: #736b66;
@@ -821,7 +823,7 @@
 }
 
 /* Transform the native richtext <ul> into the 4 numbered customization cards */
-#image_with_text_gift_bespoke .blocks-rte ul {
+.container[id$="image_with_text_gift_bespoke"] .blocks-rte ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -831,7 +833,7 @@
   gap: 16px;
 }
 
-#image_with_text_gift_bespoke .blocks-rte ul li {
+.container[id$="image_with_text_gift_bespoke"] .blocks-rte ul li {
   counter-increment: bespoke-step;
   position: relative;
   background-color: #ffffff;
@@ -843,7 +845,7 @@
   margin: 0;
 }
 
-#image_with_text_gift_bespoke .blocks-rte ul li::before {
+.container[id$="image_with_text_gift_bespoke"] .blocks-rte ul li::before {
   content: "0" counter(bespoke-step);
   position: absolute;
   top: 22px;
@@ -854,7 +856,7 @@
   color: #c46d5e;
 }
 
-#image_with_text_gift_bespoke .blocks-rte ul li strong {
+.container[id$="image_with_text_gift_bespoke"] .blocks-rte ul li strong {
   display: block;
   font-family: var(--font-heading-family);
   font-size: 18px;
@@ -865,17 +867,19 @@
 }
 
 /* Bespoke Packaging Image + Floating "Signature Finish" Badge */
-#image_with_text_gift_bespoke .sm-br-img {
+.container[id$="image_with_text_gift_bespoke"] .sm-br-img {
   position: relative;
 }
 
-#image_with_text_gift_bespoke .media {
+.container[id$="image_with_text_gift_bespoke"] .media {
   position: relative;
   background-color: #e6ddd2;
+  aspect-ratio: 4 / 5;
+  display: block;
   overflow: hidden;
 }
 
-#image_with_text_gift_bespoke .media:has(.placeholder-svg)::before {
+.container[id$="image_with_text_gift_bespoke"] .media:has(.placeholder-svg)::before {
   content: "[ BESPOKE PACKAGING & NOTE CARDS ]";
   position: absolute;
   top: 45%;
@@ -892,12 +896,12 @@
   pointer-events: none;
 }
 
-#image_with_text_gift_bespoke .placeholder-svg {
+.container[id$="image_with_text_gift_bespoke"] .placeholder-svg {
   opacity: 0;
 }
 
 /* Floating "Signature Finish" card at bottom-left of Bespoke image */
-#image_with_text_gift_bespoke .sm-br-img::after {
+.container[id$="image_with_text_gift_bespoke"] .sm-br-img::after {
   content: "SIGNATURE FINISH\A\"Every piece arrives in our keepsake box\"";
   white-space: pre-wrap;
   position: absolute;
@@ -906,7 +910,7 @@
   max-width: 240px;
   background-color: #ffffff;
   border: 1px solid #f3ede2;
-  padding: 18px 22px;
+  padding: 28px 22px 18px;
   box-shadow: 0 10px 28px rgba(34, 32, 30, 0.08);
   font-family: var(--font-heading-family);
   font-size: 14px;
@@ -918,11 +922,10 @@
   background-repeat: no-repeat;
   background-size: 28px 2px;
   background-position: 22px 18px;
-  padding-top: 28px;
 }
 
 @media (min-width: 768px) {
-  #image_with_text_gift_bespoke .sm-br-img::after {
+  .container[id$="image_with_text_gift_bespoke"] .sm-br-img::after {
     bottom: 32px;
     left: 32px;
     max-width: 260px;
@@ -932,69 +935,79 @@
 }
 
 /* --------------------------------------------------------------------------
-   6. LET'S PLAN YOUR GIFTING (#shopify-section-rich_text_gift_concierge)
+   6. LET'S PLAN YOUR GIFTING (rich_text_gift_concierge)
    -------------------------------------------------------------------------- */
-#shopify-section-rich_text_gift_concierge {
+[id^="shopify-section-"][id$="rich_text_gift_concierge"] {
   background-color: #faf7f2;
 }
 
-#rich_text_gift_concierge.container {
+.container[id$="rich_text_gift_concierge"] {
   max-width: 1440px;
   padding-left: 24px;
   padding-right: 24px;
 }
 
 @media (min-width: 768px) {
-  #rich_text_gift_concierge.container {
+  .container[id$="rich_text_gift_concierge"] {
     padding-left: 48px;
     padding-right: 48px;
   }
 }
 
 @media (min-width: 1200px) {
-  #rich_text_gift_concierge.container {
+  .container[id$="rich_text_gift_concierge"] {
     padding-left: 96px;
     padding-right: 96px;
   }
 }
 
-#rich_text_gift_concierge .content-blocks {
+.container[id$="rich_text_gift_concierge"] .content-blocks {
   background-color: #ffffff;
   border: 1px solid #ebd8d0;
   padding: 36px 24px;
   text-align: left !important;
-  display: grid;
+  display: grid !important;
   grid-template-columns: 1fr;
   gap: 24px;
   align-items: center;
 }
 
-@media (min-width: 900px) {
-  #rich_text_gift_concierge .content-blocks {
-    padding: 64px 72px;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    column-gap: 72px;
+@media (min-width: 768px) {
+  .container[id$="rich_text_gift_concierge"] .content-blocks {
+    padding: 56px 48px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) !important;
+    column-gap: 48px;
     row-gap: 16px;
   }
 
-  #rich_text_gift_concierge .blocks-title {
-    grid-column: 1;
+  .container[id$="rich_text_gift_concierge"] .blocks-title {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
     align-self: end;
   }
 
-  #rich_text_gift_concierge .blocks-rte {
-    grid-column: 1;
+  .container[id$="rich_text_gift_concierge"] .blocks-rte {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
     align-self: start;
   }
 
-  #rich_text_gift_concierge .btn-group {
-    grid-column: 2;
-    grid-row: 1 / span 2;
+  .container[id$="rich_text_gift_concierge"] .btn-group {
+    grid-column: 2 !important;
+    grid-row: 1 / span 2 !important;
     margin-top: 0 !important;
+    align-self: center;
   }
 }
 
-#rich_text_gift_concierge .blocks-title {
+@media (min-width: 1100px) {
+  .container[id$="rich_text_gift_concierge"] .content-blocks {
+    padding: 64px 72px;
+    column-gap: 72px;
+  }
+}
+
+.container[id$="rich_text_gift_concierge"] .blocks-title {
   font-size: clamp(32px, 3vw, 40px);
   line-height: 1.2;
   font-weight: 400;
@@ -1004,7 +1017,7 @@
   position: relative;
 }
 
-#rich_text_gift_concierge .blocks-title::after {
+.container[id$="rich_text_gift_concierge"] .blocks-title::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -1014,7 +1027,7 @@
   background-color: #c46d5e;
 }
 
-#rich_text_gift_concierge .blocks-rte p {
+.container[id$="rich_text_gift_concierge"] .blocks-rte p {
   font-size: 15px;
   line-height: 1.75;
   color: #736b66;
@@ -1022,40 +1035,42 @@
   max-width: 440px;
 }
 
-#rich_text_gift_concierge .btn-group {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 100%;
+.container[id$="rich_text_gift_concierge"] .btn-group {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  gap: 16px !important;
+  width: 100% !important;
 }
 
-#rich_text_gift_concierge .btn-group .btn {
-  width: 100%;
-  background-color: #ffffff;
-  border: 1px solid #f3ede2;
-  border-radius: 0;
-  padding: 36px 48px 18px 84px;
-  font-family: var(--font-heading-family);
-  font-size: clamp(16px, 1.4vw, 20px);
-  font-weight: 400;
-  letter-spacing: 0;
-  text-transform: none;
-  color: #22201e;
-  text-align: left;
-  justify-content: flex-start;
+.container[id$="rich_text_gift_concierge"] .btn-group .btn {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  border: 1px solid #f3ede2 !important;
+  border-radius: 0 !important;
+  padding: 36px 48px 18px 84px !important;
+  font-family: var(--font-heading-family) !important;
+  font-size: clamp(16px, 1.4vw, 20px) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: #22201e !important;
+  text-align: left !important;
+  justify-content: flex-start !important;
   position: relative;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
   overflow: hidden;
   word-break: break-word;
+  box-shadow: none !important;
 }
 
-#rich_text_gift_concierge .btn-group .btn:hover {
-  border-color: #c46d5e;
-  box-shadow: 0 8px 24px rgba(34, 32, 30, 0.05);
+.container[id$="rich_text_gift_concierge"] .btn-group .btn:hover {
+  border-color: #c46d5e !important;
+  box-shadow: 0 8px 24px rgba(34, 32, 30, 0.05) !important;
 }
 
 /* Circular 48px cream icon on the left of each concierge contact card */
-#rich_text_gift_concierge .btn-group .btn::before {
+.container[id$="rich_text_gift_concierge"] .btn-group .btn::before {
   content: "";
   position: absolute;
   left: 20px;
@@ -1071,33 +1086,33 @@
 }
 
 /* Contact 1: Email icon + label */
-#rich_text_gift_concierge .btn-group .btn:nth-child(1)::before {
+.container[id$="rich_text_gift_concierge"] .btn-group .btn:nth-child(1)::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='4' width='20' height='16' rx='2'/%3E%3Cpath d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'/%3E%3C/svg%3E");
 }
 
-#rich_text_gift_concierge .btn-group .btn:nth-child(1)::after {
+.container[id$="rich_text_gift_concierge"] .btn-group .btn:nth-child(1)::after {
   content: "EMAIL US AT";
 }
 
 /* Contact 2: WhatsApp chat icon + label */
-#rich_text_gift_concierge .btn-group .btn:nth-child(2)::before {
+.container[id$="rich_text_gift_concierge"] .btn-group .btn:nth-child(2)::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z'/%3E%3C/svg%3E");
 }
 
-#rich_text_gift_concierge .btn-group .btn:nth-child(2)::after {
+.container[id$="rich_text_gift_concierge"] .btn-group .btn:nth-child(2)::after {
   content: "CHAT WITH US ON WHATSAPP";
 }
 
 /* Contact 3: Phone call icon + label */
-#rich_text_gift_concierge .btn-group .btn:nth-child(3)::before {
+.container[id$="rich_text_gift_concierge"] .btn-group .btn:nth-child(3)::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z'/%3E%3C/svg%3E");
 }
 
-#rich_text_gift_concierge .btn-group .btn:nth-child(3)::after {
+.container[id$="rich_text_gift_concierge"] .btn-group .btn:nth-child(3)::after {
   content: "CALL US ON";
 }
 
-#rich_text_gift_concierge .btn-group .btn::after {
+.container[id$="rich_text_gift_concierge"] .btn-group .btn::after {
   position: absolute;
   top: 16px;
   left: 84px;
@@ -1110,9 +1125,9 @@
 }
 
 /* Right arrow indicator on each contact card */
-#rich_text_gift_concierge .btn-group .btn {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 22px center;
-  background-size: 16px 16px;
+.container[id$="rich_text_gift_concierge"] .btn-group .btn {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23C46D5E' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 22px center !important;
+  background-size: 16px 16px !important;
 }
