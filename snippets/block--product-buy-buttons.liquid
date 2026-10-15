@@ -55,13 +55,13 @@
       {%- endif -%}
 
       <div class="product-form__buttons">
-{%- comment -%} FREE TWILLY DISABLED (re-enable: remove this comment wrapper, here and at the endif near the bottom)
-{%- if product.id == all_products['twilly'].id or product.id == all_products['meadow-twlly-forest-green'].id -%}
+{%- if product.id == all_products['twilly'].id or product.id == all_products['dottie-twilly-sky-blue'].id -%}
+
   <p class="product-form__gift-only-notice">
     This item is only available as a free gift with qualifying orders — it can't be purchased separately.
   </p>
+
 {%- else -%}
-{%- endcomment -%}
 
         {% if has_quantity_selector and quantity_next_to_add_to_cart %}
           {% capture quantity_input %}
@@ -117,7 +117,7 @@
       </p>
     {%- endif -%}
 
-  {%- comment -%} FREE TWILLY DISABLED {%- endif -%} {%- endcomment -%}
+  {%- endif -%}
   </div>      
 
     {%- endform -%}

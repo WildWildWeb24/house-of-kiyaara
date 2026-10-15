@@ -288,32 +288,19 @@
 
 {% render 'razorpay-magic-checkout' %}
 
-{%- comment -%}
-  ===== FREE TWILLY GIFT: DISABLED (offer discontinued Oct 2026) =====
-  The whole block between DISABLE-START and DISABLE-END is commented out, not deleted.
-  TO RE-ENABLE: remove the comment tag that opens on the DISABLE-START line and the
-  endcomment tag on the DISABLE-END line.
-  TO USE A DIFFERENT FREE PRODUCT: change both 'meadow-twlly-forest-green' handles,
-  update the 'free-twilly-eligible-products' collection, and set giftThreshold (paise; 100000 = Rs 1,000).
-  OTHER FILES THAT BELONG TO THIS FEATURE (left untouched):
-  assets/free-gift-twilly.js, snippets/block--product-buy-buttons.liquid (gift-only notice on the twilly page),
-  templates/product.json (Free Twilly Banner), templates/index.json (announcement bar and homepage banner).
-{%- endcomment -%}
-{%- comment -%} DISABLE-START
 {% assign gift_eligible_collection = collections['free-twilly-eligible-products'] %}
 <script>
   window.freeGiftConfig = {
-    giftProductId: {{ all_products['meadow-twlly-forest-green'].id | json }},
-    giftVariantId: {{ all_products['meadow-twlly-forest-green'].variants[0].id | json }},
-    giftThreshold: 100000
-, eligibleProductIds: [
-    {%- for p in gift_eligible_collection.products -%}
+    giftProductId: {{ all_products['dottie-twilly-sky-blue'].id | json }},
+    giftVariantId: {{ all_products['dottie-twilly-sky-blue'].variants[0].id | json }},
+    giftThreshold: 100000,
+    eligibleProductIds: [
+      {%- for p in gift_eligible_collection.products -%}
         {{ p.id }}{% unless forloop.last %},{% endunless %}
       {%- endfor -%}
     ]
   };
 </script>
 <script src="{{ 'free-gift-twilly.js' | asset_url }}" defer="defer"></script>
-DISABLE-END {%- endcomment -%}
 </body>
 </html>
