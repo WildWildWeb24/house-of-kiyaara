@@ -324,21 +324,21 @@
         "tab_tier_1": {
           "type": "collection-tab",
           "settings": {
-            "tab_title": "FROM INR 1,650",
+            "tab_title": "Wallets",
             "collection": "wallets-for-women"
           }
         },
         "tab_tier_2": {
           "type": "collection-tab",
           "settings": {
-            "tab_title": "FROM INR 4,000",
+            "tab_title": "Bundles",
             "collection": "curated-bundles"
           }
         },
         "tab_tier_3": {
           "type": "collection-tab",
           "settings": {
-            "tab_title": "FROM 7,000+",
+            "tab_title": "Bags",
             "collection": "all-bags"
           }
         },
