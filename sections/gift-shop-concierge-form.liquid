@@ -3,6 +3,8 @@
 {%- liquid
   assign form_id = 'GiftConciergeForm__' | append: section.id
   assign qty_options = section.settings.quantity_options | default: '10-20, 21-30, 30+' | split: ','
+  assign contact_blocks = section.blocks | where: 'type', 'contact_card'
+  assign app_blocks = section.blocks | where: 'type', '@app'
 -%}
 
 {% render 'section-custom-colors', section: section %}
@@ -30,9 +32,9 @@
           </div>
         {%- endif -%}
 
-        {%- if section.settings.show_contact_cards and section.blocks.size > 0 -%}
+        {%- if section.settings.show_contact_cards and contact_blocks.size > 0 -%}
           <div class="gift-concierge__contacts">
-            {%- for block in section.blocks -%}
+            {%- for block in contact_blocks -%}
               <a
                 href="{{ block.settings.button_link }}"
                 class="gift-concierge__contact-btn gift-concierge__contact-btn--{{ block.settings.icon_type }}"
@@ -45,117 +47,129 @@
         {%- endif -%}
       </div>
 
-      {%- comment -%} Right Column: CRM Inquiry Form {%- endcomment -%}
+      {%- comment -%} Right Column: FormCRM App Block, FormCRM Embed Code, or Native Shopify Contact Form Fallback {%- endcomment -%}
       <div class="gift-concierge__form-wrap">
-        {%- form 'contact', id: form_id, class: 'gift-concierge__form' -%}
-          <input type="hidden" name="contact[form_type_source]" value="Kiyaara Gift Shop CRM Inquiry">
-          <input type="hidden" name="contact[recipient_email]" value="{{ section.settings.recipient_email | default: 'hello@houseofkiyaara.com' | escape }}">
+        {%- if app_blocks.size > 0 -%}
+          <div class="gift-concierge__app-form">
+            {%- for block in app_blocks -%}
+              {% render block %}
+            {%- endfor -%}
+          </div>
+        {%- elsif section.settings.formcrm_embed_code != blank -%}
+          <div class="gift-concierge__app-form">
+            {{ section.settings.formcrm_embed_code }}
+          </div>
+        {%- else -%}
+          {%- form 'contact', id: form_id, class: 'gift-concierge__form' -%}
+            <input type="hidden" name="contact[form_type_source]" value="Kiyaara Gift Shop CRM Inquiry">
+            <input type="hidden" name="contact[recipient_email]" value="{{ section.settings.recipient_email | default: 'hello@houseofkiyaara.com' | escape }}">
 
-          {%- if form.posted_successfully? -%}
-            <div class="gift-concierge__alert gift-concierge__alert--success" tabindex="-1" autofocus>
-              {{ section.settings.success_message | default: "Thank you! We've received your gifting inquiry and will get back to you shortly." }}
-            </div>
-          {%- elsif form.errors -%}
-            <div class="gift-concierge__alert gift-concierge__alert--error" role="alert" tabindex="-1" autofocus>
-              {{ form.errors | default_errors }}
-            </div>
-          {%- endif -%}
+            {%- if form.posted_successfully? -%}
+              <div class="gift-concierge__alert gift-concierge__alert--success" tabindex="-1" autofocus>
+                {{ section.settings.success_message | default: "Thank you! We've received your gifting inquiry and will get back to you shortly." }}
+              </div>
+            {%- elsif form.errors -%}
+              <div class="gift-concierge__alert gift-concierge__alert--error" role="alert" tabindex="-1" autofocus>
+                {{ form.errors | default_errors }}
+              </div>
+            {%- endif -%}
 
-          <div class="gift-concierge__form-grid">
-            <div class="gift-concierge__field">
-              <label class="gift-concierge__label" for="{{ form_id }}-name">
-                {{ section.settings.name_label | default: 'Name' | escape }} <span aria-hidden="true">*</span>
-              </label>
-              <input
-                type="text"
-                id="{{ form_id }}-name"
-                name="contact[name]"
-                class="gift-concierge__input"
-                placeholder="{{ section.settings.name_placeholder | default: 'Your full name' | escape }}"
-                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-                autocomplete="name"
-                required>
-            </div>
-
-            <div class="gift-concierge__field">
-              <label class="gift-concierge__label" for="{{ form_id }}-phone">
-                {{ section.settings.phone_label | default: 'Contact' | escape }} <span aria-hidden="true">*</span>
-              </label>
-              <input
-                type="tel"
-                id="{{ form_id }}-phone"
-                name="contact[phone]"
-                class="gift-concierge__input"
-                placeholder="{{ section.settings.phone_placeholder | default: '+91 98765 43210' | escape }}"
-                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-                autocomplete="tel"
-                required>
-            </div>
-
-            <div class="gift-concierge__field">
-              <label class="gift-concierge__label" for="{{ form_id }}-email">
-                {{ section.settings.email_label | default: 'Email ID' | escape }} <span aria-hidden="true">*</span>
-              </label>
-              <input
-                type="email"
-                id="{{ form_id }}-email"
-                name="contact[email]"
-                class="gift-concierge__input"
-                placeholder="{{ section.settings.email_placeholder | default: 'you@example.com' | escape }}"
-                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-                autocomplete="email"
-                spellcheck="false"
-                autocapitalize="off"
-                required>
-            </div>
-
-            <div class="gift-concierge__field">
-              <label class="gift-concierge__label" for="{{ form_id }}-quantity">
-                {{ section.settings.quantity_label | default: 'Order quantity' | escape }} <span aria-hidden="true">*</span>
-              </label>
-              <div class="gift-concierge__select-wrap">
-                <select
-                  id="{{ form_id }}-quantity"
-                  name="contact[order_quantity]"
-                  class="gift-concierge__select"
+            <div class="gift-concierge__form-grid">
+              <div class="gift-concierge__field">
+                <label class="gift-concierge__label" for="{{ form_id }}-name">
+                  {{ section.settings.name_label | default: 'Name' | escape }} <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="{{ form_id }}-name"
+                  name="contact[name]"
+                  class="gift-concierge__input"
+                  placeholder="{{ section.settings.name_placeholder | default: 'Your full name' | escape }}"
+                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                  autocomplete="name"
                   required>
-                  <option value="" disabled selected>{{ section.settings.quantity_placeholder | default: 'Select quantity' | escape }}</option>
-                  {%- for opt in qty_options -%}
-                    {%- assign clean_opt = opt | strip -%}
-                    {%- if clean_opt != blank -%}
-                      <option value="{{ clean_opt | escape }}">{{ clean_opt | escape }}</option>
-                    {%- endif -%}
-                  {%- endfor -%}
-                </select>
-                <span class="gift-concierge__select-arrow" aria-hidden="true">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
+              </div>
+
+              <div class="gift-concierge__field">
+                <label class="gift-concierge__label" for="{{ form_id }}-phone">
+                  {{ section.settings.phone_label | default: 'Contact' | escape }} <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="{{ form_id }}-phone"
+                  name="contact[phone]"
+                  class="gift-concierge__input"
+                  placeholder="{{ section.settings.phone_placeholder | default: '+91 98765 43210' | escape }}"
+                  value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                  autocomplete="tel"
+                  required>
+              </div>
+
+              <div class="gift-concierge__field">
+                <label class="gift-concierge__label" for="{{ form_id }}-email">
+                  {{ section.settings.email_label | default: 'Email ID' | escape }} <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="{{ form_id }}-email"
+                  name="contact[email]"
+                  class="gift-concierge__input"
+                  placeholder="{{ section.settings.email_placeholder | default: 'you@example.com' | escape }}"
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                  autocomplete="email"
+                  spellcheck="false"
+                  autocapitalize="off"
+                  required>
+              </div>
+
+              <div class="gift-concierge__field">
+                <label class="gift-concierge__label" for="{{ form_id }}-quantity">
+                  {{ section.settings.quantity_label | default: 'Order quantity' | escape }} <span aria-hidden="true">*</span>
+                </label>
+                <div class="gift-concierge__select-wrap">
+                  <select
+                    id="{{ form_id }}-quantity"
+                    name="contact[order_quantity]"
+                    class="gift-concierge__select"
+                    required>
+                    <option value="" disabled selected>{{ section.settings.quantity_placeholder | default: 'Select quantity' | escape }}</option>
+                    {%- for opt in qty_options -%}
+                      {%- assign clean_opt = opt | strip -%}
+                      {%- if clean_opt != blank -%}
+                        <option value="{{ clean_opt | escape }}">{{ clean_opt | escape }}</option>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </select>
+                  <span class="gift-concierge__select-arrow" aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <div class="gift-concierge__field gift-concierge__field--full">
+                <label class="gift-concierge__label" for="{{ form_id }}-body">
+                  {{ section.settings.message_label | default: 'Describe your request' | escape }} <span aria-hidden="true">*</span>
+                </label>
+                <textarea
+                  id="{{ form_id }}-body"
+                  name="contact[body]"
+                  rows="4"
+                  class="gift-concierge__textarea"
+                  placeholder="{{ section.settings.message_placeholder | default: 'Tell us about your occasion, delivery timeline, and any customisation requirements...' | escape }}"
+                  required>{{- form.body -}}</textarea>
               </div>
             </div>
 
-            <div class="gift-concierge__field gift-concierge__field--full">
-              <label class="gift-concierge__label" for="{{ form_id }}-body">
-                {{ section.settings.message_label | default: 'Describe your request' | escape }} <span aria-hidden="true">*</span>
-              </label>
-              <textarea
-                id="{{ form_id }}-body"
-                name="contact[body]"
-                rows="4"
-                class="gift-concierge__textarea"
-                placeholder="{{ section.settings.message_placeholder | default: 'Tell us about your occasion, delivery timeline, and any customisation requirements...' | escape }}"
-                required>{{- form.body -}}</textarea>
+            <div class="gift-concierge__submit-wrap">
+              <button type="submit" class="gift-concierge__submit-btn">
+                <span>{{ section.settings.submit_label | default: 'SUBMIT' | escape }}</span>
+                <span aria-hidden="true">→</span>
+              </button>
             </div>
-          </div>
-
-          <div class="gift-concierge__submit-wrap">
-            <button type="submit" class="gift-concierge__submit-btn">
-              <span>{{ section.settings.submit_label | default: 'SUBMIT' | escape }}</span>
-              <span aria-hidden="true">→</span>
-            </button>
-          </div>
-        {%- endform -%}
+          {%- endform -%}
+        {%- endif -%}
       </div>
     </div>
   </div>
@@ -206,14 +220,24 @@
     },
     {
       "type": "header",
-      "content": "CRM form fields"
+      "content": "FormCRM app integration"
+    },
+    {
+      "type": "liquid",
+      "id": "formcrm_embed_code",
+      "label": "FormCRM embed code / HTML snippet (optional)",
+      "info": "You can either add the FormCRM App Block under 'Add block -> Apps' in this section, OR paste the FormCRM embed code here. Leave blank to use the built-in form below."
+    },
+    {
+      "type": "header",
+      "content": "Built-in CRM form fields"
     },
     {
       "type": "text",
       "id": "recipient_email",
       "label": "Recipient notification email",
       "default": "hello@houseofkiyaara.com",
-      "info": "Submissions are sent via Shopify Contact notifications to your store email (hello@houseofkiyaara.com)."
+      "info": "Submissions from the built-in form are sent via Shopify Contact notifications to your store email (hello@houseofkiyaara.com)."
     },
     {
       "type": "text",
@@ -409,6 +433,9 @@
     }
   ],
   "blocks": [
+    {
+      "type": "@app"
+    },
     {
       "type": "contact_card",
       "name": "Direct contact button",
