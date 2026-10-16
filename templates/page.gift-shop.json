@@ -27,7 +27,7 @@
           "settings": {
             "media_toggle": "show_image",
             "media_aspect_ratio": "square",
-            "image": "shopify://shop_images/kiyaara-IBH-SB-HOK-0001-In-Bloom-Sky-Blue-06_fb8d634e-54fc-477f-adc6-2f5d3e599d3a.webp",
+            "image": "shopify://shop_images/hok-farrasha-collection-mobile-375x660-00-start.webp",
             "video_autoplay": true,
             "video_controls": false,
             "badge_subtitle": "",
@@ -276,6 +276,7 @@
           "settings": {
             "title": "Art-led",
             "text": "Every design begins as original hand-painted artwork, so no two collections look like anyone else's. There's art on the bag linings, too.",
+            "image": "shopify://shop_images/Artwork02.webp",
             "placeholder_label": "[ ART-LED PACKAGING ]",
             "card_caption": "\"Every design begins as original hand-painted artwork.\"",
             "show_card_overlay": true
@@ -286,6 +287,7 @@
           "settings": {
             "title": "It's kind.",
             "text": "Vegan leather, cruelty free, and made for someone who cares about that too.",
+            "image": "shopify://shop_images/mindnight_blue.webp",
             "placeholder_label": "[ VEGAN LEATHER CRAFTSMANSHIP ]",
             "card_caption": "\"Vegan leather, cruelty free, and made with care.\"",
             "show_card_overlay": true
@@ -296,6 +298,7 @@
           "settings": {
             "title": "Made to be personal",
             "text": "Add custom note cards, packaging and personalised inserts so every gift carries your message.",
+            "image": "shopify://shop_images/kiyaara-TYC-001-Pack_of_4_Farasha_Greeting_Cards-01.webp",
             "placeholder_label": "[ CUSTOM NOTE CARDS & INSERTS ]",
             "card_caption": "\"Every gift carries your personal message.\"",
             "show_card_overlay": true
@@ -306,6 +309,7 @@
           "settings": {
             "title": "Wrapped in joy",
             "text": "Every gift arrives in our signature wrapped box, with wearable art inside waiting to be discovered.",
+            "image": "shopify://shop_images/Wrapped_in_Joy.webp",
             "placeholder_label": "[ SIGNATURE WRAPPED BOX ]",
             "card_caption": "\"Wearable art inside waiting to be discovered.\"",
             "show_card_overlay": true
@@ -316,6 +320,7 @@
           "settings": {
             "title": "Gifting made easy",
             "text": "A dedicated gifting team, smooth coordination and reliable delivery across India, whether you're gifting ten people or a hundred.",
+            "image": "shopify://shop_images/Gifting_made_easy.webp",
             "placeholder_label": "[ PAN-INDIA GIFTING CONCIERGE ]",
             "card_caption": "\"Smooth coordination and reliable delivery across India.\"",
             "show_card_overlay": true
@@ -340,8 +345,8 @@
         "padding_top": 64,
         "padding_bottom": 64,
         "custom_bg_color": "#ffffff",
-        "custom_card_bg_color": "#FFFFFF",
-        "custom_border_color": "#22201E",
+        "custom_card_bg_color": "#ffffff",
+        "custom_border_color": "#22201e",
         "custom_card_border_color": "#ffffff",
         "custom_border_width": 1,
         "custom_accent_color": "#c46d5e",
@@ -426,10 +431,10 @@
         "text_alignment": "text-align-center",
         "sm_size_multiplier": "sm-size--small",
         "size_multiplier": "size--small",
-        "custom_bg_color": "#FFFFFF",
+        "custom_bg_color": "#ffffff",
         "custom_card_bg_color": "#ffffff",
-        "custom_border_color": "#FFFFFF",
-        "custom_card_border_color": "#FFFFFF",
+        "custom_border_color": "#ffffff",
+        "custom_card_border_color": "#ffffff",
         "custom_border_width": 1,
         "custom_accent_color": "#c46d5e",
         "custom_heading_color": "#22201e",
@@ -447,7 +452,7 @@
           "settings": {
             "media_toggle": "show_image",
             "media_aspect_ratio": "portrait",
-            "image": "shopify://shop_images/kiyaara-EB-FG-HOK-0002-Elisse-Back-Pack-Forest-Green-08.webp",
+            "image": "shopify://shop_images/Kiyaara_Logo_Placeholder_Corrected.webp",
             "video_autoplay": true,
             "video_controls": false,
             "badge_subtitle": "SIGNATURE FINISH",
@@ -504,8 +509,8 @@
         "full_width_buttons": false,
         "custom_bg_color": "#ffffff",
         "custom_card_bg_color": "#ffffff",
-        "custom_border_color": "#FFFFFF",
-        "custom_card_border_color": "#FFFFFF",
+        "custom_border_color": "#ffffff",
+        "custom_card_border_color": "#ffffff",
         "custom_border_width": 1,
         "custom_accent_color": "#c46d5e",
         "custom_heading_color": "#22201e",
@@ -604,17 +609,17 @@
         "sm_content_position": "left",
         "sm_text_alignment": "left",
         "text_alignment": "left",
-        "custom_bg_color": "#FFFFFF",
+        "custom_bg_color": "#ffffff",
         "custom_card_bg_color": "#ffffff",
-        "custom_border_color": "#FFFFFF",
-        "custom_card_border_color": "#22201E",
+        "custom_border_color": "#ffffff",
+        "custom_card_border_color": "#22201e",
         "custom_border_width": 1,
         "custom_accent_color": "#c46d5e",
         "custom_heading_color": "#22201e",
-        "custom_text_color": "#22201E",
+        "custom_text_color": "#22201e",
         "custom_btn_bg_color": "#ffffff",
         "custom_btn_text_color": "#22201e",
-        "custom_btn_border_color": "#22201E"
+        "custom_btn_border_color": "#22201e"
       }
     }
   },
