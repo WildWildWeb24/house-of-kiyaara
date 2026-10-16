@@ -7,6 +7,12 @@
    --gs-accent, --gs-heading, --gs-text, --gs-btn-bg, --gs-btn-text, --gs-btn-border).
    ========================================================================== */
 
+/* Ensure the site header always stays above stacked cards and badges on scroll */
+.site-header,
+#shopify-section-header {
+  z-index: 30 !important;
+}
+
 /* Shared Subheading / Eyebrow Accent Override */
 [id^="shopify-section-"][id$="image_with_text_gift_hero"] .subheading,
 [id^="shopify-section-"][id$="rich_text_gift_who"] .subheading,
@@ -162,8 +168,11 @@
 @media (max-width: 767px) {
   .container[id$="image_with_text_gift_hero"] .btn {
     width: 100% !important;
-    padding: 16px 20px !important;
-    font-size: 11px !important;
+    padding: 15px 10px !important;
+    font-size: clamp(9.5px, 2.8vw, 10.5px) !important;
+    letter-spacing: 0.08em !important;
+    white-space: nowrap !important;
+    gap: 8px !important;
   }
 }
 
@@ -341,6 +350,9 @@
    3. WHY A KIYAARA GIFT FEELS DIFFERENT (.gift-shop-deck-section)
    -------------------------------------------------------------------------- */
 .gift-shop-deck-section {
+  position: relative;
+  isolation: isolate;
+  z-index: 1;
   background-color: var(--gs-bg, #ffffff);
   border-bottom: 0 !important;
   padding-top: var(--pt, 64px);
@@ -401,6 +413,8 @@
 /* 1:1 Square Stacked Deck with room on right & bottom for 4 stepped cards */
 .gift-deck__stage {
   position: relative;
+  isolation: isolate;
+  z-index: 1;
   width: calc(100% - 48px);
   max-width: 480px;
   aspect-ratio: 1 / 1;
@@ -638,6 +652,14 @@
 
 .gift-deck__cta-wrap {
   margin-top: 36px;
+}
+
+@media (max-width: 767px) {
+  .gift-deck__cta-wrap {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .gift-deck__cta-link {
@@ -895,9 +917,30 @@
   margin-bottom: 4px;
 }
 
+@media (max-width: 767px) {
+  .container[id$="image_with_text_gift_bespoke"] .blocks-rte > p {
+    margin: 0 0 18px;
+  }
+
+  .container[id$="image_with_text_gift_bespoke"] .blocks-rte ul {
+    gap: 6px;
+  }
+
+  .container[id$="image_with_text_gift_bespoke"] .blocks-rte ul li {
+    padding: 8px 12px 8px 44px;
+  }
+
+  .container[id$="image_with_text_gift_bespoke"] .blocks-rte ul li::before {
+    top: 10px;
+    left: 12px;
+  }
+}
+
 /* Bespoke Packaging Image + Floating "Signature Finish" Badge */
 .container[id$="image_with_text_gift_bespoke"] .sm-br-img {
   position: relative;
+  isolation: isolate;
+  z-index: 1;
 }
 
 .container[id$="image_with_text_gift_bespoke"] .media {
@@ -1175,4 +1218,55 @@
   background-repeat: no-repeat !important;
   background-position: right 22px center !important;
   background-size: 16px 16px !important;
+}
+
+@media (max-width: 767px) {
+  .container[id$="rich_text_gift_concierge"] {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .container[id$="rich_text_gift_concierge"] .content-blocks {
+    padding: 28px 16px;
+    gap: 18px;
+  }
+
+  .container[id$="rich_text_gift_concierge"] .blocks-title {
+    font-size: clamp(24px, 6.8vw, 28px) !important;
+    white-space: nowrap;
+    padding-bottom: 14px;
+  }
+
+  .container[id$="rich_text_gift_concierge"] .blocks-rte p {
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+
+  .container[id$="rich_text_gift_concierge"] .btn-group {
+    gap: 12px !important;
+  }
+
+  .container[id$="rich_text_gift_concierge"] .btn-group .btn {
+    padding: 26px 32px 12px 56px !important;
+    font-size: clamp(12.5px, 3.6vw, 14px) !important;
+    white-space: nowrap !important;
+    word-break: normal !important;
+    background-position: right 12px center !important;
+    background-size: 14px 14px !important;
+  }
+
+  .container[id$="rich_text_gift_concierge"] .btn-group .btn::before {
+    left: 12px;
+    width: 34px;
+    height: 34px;
+    background-size: 15px 15px;
+  }
+
+  .container[id$="rich_text_gift_concierge"] .btn-group .btn::after {
+    top: 11px;
+    left: 56px;
+    font-size: 8.5px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
 }
