@@ -38,7 +38,7 @@
         "title_hero": {
           "type": "title",
           "settings": {
-            "title": "The joy of gifting,[br]<em>with Kiyaara</em>",
+            "title": "The joy of gifting,[br]with <em>Kiyaara</em>",
             "heading_tag": "h1",
             "sm_size_multiplier": "sm-size--huge",
             "sm_margin_top": 0,
@@ -434,7 +434,7 @@
         "size_multiplier": "size--small",
         "custom_bg_color": "#ffffff",
         "custom_card_bg_color": "#ffffff",
-        "custom_border_color": "#ffffff",
+        "custom_border_color": "#FFFFFF",
         "custom_card_border_color": "#ffffff",
         "custom_border_width": 1,
         "custom_accent_color": "#c46d5e",
@@ -456,7 +456,7 @@
             "image": "shopify://shop_images/Kiyaara_Logo_Placeholder_Corrected.webp",
             "video_autoplay": true,
             "video_controls": false,
-            "show_floating_badge": true,
+            "show_floating_badge": false,
             "badge_subtitle": "SIGNATURE FINISH",
             "badge_text": "\"Every piece arrives in our keepsake box\""
           }
