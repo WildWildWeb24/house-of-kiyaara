@@ -19,6 +19,36 @@
         "size_multiplier": "size--default"
       }
     },
+    "hero_gift_banner": {
+      "type": "hero",
+      "blocks": {
+        "image_banner": {
+          "type": "image",
+          "settings": {
+            "media_toggle": "show_image",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_banner"
+      ],
+      "settings": {
+        "color_scheme": "default",
+        "media_link": "",
+        "enable_parallax": false,
+        "enable_full_width": true,
+        "sm_section_height": "by_pixels",
+        "sm_pixel_height": 560,
+        "content_width": "col-sm-max-6",
+        "sm_content_position": "sm-vertical-center sm-horizontal-center",
+        "sm_text_alignment": "center",
+        "section_height": "by_pixels",
+        "pixel_height": 380,
+        "content_position": "vertical-center horizontal-center",
+        "text_alignment": "center"
+      }
+    },
     "image_with_text_gift_hero": {
       "type": "image-with-text",
       "blocks": {
@@ -291,8 +321,8 @@
             "text": "Every design begins as original hand-painted artwork, so no two collections look like anyone else's. There's art on the bag linings, too.",
             "image": "shopify://shop_images/Artwork02.webp",
             "placeholder_label": "[ ART-LED PACKAGING ]",
-            "card_caption": "\"Every design begins as original hand-painted artwork.\"",
-            "show_card_overlay": true
+            "card_caption": "",
+            "show_card_overlay": false
           }
         },
         "card_2": {
@@ -302,8 +332,8 @@
             "text": "Vegan leather, cruelty free, and made for someone who cares about that too.",
             "image": "shopify://shop_images/mindnight_blue.webp",
             "placeholder_label": "[ VEGAN LEATHER CRAFTSMANSHIP ]",
-            "card_caption": "\"Vegan leather, cruelty free, and made with care.\"",
-            "show_card_overlay": true
+            "card_caption": "",
+            "show_card_overlay": false
           }
         },
         "card_3": {
@@ -313,8 +343,8 @@
             "text": "Add custom note cards, packaging and personalised inserts so every gift carries your message.",
             "image": "shopify://shop_images/kiyaara-TYC-001-Pack_of_4_Farasha_Greeting_Cards-01.webp",
             "placeholder_label": "[ CUSTOM NOTE CARDS & INSERTS ]",
-            "card_caption": "\"Every gift carries your personal message.\"",
-            "show_card_overlay": true
+            "card_caption": "",
+            "show_card_overlay": false
           }
         },
         "card_4": {
@@ -324,8 +354,8 @@
             "text": "Every gift arrives in our signature wrapped box, with wearable art inside waiting to be discovered.",
             "image": "shopify://shop_images/Wrapped_in_Joy.webp",
             "placeholder_label": "[ SIGNATURE WRAPPED BOX ]",
-            "card_caption": "\"Wearable art inside waiting to be discovered.\"",
-            "show_card_overlay": true
+            "card_caption": "",
+            "show_card_overlay": false
           }
         },
         "card_5": {
@@ -335,8 +365,8 @@
             "text": "A dedicated gifting team, smooth coordination and reliable delivery across India, whether you're gifting ten people or a hundred.",
             "image": "shopify://shop_images/Gifting_made_easy.webp",
             "placeholder_label": "[ PAN-INDIA GIFTING CONCIERGE ]",
-            "card_caption": "\"Smooth coordination and reliable delivery across India.\"",
-            "show_card_overlay": true
+            "card_caption": "",
+            "show_card_overlay": false
           }
         }
       },
@@ -427,6 +457,7 @@
         "spacing_curated"
       ],
       "settings": {
+        "selector_prompt_text": "Discover our bundles and collections below",
         "color_scheme": "default",
         "product_limit": 6,
         "view_all": false,
@@ -461,85 +492,69 @@
         "padding_bottom": 16
       }
     },
-    "image_with_text_gift_bespoke": {
-      "type": "image-with-text",
+    "gift_bespoke_grid": {
+      "type": "gift-shop-bespoke-grid",
       "blocks": {
-        "image_bespoke": {
-          "type": "image",
+        "card_1": {
+          "type": "card",
           "settings": {
-            "media_toggle": "show_image",
-            "media_aspect_ratio": "portrait",
             "image": "shopify://shop_images/Kiyaara_Logo_Placeholder_Corrected.webp",
-            "video_autoplay": true,
-            "video_controls": false,
-            "show_floating_badge": true,
-            "badge_subtitle": "SIGNATURE FINISH",
-            "badge_text": "\"Every piece arrives in our keepsake box\""
+            "subtitle": "",
+            "title": "Your logo, our art",
+            "text": "<p>Add your logo to the packaging, sitting alongside the Kiyaara mark.</p>"
           }
         },
-        "title_bespoke": {
-          "type": "title",
+        "card_2": {
+          "type": "card",
           "settings": {
-            "title": "Made to feel like yours",
-            "heading_tag": "h2",
-            "sm_size_multiplier": "sm-size--large",
-            "sm_margin_top": 0,
-            "size_multiplier": "size--large",
-            "margin_top": 0
+            "subtitle": "",
+            "title": "A personal note",
+            "text": "<p>Include a printed card with your message, written the way you'd actually say it.</p>"
           }
         },
-        "text_bespoke": {
-          "type": "text",
+        "card_3": {
+          "type": "card",
           "settings": {
-            "text": "<p>Whether you're gifting ten people or two hundred, we can tailor the details so every box feels personal to you and the moment you're celebrating.</p><ul><li><strong>Your logo, our art</strong>Add your logo to the packaging, sitting alongside the Kiyaara mark.</li><li><strong>A personal note</strong>Include a printed card with your message, written the way you'd actually say it.</li><li><strong>Picked for your list</strong>Mix pieces across styles and price points, or build a custom bundle for the occasion.</li><li><strong>Wrapped and delivered</strong>Sent to your office for a handover, or individually to every doorstep on your list.</li></ul>",
-            "sm_size_multiplier": "sm-size--default",
-            "sm_margin_top": 16,
-            "size_multiplier": "size--default",
-            "margin_top": 16
+            "subtitle": "",
+            "title": "Picked for your list",
+            "text": "<p>Mix pieces across styles and price points, or build a custom bundle for the occasion.</p>"
           }
         },
-        "spacing_bespoke": {
-          "type": "custom_spacing",
+        "card_4": {
+          "type": "card",
           "settings": {
-            "sm_margin_top": 0,
-            "sm_padding_top": 104,
-            "sm_padding_bottom": 104,
-            "margin_top": 0,
-            "padding_top": 64,
-            "padding_bottom": 64
+            "subtitle": "",
+            "title": "Wrapped and delivered",
+            "text": "<p>Sent to your office for a handover, or individually to every doorstep on your list.</p>"
           }
         }
       },
       "block_order": [
-        "image_bespoke",
-        "title_bespoke",
-        "text_bespoke",
-        "spacing_bespoke"
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
       ],
       "settings": {
+        "subtitle": "",
+        "title": "Made to feel like yours",
+        "heading_size": "h2",
+        "description": "<p>Whether you're gifting ten people or two hundred, we can tailor the details so every box feels personal to you and the moment you're celebrating.</p>",
+        "header_alignment": "center",
+        "card_alignment": "left",
         "color_scheme": "default",
-        "media_position": "media_last",
-        "media_width": "6",
-        "desktop_alignment": "left",
-        "vertical_position": "col-align-items-center",
-        "sm_full_width_buttons": false,
-        "mobile_alignment": "left",
-        "full_width_buttons": false,
+        "md_padding_top": 56,
+        "md_padding_bottom": 56,
+        "padding_top": 40,
+        "padding_bottom": 40,
         "custom_bg_color": "#ffffff",
         "custom_card_bg_color": "#ffffff",
         "custom_border_color": "#ffffff",
         "custom_card_border_color": "#ffffff",
-        "custom_border_width": 1,
+        "custom_border_width": 0,
         "custom_accent_color": "#c46d5e",
         "custom_heading_color": "#22201e",
-        "custom_text_color": "#736b66",
-        "custom_btn_bg_color": "",
-        "custom_btn_text_color": "",
-        "custom_btn_border_color": "",
-        "md_padding_top": 36,
-        "md_padding_bottom": 40,
-        "padding_top": 44,
-        "padding_bottom": 32
+        "custom_text_color": "#736b66"
       }
     },
     "rich_text_gift_concierge": {
@@ -651,10 +666,11 @@
   },
   "order": [
     "main",
+    "hero_gift_banner",
     "image_with_text_gift_hero",
     "gift_shop_deck",
     "collection_switcher_gift_curated",
-    "image_with_text_gift_bespoke",
+    "gift_bespoke_grid",
     "rich_text_gift_who",
     "multicolumn_gift_who",
     "rich_text_gift_concierge"

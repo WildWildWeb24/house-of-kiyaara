@@ -212,6 +212,9 @@
           shopify_attr: header_block.shopify_attributes
         %}
       {%- endif -%}
+      {%- if section.settings.selector_prompt_text != blank -%}
+        <p class="switcher-selector-prompt">{{ section.settings.selector_prompt_text | escape }}</p>
+      {%- endif -%}
       {{ tab_titles }}
     </div>
     {{ tab_contents }}
@@ -230,6 +233,12 @@
     {
       "type": "paragraph",
       "content": "t:sections.collection-or-products-switcher.info"
+    },
+    {
+      "type": "text",
+      "id": "selector_prompt_text",
+      "label": "Collection selector prompt line",
+      "info": "Optional prompt displayed right above the collection tabs."
     },
     {
       "type": "color_scheme",

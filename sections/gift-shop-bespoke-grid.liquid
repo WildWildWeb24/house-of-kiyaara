@@ -1,0 +1,293 @@
+{{ 'page-gift-shop.css' | asset_url | stylesheet_tag }}
+
+{% render 'section-custom-colors', section: section %}
+<div
+  id="{{ section.id }}"
+  class="gift-bespoke-grid-section color-{{ section.settings.color_scheme }}"
+  style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px; --sm-pt: {{ section.settings.md_padding_top }}px; --sm-pb: {{ section.settings.md_padding_bottom }}px;">
+  <div class="container">
+    {%- if section.settings.subtitle != blank or section.settings.title != blank or section.settings.description != blank -%}
+      <div class="gift-bespoke-grid__header gift-bespoke-grid__header--{{ section.settings.header_alignment }}">
+        {%- if section.settings.subtitle != blank -%}
+          <p class="subheading gift-bespoke-grid__eyebrow">{{ section.settings.subtitle | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.title != blank -%}
+          <h2 class="gift-bespoke-grid__title {{ section.settings.heading_size }}">
+            {{ section.settings.title | replace: '[br]', '<br/>' }}
+          </h2>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <div class="gift-bespoke-grid__desc rte">
+            {{ section.settings.description }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="gift-bespoke-grid__grid">
+      {%- for block in section.blocks -%}
+        <div
+          class="gift-bespoke-card gift-bespoke-card--{{ section.settings.card_alignment }}"
+          {{ block.shopify_attributes }}>
+          <div class="gift-bespoke-card__media">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 900
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '400, 600, 900',
+                  sizes: '(max-width: 767px) 92vw, 45vw',
+                  class: 'gift-bespoke-card__img'
+              }}
+            {%- else -%}
+              <div class="gift-bespoke-card__placeholder">
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {%- endif -%}
+          </div>
+
+          <div class="gift-bespoke-card__body">
+            {%- if block.settings.subtitle != blank -%}
+              <span class="gift-bespoke-card__subtitle">{{ block.settings.subtitle | escape }}</span>
+            {%- endif -%}
+            {%- if block.settings.title != blank -%}
+              <h3 class="gift-bespoke-card__title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <div class="gift-bespoke-card__text rte">
+                {{ block.settings.text }}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Gift shop 2x2 grid",
+  "tag": "section",
+  "class": "section-gift-bespoke-grid",
+  "disabled_on": {
+    "groups": ["header", "footer", "aside"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Heading",
+      "default": "Made to feel like yours"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Whether you're gifting ten people or two hundred, we can tailor the details so every box feels personal to you and the moment you're celebrating.</p>"
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Header alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "card_alignment",
+      "label": "Card text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "default"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "md_padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding (desktop)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "md_padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding (desktop)",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding (mobile)",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding (mobile)",
+      "default": 44
+    },
+    {
+      "type": "header",
+      "content": "Custom colors & borders"
+    },
+    {
+      "type": "color",
+      "id": "custom_bg_color",
+      "label": "Section background color"
+    },
+    {
+      "type": "color",
+      "id": "custom_card_bg_color",
+      "label": "Card / inner box background color"
+    },
+    {
+      "type": "color",
+      "id": "custom_border_color",
+      "label": "Section divider border color"
+    },
+    {
+      "type": "color",
+      "id": "custom_card_border_color",
+      "label": "Card / inner box border color"
+    },
+    {
+      "type": "range",
+      "id": "custom_border_width",
+      "min": 0,
+      "max": 8,
+      "step": 1,
+      "unit": "px",
+      "label": "Border thickness",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "custom_accent_color",
+      "label": "Accent & subheading color"
+    },
+    {
+      "type": "color",
+      "id": "custom_heading_color",
+      "label": "Heading text color"
+    },
+    {
+      "type": "color",
+      "id": "custom_text_color",
+      "label": "Body text color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Grid card",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Card image (1:1 square)"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Card subtitle (optional)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card heading",
+          "default": "Card heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Card description",
+          "default": "<p>Add your description here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift shop 2x2 grid",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Your logo, our art",
+            "text": "<p>Add your logo to the packaging, sitting alongside the Kiyaara mark.</p>"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "A personal note",
+            "text": "<p>Include a printed card with your message, written the way you'd actually say it.</p>"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Picked for your list",
+            "text": "<p>Mix pieces across styles and price points, or build a custom bundle for the occasion.</p>"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Wrapped and delivered",
+            "text": "<p>Sent to your office for a handover, or individually to every doorstep on your list.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

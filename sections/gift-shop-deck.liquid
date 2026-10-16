@@ -47,44 +47,25 @@
                   }}
                 </div>
               {%- else -%}
-                <div class="gift-deck__card-placeholder">
-                  {%- if block.settings.placeholder_label != blank -%}
-                    <span class="gift-deck__placeholder-tag">{{ block.settings.placeholder_label | escape }}</span>
-                  {%- endif -%}
-                </div>
-              {%- endif -%}
-
-              {%- if block.settings.show_card_overlay and block.settings.card_caption != blank -%}
-                <div class="gift-deck__card-overlay">
-                  <p class="gift-deck__card-quote">{{ block.settings.card_caption | escape }}</p>
-                </div>
+                <div class="gift-deck__card-placeholder"></div>
               {%- endif -%}
             </div>
           {%- endfor -%}
         </div>
       </div>
 
-      {%- comment -%} Right on Desktop / Bottom on Mobile: Heading + 01-05 Interactive List + CTA {%- endcomment -%}
+      {%- comment -%} Right on Desktop / Bottom on Mobile: Heading + Interactive List + CTA {%- endcomment -%}
       <div class="gift-deck__content-col">
         {%- if section.settings.title != blank -%}
           <div class="gift-deck__header">
             <h2 class="gift-deck__title {{ section.settings.heading_size }}">
               {{ section.settings.title | replace: '[br]', '<br/>' }}
             </h2>
-            <span class="gift-deck__title-rule" aria-hidden="true"></span>
           </div>
         {%- endif -%}
 
         <div class="gift-deck__list" role="tablist" aria-label="{{ section.settings.title | strip_html | escape }}">
           {%- for block in section.blocks -%}
-            {%- liquid
-              assign index_num = forloop.index
-              if index_num < 10
-                assign index_padded = '0' | append: index_num
-              else
-                assign index_padded = index_num
-              endif
-            -%}
             <button
               type="button"
               role="tab"
@@ -92,7 +73,6 @@
               class="gift-deck__item{% if forloop.first %} is-active{% endif %}"
               data-gift-deck-trigger="{{ forloop.index0 }}"
               {{ block.shopify_attributes }}>
-              <span class="gift-deck__item-num">{{ index_padded }}</span>
               <span class="gift-deck__item-body">
                 <span class="gift-deck__item-title">{{ block.settings.title | escape }}</span>
                 {%- if block.settings.text != blank -%}
