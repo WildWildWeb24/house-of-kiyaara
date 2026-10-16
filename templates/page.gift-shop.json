@@ -38,7 +38,7 @@
         "title_hero": {
           "type": "title",
           "settings": {
-            "title": "The joy of gifting,[br]with <em>Kiyaara</em>",
+            "title": "The joy of gifting,[br]with Kiyaara",
             "heading_tag": "h1",
             "sm_size_multiplier": "sm-size--huge",
             "sm_margin_top": 0,
@@ -652,11 +652,11 @@
   "order": [
     "main",
     "image_with_text_gift_hero",
-    "rich_text_gift_who",
-    "multicolumn_gift_who",
     "gift_shop_deck",
     "collection_switcher_gift_curated",
     "image_with_text_gift_bespoke",
+    "rich_text_gift_who",
+    "multicolumn_gift_who",
     "rich_text_gift_concierge"
   ]
 }
