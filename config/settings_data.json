@@ -109,7 +109,7 @@
     "article_card_show_content": true,
     "card_border_radius": 0,
     "enable_br_on_images": false,
-    "default_background_graphics": "tilted",
+    "default_background_graphics": "wave",
     "grain_size": "75px",
     "grain_opacity": 25,
     "vignette_opacity": 20,
@@ -146,6 +146,18 @@
     "social_youtube_link": "https://www.youtube.com/@HouseofKiyaara",
     "favicon": "shopify://shop_images/Kiyaara-Favicon.png",
     "head_custom_liquid": "",
+    "sections": {
+      "gift-card": {
+        "type": "gift-card",
+        "custom_css": [],
+        "settings": {
+          "color_scheme": "",
+          "show_section_background": true,
+          "color_card_foreground": "#ffffff",
+          "color_card_background": "#000000"
+        }
+      }
+    },
     "content_for_index": [],
     "blocks": {
       "14060646107696862457": {

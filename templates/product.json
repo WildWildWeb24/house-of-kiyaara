@@ -243,7 +243,6 @@
         "collapsible_tab_QicLn9": {
           "type": "collapsible_tab",
           "name": "Why You'll Love It",
-          "disabled": true,
           "settings": {
             "title": "Why You'll Love It",
             "content": "<p>{{ product.metafields.custom.wul_description | metafield_tag }}</p>",
@@ -260,7 +259,6 @@
         "collapsible_tab_h3cbtP": {
           "type": "collapsible_tab",
           "name": "Style The Bag",
-          "disabled": true,
           "settings": {
             "title": "Style The Bag",
             "content": "<p>{{ product.metafields.custom.style_bag_description | metafield_tag }}</p>",
@@ -579,7 +577,22 @@
         "media_aspect_ratio": "square",
         "autoplay": false,
         "autoplay_speed": 5,
-        "sliding_behavior": "all"
+        "sliding_behavior": "all",
+        "custom_bg_color": "",
+        "custom_card_bg_color": "",
+        "custom_border_color": "",
+        "custom_card_border_color": "",
+        "custom_border_width": 1,
+        "custom_accent_color": "",
+        "custom_heading_color": "",
+        "custom_text_color": "",
+        "custom_btn_bg_color": "",
+        "custom_btn_text_color": "",
+        "custom_btn_border_color": "",
+        "md_padding_top": 32,
+        "md_padding_bottom": 96,
+        "padding_top": 24,
+        "padding_bottom": 64
       }
     },
     "image_with_text_qfXA3p": {
@@ -603,7 +616,10 @@
             "media_aspect_ratio": "square",
             "video": "{{ product.metafields.custom.product_video.value }}",
             "video_autoplay": true,
-            "video_controls": false
+            "video_controls": false,
+            "show_floating_badge": true,
+            "badge_subtitle": "",
+            "badge_text": ""
           }
         },
         "title_AUeP3L": {
@@ -644,7 +660,22 @@
         "vertical_position": "col-align-items-start",
         "sm_full_width_buttons": false,
         "mobile_alignment": "left",
-        "full_width_buttons": false
+        "full_width_buttons": false,
+        "custom_bg_color": "",
+        "custom_card_bg_color": "",
+        "custom_border_color": "",
+        "custom_card_border_color": "",
+        "custom_border_width": 1,
+        "custom_accent_color": "",
+        "custom_heading_color": "",
+        "custom_text_color": "",
+        "custom_btn_bg_color": "",
+        "custom_btn_text_color": "",
+        "custom_btn_border_color": "",
+        "md_padding_top": 80,
+        "md_padding_bottom": 80,
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "image_with_text_MMrrhy": {
@@ -667,7 +698,10 @@
             "media_toggle": "show_image",
             "media_aspect_ratio": "landscape_alt",
             "video_autoplay": true,
-            "video_controls": false
+            "video_controls": false,
+            "show_floating_badge": true,
+            "badge_subtitle": "",
+            "badge_text": ""
           }
         },
         "title_F7TnDC": {
@@ -708,7 +742,22 @@
         "vertical_position": "col-align-items-start",
         "sm_full_width_buttons": false,
         "mobile_alignment": "left",
-        "full_width_buttons": false
+        "full_width_buttons": false,
+        "custom_bg_color": "",
+        "custom_card_bg_color": "",
+        "custom_border_color": "",
+        "custom_card_border_color": "",
+        "custom_border_width": 1,
+        "custom_accent_color": "",
+        "custom_heading_color": "",
+        "custom_text_color": "",
+        "custom_btn_bg_color": "",
+        "custom_btn_text_color": "",
+        "custom_btn_border_color": "",
+        "md_padding_top": 80,
+        "md_padding_bottom": 80,
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "the-product-recommendations_big": {
