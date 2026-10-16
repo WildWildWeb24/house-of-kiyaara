@@ -12,8 +12,10 @@
 <div
   id="{{ section.id }}"
   class="gift-shop-deck-section color-{{ section.settings.color_scheme }}"
-  style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px; --sm-pt: {{ section.settings.md_padding_top }}px; --sm-pb: {{ section.settings.md_padding_bottom }}px;"
-  data-gift-deck-section="{{ section.id }}">
+  style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px; --sm-pt: {{ section.settings.md_padding_top }}px; --sm-pb: {{ section.settings.md_padding_bottom }}px; --deck-duration: {{ section.settings.autoplay_speed | default: 4 }}s;"
+  data-gift-deck-section="{{ section.id }}"
+  data-autoplay="{{ section.settings.enable_autoplay | default: true }}"
+  data-autoplay-speed="{{ section.settings.autoplay_speed | default: 4 }}">
   <div class="container">
     <div class="gift-deck__grid">
       {%- comment -%} Left on Desktop / Top on Mobile: 1:1 Stacked Card Deck {%- endcomment -%}
@@ -70,11 +72,16 @@
               type="button"
               role="tab"
               aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
-              class="gift-deck__item{% if forloop.first %} is-active{% endif %}"
+              class="gift-deck__item{% if forloop.first %} is-active is-animating{% endif %}"
               data-gift-deck-trigger="{{ forloop.index0 }}"
               {{ block.shopify_attributes }}>
               <span class="gift-deck__item-body">
-                <span class="gift-deck__item-title">{{ block.settings.title | escape }}</span>
+                <span class="gift-deck__item-title-wrap">
+                  <span class="gift-deck__item-title">{{ block.settings.title | escape }}</span>
+                  <span class="gift-deck__item-progress" aria-hidden="true">
+                    <span class="gift-deck__item-progress-bar"></span>
+                  </span>
+                </span>
                 {%- if block.settings.text != blank -%}
                   <span class="gift-deck__item-text">{{ block.settings.text }}</span>
                 {%- endif -%}
@@ -104,14 +111,27 @@
       if (!sectionEl) return;
       var triggers = Array.prototype.slice.call(sectionEl.querySelectorAll('[data-gift-deck-trigger]'));
       var cards = Array.prototype.slice.call(sectionEl.querySelectorAll('[data-gift-deck-card]'));
+      var listEl = sectionEl.querySelector('.gift-deck__list');
+      var stageEl = sectionEl.querySelector('[data-gift-deck-stage]');
       var total = cards.length;
       if (!total) return;
 
-      function setActive(activeIndex) {
+      var activeIndex = 0;
+      var autoplayEnabled = sectionEl.getAttribute('data-autoplay') !== 'false' && total > 1;
+      var resumeTimeout = null;
+
+      function setActive(nextIndex) {
+        activeIndex = (nextIndex + total) % total;
+
         triggers.forEach(function(btn, idx) {
           var isActive = idx === activeIndex;
+          btn.classList.remove('is-animating');
           btn.classList.toggle('is-active', isActive);
           btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          if (isActive && autoplayEnabled) {
+            void btn.offsetWidth;
+            btn.classList.add('is-animating');
+          }
         });
 
         cards.forEach(function(card, idx) {
@@ -122,12 +142,83 @@
         });
       }
 
+      function pauseAutoplay(temporaryMs) {
+        if (!autoplayEnabled) return;
+        sectionEl.classList.add('is-paused');
+        if (resumeTimeout) {
+          clearTimeout(resumeTimeout);
+          resumeTimeout = null;
+        }
+        if (temporaryMs) {
+          resumeTimeout = setTimeout(function() {
+            sectionEl.classList.remove('is-paused');
+          }, temporaryMs);
+        }
+      }
+
+      function resumeAutoplay() {
+        if (!autoplayEnabled) return;
+        if (resumeTimeout) {
+          clearTimeout(resumeTimeout);
+          resumeTimeout = null;
+        }
+        sectionEl.classList.remove('is-paused');
+      }
+
       triggers.forEach(function(btn) {
+        var bar = btn.querySelector('.gift-deck__item-progress-bar');
+        if (bar) {
+          bar.addEventListener('animationend', function() {
+            if (autoplayEnabled && btn.classList.contains('is-active')) {
+              setActive((activeIndex + 1) % total);
+            }
+          });
+        }
+
         btn.addEventListener('click', function() {
           var idx = parseInt(btn.getAttribute('data-gift-deck-trigger'), 10);
-          if (!isNaN(idx)) setActive(idx);
+          if (!isNaN(idx)) {
+            setActive(idx);
+            pauseAutoplay(5000);
+          }
+        });
+
+        btn.addEventListener('mouseenter', function() {
+          if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            var idx = parseInt(btn.getAttribute('data-gift-deck-trigger'), 10);
+            if (!isNaN(idx) && idx !== activeIndex) {
+              setActive(idx);
+            }
+            pauseAutoplay();
+          }
         });
       });
+
+      if (listEl) {
+        listEl.addEventListener('mouseenter', function() {
+          if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            pauseAutoplay();
+          }
+        });
+        listEl.addEventListener('mouseleave', function() {
+          if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            resumeAutoplay();
+          }
+        });
+      }
+
+      if (stageEl) {
+        stageEl.addEventListener('mouseenter', function() {
+          if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            pauseAutoplay();
+          }
+        });
+        stageEl.addEventListener('mouseleave', function() {
+          if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            resumeAutoplay();
+          }
+        });
+      }
 
       cards.forEach(function(card) {
         card.addEventListener('click', function() {
@@ -138,6 +229,7 @@
           } else if (!isNaN(idx)) {
             setActive(idx);
           }
+          pauseAutoplay(5000);
         });
       });
 
@@ -146,8 +238,15 @@
         var idxAttr = target.getAttribute('data-gift-deck-trigger') || target.getAttribute('data-gift-deck-card');
         if (idxAttr !== null) {
           var idx = parseInt(idxAttr, 10);
-          if (!isNaN(idx)) setActive(idx);
+          if (!isNaN(idx)) {
+            setActive(idx);
+            pauseAutoplay();
+          }
         }
+      });
+
+      sectionEl.addEventListener('shopify:block:deselect', function() {
+        resumeAutoplay();
       });
     }
 
@@ -209,6 +308,22 @@
       "type": "url",
       "id": "button_link",
       "label": "Link URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Auto-cycle through points",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Seconds per point",
+      "default": 4
     },
     {
       "type": "color_scheme",
