@@ -32,7 +32,7 @@
    -------------------------------------------------------------------------- */
 [id^="shopify-section-"][id$="image_with_text_gift_hero"] {
   background-color: var(--gs-bg, #ffffff);
-  border-bottom: var(--gs-border-width, 1px) solid var(--gs-border, #f3ede2);
+  border: 0 !important;
 }
 
 .container[id$="image_with_text_gift_hero"] {
@@ -181,7 +181,7 @@
 .container[id$="image_with_text_gift_hero"] .media--square {
   position: relative;
   background-color: var(--gs-card-bg, #ded3c0);
-  border: var(--gs-border-width, 0px) solid var(--gs-card-border, transparent);
+  border: 0 !important;
   aspect-ratio: 1 / 1;
   display: block;
   overflow: hidden;
@@ -223,10 +223,11 @@
 [id^="shopify-section-"][id$="rich_text_gift_who"],
 [id^="shopify-section-"][id$="multicolumn_gift_who"] {
   background-color: var(--gs-bg, #faf7f2);
+  border: 0 !important;
 }
 
 [id^="shopify-section-"][id$="multicolumn_gift_who"] {
-  border-bottom: var(--gs-border-width, 1px) solid var(--gs-border, #f3ede2);
+  border: 0 !important;
 }
 
 .container[id$="rich_text_gift_who"] .blocks-title {
@@ -644,7 +645,7 @@
    -------------------------------------------------------------------------- */
 [id^="shopify-section-"][id$="collection_switcher_gift_curated"] {
   background-color: var(--gs-bg, #faf7f2);
-  border-bottom: var(--gs-border-width, 1px) solid var(--gs-border, #f3ede2);
+  border: 0 !important;
 }
 
 [id$="collection_switcher_gift_curated"] .container {
@@ -692,7 +693,7 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  border-bottom: var(--gs-border-width, 1px) solid var(--gs-card-border, #ebd8d0);
+  border-bottom: 0;
   margin: 0 auto 36px;
   padding: 0 8px;
   width: fit-content;
@@ -758,7 +759,7 @@
 
 [id$="collection_switcher_gift_curated"] .card--product {
   background-color: var(--gs-card-bg, #ffffff);
-  border: var(--gs-border-width, 1px) solid var(--gs-card-border, var(--gs-border, #f3ede2));
+  border: 0 !important;
   padding-bottom: 20px;
   transition: box-shadow 0.25s ease;
 }
@@ -791,7 +792,7 @@
    -------------------------------------------------------------------------- */
 .gift-bespoke-grid-section {
   background-color: var(--gs-bg, #ffffff);
-  border-bottom: var(--gs-border-width, 0px) solid var(--gs-border, transparent);
+  border: 0 !important;
   padding-top: var(--pt, 44px);
   padding-bottom: var(--pb, 44px);
 }
@@ -891,7 +892,7 @@
 
 .gift-bespoke-card {
   background-color: var(--gs-card-bg, #ffffff);
-  border: var(--gs-border-width, 0px) solid var(--gs-card-border, transparent);
+  border: 0 !important;
   display: flex;
   flex-direction: column;
 }
@@ -972,7 +973,7 @@
    -------------------------------------------------------------------------- */
 [id^="shopify-section-"][id$="rich_text_gift_concierge"] {
   background-color: var(--gs-bg, #faf7f2);
-  border-bottom: var(--gs-border-width, 0px) solid var(--gs-border, transparent);
+  border: 0 !important;
 }
 
 .container[id$="rich_text_gift_concierge"] {
@@ -997,7 +998,7 @@
 
 .container[id$="rich_text_gift_concierge"] .content-blocks {
   background-color: var(--gs-card-bg, #ffffff);
-  border: var(--gs-border-width, 1px) solid var(--gs-card-border, #ebd8d0);
+  border: 0 !important;
   padding: 36px 24px;
   text-align: left !important;
   display: grid !important;
@@ -1227,7 +1228,7 @@
    -------------------------------------------------------------------------- */
 .gift-concierge-section {
   background-color: var(--gs-bg, #ffffff);
-  border-bottom: var(--gs-border-width, 0px) solid var(--gs-border, transparent);
+  border: 0 !important;
   padding-top: var(--pt, 40px);
   padding-bottom: var(--pb, 56px);
 }
@@ -1261,8 +1262,8 @@
 
 .gift-concierge__card {
   background-color: var(--gs-card-bg, #ffffff);
-  border: var(--gs-border-width, 1px) solid var(--gs-card-border, #22201e);
-  padding: 28px 16px;
+  border: 0 !important;
+  padding: 28px 0;
   display: grid;
   grid-template-columns: 1fr;
   gap: 28px;
