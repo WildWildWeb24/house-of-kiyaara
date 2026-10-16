@@ -1,0 +1,94 @@
+{%- comment -%}
+  Outputs scoped CSS custom properties (--gs-*) and section padding overrides
+  for a section when configured in the Theme Editor.
+{%- endcomment -%}
+{%- liquid
+  assign has_custom_styles = false
+  if section.settings.custom_bg_color != blank and section.settings.custom_bg_color.alpha != 0
+    assign has_custom_styles = true
+  elsif section.settings.custom_card_bg_color != blank and section.settings.custom_card_bg_color.alpha != 0
+    assign has_custom_styles = true
+  elsif section.settings.custom_border_color != blank and section.settings.custom_border_color.alpha != 0
+    assign has_custom_styles = true
+  elsif section.settings.custom_card_border_color != blank and section.settings.custom_card_border_color.alpha != 0
+    assign has_custom_styles = true
+  elsif section.settings.custom_accent_color != blank and section.settings.custom_accent_color.alpha != 0
+    assign has_custom_styles = true
+  elsif section.settings.custom_heading_color != blank and section.settings.custom_heading_color.alpha != 0
+    assign has_custom_styles = true
+  elsif section.settings.custom_text_color != blank and section.settings.custom_text_color.alpha != 0
+    assign has_custom_styles = true
+  elsif section.settings.custom_btn_bg_color != blank and section.settings.custom_btn_bg_color.alpha != 0
+    assign has_custom_styles = true
+  elsif section.settings.custom_btn_text_color != blank and section.settings.custom_btn_text_color.alpha != 0
+    assign has_custom_styles = true
+  elsif section.settings.custom_btn_border_color != blank and section.settings.custom_btn_border_color.alpha != 0
+    assign has_custom_styles = true
+  elsif section.settings.custom_border_width != blank
+    assign has_custom_styles = true
+  elsif section.settings.padding_top != blank or section.settings.padding_bottom != blank or section.settings.md_padding_top != blank or section.settings.md_padding_bottom != blank
+    assign has_custom_styles = true
+  endif
+-%}
+{%- if has_custom_styles -%}
+  <style>
+    #shopify-section-{{ section.id }},
+    #{{ section.id }} {
+      {%- if section.settings.custom_bg_color != blank and section.settings.custom_bg_color.alpha != 0 -%}
+        --gs-bg: {{ section.settings.custom_bg_color }};
+      {%- endif -%}
+      {%- if section.settings.custom_card_bg_color != blank and section.settings.custom_card_bg_color.alpha != 0 -%}
+        --gs-card-bg: {{ section.settings.custom_card_bg_color }};
+      {%- endif -%}
+      {%- if section.settings.custom_border_color != blank and section.settings.custom_border_color.alpha != 0 -%}
+        --gs-border: {{ section.settings.custom_border_color }};
+      {%- endif -%}
+      {%- if section.settings.custom_card_border_color != blank and section.settings.custom_card_border_color.alpha != 0 -%}
+        --gs-card-border: {{ section.settings.custom_card_border_color }};
+      {%- endif -%}
+      {%- if section.settings.custom_accent_color != blank and section.settings.custom_accent_color.alpha != 0 -%}
+        --gs-accent: {{ section.settings.custom_accent_color }};
+      {%- endif -%}
+      {%- if section.settings.custom_heading_color != blank and section.settings.custom_heading_color.alpha != 0 -%}
+        --gs-heading: {{ section.settings.custom_heading_color }};
+      {%- endif -%}
+      {%- if section.settings.custom_text_color != blank and section.settings.custom_text_color.alpha != 0 -%}
+        --gs-text: {{ section.settings.custom_text_color }};
+      {%- endif -%}
+      {%- if section.settings.custom_btn_bg_color != blank and section.settings.custom_btn_bg_color.alpha != 0 -%}
+        --gs-btn-bg: {{ section.settings.custom_btn_bg_color }};
+      {%- endif -%}
+      {%- if section.settings.custom_btn_text_color != blank and section.settings.custom_btn_text_color.alpha != 0 -%}
+        --gs-btn-text: {{ section.settings.custom_btn_text_color }};
+      {%- endif -%}
+      {%- if section.settings.custom_btn_border_color != blank and section.settings.custom_btn_border_color.alpha != 0 -%}
+        --gs-btn-border: {{ section.settings.custom_btn_border_color }};
+      {%- endif -%}
+      {%- if section.settings.custom_border_width != blank -%}
+        --gs-border-width: {{ section.settings.custom_border_width }}px;
+      {%- endif -%}
+    }
+    #{{ section.id }} {
+      {%- if section.settings.padding_top != blank -%}
+        --pt: {{ section.settings.padding_top }}px !important;
+        padding-top: {{ section.settings.padding_top }}px !important;
+      {%- endif -%}
+      {%- if section.settings.padding_bottom != blank -%}
+        --pb: {{ section.settings.padding_bottom }}px !important;
+        padding-bottom: {{ section.settings.padding_bottom }}px !important;
+      {%- endif -%}
+    }
+    @media screen and (min-width: 768px) {
+      #{{ section.id }} {
+        {%- if section.settings.md_padding_top != blank -%}
+          --sm-pt: {{ section.settings.md_padding_top }}px !important;
+          padding-top: {{ section.settings.md_padding_top }}px !important;
+        {%- endif -%}
+        {%- if section.settings.md_padding_bottom != blank -%}
+          --sm-pb: {{ section.settings.md_padding_bottom }}px !important;
+          padding-bottom: {{ section.settings.md_padding_bottom }}px !important;
+        {%- endif -%}
+      }
+    }
+  </style>
+{%- endif -%}

@@ -106,7 +106,11 @@
         "custom_text_color": "#736b66",
         "custom_btn_bg_color": "#22201e",
         "custom_btn_text_color": "#ffffff",
-        "custom_btn_border_color": "#22201e"
+        "custom_btn_border_color": "#22201e",
+        "md_padding_top": 80,
+        "md_padding_bottom": 80,
+        "padding_top": 32,
+        "padding_bottom": 48
       }
     },
     "rich_text_gift_who": {
@@ -155,7 +159,11 @@
         "custom_text_color": "",
         "custom_btn_bg_color": "",
         "custom_btn_text_color": "",
-        "custom_btn_border_color": ""
+        "custom_btn_border_color": "",
+        "md_padding_top": 88,
+        "md_padding_bottom": 16,
+        "padding_top": 56,
+        "padding_bottom": 8
       }
     },
     "multicolumn_gift_who": {
@@ -266,7 +274,11 @@
         "custom_text_color": "#736b66",
         "custom_btn_bg_color": "",
         "custom_btn_text_color": "",
-        "custom_btn_border_color": ""
+        "custom_btn_border_color": "",
+        "md_padding_top": 32,
+        "md_padding_bottom": 96,
+        "padding_top": 24,
+        "padding_bottom": 64
       }
     },
     "gift_shop_deck": {
@@ -377,22 +389,22 @@
         "tab_tier_1": {
           "type": "collection-tab",
           "settings": {
-            "tab_title": "Wallets",
+            "tab_title": "FROM INR 1,650",
             "collection": "wallets-for-women"
           }
         },
         "tab_tier_2": {
           "type": "collection-tab",
           "settings": {
-            "tab_title": "Curated Bundles",
+            "tab_title": "FROM INR 4,000",
             "collection": "curated-bundles"
           }
         },
         "tab_tier_3": {
           "type": "collection-tab",
           "settings": {
-            "tab_title": "Scarves",
-            "collection": "scarves"
+            "tab_title": "FROM 7,000+",
+            "collection": "all-bags"
           }
         },
         "spacing_curated": {
@@ -442,7 +454,11 @@
         "custom_text_color": "#736b66",
         "custom_btn_bg_color": "",
         "custom_btn_text_color": "",
-        "custom_btn_border_color": ""
+        "custom_btn_border_color": "",
+        "md_padding_top": 96,
+        "md_padding_bottom": 96,
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     },
     "image_with_text_gift_bespoke": {
@@ -456,7 +472,7 @@
             "image": "shopify://shop_images/Kiyaara_Logo_Placeholder_Corrected.webp",
             "video_autoplay": true,
             "video_controls": false,
-            "show_floating_badge": false,
+            "show_floating_badge": true,
             "badge_subtitle": "SIGNATURE FINISH",
             "badge_text": "\"Every piece arrives in our keepsake box\""
           }
@@ -519,7 +535,11 @@
         "custom_text_color": "#736b66",
         "custom_btn_bg_color": "",
         "custom_btn_text_color": "",
-        "custom_btn_border_color": ""
+        "custom_btn_border_color": "",
+        "md_padding_top": 104,
+        "md_padding_bottom": 104,
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     },
     "rich_text_gift_concierge": {
@@ -621,7 +641,11 @@
         "custom_text_color": "#22201e",
         "custom_btn_bg_color": "#ffffff",
         "custom_btn_text_color": "#22201e",
-        "custom_btn_border_color": "#22201e"
+        "custom_btn_border_color": "#22201e",
+        "md_padding_top": 96,
+        "md_padding_bottom": 96,
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     }
   },

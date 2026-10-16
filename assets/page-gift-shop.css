@@ -342,7 +342,7 @@
    -------------------------------------------------------------------------- */
 .gift-shop-deck-section {
   background-color: var(--gs-bg, #ffffff);
-  border-bottom: var(--gs-border-width, 1px) solid var(--gs-border, #f3ede2);
+  border-bottom: 0 !important;
   padding-top: var(--pt, 64px);
   padding-bottom: var(--pb, 64px);
 }
@@ -726,6 +726,7 @@
   margin: 0 !important;
   cursor: pointer;
   white-space: nowrap;
+  text-decoration: none !important;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -735,8 +736,16 @@
   font-weight: 400 !important;
   letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
+  text-decoration: none !important;
   color: var(--gs-text, #736b66) !important;
   margin: 0 !important;
+}
+
+[id$="collection_switcher_gift_curated"] .tab-title::after,
+[id$="collection_switcher_gift_curated"] .tab-title > *::after {
+  content: none !important;
+  display: none !important;
+  border: 0 !important;
 }
 
 @media (min-width: 768px) {
@@ -747,12 +756,14 @@
 
 [id$="collection_switcher_gift_curated"] .tab-title.is-active {
   border-bottom-color: var(--gs-accent, #c46d5e);
+  text-decoration: none !important;
   opacity: 1 !important;
 }
 
 [id$="collection_switcher_gift_curated"] .tab-title.is-active > * {
   color: var(--gs-heading, #22201e) !important;
   font-weight: 500 !important;
+  text-decoration: none !important;
 }
 
 [id$="collection_switcher_gift_curated"] .card--product {
