@@ -558,94 +558,66 @@
       }
     },
     "rich_text_gift_concierge": {
-      "type": "rich-text",
+      "type": "gift-shop-concierge-form",
       "blocks": {
-        "title_concierge": {
-          "type": "title",
-          "settings": {
-            "title": "Let's plan your gifting",
-            "heading_tag": "h2",
-            "sm_size_multiplier": "sm-size--large",
-            "sm_margin_top": 0,
-            "size_multiplier": "size--large",
-            "margin_top": 0
-          }
-        },
-        "text_concierge": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Tell us what you have in mind and we'll take it from there. Share your details to customise your gifts. You can reach out to us with your request on:</p>",
-            "sm_size_multiplier": "sm-size--default",
-            "sm_margin_top": 16,
-            "size_multiplier": "size--default",
-            "margin_top": 16
-          }
-        },
         "btn_email": {
-          "type": "button",
+          "type": "contact_card",
           "settings": {
-            "button_label": "hello@houseofkiyaara.com",
+            "icon_type": "email",
             "button_sublabel": "EMAIL US AT",
-            "button_link": "mailto:hello@houseofkiyaara.com",
-            "button_style": "secondary",
-            "sm_size_multiplier": "sm-size--default",
-            "sm_margin_top": 0,
-            "size_multiplier": "size--default",
-            "margin_top": 0
+            "button_label": "hello@houseofkiyaara.com",
+            "button_link": "mailto:hello@houseofkiyaara.com"
           }
         },
         "btn_whatsapp": {
-          "type": "button",
+          "type": "contact_card",
           "settings": {
-            "button_label": "+91 96191 00226",
+            "icon_type": "whatsapp",
             "button_sublabel": "CHAT WITH US ON WHATSAPP",
-            "button_link": "https://wa.me/919619100226",
-            "button_style": "secondary",
-            "sm_size_multiplier": "sm-size--default",
-            "sm_margin_top": 0,
-            "size_multiplier": "size--default",
-            "margin_top": 0
+            "button_label": "+91 96191 00226",
+            "button_link": "https://wa.me/919619100226"
           }
         },
         "btn_phone": {
-          "type": "button",
+          "type": "contact_card",
           "settings": {
-            "button_label": "+91 96191 00226",
+            "icon_type": "phone",
             "button_sublabel": "CALL US ON",
-            "button_link": "tel:+919619100226",
-            "button_style": "secondary",
-            "sm_size_multiplier": "sm-size--default",
-            "sm_margin_top": 0,
-            "size_multiplier": "size--default",
-            "margin_top": 0
-          }
-        },
-        "spacing_concierge": {
-          "type": "custom_spacing",
-          "settings": {
-            "sm_margin_top": 0,
-            "sm_padding_top": 96,
-            "sm_padding_bottom": 96,
-            "margin_top": 0,
-            "padding_top": 64,
-            "padding_bottom": 64
+            "button_label": "+91 96191 00226",
+            "button_link": "tel:+919619100226"
           }
         }
       },
       "block_order": [
-        "title_concierge",
-        "text_concierge",
         "btn_email",
         "btn_whatsapp",
-        "btn_phone",
-        "spacing_concierge"
+        "btn_phone"
       ],
       "settings": {
+        "subtitle": "",
+        "title": "Let's plan your gifting",
+        "heading_size": "h2",
+        "text": "<p>Tell us what you have in mind and we'll take it from there. Share your details to customise your gifts, or reach out to us directly:</p>",
+        "show_contact_cards": true,
+        "recipient_email": "hello@houseofkiyaara.com",
+        "name_label": "Name",
+        "name_placeholder": "Your full name",
+        "phone_label": "Contact",
+        "phone_placeholder": "+91 98765 43210",
+        "email_label": "Email ID",
+        "email_placeholder": "you@example.com",
+        "quantity_label": "Order quantity",
+        "quantity_placeholder": "Select quantity",
+        "quantity_options": "10-20, 21-30, 30+",
+        "message_label": "Describe your request",
+        "message_placeholder": "Tell us about your occasion, delivery timeline, and any customisation requirements...",
+        "submit_label": "SUBMIT",
+        "success_message": "Thank you! We've received your gifting request and will reach out to you shortly.",
         "color_scheme": "default",
-        "content_width": "full",
-        "sm_content_position": "left",
-        "sm_text_alignment": "left",
-        "text_alignment": "left",
+        "md_padding_top": 36,
+        "md_padding_bottom": 56,
+        "padding_top": 40,
+        "padding_bottom": 64,
         "custom_bg_color": "#ffffff",
         "custom_card_bg_color": "#ffffff",
         "custom_border_color": "#ffffff",
@@ -654,13 +626,9 @@
         "custom_accent_color": "#c46d5e",
         "custom_heading_color": "#22201e",
         "custom_text_color": "#22201e",
-        "custom_btn_bg_color": "#ffffff",
-        "custom_btn_text_color": "#22201e",
-        "custom_btn_border_color": "#22201e",
-        "md_padding_top": 36,
-        "md_padding_bottom": 56,
-        "padding_top": 40,
-        "padding_bottom": 64
+        "custom_btn_bg_color": "#22201e",
+        "custom_btn_text_color": "#ffffff",
+        "custom_btn_border_color": "#22201e"
       }
     }
   },
