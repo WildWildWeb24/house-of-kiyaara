@@ -353,10 +353,10 @@
         "button_label": "EXPLORE OUR BUNDLES",
         "button_link": "#shopify-section-collection_switcher_gift_curated",
         "color_scheme": "default",
-        "md_padding_top": 112,
-        "md_padding_bottom": 112,
-        "padding_top": 64,
-        "padding_bottom": 64,
+        "md_padding_top": 32,
+        "md_padding_bottom": 44,
+        "padding_top": 68,
+        "padding_bottom": 52,
         "custom_bg_color": "#ffffff",
         "custom_card_bg_color": "#ffffff",
         "custom_border_color": "#22201e",
@@ -446,7 +446,7 @@
         "size_multiplier": "size--small",
         "custom_bg_color": "#ffffff",
         "custom_card_bg_color": "#ffffff",
-        "custom_border_color": "#FFFFFF",
+        "custom_border_color": "#ffffff",
         "custom_card_border_color": "#ffffff",
         "custom_border_width": 1,
         "custom_accent_color": "#c46d5e",
@@ -455,10 +455,10 @@
         "custom_btn_bg_color": "",
         "custom_btn_text_color": "",
         "custom_btn_border_color": "",
-        "md_padding_top": 96,
-        "md_padding_bottom": 96,
-        "padding_top": 64,
-        "padding_bottom": 64
+        "md_padding_top": 32,
+        "md_padding_bottom": 32,
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     },
     "image_with_text_gift_bespoke": {
@@ -536,10 +536,10 @@
         "custom_btn_bg_color": "",
         "custom_btn_text_color": "",
         "custom_btn_border_color": "",
-        "md_padding_top": 104,
-        "md_padding_bottom": 104,
-        "padding_top": 64,
-        "padding_bottom": 64
+        "md_padding_top": 36,
+        "md_padding_bottom": 40,
+        "padding_top": 44,
+        "padding_bottom": 32
       }
     },
     "rich_text_gift_concierge": {
@@ -642,9 +642,9 @@
         "custom_btn_bg_color": "#ffffff",
         "custom_btn_text_color": "#22201e",
         "custom_btn_border_color": "#22201e",
-        "md_padding_top": 96,
-        "md_padding_bottom": 96,
-        "padding_top": 64,
+        "md_padding_top": 36,
+        "md_padding_bottom": 56,
+        "padding_top": 40,
         "padding_bottom": 64
       }
     }
