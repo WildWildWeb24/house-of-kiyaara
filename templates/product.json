@@ -243,6 +243,7 @@
         "collapsible_tab_QicLn9": {
           "type": "collapsible_tab",
           "name": "Why You'll Love It",
+          "disabled": true,
           "settings": {
             "title": "Why You'll Love It",
             "content": "<p>{{ product.metafields.custom.wul_description | metafield_tag }}</p>",
@@ -259,6 +260,7 @@
         "collapsible_tab_h3cbtP": {
           "type": "collapsible_tab",
           "name": "Style The Bag",
+          "disabled": true,
           "settings": {
             "title": "Style The Bag",
             "content": "<p>{{ product.metafields.custom.style_bag_description | metafield_tag }}</p>",
