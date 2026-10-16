@@ -30,6 +30,7 @@
             "image": "shopify://shop_images/hok-farrasha-collection-mobile-375x660-00-start.webp",
             "video_autoplay": true,
             "video_controls": false,
+            "show_floating_badge": false,
             "badge_subtitle": "",
             "badge_text": ""
           }
@@ -455,6 +456,7 @@
             "image": "shopify://shop_images/Kiyaara_Logo_Placeholder_Corrected.webp",
             "video_autoplay": true,
             "video_controls": false,
+            "show_floating_badge": true,
             "badge_subtitle": "SIGNATURE FINISH",
             "badge_text": "\"Every piece arrives in our keepsake box\""
           }

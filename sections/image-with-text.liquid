@@ -74,15 +74,17 @@
             -%}
         {%- endcase -%}
       {%- if media_block.settings.media_link -%}</a>{%- endif -%}
-      {%- if media_block.settings.badge_subtitle != blank or media_block.settings.badge_text != blank -%}
-        <div class="iwt-floating-badge">
-          {%- if media_block.settings.badge_subtitle != blank -%}
-            <span class="iwt-floating-badge__subtitle">{{ media_block.settings.badge_subtitle | escape }}</span>
-          {%- endif -%}
-          {%- if media_block.settings.badge_text != blank -%}
-            <p class="iwt-floating-badge__text">{{ media_block.settings.badge_text | escape }}</p>
-          {%- endif -%}
-        </div>
+      {%- if media_block.settings.show_floating_badge -%}
+        {%- if media_block.settings.badge_subtitle != blank or media_block.settings.badge_text != blank -%}
+          <div class="iwt-floating-badge">
+            {%- if media_block.settings.badge_subtitle != blank -%}
+              <span class="iwt-floating-badge__subtitle">{{ media_block.settings.badge_subtitle | escape }}</span>
+            {%- endif -%}
+            {%- if media_block.settings.badge_text != blank -%}
+              <p class="iwt-floating-badge__text">{{ media_block.settings.badge_text | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
       {%- endif -%}
     </div>
     <div class="col-12 col-sm-6 col-md-{{ md_text_col_width }} p-page sm-p-0 text-align-{{ section.settings.mobile_alignment }} sm-text-align-{{ section.settings.desktop_alignment }}">
@@ -498,6 +500,12 @@
         {
           "type": "header",
           "content": "Floating badge (optional)"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_floating_badge",
+          "label": "Show floating badge",
+          "default": true
         },
         {
           "type": "text",

@@ -54,12 +54,9 @@
                 </div>
               {%- endif -%}
 
-              {%- if block.settings.show_card_overlay or block.settings.image == blank -%}
+              {%- if block.settings.show_card_overlay and block.settings.card_caption != blank -%}
                 <div class="gift-deck__card-overlay">
-                  <span class="gift-deck__card-counter">{{ index_padded }} / {{ total_padded }}</span>
-                  {%- if block.settings.card_caption != blank -%}
-                    <p class="gift-deck__card-quote">{{ block.settings.card_caption | escape }}</p>
-                  {%- endif -%}
+                  <p class="gift-deck__card-quote">{{ block.settings.card_caption | escape }}</p>
                 </div>
               {%- endif -%}
             </div>
