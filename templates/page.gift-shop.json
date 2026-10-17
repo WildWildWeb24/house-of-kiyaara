@@ -26,7 +26,9 @@
           "type": "image",
           "settings": {
             "media_toggle": "show_image",
-            "overlay_opacity": 0
+            "overlay_opacity": 0,
+            "image": "shopify://shop_images/HOK-Festive0280-retouched.png",
+            "image_mobile": "shopify://shop_images/HOK-Festive0280-retouched.png"
           }
         }
       },
@@ -57,7 +59,7 @@
           "settings": {
             "media_toggle": "show_image",
             "media_aspect_ratio": "square",
-            "image": "shopify://shop_images/hok-farrasha-collection-mobile-375x660-00-start.webp",
+            "image": "shopify://shop_images/HOK-Festive0113-retouched.png",
             "video_autoplay": true,
             "video_controls": false,
             "show_floating_badge": false,
@@ -141,6 +143,257 @@
         "md_padding_bottom": 80,
         "padding_top": 32,
         "padding_bottom": 48
+      }
+    },
+    "gift_shop_deck": {
+      "type": "gift-shop-deck",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "Art-led",
+            "text": "Every design begins as original hand-painted artwork, so no two collections look like anyone else's. There's art on the bag linings, too.",
+            "image": "shopify://shop_images/Artwork02.webp",
+            "placeholder_label": "[ ART-LED PACKAGING ]",
+            "card_caption": "",
+            "show_card_overlay": false
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "It's kind.",
+            "text": "Vegan leather, cruelty free, and made for someone who cares about that too.",
+            "image": "shopify://shop_images/mindnight_blue.webp",
+            "placeholder_label": "[ VEGAN LEATHER CRAFTSMANSHIP ]",
+            "card_caption": "",
+            "show_card_overlay": false
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "title": "Made to be personal",
+            "text": "Add custom note cards, packaging and personalised inserts so every gift carries your message.",
+            "image": "shopify://shop_images/kiyaara-TYC-001-Pack_of_4_Farasha_Greeting_Cards-01.webp",
+            "placeholder_label": "[ CUSTOM NOTE CARDS & INSERTS ]",
+            "card_caption": "",
+            "show_card_overlay": false
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "title": "Wrapped in joy",
+            "text": "Every gift arrives in our signature wrapped box, with wearable art inside waiting to be discovered.",
+            "image": "shopify://shop_images/hok-farrasha-collection-mobile-375x660-00-start.webp",
+            "placeholder_label": "[ SIGNATURE WRAPPED BOX ]",
+            "card_caption": "",
+            "show_card_overlay": false
+          }
+        },
+        "card_5": {
+          "type": "card",
+          "settings": {
+            "title": "Gifting made easy",
+            "text": "A dedicated gifting team, smooth coordination and reliable delivery across India, whether you're gifting ten people or a hundred.",
+            "image": "shopify://shop_images/Gifting_made_easy.webp",
+            "placeholder_label": "[ PAN-INDIA GIFTING CONCIERGE ]",
+            "card_caption": "",
+            "show_card_overlay": false
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5"
+      ],
+      "settings": {
+        "title": "Why a Kiyaara gift feels different",
+        "heading_size": "h2",
+        "button_label": "EXPLORE OUR BUNDLES",
+        "button_link": "#shopify-section-collection_switcher_gift_curated",
+        "enable_autoplay": true,
+        "autoplay_speed": 4,
+        "color_scheme": "default",
+        "md_padding_top": 32,
+        "md_padding_bottom": 44,
+        "padding_top": 68,
+        "padding_bottom": 52,
+        "custom_bg_color": "#ffffff",
+        "custom_card_bg_color": "#ffffff",
+        "custom_border_color": "#22201e",
+        "custom_card_border_color": "#ffffff",
+        "custom_border_width": 0,
+        "custom_accent_color": "#c46d5e",
+        "custom_heading_color": "#22201e",
+        "custom_text_color": "#736b66",
+        "custom_btn_bg_color": "",
+        "custom_btn_text_color": "#22201e",
+        "custom_btn_border_color": "#22201e"
+      }
+    },
+    "collection_switcher_gift_curated": {
+      "type": "collection-or-products-switcher",
+      "blocks": {
+        "header_curated": {
+          "type": "section_header",
+          "settings": {
+            "subtitle": "",
+            "title": "Curated with love",
+            "text": "<p>From small tokens to statement sets, there's a Kiyaara gift for every list and every budget.</p>",
+            "text_alignment": "center",
+            "subtitle_tag": "h3",
+            "title_tag": "h2",
+            "sm_size_multiplier": "sm-size--default",
+            "size_multiplier": "size--default"
+          }
+        },
+        "tab_tier_1": {
+          "type": "collection-tab",
+          "settings": {
+            "tab_title": "Wallets",
+            "collection": "wallets-for-women"
+          }
+        },
+        "tab_tier_2": {
+          "type": "collection-tab",
+          "settings": {
+            "tab_title": "Curated Bundles",
+            "collection": "curated-bundles"
+          }
+        },
+        "tab_tier_3": {
+          "type": "collection-tab",
+          "settings": {
+            "tab_title": "Scarves",
+            "collection": "all-bags"
+          }
+        },
+        "spacing_curated": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 96,
+            "sm_padding_bottom": 96,
+            "margin_top": 0,
+            "padding_top": 64,
+            "padding_bottom": 64
+          }
+        }
+      },
+      "block_order": [
+        "header_curated",
+        "tab_tier_1",
+        "tab_tier_2",
+        "tab_tier_3",
+        "spacing_curated"
+      ],
+      "settings": {
+        "selector_prompt_text": "Discover our bundles and collections below",
+        "color_scheme": "default",
+        "product_limit": 6,
+        "view_all": false,
+        "enable_card_thumbnail": false,
+        "layout_desktop": "slide",
+        "products_per_row_desktop": 3,
+        "products_per_row_tablet": 2,
+        "layout_mobile": "slide",
+        "products_per_row_mobile": 1,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all",
+        "tab_title_style": "subheading",
+        "tab_title_tag": "h3",
+        "text_alignment": "text-align-center",
+        "sm_size_multiplier": "sm-size--small",
+        "size_multiplier": "size--small",
+        "custom_bg_color": "#ffffff",
+        "custom_card_bg_color": "#ffffff",
+        "custom_border_color": "#ffffff",
+        "custom_card_border_color": "#ffffff",
+        "custom_border_width": 0,
+        "custom_accent_color": "#c46d5e",
+        "custom_heading_color": "#22201e",
+        "custom_text_color": "#736b66",
+        "custom_btn_bg_color": "",
+        "custom_btn_text_color": "",
+        "custom_btn_border_color": "",
+        "md_padding_top": 32,
+        "md_padding_bottom": 32,
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "gift_bespoke_grid": {
+      "type": "gift-shop-bespoke-grid",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/HOK-Festive0195-retouched.png",
+            "subtitle": "",
+            "title": "Your logo, our art",
+            "text": "<p>Add your logo to the packaging, sitting alongside the Kiyaara mark.</p>"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Gifting_made_easy.jpg",
+            "subtitle": "",
+            "title": "A personal note",
+            "text": "<p>Include a printed card with your message, written the way you'd actually say it.</p>"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Gifting_made_easy.webp",
+            "subtitle": "",
+            "title": "Picked for your list",
+            "text": "<p>Mix pieces across styles and price points, or build a custom bundle for the occasion.</p>"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/HOK-Festive0195-retouched.png",
+            "subtitle": "",
+            "title": "Wrapped and delivered",
+            "text": "<p>Sent to your office for a handover, or individually to every doorstep on your list.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ],
+      "settings": {
+        "subtitle": "",
+        "title": "Made to feel like yours",
+        "heading_size": "h2",
+        "description": "<p>Whether you're gifting ten people or two hundred, we can tailor the details so every box feels personal to you and the moment you're celebrating.</p>",
+        "header_alignment": "center",
+        "card_alignment": "left",
+        "color_scheme": "default",
+        "md_padding_top": 56,
+        "md_padding_bottom": 56,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_bg_color": "#ffffff",
+        "custom_card_bg_color": "#ffffff",
+        "custom_border_color": "#ffffff",
+        "custom_card_border_color": "#ffffff",
+        "custom_border_width": 0,
+        "custom_accent_color": "#c46d5e",
+        "custom_heading_color": "#22201e",
+        "custom_text_color": "#736b66"
       }
     },
     "rich_text_gift_who": {
@@ -309,252 +562,6 @@
         "md_padding_bottom": 96,
         "padding_top": 24,
         "padding_bottom": 64
-      }
-    },
-    "gift_shop_deck": {
-      "type": "gift-shop-deck",
-      "blocks": {
-        "card_1": {
-          "type": "card",
-          "settings": {
-            "title": "Art-led",
-            "text": "Every design begins as original hand-painted artwork, so no two collections look like anyone else's. There's art on the bag linings, too.",
-            "image": "shopify://shop_images/Artwork02.webp",
-            "placeholder_label": "[ ART-LED PACKAGING ]",
-            "card_caption": "",
-            "show_card_overlay": false
-          }
-        },
-        "card_2": {
-          "type": "card",
-          "settings": {
-            "title": "It's kind.",
-            "text": "Vegan leather, cruelty free, and made for someone who cares about that too.",
-            "image": "shopify://shop_images/mindnight_blue.webp",
-            "placeholder_label": "[ VEGAN LEATHER CRAFTSMANSHIP ]",
-            "card_caption": "",
-            "show_card_overlay": false
-          }
-        },
-        "card_3": {
-          "type": "card",
-          "settings": {
-            "title": "Made to be personal",
-            "text": "Add custom note cards, packaging and personalised inserts so every gift carries your message.",
-            "image": "shopify://shop_images/kiyaara-TYC-001-Pack_of_4_Farasha_Greeting_Cards-01.webp",
-            "placeholder_label": "[ CUSTOM NOTE CARDS & INSERTS ]",
-            "card_caption": "",
-            "show_card_overlay": false
-          }
-        },
-        "card_4": {
-          "type": "card",
-          "settings": {
-            "title": "Wrapped in joy",
-            "text": "Every gift arrives in our signature wrapped box, with wearable art inside waiting to be discovered.",
-            "image": "shopify://shop_images/Wrapped_in_Joy.webp",
-            "placeholder_label": "[ SIGNATURE WRAPPED BOX ]",
-            "card_caption": "",
-            "show_card_overlay": false
-          }
-        },
-        "card_5": {
-          "type": "card",
-          "settings": {
-            "title": "Gifting made easy",
-            "text": "A dedicated gifting team, smooth coordination and reliable delivery across India, whether you're gifting ten people or a hundred.",
-            "image": "shopify://shop_images/Gifting_made_easy.webp",
-            "placeholder_label": "[ PAN-INDIA GIFTING CONCIERGE ]",
-            "card_caption": "",
-            "show_card_overlay": false
-          }
-        }
-      },
-      "block_order": [
-        "card_1",
-        "card_2",
-        "card_3",
-        "card_4",
-        "card_5"
-      ],
-      "settings": {
-        "title": "Why a Kiyaara gift feels different",
-        "heading_size": "h2",
-        "button_label": "EXPLORE OUR BUNDLES",
-        "button_link": "#shopify-section-collection_switcher_gift_curated",
-        "color_scheme": "default",
-        "md_padding_top": 32,
-        "md_padding_bottom": 44,
-        "padding_top": 68,
-        "padding_bottom": 52,
-        "custom_bg_color": "#ffffff",
-        "custom_card_bg_color": "#ffffff",
-        "custom_border_color": "#22201e",
-        "custom_card_border_color": "#ffffff",
-        "custom_border_width": 0,
-        "custom_accent_color": "#c46d5e",
-        "custom_heading_color": "#22201e",
-        "custom_text_color": "#736b66",
-        "custom_btn_bg_color": "",
-        "custom_btn_text_color": "#22201e",
-        "custom_btn_border_color": "#22201e"
-      }
-    },
-    "collection_switcher_gift_curated": {
-      "type": "collection-or-products-switcher",
-      "blocks": {
-        "header_curated": {
-          "type": "section_header",
-          "settings": {
-            "subtitle": "",
-            "title": "Curated with love",
-            "text": "<p>From small tokens to statement sets, there's a Kiyaara gift for every list and every budget.</p>",
-            "text_alignment": "center",
-            "subtitle_tag": "h3",
-            "title_tag": "h2",
-            "sm_size_multiplier": "sm-size--default",
-            "size_multiplier": "size--default"
-          }
-        },
-        "tab_tier_1": {
-          "type": "collection-tab",
-          "settings": {
-            "tab_title": "FROM INR 1,650",
-            "collection": "wallets-for-women"
-          }
-        },
-        "tab_tier_2": {
-          "type": "collection-tab",
-          "settings": {
-            "tab_title": "FROM INR 4,000",
-            "collection": "curated-bundles"
-          }
-        },
-        "tab_tier_3": {
-          "type": "collection-tab",
-          "settings": {
-            "tab_title": "FROM 7,000+",
-            "collection": "all-bags"
-          }
-        },
-        "spacing_curated": {
-          "type": "custom_spacing",
-          "settings": {
-            "sm_margin_top": 0,
-            "sm_padding_top": 96,
-            "sm_padding_bottom": 96,
-            "margin_top": 0,
-            "padding_top": 64,
-            "padding_bottom": 64
-          }
-        }
-      },
-      "block_order": [
-        "header_curated",
-        "tab_tier_1",
-        "tab_tier_2",
-        "tab_tier_3",
-        "spacing_curated"
-      ],
-      "settings": {
-        "selector_prompt_text": "Discover our bundles and collections below",
-        "color_scheme": "default",
-        "product_limit": 6,
-        "view_all": false,
-        "enable_card_thumbnail": false,
-        "layout_desktop": "slide",
-        "products_per_row_desktop": 3,
-        "products_per_row_tablet": 2,
-        "layout_mobile": "slide",
-        "products_per_row_mobile": 1,
-        "autoplay": false,
-        "autoplay_speed": 5,
-        "sliding_behavior": "all",
-        "tab_title_style": "subheading",
-        "tab_title_tag": "h3",
-        "text_alignment": "text-align-center",
-        "sm_size_multiplier": "sm-size--small",
-        "size_multiplier": "size--small",
-        "custom_bg_color": "#ffffff",
-        "custom_card_bg_color": "#ffffff",
-        "custom_border_color": "#ffffff",
-        "custom_card_border_color": "#ffffff",
-        "custom_border_width": 0,
-        "custom_accent_color": "#c46d5e",
-        "custom_heading_color": "#22201e",
-        "custom_text_color": "#736b66",
-        "custom_btn_bg_color": "",
-        "custom_btn_text_color": "",
-        "custom_btn_border_color": "",
-        "md_padding_top": 32,
-        "md_padding_bottom": 32,
-        "padding_top": 16,
-        "padding_bottom": 16
-      }
-    },
-    "gift_bespoke_grid": {
-      "type": "gift-shop-bespoke-grid",
-      "blocks": {
-        "card_1": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/Kiyaara_Logo_Placeholder_Corrected.webp",
-            "subtitle": "",
-            "title": "Your logo, our art",
-            "text": "<p>Add your logo to the packaging, sitting alongside the Kiyaara mark.</p>"
-          }
-        },
-        "card_2": {
-          "type": "card",
-          "settings": {
-            "subtitle": "",
-            "title": "A personal note",
-            "text": "<p>Include a printed card with your message, written the way you'd actually say it.</p>"
-          }
-        },
-        "card_3": {
-          "type": "card",
-          "settings": {
-            "subtitle": "",
-            "title": "Picked for your list",
-            "text": "<p>Mix pieces across styles and price points, or build a custom bundle for the occasion.</p>"
-          }
-        },
-        "card_4": {
-          "type": "card",
-          "settings": {
-            "subtitle": "",
-            "title": "Wrapped and delivered",
-            "text": "<p>Sent to your office for a handover, or individually to every doorstep on your list.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "card_1",
-        "card_2",
-        "card_3",
-        "card_4"
-      ],
-      "settings": {
-        "subtitle": "",
-        "title": "Made to feel like yours",
-        "heading_size": "h2",
-        "description": "<p>Whether you're gifting ten people or two hundred, we can tailor the details so every box feels personal to you and the moment you're celebrating.</p>",
-        "header_alignment": "center",
-        "card_alignment": "left",
-        "color_scheme": "default",
-        "md_padding_top": 56,
-        "md_padding_bottom": 56,
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "custom_bg_color": "#ffffff",
-        "custom_card_bg_color": "#ffffff",
-        "custom_border_color": "#ffffff",
-        "custom_card_border_color": "#ffffff",
-        "custom_border_width": 0,
-        "custom_accent_color": "#c46d5e",
-        "custom_heading_color": "#22201e",
-        "custom_text_color": "#736b66"
       }
     },
     "rich_text_gift_concierge": {
