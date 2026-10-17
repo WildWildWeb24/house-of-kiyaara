@@ -584,13 +584,6 @@
   gap: 6px;
 }
 
-.gift-deck__item-title-wrap {
-  display: inline-flex;
-  flex-direction: column;
-  align-self: flex-start;
-  gap: 5px;
-}
-
 .gift-deck__item-title {
   font-family: var(--font-heading-family);
   font-size: 20px;
@@ -602,48 +595,6 @@
 
 .gift-deck__item.is-active .gift-deck__item-title {
   color: var(--gs-heading, #22201e);
-}
-
-.gift-deck__item-progress {
-  display: block;
-  width: 100%;
-  height: 1.5px;
-  background-color: rgba(196, 109, 94, 0.22);
-  overflow: hidden;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-.gift-deck__item.is-active .gift-deck__item-progress {
-  opacity: 1;
-}
-
-.gift-deck__item-progress-bar {
-  display: block;
-  height: 100%;
-  width: 0%;
-  background-color: var(--gs-accent, #c46d5e);
-}
-
-.gift-deck__item.is-active.is-animating .gift-deck__item-progress-bar {
-  animation: giftDeckProgress var(--deck-duration, 4s) linear forwards;
-}
-
-.gift-shop-deck-section.is-paused .gift-deck__item.is-active.is-animating .gift-deck__item-progress-bar {
-  animation-play-state: paused;
-}
-
-.gift-shop-deck-section[data-autoplay="false"] .gift-deck__item.is-active .gift-deck__item-progress-bar {
-  width: 100%;
-}
-
-@keyframes giftDeckProgress {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
 }
 
 .gift-deck__item-text {
