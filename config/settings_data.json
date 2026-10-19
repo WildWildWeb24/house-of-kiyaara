@@ -151,10 +151,17 @@
         "type": "gift-card",
         "custom_css": [],
         "settings": {
+          "logo": "shopify://shop_images/logo-footer4X.png",
+          "logo_max_width": 140,
+          "logo_style": "white",
+          "card_subtitle": "Gift card",
+          "card_bg_preset": "kiyaara-giftcard-01-1.png",
+          "card_overlay_color": "#181513",
+          "card_overlay_opacity": 35,
           "color_scheme": "",
           "show_section_background": true,
           "color_card_foreground": "#ffffff",
-          "color_card_background": "#000000"
+          "color_card_background": "#181513"
         }
       }
     },
