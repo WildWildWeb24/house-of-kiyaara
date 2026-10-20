@@ -153,9 +153,9 @@
         "settings": {
           "logo": "shopify://shop_images/logo_3c90e42e-91d4-4082-a7c4-6fbd13fd596b.png",
           "logo_max_width": 140,
-          "card_subtitle": "",
+          "card_subtitle": "Gift Crad",
           "card_background_image": "shopify://shop_images/kiyaara-giftcard-01-1.png",
-          "card_overlay_color": "#22201E",
+          "card_overlay_color": "#22201e",
           "card_overlay_opacity": 40,
           "color_scheme": "",
           "show_section_background": true,
