@@ -7,29 +7,11 @@
     assign gift_card_balance = gift_card.balance | money
   endif
 
-  assign card_bg = section.settings.color_card_background | default: '#181513'
+  assign card_bg = section.settings.color_card_background
   assign card_bg_with_transparency = card_bg | append: '88'
   assign card_bg_transparent = card_bg | append: '00'
 
-  assign card_logo = section.settings.logo
-  if card_logo == blank
-    if images['logo-footer4X.png'] != blank
-      assign card_logo = images['logo-footer4X.png']
-    elsif images['kiyaara-logo-about-farasha.png'] != blank
-      assign card_logo = images['kiyaara-logo-about-farasha.png']
-    endif
-  endif
-
-  assign card_bg_image = section.settings.card_background_image
-  assign card_bg_preset = section.settings.card_bg_preset | default: 'kiyaara-giftcard-01-1.png'
-  assign has_bg_media = false
-  if card_bg_image != blank or card_bg_preset != 'none'
-    assign has_bg_media = true
-  endif
-
-  assign logo_max_width = section.settings.logo_max_width | default: 140
-  assign overlay_color = section.settings.card_overlay_color | default: '#181513'
-  assign overlay_opacity = section.settings.card_overlay_opacity | default: 35 | divided_by: 100.0
+  assign overlay_opacity = section.settings.card_overlay_opacity | divided_by: 100.0
   assign card_subtitle = section.settings.card_subtitle
   if card_subtitle == blank
     assign card_subtitle = 'gift_cards.title' | t
@@ -42,59 +24,45 @@
   {%- endif %}
 
   <div
-    class="gift-card{% if has_bg_media %} has-bg-image{% endif %}"
+    class="gift-card{% if section.settings.card_background_image != blank %} has-bg-image{% endif %}"
     style="
       --card-bg: {{ card_bg }};
       --card-bg-with-transparency: {{ card_bg_with_transparency }};
       --card-bg-transparent: {{ card_bg_transparent }};
-      --card-color: {{ section.settings.color_card_foreground | default: '#ffffff' }};
-      --card-logo-width: {{ logo_max_width }}px;
-      --card-overlay-color: {{ overlay_color }};
+      --card-color: {{ section.settings.color_card_foreground }};
+      --card-logo-width: {{ section.settings.logo_max_width }}px;
+      --card-overlay-color: {{ section.settings.card_overlay_color }};
       --card-overlay-opacity: {{ overlay_opacity }};
     ">
-    {% if has_bg_media %}
+    {% if section.settings.card_background_image != blank %}
       <div class="gift-card__media" aria-hidden="true">
-        {% if card_bg_image != blank %}
-          {{
-            card_bg_image
-            | image_url: width: 1400
-            | image_tag:
-              widths: '600, 900, 1200, 1400',
-              sizes: '(max-width: 767px) 92vw, 660px',
-              preload: true,
-              alt: '',
-              class: 'gift-card__bg-image'
-          }}
-        {% else %}
-          <img
-            src="{{ card_bg_preset | asset_url }}"
-            width="1400"
-            height="800"
-            alt=""
-            class="gift-card__bg-image">
-        {% endif %}
+        {{
+          section.settings.card_background_image
+          | image_url: width: 1400
+          | image_tag:
+            widths: '600, 900, 1200, 1400',
+            sizes: '(max-width: 767px) 92vw, 660px',
+            preload: true,
+            alt: '',
+            class: 'gift-card__bg-image'
+        }}
         <span class="gift-card__overlay"></span>
       </div>
     {% endif %}
 
     <div class="git-card-header gift-card-header">
-      {% if card_logo != blank %}
+      {% if section.settings.logo != blank %}
         {{
-          card_logo
+          section.settings.logo
           | image_url: width: 600
           | image_tag:
             width: 300,
             preload: true,
             alt: shop.name,
-            class: 'logo logo--' | append: logo_style
+            class: 'logo'
         }}
       {% else %}
-        <img
-          src="{{ 'kiyaara-logo-giftcard.png' | asset_url }}"
-          width="300"
-          height="218"
-          alt="{{ shop.name | escape }}"
-          class="logo logo--{{ logo_style }}">
+        <h1 class="size--tiny">{{ shop.name }}</h1>
       {% endif %}
       <h5 class="gift-card-subheadin gift-card-subheading subheading">{{ card_subtitle }}</h5>
     </div>
@@ -181,10 +149,6 @@
   "tag": "section",
   "settings": [
     {
-      "type": "header",
-      "content": "Brand & Text"
-    },
-    {
       "type": "image_picker",
       "id": "logo",
       "label": "t:sections.header.blocks.logo.image.label",
@@ -207,48 +171,15 @@
       "default": "Gift card"
     },
     {
-      "type": "header",
-      "content": "Card background image"
-    },
-    {
       "type": "image_picker",
       "id": "card_background_image",
-      "label": "Custom card background image",
-      "info": "Upload a custom image, or leave empty to use the Kiyaara artwork preset below."
-    },
-    {
-      "type": "select",
-      "id": "card_bg_preset",
-      "label": "Kiyaara gift card artwork preset",
-      "default": "kiyaara-giftcard-01-1.png",
-      "options": [
-        {
-          "value": "kiyaara-giftcard-01-1.png",
-          "label": "1 — Deep Teal Monogram & Butterfly"
-        },
-        {
-          "value": "kiyaara-giftcard-01-2.png",
-          "label": "2 — Forest Green Moth & Floral"
-        },
-        {
-          "value": "kiyaara-giftcard-01.png",
-          "label": "3 — Cream Butterfly Garden"
-        },
-        {
-          "value": "kiyaara-giftcard-01-3.png",
-          "label": "4 — Sky Blue Gingham & Moth"
-        },
-        {
-          "value": "none",
-          "label": "None (Solid Card Color)"
-        }
-      ]
+      "label": "Card background image"
     },
     {
       "type": "color",
       "id": "card_overlay_color",
       "label": "Card image overlay color",
-      "default": "#181513"
+      "default": "#000000"
     },
     {
       "type": "range",
@@ -259,10 +190,6 @@
       "unit": "%",
       "label": "Card image overlay opacity",
       "default": 35
-    },
-    {
-      "type": "header",
-      "content": "Section & card colors"
     },
     {
       "type": "color_scheme",
@@ -277,6 +204,10 @@
       "default": true
     },
     {
+      "type": "header",
+      "content": "Gift card colors"
+    },
+    {
       "type": "color",
       "id": "color_card_foreground",
       "label": "Card Text",
@@ -286,7 +217,7 @@
       "type": "color",
       "id": "color_card_background",
       "label": "Card Background",
-      "default": "#181513"
+      "default": "#000000"
     }
   ]
 }
