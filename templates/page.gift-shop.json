@@ -432,7 +432,7 @@
         "sm_content_position": "center",
         "sm_text_alignment": "center",
         "text_alignment": "center",
-        "custom_bg_color": "#F5F0E6",
+        "custom_bg_color": "#f5f0e6",
         "custom_card_bg_color": "",
         "custom_border_color": "",
         "custom_card_border_color": "",
@@ -547,7 +547,7 @@
         "autoplay": false,
         "autoplay_speed": 5,
         "sliding_behavior": "all",
-        "custom_bg_color": "#F5F0E6",
+        "custom_bg_color": "#f5f0e6",
         "custom_card_bg_color": "#ffffff",
         "custom_border_color": "#f3ede2",
         "custom_card_border_color": "#ebd8d0",
@@ -606,6 +606,7 @@
         "heading_size": "h2",
         "text": "<p>Tell us what you have in mind and we'll take it from there. Share your details to customise your gifts, or reach out to us directly:</p>",
         "show_contact_cards": true,
+        "formcrm_embed_code": "",
         "recipient_email": "hello@houseofkiyaara.com",
         "name_label": "Name",
         "name_placeholder": "Your full name",
@@ -637,6 +638,79 @@
         "custom_btn_text_color": "#ffffff",
         "custom_btn_border_color": "#22201e"
       }
+    },
+    "featured_product_iYnznY": {
+      "type": "featured-product",
+      "blocks": {
+        "title_KcmP6i": {
+          "type": "title",
+          "settings": {
+            "margin_top": 8,
+            "sm_size_multiplier": "sm-size--default",
+            "size_multiplier": "size--default"
+          }
+        },
+        "price_tD7U3c": {
+          "type": "price",
+          "settings": {
+            "margin_top": 4,
+            "font_weight": "normal",
+            "sm_size_multiplier": "sm-size--default",
+            "size_multiplier": "size--default"
+          }
+        },
+        "description_VdJmiU": {
+          "type": "description",
+          "settings": {
+            "enable_collapsible": false,
+            "margin_top": 24
+          }
+        },
+        "variant_picker_BqWCEG": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "cross_out_unavailable": true,
+            "margin_top": 24
+          }
+        },
+        "buy_buttons_ynTP3R": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true,
+            "add_multipliers": "",
+            "add_multipliers_layout": "single-line",
+            "margin_top": 24
+          }
+        }
+      },
+      "block_order": [
+        "title_KcmP6i",
+        "price_tD7U3c",
+        "description_VdJmiU",
+        "variant_picker_BqWCEG",
+        "buy_buttons_ynTP3R"
+      ],
+      "name": "t:sections.featured-product.name",
+      "settings": {
+        "product": "kiyaaras-gift-card",
+        "color_scheme": "",
+        "product_image_aspect_ratio": "square",
+        "media_fill_rule": "contain",
+        "product_media_bg": "rgba(0,0,0,0)",
+        "media_border_radius": 0,
+        "open_as_drawer": false,
+        "sm-p": 0,
+        "media_layout": "traditional-below",
+        "media_col_width": "medium",
+        "sm_media_zoom": "slider",
+        "sm_media_gap": 24,
+        "enable_slider_peek": false,
+        "show_thumbnails_sm_down": false,
+        "media_zoom": "slider",
+        "media_gap": 3
+      }
     }
   },
   "order": [
@@ -648,6 +722,7 @@
     "gift_bespoke_grid",
     "rich_text_gift_who",
     "multicolumn_gift_who",
-    "rich_text_gift_concierge"
+    "rich_text_gift_concierge",
+    "featured_product_iYnznY"
   ]
 }
