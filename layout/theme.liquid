@@ -289,7 +289,15 @@
 {% render 'razorpay-magic-checkout' %}
 
 {%- liquid
-  assign gift_eligible_collection = collections['free-twilly-eligible-products']
+  assign gift_eligible_collection = collections['all-products-sitewide-auto']
+  if gift_eligible_collection == blank or gift_eligible_collection.id == nil
+    for c in collections
+      if c.title == 'All Products (Sitewide - Auto)'
+        assign gift_eligible_collection = c
+        break
+      endif
+    endfor
+  endif
   assign gift_product = settings.free_gift_product
   if gift_product == blank or gift_product.id == nil
     assign gift_product = all_products['dottie-twilly-sky-blue']
@@ -314,9 +322,13 @@
     giftThreshold: {{ gift_threshold_paise | json }},
     offerEndsAt: {{ gift_end_iso | json }},
     eligibleProductIds: [
-      {%- for p in gift_eligible_collection.products -%}
-        {{ p.id }}{% unless forloop.last %},{% endunless %}
-      {%- endfor -%}
+      {%- if gift_eligible_collection != blank -%}
+        {%- paginate gift_eligible_collection.products by 1000 -%}
+          {%- for p in gift_eligible_collection.products -%}
+            {{ p.id }}{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        {%- endpaginate -%}
+      {%- endif -%}
     ]
   };
 </script>

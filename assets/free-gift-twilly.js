@@ -69,16 +69,34 @@
     return headers;
   }
 
+  function isEligibleProduct(productId) {
+    return ELIGIBLE_PRODUCT_IDS.indexOf(Number(productId)) !== -1;
+  }
+
   function cartQualifies(cart) {
     if (!isOfferActive()) return false;
     var giftLine = findGiftLine(cart);
     if (giftLine && giftLine.price > 0) return false;
-    var qualifyingSubtotal = 0;
+
+    // Step 1: Check whether the cart total (excluding the free gift itself) meets the threshold
+    var cartTotal = 0;
     cart.items.forEach(function (item) {
       if (item.product_id === GIFT_PRODUCT_ID) return;
-      qualifyingSubtotal += item.line_price;
+      cartTotal += item.line_price;
     });
-    return qualifyingSubtotal >= GIFT_THRESHOLD;
+    if (cartTotal < GIFT_THRESHOLD) return false;
+
+    // Step 2: Check if the product ID(s) are present in the eligible collection
+    // ("All Products (Sitewide - Auto)") and that eligible products meet the threshold
+    var eligibleSubtotal = 0;
+    for (var i = 0; i < cart.items.length; i++) {
+      var item = cart.items[i];
+      if (item.product_id === GIFT_PRODUCT_ID) continue;
+      if (!isEligibleProduct(item.product_id)) continue;
+      eligibleSubtotal += item.line_price;
+    }
+
+    return eligibleSubtotal >= GIFT_THRESHOLD;
   }
 
   function isGiftItem(item) {
