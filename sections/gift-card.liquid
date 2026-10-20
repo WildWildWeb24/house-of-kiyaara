@@ -10,8 +10,6 @@
   assign card_bg = section.settings.color_card_background
   assign card_bg_with_transparency = card_bg | append: '88'
   assign card_bg_transparent = card_bg | append: '00'
-
-  assign overlay_opacity = section.settings.card_overlay_opacity | divided_by: 100.0
 %}
 
 <div class="gift-card-container color-{{ section.settings.color_scheme }}">
@@ -27,8 +25,6 @@
       --card-bg-transparent: {{ card_bg_transparent }};
       --card-color: {{ section.settings.color_card_foreground }};
       --card-logo-width: {{ section.settings.logo_max_width }}px;
-      --card-overlay-color: {{ section.settings.card_overlay_color }};
-      --card-overlay-opacity: {{ overlay_opacity }};
     ">
     {% if section.settings.card_background_image != blank %}
       <div class="gift-card__media" aria-hidden="true">
@@ -42,7 +38,6 @@
             alt: '',
             class: 'gift-card__bg-image'
         }}
-        <span class="gift-card__overlay"></span>
       </div>
     {% endif %}
 
@@ -160,7 +155,7 @@
       "step": 5,
       "unit": "px",
       "label": "Logo width",
-      "default": 140
+      "default": 160
     },
     {
       "type": "text",
@@ -171,22 +166,6 @@
       "type": "image_picker",
       "id": "card_background_image",
       "label": "Card background image"
-    },
-    {
-      "type": "color",
-      "id": "card_overlay_color",
-      "label": "Card image overlay color",
-      "default": "#000000"
-    },
-    {
-      "type": "range",
-      "id": "card_overlay_opacity",
-      "min": 0,
-      "max": 90,
-      "step": 5,
-      "unit": "%",
-      "label": "Card image overlay opacity",
-      "default": 35
     },
     {
       "type": "color_scheme",
