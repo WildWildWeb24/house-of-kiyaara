@@ -12,10 +12,6 @@
   assign card_bg_transparent = card_bg | append: '00'
 
   assign overlay_opacity = section.settings.card_overlay_opacity | divided_by: 100.0
-  assign card_subtitle = section.settings.card_subtitle
-  if card_subtitle == blank
-    assign card_subtitle = 'gift_cards.title' | t
-  endif
 %}
 
 <div class="gift-card-container color-{{ section.settings.color_scheme }}">
@@ -64,7 +60,9 @@
       {% else %}
         <h1 class="size--tiny">{{ shop.name }}</h1>
       {% endif %}
-      <h5 class="gift-card-subheadin gift-card-subheading subheading">{{ card_subtitle }}</h5>
+      {% if section.settings.card_subtitle != blank %}
+        <h5 class="gift-card-subheadin gift-card-subheading subheading">{{ section.settings.card_subtitle }}</h5>
+      {% endif %}
     </div>
 
     <div class="gift-card-balance-info sm-text-align-right">
@@ -167,7 +165,7 @@
     {
       "type": "text",
       "id": "card_subtitle",
-      "label": "Gift card text",
+      "label": "Gift card text"
     },
     {
       "type": "image_picker",

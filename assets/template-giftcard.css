@@ -131,16 +131,6 @@
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
 
-.gift-card-subheadin::before,
-.gift-card-subheading::before {
-  content: "";
-  display: inline-block;
-  width: 18px;
-  height: 1.5px;
-  background-color: #df8373;
-  flex-shrink: 0;
-}
-
 .gift-card-balance-info {
   margin-bottom: 12px;
 }
