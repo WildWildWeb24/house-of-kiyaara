@@ -109,7 +109,7 @@
     "article_card_show_content": true,
     "card_border_radius": 0,
     "enable_br_on_images": false,
-    "default_background_graphics": "tilted",
+    "default_background_graphics": "wave",
     "grain_size": "75px",
     "grain_opacity": 25,
     "vignette_opacity": 20,
@@ -155,11 +155,9 @@
           "logo_max_width": 140,
           "card_subtitle": "Gift Crad",
           "card_background_image": "shopify://shop_images/kiyaara-giftcard-01-1.png",
-          "card_overlay_color": "#22201e",
-          "card_overlay_opacity": 0,
           "color_scheme": "",
           "show_section_background": true,
-          "color_card_foreground": "#ffffff",
+          "color_card_foreground": "#F5F0E6",
           "color_card_background": "#181513"
         }
       }
