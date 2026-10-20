@@ -37,6 +37,10 @@
 
 .container[id$="image_with_text_gift_hero"] {
   max-width: 1440px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
   padding-left: 24px;
   padding-right: 24px;
   background-color: var(--gs-bg, transparent);
@@ -251,13 +255,27 @@
   background-color: var(--gs-accent, #c46d5e);
 }
 
+.container[id$="rich_text_gift_who"],
 .container[id$="multicolumn_gift_who"] {
   max-width: 1440px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
   padding-left: 24px;
   padding-right: 24px;
 }
 
+@media (min-width: 768px) {
+  .container[id$="rich_text_gift_who"],
+  .container[id$="multicolumn_gift_who"] {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
 @media (min-width: 1200px) {
+  .container[id$="rich_text_gift_who"],
   .container[id$="multicolumn_gift_who"] {
     padding-left: 96px;
     padding-right: 96px;
@@ -388,6 +406,10 @@
 
 .gift-shop-deck-section .container {
   max-width: 1440px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
   padding-left: 24px;
   padding-right: 24px;
 }
@@ -655,14 +677,40 @@
 
 [id$="collection_switcher_gift_curated"] .container {
   max-width: 1440px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
   padding-left: 24px;
   padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+  [id$="collection_switcher_gift_curated"] .container {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  [id$="collection_switcher_gift_curated"] .tab-contents {
+    max-width: 1440px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding-left: calc(48px + var(--container-margin, 40px));
+    padding-right: calc(48px + var(--container-margin, 40px));
+  }
 }
 
 @media (min-width: 1200px) {
   [id$="collection_switcher_gift_curated"] .container {
     padding-left: 96px;
     padding-right: 96px;
+  }
+
+  [id$="collection_switcher_gift_curated"] .tab-contents {
+    padding-left: calc(96px + var(--container-margin, 40px));
+    padding-right: calc(96px + var(--container-margin, 40px));
   }
 }
 
@@ -811,6 +859,10 @@
 
 .gift-bespoke-grid-section .container {
   max-width: 1440px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
   padding-left: 24px;
   padding-right: 24px;
 }
@@ -983,6 +1035,10 @@
 
 .container[id$="rich_text_gift_concierge"] {
   max-width: 1440px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
   padding-left: 24px;
   padding-right: 24px;
 }
@@ -1247,6 +1303,10 @@
 
 .gift-concierge-section .container {
   max-width: 1440px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
   padding-left: 16px;
   padding-right: 16px;
 }
