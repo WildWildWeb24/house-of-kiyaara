@@ -154,10 +154,10 @@
           "logo": "shopify://shop_images/logo_3c90e42e-91d4-4082-a7c4-6fbd13fd596b.png",
           "logo_max_width": 140,
           "card_subtitle": "Gift Crad",
-          "card_background_image": "shopify://shop_images/kiyaara-giftcard-01-1.png",
+          "card_background_image": "shopify://shop_images/kiyaara-giftcard-01_8ba45078-b9ee-4173-b061-191e048b226a.png",
           "color_scheme": "",
           "show_section_background": true,
-          "color_card_foreground": "#F5F0E6",
+          "color_card_foreground": "#f5f0e6",
           "color_card_background": "#181513"
         }
       }
