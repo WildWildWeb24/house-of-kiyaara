@@ -81,7 +81,7 @@
         "text_hero": {
           "type": "text",
           "settings": {
-            "text": "<p>Some gifts get thanked and forgotten. Ours are meant to get carried everyday. Every Kiyaara piece begins with a hand-painted story, so what you give is a little bit of art, wrapped in joy, for the people who matter to your work, your family or your celebration.</p><p><em>From festive and wedding gifting, to team milestones and client thank-yous, all delivered across India.</em></p><p><strong>Bulk and custom wrapping welcome.</strong></p>",
+            "text": "<p>A little bit of art, wrapped with joy, for the people who matter. Every Kiyaara piece begins with a hand-painted story, so what you give is a little bit of art, wrapped in joy, for the people who matter to your work, your family or your celebration.</p><p>From festive and wedding gifting, to team milestones and client thank-yous, all delivered across India.</p><p><strong>Bulk and custom wrapping welcome.</strong></p>",
             "sm_size_multiplier": "sm-size--default",
             "sm_margin_top": 16,
             "size_multiplier": "size--default",
@@ -91,7 +91,7 @@
         "button_hero": {
           "type": "button",
           "settings": {
-            "button_label": "LET'S PLAN YOUR GIFTING TOGETHER",
+            "button_label": "Let's plan your gifting together",
             "button_link": "#shopify-section-rich_text_gift_concierge",
             "button_style": "",
             "sm_size_multiplier": "sm-size--default",
@@ -214,7 +214,7 @@
       "settings": {
         "title": "Why a Kiyaara gift feels different",
         "heading_size": "h2",
-        "button_label": "EXPLORE OUR BUNDLES",
+        "button_label": "Explore our bundles",
         "button_link": "#shopify-section-collection_switcher_gift_curated",
         "enable_autoplay": true,
         "autoplay_speed": 4,
@@ -571,7 +571,7 @@
           "type": "contact_card",
           "settings": {
             "icon_type": "email",
-            "button_sublabel": "EMAIL US AT",
+            "button_sublabel": "Email us at",
             "button_label": "hello@houseofkiyaara.com",
             "button_link": "mailto:hello@houseofkiyaara.com"
           }
@@ -580,7 +580,7 @@
           "type": "contact_card",
           "settings": {
             "icon_type": "whatsapp",
-            "button_sublabel": "CHAT WITH US ON WHATSAPP",
+            "button_sublabel": "Chat with us on Whatsapp",
             "button_label": "+91 96191 00226",
             "button_link": "https://wa.me/919619100226"
           }
@@ -589,7 +589,7 @@
           "type": "contact_card",
           "settings": {
             "icon_type": "phone",
-            "button_sublabel": "CALL US ON",
+            "button_sublabel": "Call us on",
             "button_label": "+91 96191 00226",
             "button_link": "tel:+919619100226"
           }
@@ -619,7 +619,7 @@
         "quantity_options": "10-20, 21-30, 30+",
         "message_label": "Describe your request",
         "message_placeholder": "Tell us about your occasion, delivery timeline, and any customisation requirements...",
-        "submit_label": "SUBMIT",
+        "submit_label": "Submit",
         "success_message": "Thank you! We've received your gifting request and will reach out to you shortly.",
         "color_scheme": "default",
         "md_padding_top": 36,
