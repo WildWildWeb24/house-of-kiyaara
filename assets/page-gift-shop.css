@@ -13,7 +13,7 @@
   z-index: 30 !important;
 }
 
-/* Shared Subheading / Eyebrow Accent Override */
+/* Shared Subheading / Eyebrow Accent Override & Preserve Theme Editor Casing */
 [id^="shopify-section-"][id$="image_with_text_gift_hero"] .subheading,
 [id^="shopify-section-"][id$="rich_text_gift_who"] .subheading,
 [id^="shopify-section-"][id$="collection_switcher_gift_curated"] .subheading,
@@ -25,6 +25,12 @@
 .container[id$="image_with_text_gift_bespoke"] .subheading,
 .container[id$="rich_text_gift_concierge"] .subheading {
   color: var(--gs-accent, #c46d5e) !important;
+  text-transform: none !important;
+}
+
+.template-page .main-content .btn,
+.template-page .main-content .subheading {
+  text-transform: none !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -143,10 +149,10 @@
   border: var(--gs-border-width, 1px) solid var(--gs-btn-border, var(--gs-btn-bg, #22201e)) !important;
   border-radius: 0 !important;
   padding: 18px 32px !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
   font-weight: 500 !important;
-  letter-spacing: 0.14em !important;
-  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -172,9 +178,9 @@
 @media (max-width: 767px) {
   .container[id$="image_with_text_gift_hero"] .btn {
     width: 100% !important;
-    padding: 15px 10px !important;
-    font-size: clamp(9.5px, 2.8vw, 10.5px) !important;
-    letter-spacing: 0.08em !important;
+    padding: 15px 12px !important;
+    font-size: clamp(12px, 3.4vw, 13.5px) !important;
+    letter-spacing: 0.02em !important;
     white-space: nowrap !important;
     gap: 8px !important;
   }
@@ -651,10 +657,10 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-transform: none;
   color: var(--gs-btn-text, var(--gs-heading, #22201e));
   text-decoration: none;
   padding-bottom: 6px;
@@ -732,10 +738,10 @@
 
 [id$="collection_switcher_gift_curated"] .switcher-selector-prompt {
   font-family: var(--font-body-family);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-transform: none;
   color: var(--gs-accent, #c46d5e);
   text-align: center;
   margin: 0 auto 18px;
@@ -776,10 +782,10 @@
 
 [id$="collection_switcher_gift_curated"] .tab-title > * {
   font-family: var(--font-body-family) !important;
-  font-size: 11px !important;
+  font-size: 13px !important;
   font-weight: 400 !important;
-  letter-spacing: 0.14em !important;
-  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  text-transform: none !important;
   text-decoration: none !important;
   color: var(--gs-text, #736b66) !important;
   margin: 0 !important;
@@ -794,7 +800,7 @@
 
 @media (min-width: 768px) {
   [id$="collection_switcher_gift_curated"] .tab-title > * {
-    font-size: 12px !important;
+    font-size: 14px !important;
   }
 }
 
@@ -904,10 +910,10 @@
 }
 
 .gift-bespoke-grid__eyebrow {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-transform: none;
   color: var(--gs-accent, #c46d5e);
   margin: 0 0 10px;
 }
@@ -1001,10 +1007,10 @@
 .gift-bespoke-card__subtitle {
   display: block;
   font-family: var(--font-body-family);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-transform: none;
   color: var(--gs-accent, #c46d5e);
 }
 
@@ -1187,7 +1193,7 @@
 }
 
 .container[id$="rich_text_gift_concierge"] .btn-group .btn:nth-child(1)::after {
-  content: "EMAIL US AT";
+  content: "Email us at";
 }
 
 /* Contact 2: WhatsApp logo icon + label */
@@ -1196,7 +1202,7 @@
 }
 
 .container[id$="rich_text_gift_concierge"] .btn-group .btn:nth-child(2)::after {
-  content: "CHAT WITH US ON WHATSAPP";
+  content: "Chat with us on WhatsApp";
 }
 
 /* Contact 3: Phone call icon + label */
@@ -1205,7 +1211,7 @@
 }
 
 .container[id$="rich_text_gift_concierge"] .btn-group .btn:nth-child(3)::after {
-  content: "CALL US ON";
+  content: "Call us on";
 }
 
 /* Override with custom sublabel from Theme Editor when set */
@@ -1218,9 +1224,10 @@
   top: 16px;
   left: 84px;
   font-family: var(--font-body-family);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.03em;
+  text-transform: none;
   color: #a39b95;
   line-height: 1;
 }
@@ -1278,8 +1285,8 @@
   .container[id$="rich_text_gift_concierge"] .btn-group .btn::after {
     top: 11px;
     left: 56px;
-    font-size: 8.5px;
-    letter-spacing: 0.08em;
+    font-size: 9.5px;
+    letter-spacing: 0.02em;
     white-space: nowrap;
   }
 }
@@ -1352,10 +1359,10 @@
 }
 
 .gift-concierge__eyebrow {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-transform: none;
   color: var(--gs-accent, #c46d5e);
   margin: 0 0 8px;
 }
@@ -1457,10 +1464,10 @@
   top: 9px;
   left: 54px;
   font-family: var(--font-body-family);
-  font-size: 8.5px;
+  font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-transform: none;
   color: #a39b95;
   line-height: 1;
   white-space: nowrap;
@@ -1496,10 +1503,10 @@
 
 .gift-concierge__label {
   font-family: var(--font-body-family);
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-transform: none;
   color: var(--gs-heading, #22201e);
 }
 
@@ -1573,10 +1580,10 @@
   border: 1px solid var(--gs-btn-border, var(--gs-btn-bg, #22201e));
   padding: 16px 32px;
   font-family: var(--font-body-family);
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-transform: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
