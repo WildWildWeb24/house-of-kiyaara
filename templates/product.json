@@ -768,10 +768,10 @@
         "custom_spacing_Camz83": {
           "type": "custom_spacing",
           "settings": {
-            "sm_margin_top": 0,
+            "sm_margin_top": 40,
             "sm_padding_top": 0,
             "sm_padding_bottom": 0,
-            "margin_top": 0,
+            "margin_top": 40,
             "padding_top": 0,
             "padding_bottom": 0
           }
