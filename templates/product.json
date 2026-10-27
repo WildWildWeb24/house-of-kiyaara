@@ -243,7 +243,6 @@
         "collapsible_tab_QicLn9": {
           "type": "collapsible_tab",
           "name": "Why You'll Love It",
-          "disabled": true,
           "settings": {
             "title": "Why You'll Love It",
             "content": "<p>{{ product.metafields.custom.wul_description | metafield_tag }}</p>",
