@@ -108,10 +108,11 @@
         },
         "image_FAdx8z": {
           "type": "image",
-          "name": "Under ₹1200",
+          "name": "Under ₹999",
           "settings": {
-            "media_link": "shopify://collections/all-bags",
-            "title": "<p>Under<br/>₹1200</p><p></p>",
+            "image": "shopify://shop_images/under_999.webp",
+            "media_link": "shopify://collections/under-999",
+            "title": "<p>Under<br/>₹999</p><p></p>",
             "button_label": "Shop Now",
             "button_style": "primary",
             "color_scheme": "",
@@ -121,10 +122,11 @@
         },
         "image_qemUVY": {
           "type": "image",
-          "name": "Under ₹2200",
+          "name": "Under ₹2500",
           "settings": {
-            "media_link": "shopify://collections/all-bags",
-            "title": "<p>Under<br/>₹2200</p><p></p>",
+            "image": "shopify://shop_images/under_2500.webp",
+            "media_link": "shopify://collections/under-2-500",
+            "title": "<p>Under<br/>₹2500</p><p></p>",
             "button_label": "Shop Now",
             "button_style": "primary",
             "color_scheme": "",
@@ -134,10 +136,11 @@
         },
         "image_GnQcjq": {
           "type": "image",
-          "name": "Under ₹3200",
+          "name": "Under ₹3500",
           "settings": {
-            "media_link": "shopify://collections/all-bags",
-            "title": "<p>Under<br/>₹3200</p><p></p>",
+            "image": "shopify://shop_images/under_3500.webp",
+            "media_link": "shopify://collections/under-3-500",
+            "title": "<p>Under<br/>₹3500</p><p></p>",
             "button_label": "Shop Now",
             "button_style": "primary",
             "color_scheme": "",
@@ -147,10 +150,11 @@
         },
         "image_ewiRh4": {
           "type": "image",
-          "name": "Under ₹3200",
+          "name": "Under ₹4000",
           "settings": {
-            "media_link": "shopify://collections/all-bags",
-            "title": "<p>Under<br/>₹3200</p><p></p>",
+            "image": "shopify://shop_images/under_4000.webp",
+            "media_link": "shopify://collections/under-4-000",
+            "title": "<p>Under<br/>₹4000</p><p></p>",
             "button_label": "Shop Now",
             "button_style": "primary",
             "color_scheme": "",
@@ -160,10 +164,11 @@
         },
         "image_FXFT7W": {
           "type": "image",
-          "name": "Under ₹3200",
+          "name": "Under ₹6000",
           "settings": {
-            "media_link": "shopify://collections/all-bags",
-            "title": "<p>Under<br/>₹3200</p><p></p>",
+            "image": "shopify://shop_images/under_6000.webp",
+            "media_link": "shopify://collections/under-6-000",
+            "title": "<p>Under<br/>₹6000</p><p></p>",
             "button_label": "Shop Now",
             "button_style": "primary",
             "color_scheme": "",
