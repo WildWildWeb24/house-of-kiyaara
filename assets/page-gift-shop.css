@@ -1653,12 +1653,3 @@
   min-width: 0;
   max-width: 100%;
 }
-.gift-concierge-section .gift-concierge__textarea {
-  min-height: 160px;
-}
-
-@media (max-width: 767px) {
-  .gift-concierge-section .gift-concierge__textarea {
-    min-height: 190px;
-  }
-}
