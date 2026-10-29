@@ -719,6 +719,9 @@
         "btn_whatsapp",
         "btn_phone"
       ],
+      "custom_css": [
+        "@media (max-width: 1023px) {.gift-concierge__card {background-color: #f5f0e6 !important; }}"
+      ],
       "settings": {
         "subtitle": "",
         "title": "Let's plan your gifting",
