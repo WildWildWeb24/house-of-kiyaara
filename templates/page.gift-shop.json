@@ -51,6 +51,125 @@
         "text_alignment": "center"
       }
     },
+    "rich_text_i6eTAg": {
+      "type": "rich-text",
+      "blocks": {
+        "title_MzbEXy": {
+          "type": "title",
+          "settings": {
+            "title": "Something special for< that special one",
+            "heading_tag": "h2",
+            "sm_size_multiplier": "sm-size--large",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--large",
+            "margin_top": 0
+          }
+        }
+      },
+      "block_order": [
+        "title_MzbEXy"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "color_scheme": "",
+        "content_width": "default",
+        "sm_content_position": "center",
+        "sm_text_alignment": "center",
+        "text_alignment": "center",
+        "custom_bg_color": "",
+        "custom_card_bg_color": "",
+        "custom_border_color": "",
+        "custom_card_border_color": "",
+        "custom_border_width": 1,
+        "custom_accent_color": "",
+        "custom_heading_color": "",
+        "custom_text_color": "",
+        "custom_btn_bg_color": "",
+        "custom_btn_text_color": "",
+        "custom_btn_border_color": "",
+        "md_padding_top": 80,
+        "md_padding_bottom": 0,
+        "padding_top": 48,
+        "padding_bottom": 0
+      }
+    },
+    "promo_grid_and_slideshow_Key7y8": {
+      "type": "promo-grid-and-slideshow",
+      "blocks": {
+        "image_FAdx8z": {
+          "type": "image",
+          "name": "Under ₹1200",
+          "settings": {
+            "media_link": "shopify://collections/all-bags",
+            "title": "<p>Under<br/>₹1200</p><p></p>",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 15,
+            "content_alignment": "v-bottom h-center"
+          }
+        },
+        "image_qemUVY": {
+          "type": "image",
+          "name": "Under ₹2200",
+          "settings": {
+            "media_link": "shopify://collections/all-bags",
+            "title": "<p>Under<br/>₹2200</p><p></p>",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 15,
+            "content_alignment": "v-bottom h-center"
+          }
+        },
+        "image_GnQcjq": {
+          "type": "image",
+          "name": "Under ₹3200",
+          "settings": {
+            "media_link": "shopify://collections/all-bags",
+            "title": "<p>Under<br/>₹3200</p><p></p>",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 15,
+            "content_alignment": "v-bottom h-center"
+          }
+        }
+      },
+      "block_order": [
+        "image_FAdx8z",
+        "image_qemUVY",
+        "image_GnQcjq"
+      ],
+      "custom_css": [
+        ".banner-overlay {justify-content: flex-start !important; align-items: flex-start !important; text-align: left !important; padding: 12px 12px 70px !important;}",
+        ".banner-overlay > :last-child {position: absolute !important; bottom: 20px; left: 50%; transform: translateX(-50%); margin: 0 !important; white-space: nowrap;}",
+        ".banner-overlay p {font-size: 40px !important; line-height: 1.1; margin: 0;}",
+        ".banner-overlay p::first-line {font-size: 14px;}"
+      ],
+      "name": "t:sections.promo-grid-slideshow.name",
+      "settings": {
+        "color_scheme": "default",
+        "sm_block_aspect_ratio": "square",
+        "layout_desktop": "slide",
+        "section_columns_desktop": 3,
+        "sm_grid_gap": 12,
+        "sm_padding": 40,
+        "enable_full_width": false,
+        "sm_rounded_corners": false,
+        "section_columns_tablet": 2,
+        "block_aspect_ratio": "square",
+        "layout_mobile": "slide",
+        "section_columns_mobile": 1,
+        "grid_gap": 0,
+        "padding": 20,
+        "sm_down_edge_to_edge": false,
+        "rounded_corners": false,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "single"
+      }
+    },
     "image_with_text_gift_hero": {
       "type": "image-with-text",
       "blocks": {
@@ -805,6 +924,8 @@
   "order": [
     "main",
     "hero_gift_banner",
+    "rich_text_i6eTAg",
+    "promo_grid_and_slideshow_Key7y8",
     "image_with_text_gift_hero",
     "gift_shop_deck",
     "collection_switcher_gift_curated",
