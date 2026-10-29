@@ -722,11 +722,10 @@
 
 [id$="collection_switcher_gift_curated"] .section-header .h2,
 [id$="collection_switcher_gift_curated"] .section-header h2 {
-  font-size: clamp(32px, 3vw, 40px);
-  font-weight: 400;
   color: var(--gs-heading, #22201e);
   margin-bottom: 12px;
 }
+
 
 [id$="collection_switcher_gift_curated"] .section-header p {
   font-size: 15px;
@@ -1368,16 +1367,11 @@
 }
 
 .gift-concierge__title {
-  font-size: clamp(24px, 6.8vw, 28px);
-  line-height: 1.2;
-  font-weight: 400;
   color: var(--gs-heading, #22201e);
   margin: 0 0 14px;
 }
-
 @media (min-width: 768px) {
   .gift-concierge__title {
-    font-size: clamp(32px, 3vw, 40px);
     margin: 0 0 16px;
   }
 }
