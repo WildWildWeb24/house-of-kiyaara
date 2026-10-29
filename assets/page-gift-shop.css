@@ -1615,3 +1615,41 @@
   border: 1px solid #ecc6c2;
   color: #8c2d24;
 }
+
+/* Gift concierge: prevent cramped tablet columns */
+@media (min-width: 768px) and (max-width: 1099px) {
+  .gift-concierge-section .container {
+    padding-inline: 24px;
+  }
+
+  .gift-concierge-section .gift-concierge__card {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 32px 0;
+    gap: 32px;
+  }
+}
+
+/* Keep contact text and form controls inside their columns */
+.gift-concierge-section .gift-concierge__info,
+.gift-concierge-section .gift-concierge__form-wrap,
+.gift-concierge-section .gift-concierge__field {
+  min-width: 0;
+}
+
+.gift-concierge-section .gift-concierge__contact-btn {
+  box-sizing: border-box;
+  white-space: normal;
+}
+
+.gift-concierge-section .gift-concierge__contact-value {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.gift-concierge-section .gift-concierge__input,
+.gift-concierge-section .gift-concierge__select,
+.gift-concierge-section .gift-concierge__textarea {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+}
