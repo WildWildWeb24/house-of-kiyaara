@@ -278,6 +278,13 @@
         "tab_tier_1": {
           "type": "collection-tab",
           "settings": {
+            "tab_title": "Bags",
+            "collection": "all-bags"
+          }
+        },
+        "collection_tab_VCKjRT": {
+          "type": "collection-tab",
+          "settings": {
             "tab_title": "Wallets",
             "collection": "wallets-for-women"
           }
@@ -311,6 +318,7 @@
       "block_order": [
         "header_curated",
         "tab_tier_1",
+        "collection_tab_VCKjRT",
         "tab_tier_2",
         "tab_tier_3",
         "spacing_curated"
@@ -322,7 +330,7 @@
         "view_all": false,
         "enable_card_thumbnail": false,
         "layout_desktop": "slide",
-        "products_per_row_desktop": 3,
+        "products_per_row_desktop": 4,
         "products_per_row_tablet": 2,
         "layout_mobile": "slide",
         "products_per_row_mobile": 1,
