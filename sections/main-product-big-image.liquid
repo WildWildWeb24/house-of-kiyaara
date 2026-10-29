@@ -375,7 +375,7 @@
 
 {%- liquid
   # Sticky buy bar
-  if section.settings.sticky_buy_bar
+  if section.settings.sticky_buy_bar and product.price != 0 and product.selected_or_first_available_variant.price != 0
     render 'product-buy-bar', product_form_id: product_form_id, product_image_aspect_ratio: section.settings.product_image_aspect_ratio, is_preorder: is_preorder, color_scheme: section.settings.sticky_buy_bar_color_scheme
   endif
 
