@@ -119,6 +119,7 @@
         "button_hero",
         "spacing_hero"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "default",
         "media_position": "media_last",
@@ -211,6 +212,7 @@
         "card_4",
         "card_5"
       ],
+      "disabled": true,
       "settings": {
         "title": "Why a Kiyaara gift feels different",
         "heading_size": "h2",
@@ -246,8 +248,8 @@
             "title": "Curated with love",
             "text": "<p>From small tokens to statement sets, there's a Kiyaara gift for every list and every budget.</p>",
             "text_alignment": "center",
-            "subtitle_tag": "h3",
-            "title_tag": "h2",
+            "subtitle_tag": "h4",
+            "title_tag": "h1",
             "sm_size_multiplier": "sm-size--default",
             "size_multiplier": "size--default"
           }
@@ -293,7 +295,7 @@
         "spacing_curated"
       ],
       "settings": {
-        "selector_prompt_text": "Discover our bundles and collections below",
+        "selector_prompt_text": "",
         "color_scheme": "default",
         "product_limit": 6,
         "view_all": false,
@@ -326,6 +328,93 @@
         "md_padding_bottom": 32,
         "padding_top": 16,
         "padding_bottom": 16
+      }
+    },
+    "multicolumn_TzT6Kk": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_MpxkTT": {
+          "type": "column",
+          "settings": {
+            "press_date": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "Column heading",
+            "text": "<p>Use block settings to manage media, text and button content for each column. Use the section settings to change display settings for all the columns.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
+        "column_43WEE7": {
+          "type": "column",
+          "settings": {
+            "press_date": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "Column heading",
+            "text": "<p>Use block settings to manage media, text and button content for each column. Use the section settings to change display settings for all the columns.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
+        "column_b64A8t": {
+          "type": "column",
+          "settings": {
+            "press_date": "",
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "Column heading",
+            "text": "<p>Use block settings to manage media, text and button content for each column. Use the section settings to change display settings for all the columns.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_MpxkTT",
+        "column_43WEE7",
+        "column_b64A8t"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "color_scheme": "",
+        "alignment": "left",
+        "layout_desktop": "grid",
+        "items_per_row_desktop": 4,
+        "sm_media_aspect_ratio": "natural",
+        "items_per_row_tablet": 2,
+        "layout_mobile": "slide peek",
+        "media_aspect_ratio": "natural",
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "all",
+        "custom_bg_color": "",
+        "custom_card_bg_color": "",
+        "custom_border_color": "",
+        "custom_card_border_color": "",
+        "custom_border_width": 1,
+        "custom_accent_color": "",
+        "custom_heading_color": "",
+        "custom_text_color": "",
+        "custom_btn_bg_color": "",
+        "custom_btn_text_color": "",
+        "custom_btn_border_color": "",
+        "md_padding_top": 32,
+        "md_padding_bottom": 96,
+        "padding_top": 24,
+        "padding_bottom": 64
       }
     },
     "gift_bespoke_grid": {
@@ -719,6 +808,7 @@
     "image_with_text_gift_hero",
     "gift_shop_deck",
     "collection_switcher_gift_curated",
+    "multicolumn_TzT6Kk",
     "gift_bespoke_grid",
     "rich_text_gift_who",
     "multicolumn_gift_who",
