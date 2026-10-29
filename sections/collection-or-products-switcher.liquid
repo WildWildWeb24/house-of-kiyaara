@@ -217,14 +217,8 @@
       {%- endif -%}
       {{ tab_titles }}
     </div>
+    {{ tab_contents }}
 
-    {% if template.name == 'page' and template.suffix == 'gift-shop' %}
-      <div class="container">
-        {{ tab_contents }}
-      </div>
-    {% else %}
-      {{ tab_contents }}
-    {% endif %}
   </tab-container>
 </div>
 
