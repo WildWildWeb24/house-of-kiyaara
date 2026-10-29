@@ -1653,3 +1653,20 @@
   min-width: 0;
   max-width: 100%;
 }
+/* Align Gift Shop products with the wider content below */
+@media (min-width: 1024px) {
+  [id$="collection_switcher_gift_curated"] .tab-contents {
+    width: min(
+      var(--ideal-width),
+      calc(100% - var(--container-margin) * 2)
+    );
+    margin-inline: auto;
+  }
+
+  [id$="collection_switcher_gift_curated"]
+  .show-overflow-items .gridy-track {
+    padding-inline: 0;
+    scroll-padding-inline: 0;
+    --gap: var(--gutter);
+  }
+}
