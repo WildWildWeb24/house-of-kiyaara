@@ -57,11 +57,11 @@
         "text_HNLrUn": {
           "type": "text",
           "settings": {
-            "text": "<h1>Something special for<br/>that special one</h1>",
+            "text": "<h2>Something special for<br/>that special one</h2>",
             "sm_size_multiplier": "sm-size--default",
-            "sm_margin_top": 12,
+            "sm_margin_top": 0,
             "size_multiplier": "size--default",
-            "margin_top": 12
+            "margin_top": 0
           }
         }
       },
@@ -270,7 +270,7 @@
             "text": "<p>From small tokens to statement sets, there's a Kiyaara gift for every list and every budget.</p>",
             "text_alignment": "center",
             "subtitle_tag": "h4",
-            "title_tag": "h1",
+            "title_tag": "h2",
             "sm_size_multiplier": "sm-size--default",
             "size_multiplier": "size--default"
           }
@@ -528,9 +528,9 @@
           "settings": {
             "title": "Who are you gifting?",
             "heading_tag": "h2",
-            "sm_size_multiplier": "sm-size--large",
+            "sm_size_multiplier": "sm-size--default",
             "sm_margin_top": 0,
-            "size_multiplier": "size--large",
+            "size_multiplier": "size--default",
             "margin_top": 0
           }
         }
@@ -722,7 +722,7 @@
       "settings": {
         "subtitle": "",
         "title": "Let's plan your gifting",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "text": "<p>Tell us what you have in mind and we'll take it from there. Share your details to customise your gifts, or reach out to us directly:</p>",
         "show_contact_cards": true,
         "formcrm_embed_code": "",
