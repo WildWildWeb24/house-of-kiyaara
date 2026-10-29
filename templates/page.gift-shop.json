@@ -57,7 +57,7 @@
         "text_HNLrUn": {
           "type": "text",
           "settings": {
-            "text": "<h2>Something special for<br/>that special one</h2>",
+            "text": "<h1>Something special for<br/>that special one</h1>",
             "sm_size_multiplier": "sm-size--default",
             "sm_margin_top": 12,
             "size_multiplier": "size--default",
@@ -95,6 +95,17 @@
     "promo_grid_and_slideshow_Key7y8": {
       "type": "promo-grid-and-slideshow",
       "blocks": {
+        "custom_spacing_DQUgTr": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 30,
+            "sm_padding_bottom": 30,
+            "margin_top": 0,
+            "padding_top": 30,
+            "padding_bottom": 30
+          }
+        },
         "image_FAdx8z": {
           "type": "image",
           "name": "Under ₹1200",
@@ -162,6 +173,7 @@
         }
       },
       "block_order": [
+        "custom_spacing_DQUgTr",
         "image_FAdx8z",
         "image_qemUVY",
         "image_GnQcjq",
@@ -172,7 +184,8 @@
         ".banner-overlay {justify-content: flex-start !important; align-items: flex-start !important; text-align: left !important; padding: 12px 12px 70px !important;}",
         ".banner-overlay > :last-child {position: absolute !important; bottom: 20px; left: 50%; transform: translateX(-50%); margin: 0 !important; white-space: nowrap;}",
         ".banner-overlay p {font-size: 40px !important; line-height: 1.1; margin: 0;}",
-        ".banner-overlay p::first-line {font-size: 14px;}"
+        ".banner-overlay p::first-line {font-size: 14px;}",
+        "@media (max-width: 767px) {.banner + .banner {margin-top: 10px !important; }}"
       ],
       "name": "t:sections.promo-grid-slideshow.name",
       "settings": {
@@ -197,191 +210,48 @@
         "sliding_behavior": "single"
       }
     },
-    "image_with_text_gift_hero": {
-      "type": "image-with-text",
+    "rich_text_eV7dCJ": {
+      "type": "rich-text",
       "blocks": {
-        "image_hero": {
-          "type": "image",
-          "settings": {
-            "media_toggle": "show_image",
-            "media_aspect_ratio": "square",
-            "image": "shopify://shop_images/HOK-Festive0113-retouched.png",
-            "video_autoplay": true,
-            "video_controls": false,
-            "show_floating_badge": false,
-            "badge_subtitle": "",
-            "badge_text": ""
-          }
-        },
-        "title_hero": {
-          "type": "title",
-          "settings": {
-            "title": "The joy of gifting,[br]with Kiyaara",
-            "heading_tag": "h1",
-            "sm_size_multiplier": "sm-size--huge",
-            "sm_margin_top": 0,
-            "size_multiplier": "size--huge",
-            "margin_top": 0
-          }
-        },
-        "text_hero": {
-          "type": "text",
-          "settings": {
-            "text": "<p>A little bit of art, wrapped with joy, for the people who matter. Every Kiyaara piece begins with a hand-painted story, so what you give is a little bit of art, wrapped in joy, for the people who matter to your work, your family or your celebration.</p><p>From festive and wedding gifting, to team milestones and client thank-yous, all delivered across India.</p><p><strong>Bulk and custom wrapping welcome.</strong></p>",
-            "sm_size_multiplier": "sm-size--default",
-            "sm_margin_top": 16,
-            "size_multiplier": "size--default",
-            "margin_top": 16
-          }
-        },
-        "button_hero": {
+        "button_n9ztzQ": {
           "type": "button",
           "settings": {
-            "button_label": "Let's plan your gifting together",
-            "button_link": "#shopify-section-rich_text_gift_concierge",
-            "button_style": "",
+            "button_label": "See more gift options",
+            "button_sublabel": "",
+            "button_link": "shopify://collections/all-bags",
+            "button_style": "link",
             "sm_size_multiplier": "sm-size--default",
-            "sm_margin_top": 32,
-            "size_multiplier": "size--default",
-            "margin_top": 24
-          }
-        },
-        "spacing_hero": {
-          "type": "custom_spacing",
-          "settings": {
-            "sm_margin_top": 0,
-            "sm_padding_top": 80,
-            "sm_padding_bottom": 80,
-            "margin_top": 0,
-            "padding_top": 32,
-            "padding_bottom": 48
+            "sm_margin_top": -10,
+            "size_multiplier": "size--small",
+            "margin_top": -10
           }
         }
       },
       "block_order": [
-        "image_hero",
-        "title_hero",
-        "text_hero",
-        "button_hero",
-        "spacing_hero"
+        "button_n9ztzQ"
       ],
-      "disabled": true,
+      "name": "t:sections.rich-text.name",
       "settings": {
-        "color_scheme": "default",
-        "media_position": "media_last",
-        "media_width": "6",
-        "desktop_alignment": "left",
-        "vertical_position": "col-align-items-center",
-        "sm_full_width_buttons": false,
-        "mobile_alignment": "left",
-        "full_width_buttons": true,
-        "custom_bg_color": "#ffffff",
-        "custom_card_bg_color": "#ded3c0",
-        "custom_border_color": "#f3ede2",
-        "custom_card_border_color": "#f3ede2",
-        "custom_border_width": 0,
-        "custom_accent_color": "#c46d5e",
-        "custom_heading_color": "#22201e",
-        "custom_text_color": "#736b66",
-        "custom_btn_bg_color": "#22201e",
-        "custom_btn_text_color": "#ffffff",
-        "custom_btn_border_color": "#22201e",
-        "md_padding_top": 80,
-        "md_padding_bottom": 80,
-        "padding_top": 32,
-        "padding_bottom": 48
-      }
-    },
-    "gift_shop_deck": {
-      "type": "gift-shop-deck",
-      "blocks": {
-        "card_1": {
-          "type": "card",
-          "settings": {
-            "title": "Art-led",
-            "text": "Every design begins as original hand-painted artwork, so no two collections look like anyone else's. There's art on the bag linings, too.",
-            "image": "shopify://shop_images/Artwork02.webp",
-            "placeholder_label": "[ ART-LED PACKAGING ]",
-            "card_caption": "",
-            "show_card_overlay": false
-          }
-        },
-        "card_2": {
-          "type": "card",
-          "settings": {
-            "title": "It's kind.",
-            "text": "Vegan leather, cruelty free, and made for someone who cares about that too.",
-            "image": "shopify://shop_images/mindnight_blue.webp",
-            "placeholder_label": "[ VEGAN LEATHER CRAFTSMANSHIP ]",
-            "card_caption": "",
-            "show_card_overlay": false
-          }
-        },
-        "card_3": {
-          "type": "card",
-          "settings": {
-            "title": "Made to be personal",
-            "text": "Add custom note cards, packaging and personalised inserts so every gift carries your message.",
-            "image": "shopify://shop_images/kiyaara-TYC-001-Pack_of_4_Farasha_Greeting_Cards-01.webp",
-            "placeholder_label": "[ CUSTOM NOTE CARDS & INSERTS ]",
-            "card_caption": "",
-            "show_card_overlay": false
-          }
-        },
-        "card_4": {
-          "type": "card",
-          "settings": {
-            "title": "Wrapped in joy",
-            "text": "Every gift arrives in our signature wrapped box, with wearable art inside waiting to be discovered.",
-            "image": "shopify://shop_images/hok-farrasha-collection-mobile-375x660-00-start.webp",
-            "placeholder_label": "[ SIGNATURE WRAPPED BOX ]",
-            "card_caption": "",
-            "show_card_overlay": false
-          }
-        },
-        "card_5": {
-          "type": "card",
-          "settings": {
-            "title": "Gifting made easy",
-            "text": "A dedicated gifting team, smooth coordination and reliable delivery across India, whether you're gifting ten people or a hundred.",
-            "image": "shopify://shop_images/Gifting_made_easy.webp",
-            "placeholder_label": "[ PAN-INDIA GIFTING CONCIERGE ]",
-            "card_caption": "",
-            "show_card_overlay": false
-          }
-        }
-      },
-      "block_order": [
-        "card_1",
-        "card_2",
-        "card_3",
-        "card_4",
-        "card_5"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "Why a Kiyaara gift feels different",
-        "heading_size": "h2",
-        "button_label": "Explore our bundles",
-        "button_link": "#shopify-section-collection_switcher_gift_curated",
-        "enable_autoplay": true,
-        "autoplay_speed": 4,
-        "color_scheme": "default",
-        "md_padding_top": 32,
-        "md_padding_bottom": 44,
-        "padding_top": 68,
-        "padding_bottom": 52,
-        "custom_bg_color": "#ffffff",
-        "custom_card_bg_color": "#ffffff",
-        "custom_border_color": "#22201e",
-        "custom_card_border_color": "#ffffff",
-        "custom_border_width": 0,
-        "custom_accent_color": "#c46d5e",
-        "custom_heading_color": "#22201e",
-        "custom_text_color": "#736b66",
+        "color_scheme": "",
+        "content_width": "default",
+        "sm_content_position": "center",
+        "sm_text_alignment": "center",
+        "text_alignment": "center",
+        "custom_bg_color": "",
+        "custom_card_bg_color": "",
+        "custom_border_color": "",
+        "custom_card_border_color": "",
+        "custom_border_width": 1,
+        "custom_accent_color": "",
+        "custom_heading_color": "",
+        "custom_text_color": "",
         "custom_btn_bg_color": "",
-        "custom_btn_text_color": "#22201e",
-        "custom_btn_border_color": "#22201e"
+        "custom_btn_text_color": "",
+        "custom_btn_border_color": "",
+        "md_padding_top": 0,
+        "md_padding_bottom": 44,
+        "padding_top": 0,
+        "padding_bottom": 44
       }
     },
     "collection_switcher_gift_curated": {
@@ -425,11 +295,11 @@
           "type": "custom_spacing",
           "settings": {
             "sm_margin_top": 0,
-            "sm_padding_top": 96,
-            "sm_padding_bottom": 96,
+            "sm_padding_top": 0,
+            "sm_padding_bottom": 0,
             "margin_top": 0,
-            "padding_top": 64,
-            "padding_bottom": 64
+            "padding_top": 0,
+            "padding_bottom": 0
           }
         }
       },
@@ -476,6 +346,59 @@
         "padding_bottom": 16
       }
     },
+    "rich_text_GAayAm": {
+      "type": "rich-text",
+      "blocks": {
+        "title_hk9kaK": {
+          "type": "title",
+          "settings": {
+            "title": "Made to feel like yours",
+            "heading_tag": "h2",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--default",
+            "margin_top": 0
+          }
+        },
+        "text_bKCPqh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Whether you're gifting ten people or two hundred, we can tailor the details so every box feels personal to you and the moment you're celebrating.</p>",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 12,
+            "size_multiplier": "size--default",
+            "margin_top": 12
+          }
+        }
+      },
+      "block_order": [
+        "title_hk9kaK",
+        "text_bKCPqh"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "color_scheme": "",
+        "content_width": "default",
+        "sm_content_position": "center",
+        "sm_text_alignment": "center",
+        "text_alignment": "center",
+        "custom_bg_color": "",
+        "custom_card_bg_color": "",
+        "custom_border_color": "",
+        "custom_card_border_color": "",
+        "custom_border_width": 1,
+        "custom_accent_color": "",
+        "custom_heading_color": "",
+        "custom_text_color": "",
+        "custom_btn_bg_color": "",
+        "custom_btn_text_color": "",
+        "custom_btn_border_color": "",
+        "md_padding_top": 40,
+        "md_padding_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 0
+      }
+    },
     "multicolumn_TzT6Kk": {
       "type": "multicolumn",
       "blocks": {
@@ -483,10 +406,11 @@
           "type": "column",
           "settings": {
             "press_date": "",
+            "image": "shopify://shop_images/Your_logo_our_art.webp",
             "video_autoplay": true,
             "video_controls": false,
-            "title": "Column heading",
-            "text": "<p>Use block settings to manage media, text and button content for each column. Use the section settings to change display settings for all the columns.</p>",
+            "title": "Your logo, our art",
+            "text": "<p>Add your logo to the packaging, sitting alongside the Kiyaara mark.</p>",
             "button_label": "",
             "button_link": "",
             "button_style": "",
@@ -499,10 +423,11 @@
           "type": "column",
           "settings": {
             "press_date": "",
+            "image": "shopify://shop_images/A_personal_note.webp",
             "video_autoplay": true,
             "video_controls": false,
-            "title": "Column heading",
-            "text": "<p>Use block settings to manage media, text and button content for each column. Use the section settings to change display settings for all the columns.</p>",
+            "title": "A personal note",
+            "text": "<p>Include a printed card with your message, written the way you'd actually say it.</p>",
             "button_label": "",
             "button_link": "",
             "button_style": "",
@@ -515,10 +440,28 @@
           "type": "column",
           "settings": {
             "press_date": "",
+            "image": "shopify://shop_images/Picked_for_your_list.webp",
             "video_autoplay": true,
             "video_controls": false,
-            "title": "Column heading",
-            "text": "<p>Use block settings to manage media, text and button content for each column. Use the section settings to change display settings for all the columns.</p>",
+            "title": "Picked for your list",
+            "text": "<p>Mix pieces across styles and price points, or build a custom bundle for the occasion.</p>",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
+        "column_kbw7JR": {
+          "type": "column",
+          "settings": {
+            "press_date": "",
+            "image": "shopify://shop_images/Wrapped_and_delivered.webp",
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "Wrapped and delivered",
+            "text": "<p>Sent to your office for a handover, or individually to every doorstep on your list.</p>",
             "button_label": "",
             "button_link": "",
             "button_style": "",
@@ -531,7 +474,8 @@
       "block_order": [
         "column_MpxkTT",
         "column_43WEE7",
-        "column_b64A8t"
+        "column_b64A8t",
+        "column_kbw7JR"
       ],
       "name": "t:sections.multicolumn.name",
       "settings": {
@@ -541,7 +485,7 @@
         "items_per_row_desktop": 4,
         "sm_media_aspect_ratio": "natural",
         "items_per_row_tablet": 2,
-        "layout_mobile": "slide peek",
+        "layout_mobile": "grid",
         "media_aspect_ratio": "natural",
         "autoplay": false,
         "autoplay_speed": 5,
@@ -558,83 +502,15 @@
         "custom_btn_text_color": "",
         "custom_btn_border_color": "",
         "md_padding_top": 32,
-        "md_padding_bottom": 96,
+        "md_padding_bottom": 52,
         "padding_top": 24,
-        "padding_bottom": 64
+        "padding_bottom": 32
       }
     },
-    "gift_bespoke_grid": {
-      "type": "gift-shop-bespoke-grid",
-      "blocks": {
-        "card_1": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/HOK-Festive0195-retouched.png",
-            "subtitle": "",
-            "title": "Your logo, our art",
-            "text": "<p>Add your logo to the packaging, sitting alongside the Kiyaara mark.</p>"
-          }
-        },
-        "card_2": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/Gifting_made_easy.jpg",
-            "subtitle": "",
-            "title": "A personal note",
-            "text": "<p>Include a printed card with your message, written the way you'd actually say it.</p>"
-          }
-        },
-        "card_3": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/Gifting_made_easy.webp",
-            "subtitle": "",
-            "title": "Picked for your list",
-            "text": "<p>Mix pieces across styles and price points, or build a custom bundle for the occasion.</p>"
-          }
-        },
-        "card_4": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/HOK-Festive0195-retouched.png",
-            "subtitle": "",
-            "title": "Wrapped and delivered",
-            "text": "<p>Sent to your office for a handover, or individually to every doorstep on your list.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "card_1",
-        "card_2",
-        "card_3",
-        "card_4"
-      ],
-      "settings": {
-        "subtitle": "",
-        "title": "Made to feel like yours",
-        "heading_size": "h2",
-        "description": "<p>Every gift can carry a little of you. Add your brand, your words or your own touch, and we'll wrap it in joy. Small details are what make a gift feel like it came from you.</p>",
-        "header_alignment": "center",
-        "card_alignment": "left",
-        "color_scheme": "default",
-        "md_padding_top": 56,
-        "md_padding_bottom": 56,
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "custom_bg_color": "#ffffff",
-        "custom_card_bg_color": "#ffffff",
-        "custom_border_color": "#ffffff",
-        "custom_card_border_color": "#ffffff",
-        "custom_border_width": 0,
-        "custom_accent_color": "#c46d5e",
-        "custom_heading_color": "#22201e",
-        "custom_text_color": "#736b66"
-      }
-    },
-    "rich_text_gift_who": {
+    "rich_text_wG4Un3": {
       "type": "rich-text",
       "blocks": {
-        "title_who": {
+        "title_rVibQM": {
           "type": "title",
           "settings": {
             "title": "Who are you gifting?",
@@ -644,25 +520,13 @@
             "size_multiplier": "size--large",
             "margin_top": 0
           }
-        },
-        "spacing_who": {
-          "type": "custom_spacing",
-          "settings": {
-            "sm_margin_top": 0,
-            "sm_padding_top": 88,
-            "sm_padding_bottom": 16,
-            "margin_top": 0,
-            "padding_top": 56,
-            "padding_bottom": 8
-          }
         }
       },
       "block_order": [
-        "title_who",
-        "spacing_who"
+        "title_rVibQM"
       ],
       "settings": {
-        "color_scheme": "alternative-2",
+        "color_scheme": "default",
         "content_width": "default",
         "sm_content_position": "center",
         "sm_text_alignment": "center",
@@ -678,19 +542,20 @@
         "custom_btn_bg_color": "",
         "custom_btn_text_color": "",
         "custom_btn_border_color": "",
-        "md_padding_top": 88,
-        "md_padding_bottom": 16,
-        "padding_top": 56,
-        "padding_bottom": 8
+        "md_padding_top": 0,
+        "md_padding_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
-    "multicolumn_gift_who": {
+    "multicolumn_tFtWEx": {
       "type": "multicolumn",
       "blocks": {
-        "col_team": {
+        "column_UGmNwJ": {
           "type": "column",
           "settings": {
             "press_date": "",
+            "image": "shopify://shop_images/peach-flower.png",
             "video_autoplay": true,
             "video_controls": false,
             "title": "Your team",
@@ -703,10 +568,11 @@
             "button_2_style": ""
           }
         },
-        "col_clients": {
+        "column_qRgW9E": {
           "type": "column",
           "settings": {
             "press_date": "",
+            "image": "shopify://shop_images/blue-blooms.png",
             "video_autoplay": true,
             "video_controls": false,
             "title": "Your clients & partners",
@@ -719,10 +585,11 @@
             "button_2_style": ""
           }
         },
-        "col_festive": {
+        "column_7yhbxW": {
           "type": "column",
           "settings": {
             "press_date": "",
+            "image": "shopify://shop_images/berries.png",
             "video_autoplay": true,
             "video_controls": false,
             "title": "The festive season",
@@ -735,10 +602,11 @@
             "button_2_style": ""
           }
         },
-        "col_wedding": {
+        "column_9kiqwW": {
           "type": "column",
           "settings": {
             "press_date": "",
+            "image": "shopify://shop_images/butterfly_ee450c96-128b-4f0c-ad4d-30a5292a3620.png",
             "video_autoplay": true,
             "video_controls": false,
             "title": "The wedding",
@@ -751,7 +619,7 @@
             "button_2_style": ""
           }
         },
-        "spacing_pillars": {
+        "custom_spacing_Keajrw": {
           "type": "custom_spacing",
           "settings": {
             "sm_margin_top": 0,
@@ -764,20 +632,23 @@
         }
       },
       "block_order": [
-        "col_team",
-        "col_clients",
-        "col_festive",
-        "col_wedding",
-        "spacing_pillars"
+        "column_UGmNwJ",
+        "column_qRgW9E",
+        "column_7yhbxW",
+        "column_9kiqwW",
+        "custom_spacing_Keajrw"
+      ],
+      "custom_css": [
+        ".column-media {width: 70%; margin-inline: auto;}"
       ],
       "settings": {
-        "color_scheme": "alternative-2",
+        "color_scheme": "default",
         "alignment": "center",
         "layout_desktop": "grid",
         "items_per_row_desktop": 4,
         "sm_media_aspect_ratio": "square",
         "items_per_row_tablet": 2,
-        "layout_mobile": "grid",
+        "layout_mobile": "slide",
         "media_aspect_ratio": "square",
         "autoplay": false,
         "autoplay_speed": 5,
@@ -793,10 +664,10 @@
         "custom_btn_bg_color": "",
         "custom_btn_text_color": "",
         "custom_btn_border_color": "",
-        "md_padding_top": 32,
-        "md_padding_bottom": 96,
+        "md_padding_top": 52,
+        "md_padding_bottom": 48,
         "padding_top": 24,
-        "padding_bottom": 64
+        "padding_bottom": 28
       }
     },
     "rich_text_gift_concierge": {
@@ -838,7 +709,7 @@
       "settings": {
         "subtitle": "",
         "title": "Let's plan your gifting",
-        "heading_size": "h2",
+        "heading_size": "h1",
         "text": "<p>Tell us what you have in mind and we'll take it from there. Share your details to customise your gifts, or reach out to us directly:</p>",
         "show_contact_cards": true,
         "formcrm_embed_code": "",
@@ -858,9 +729,9 @@
         "success_message": "Thank you! We've received your gifting request and will reach out to you shortly.",
         "color_scheme": "default",
         "md_padding_top": 36,
-        "md_padding_bottom": 56,
-        "padding_top": 40,
-        "padding_bottom": 64,
+        "md_padding_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 0,
         "custom_bg_color": "#ffffff",
         "custom_card_bg_color": "#ffffff",
         "custom_border_color": "#ffffff",
@@ -953,13 +824,12 @@
     "hero_gift_banner",
     "rich_text_i6eTAg",
     "promo_grid_and_slideshow_Key7y8",
-    "image_with_text_gift_hero",
-    "gift_shop_deck",
+    "rich_text_eV7dCJ",
     "collection_switcher_gift_curated",
+    "rich_text_GAayAm",
     "multicolumn_TzT6Kk",
-    "gift_bespoke_grid",
-    "rich_text_gift_who",
-    "multicolumn_gift_who",
+    "rich_text_wG4Un3",
+    "multicolumn_tFtWEx",
     "rich_text_gift_concierge",
     "featured_product_iYnznY"
   ]
