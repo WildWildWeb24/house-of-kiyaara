@@ -64,7 +64,9 @@
         "announcement_3",
         "announcement_4"
       ],
-      "custom_css": [],
+      "custom_css": [
+        "/* Keep announcement text in its entered case */#ToolBar .announcement,#ToolBar .announcement * {text-transform: none;}"
+      ],
       "settings": {
         "main_menu": "main-menu",
         "color_scheme": "default",
