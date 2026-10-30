@@ -167,7 +167,7 @@
           "name": "Under ₹6000",
           "settings": {
             "image": "shopify://shop_images/under_6000.webp",
-            "media_link": "shopify://collections/under-6-000",
+            "media_link": "shopify://collections/under-6000",
             "title": "<p>Under<br/>₹6000</p><p></p>",
             "button_label": "Shop Now",
             "button_style": "primary",
