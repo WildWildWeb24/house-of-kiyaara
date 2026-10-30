@@ -153,7 +153,7 @@
           "name": "Under ₹4000",
           "settings": {
             "image": "shopify://shop_images/under_4000.webp",
-            "media_link": "shopify://collections/under-4-000",
+            "media_link": "shopify://collections/under-4000",
             "title": "<p>Under<br/>₹4000</p><p></p>",
             "button_label": "Shop Now",
             "button_style": "primary",
