@@ -139,7 +139,7 @@
           "name": "Under ₹3500",
           "settings": {
             "image": "shopify://shop_images/under_3500.webp",
-            "media_link": "shopify://collections/under-3-500",
+            "media_link": "shopify://collections/under-3500",
             "title": "<p>Under<br/>₹3500</p><p></p>",
             "button_label": "Shop Now",
             "button_style": "primary",
