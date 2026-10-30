@@ -125,7 +125,7 @@
           "name": "Under ₹2500",
           "settings": {
             "image": "shopify://shop_images/under_2500.webp",
-            "media_link": "shopify://collections/under-2-500",
+            "media_link": "shopify://collections/under-2500",
             "title": "<p>Under<br/>₹2500</p><p></p>",
             "button_label": "Shop Now",
             "button_style": "primary",
