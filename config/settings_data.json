@@ -135,7 +135,7 @@
     "show_cart_birthday": true,
     "cart_birthday_heading": "For a birthday discount!",
     "cart_birthday_subtext": "",
-    "enable_free_gift": true,
+    "enable_free_gift": false,
     "free_gift_product": "dottie-twilly-sky-blue",
     "free_gift_threshold": 1000,
     "free_gift_end_date": "2026-10-31",
