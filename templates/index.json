@@ -51,6 +51,7 @@
       "blocks": {
         "ai_gen_block_6e179c8_wFp7ae": {
           "type": "ai_gen_block_6e179c8",
+          "disabled": true,
           "settings": {
             "banner_image": "shopify://shop_images/kiyaara-womens-free-twilly.jpg",
             "image_alt_text": "",
@@ -412,7 +413,22 @@
         "content_width": "default",
         "sm_content_position": "center",
         "sm_text_alignment": "center",
-        "text_alignment": "left"
+        "text_alignment": "left",
+        "custom_bg_color": "",
+        "custom_card_bg_color": "",
+        "custom_border_color": "",
+        "custom_card_border_color": "",
+        "custom_border_width": 1,
+        "custom_accent_color": "",
+        "custom_heading_color": "",
+        "custom_text_color": "",
+        "custom_btn_bg_color": "",
+        "custom_btn_text_color": "",
+        "custom_btn_border_color": "",
+        "md_padding_top": 80,
+        "md_padding_bottom": 80,
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "promo_grid_and_slideshow_Yd7zmf": {
