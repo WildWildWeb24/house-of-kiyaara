@@ -1,0 +1,39 @@
+{%- comment -%}
+  Outputs the comma-separated gift objects for window.freeProductConfig.gifts (see layout/theme.liquid).
+  A gift is only included when its product is picked, priced at 0 and available.
+  Order does not matter to the JS; thresholds come from the theme settings.
+{%- endcomment -%}
+{%- if settings.enable_free_scarf -%}
+  {%- assign gift_sep = false -%}
+
+  {%- assign gp = settings.free_sticker_product -%}
+  {%- if gp != blank and gp.price == 0 and gp.selected_or_first_available_variant.available -%}
+    {%- if gift_sep %},{% endif -%}
+    { "key": "sticker", "threshold": {{ settings.free_sticker_threshold | default: 999 | times: 100 }}, "products": [{ "productId": {{ gp.id }}, "variantId": {{ gp.selected_or_first_available_variant.id }}, "compareAtPrice": {{ gp.selected_or_first_available_variant.compare_at_price | default: gp.compare_at_price_max | default: 0 }} }] }
+    {%- assign gift_sep = true -%}
+  {%- endif -%}
+
+  {%- assign gp = settings.free_cards_product -%}
+  {%- if gp != blank and gp.price == 0 and gp.selected_or_first_available_variant.available -%}
+    {%- if gift_sep %},{% endif -%}
+    { "key": "cards", "threshold": {{ settings.free_cards_threshold | default: 1500 | times: 100 }}, "products": [{ "productId": {{ gp.id }}, "variantId": {{ gp.selected_or_first_available_variant.id }}, "compareAtPrice": {{ gp.selected_or_first_available_variant.compare_at_price | default: gp.compare_at_price_max | default: 0 }} }] }
+    {%- assign gift_sep = true -%}
+  {%- endif -%}
+
+  {%- assign scarf_json = '' -%}
+  {%- assign scarf_sep = false -%}
+  {%- for i in (1..3) -%}
+    {%- assign scarf_key = 'free_scarf_product_' | append: i -%}
+    {%- assign gp = settings[scarf_key] -%}
+    {%- if gp != blank and gp.price == 0 and gp.selected_or_first_available_variant.available -%}
+      {%- if scarf_sep -%}{%- assign scarf_json = scarf_json | append: ',' -%}{%- endif -%}
+      {%- capture scarf_item -%}{ "productId": {{ gp.id }}, "variantId": {{ gp.selected_or_first_available_variant.id }}, "compareAtPrice": {{ gp.selected_or_first_available_variant.compare_at_price | default: gp.compare_at_price_max | default: 0 }} }{%- endcapture -%}
+      {%- assign scarf_json = scarf_json | append: scarf_item -%}
+      {%- assign scarf_sep = true -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if scarf_sep -%}
+    {%- if gift_sep %},{% endif -%}
+    { "key": "scarf", "threshold": {{ settings.free_scarf_threshold | default: 2000 | times: 100 }}, "products": [{{ scarf_json }}] }
+  {%- endif -%}
+{%- endif -%}

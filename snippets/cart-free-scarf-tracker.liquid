@@ -1,0 +1,269 @@
+{%- comment -%}
+  Free-products tracker: one bar, up to four checkpoints (sticker pack, greeting cards, scarf, free shipping).
+  Everything (thresholds, messages, labels, icons, colors, spacing) comes from theme settings.
+  Checkpoints are spread evenly along the bar; progress is mapped piecewise between them.
+  A checkpoint is shown only when its freebie is configured (product picked, priced at 0, available).
+  Rendered server-side on every cart refresh by cart-shipping-notification.liquid, so no extra JS is needed.
+{%- endcomment -%}
+{{ 'component-level.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign total = cart.items_subtotal_price
+
+  # Eligibility: at least one non-gift cart line belongs to the eligible collection
+  assign eligible_collection = collections['all-products-sitewide-auto']
+  assign has_eligible = false
+  if eligible_collection != blank and eligible_collection.id != nil
+    for item in cart.items
+      if item.properties._free_product == 'true'
+        continue
+      endif
+      for c in item.product.collections
+        if c.id == eligible_collection.id
+          assign has_eligible = true
+          break
+        endif
+      endfor
+      if has_eligible
+        break
+      endif
+    endfor
+  endif
+
+  # ---- Pass 1: which checkpoints exist, their thresholds (in paise) ----
+  assign act_str = ''
+  assign thr_str = ''
+  assign ship_thr = settings.free_shipping_threshold | times: 100
+  assign scarf_thr = settings.free_scarf_threshold | default: 2000 | times: 100
+  assign scarf_active = false
+  for i in (1..4)
+    assign is_active = false
+    assign thr = 0
+    if i == 1
+      assign gp = settings.free_sticker_product
+      if gp != blank and gp.price == 0 and gp.selected_or_first_available_variant.available
+        assign is_active = true
+      endif
+      assign thr = settings.free_sticker_threshold | default: 999 | times: 100
+    elsif i == 2
+      assign gp = settings.free_cards_product
+      if gp != blank and gp.price == 0 and gp.selected_or_first_available_variant.available
+        assign is_active = true
+      endif
+      assign thr = settings.free_cards_threshold | default: 1500 | times: 100
+    elsif i == 3
+      for k in (1..3)
+        assign scarf_key = 'free_scarf_product_' | append: k
+        assign gp = settings[scarf_key]
+        if gp != blank and gp.price == 0 and gp.selected_or_first_available_variant.available
+          assign is_active = true
+        endif
+      endfor
+      assign thr = scarf_thr
+      assign scarf_active = is_active
+    else
+      assign is_active = true
+      assign thr = ship_thr
+    endif
+    if is_active
+      assign act_str = act_str | append: '1,'
+    else
+      assign act_str = act_str | append: '0,'
+    endif
+    assign thr_str = thr_str | append: thr | append: ','
+  endfor
+  assign acts = act_str | split: ','
+  assign thrs = thr_str | split: ','
+  assign n = 0
+  for a in acts
+    if a == '1'
+      assign n = n | plus: 1
+    endif
+  endfor
+
+  # ---- Pass 2: positions, progress fill, icons + labels ----
+  assign rank = 0
+  assign prev_thr = 0
+  assign prev_pos = 0
+  assign fill = 100
+  assign fill_done = false
+  assign all_gifts_unlocked = true
+  assign scarf_unlocked = false
+  assign ship_unlocked = false
+  assign icons_html = ''
+  assign labels_html = ''
+  assign amounts_html = ''
+  assign next_idx = 0
+  assign next_thr = 0
+  assign n2 = n | times: 2
+-%}
+{%- for i in (1..4) -%}
+  {%- assign idx = forloop.index0 -%}
+  {%- if acts[idx] == '1' -%}
+  {%- liquid
+    assign rank = rank | plus: 1
+    assign thr = thrs[idx] | plus: 0
+    assign pos = rank | times: 2 | minus: 1 | times: 100.0 | divided_by: n2
+
+    # the next locked checkpoint decides which progress message is shown
+    if next_idx == 0 and total < thr
+      assign next_idx = i
+      assign next_thr = thr
+    endif
+
+    assign unlocked = false
+    if i == 4
+      if total >= thr
+        assign unlocked = true
+      endif
+      assign ship_unlocked = unlocked
+    else
+      if total >= thr and has_eligible
+        assign unlocked = true
+      else
+        assign all_gifts_unlocked = false
+      endif
+      if i == 3
+        assign scarf_unlocked = unlocked
+      endif
+    endif
+
+    if fill_done == false
+      if total < thr
+        if thr > prev_thr
+          assign span = thr | minus: prev_thr
+          assign pos_span = pos | minus: prev_pos
+          assign fill = total | minus: prev_thr | times: 1.0 | divided_by: span | times: pos_span | plus: prev_pos
+        else
+          assign fill = prev_pos
+        endif
+        assign fill_done = true
+      else
+        assign prev_thr = thr
+        assign prev_pos = pos
+      endif
+    endif
+
+    if i == 1
+      assign cp_label = settings.free_sticker_cp_label
+      assign cp_icon = settings.free_sticker_icon
+    elsif i == 2
+      assign cp_label = settings.free_cards_cp_label
+      assign cp_icon = settings.free_cards_icon
+    elsif i == 3
+      assign cp_label = settings.free_scarf_label_scarf
+      assign cp_icon = settings.free_scarf_icon_scarf
+    else
+      assign cp_label = settings.free_scarf_label_shipping
+      assign cp_icon = settings.free_scarf_icon_shipping
+    endif
+  -%}
+  {%- capture icon_piece -%}
+    <span class="gift-tracker__cp gift-tracker__icon{% if unlocked %} is-active{% endif %}" style="left: {{ pos }}%;" aria-hidden="true">
+      {%- if cp_icon != blank -%}
+        {{ cp_icon | image_url: width: 112 | image_tag: loading: 'lazy', alt: '' }}
+      {%- elsif i == 4 -%}
+        {%- render 'icon-truck' -%}
+      {%- else -%}
+        {%- render 'icon-gift' -%}
+      {%- endif -%}
+    </span>
+  {%- endcapture -%}
+  {%- capture label_piece -%}
+    <span class="gift-tracker__cp gift-tracker__label" style="left: {{ pos }}%;">{{ cp_label | escape }}</span>
+  {%- endcapture -%}
+  {%- capture amount_piece -%}
+    <span class="gift-tracker__cp gift-tracker__amount" style="left: {{ pos }}%;">{{ thr | money_without_trailing_zeros | remove: ' ' }}</span>
+  {%- endcapture -%}
+  {%- assign icons_html = icons_html | append: icon_piece -%}
+  {%- assign labels_html = labels_html | append: label_piece -%}
+  {%- assign amounts_html = amounts_html | append: amount_piece -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- liquid
+  # Messages. [amount] = formatted money (e.g. ₹ 450), [number] = plain rupees (e.g. 450).
+  assign scarf_value_met = false
+  if total >= scarf_thr
+    assign scarf_value_met = true
+  endif
+  assign missing_scarf = scarf_thr | minus: total | money_without_trailing_zeros
+  assign missing_scarf_num = scarf_thr | minus: total | plus: 99 | divided_by: 100
+  assign missing_ship = ship_thr | minus: total | money_without_trailing_zeros
+  assign missing_ship_num = ship_thr | minus: total | plus: 99 | divided_by: 100
+-%}
+
+<div
+  class="gift-tracker{% if scarf_unlocked %} scarf-unlocked{% endif %}{% if ship_unlocked %} ship-unlocked{% endif %}"
+  style="
+    --gt-icon-size: {{ settings.free_scarf_icon_size }}px;
+    --gt-icon-bg: {{ settings.free_scarf_icon_bg }};
+    --gt-icon-bg-active: {{ settings.free_scarf_icon_bg_active }};
+    --gt-track: {{ settings.free_scarf_track_color }};
+    --gt-from: {{ settings.free_scarf_fill_from }};
+    --gt-to: {{ settings.free_scarf_fill_to }};
+    --gt-tick: {{ settings.free_scarf_tick_color }};
+    --gt-height: {{ settings.free_scarf_bar_height }}px;
+    --gt-radius: {{ settings.free_scarf_bar_radius }}px;
+    --gt-pad-y: {{ settings.free_scarf_tracker_pad_y }}px;
+    --gt-pad-x: {{ settings.free_scarf_tracker_pad_x }}px;
+    --gt-margin-y: {{ settings.free_scarf_tracker_margin_y }}px;
+    --gt-msg-size: {{ settings.free_scarf_message_size }}px;
+    --gt-label-size: {{ settings.free_scarf_label_size }}px;
+    {%- if settings.free_scarf_message_color != blank %} --gt-msg-color: {{ settings.free_scarf_message_color }};{% endif %}
+  "
+  {% if cart.item_count == 0 and force_show != true %}hidden{% endif %}
+>
+  <div class="gift-tracker__messages" aria-live="polite">
+    {%- if ship_unlocked -%}
+      {%- if all_gifts_unlocked and settings.free_scarf_msg_all_unlocked != blank -%}
+        <p class="gift-tracker__all">{{ settings.free_scarf_msg_all_unlocked | escape }}</p>
+      {%- elsif settings.free_scarf_msg_shipping_unlocked != blank -%}
+        <p class="gift-tracker__msg">{{ settings.free_scarf_msg_shipping_unlocked | escape }}</p>
+      {%- endif -%}
+    {%- else -%}
+      {%- liquid
+        # Progress message for the NEXT locked checkpoint: [amount] = formatted money, [number] = plain rupees
+        assign missing_next = next_thr | minus: total
+        assign missing_money = missing_next | money_without_trailing_zeros
+        assign missing_num = missing_next | plus: 99 | divided_by: 100
+        assign stage_msg = ''
+        case next_idx
+          when 1
+            assign stage_msg = settings.free_msg_before_sticker | default: settings.free_scarf_msg_progress
+          when 2
+            assign stage_msg = settings.free_msg_before_cards
+          when 3
+            assign stage_msg = settings.free_msg_before_scarf
+          when 4
+            assign stage_msg = settings.free_scarf_msg_shipping_progress
+        endcase
+      -%}
+      {%- if stage_msg != blank -%}
+        <p class="gift-tracker__msg">{{ stage_msg | escape | replace: '[amount]', missing_money | replace: '[number]', missing_num }}</p>
+      {%- elsif next_idx == 4 and scarf_unlocked and settings.free_scarf_msg_unlocked != blank -%}
+        <p class="gift-tracker__msg">{{ settings.free_scarf_msg_unlocked | escape }}</p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+
+  <div class="gift-tracker__track">
+    {%- if settings.free_scarf_show_amounts -%}
+      <div class="gift-tracker__row gift-tracker__row--amounts" aria-hidden="true">
+        {{ amounts_html }}
+      </div>
+    {%- endif -%}
+    <div class="gift-tracker__row gift-tracker__row--bar">
+      <span class="gift-tracker__bar">
+        <span class="gift-tracker__fill" style="--fill-width: {{ fill }}%;"></span>
+      </span>
+      {%- if fill > 0 and fill < 100 -%}
+        <span class="gift-tracker__tick" style="left: {{ fill }}%;"></span>
+      {%- endif -%}
+      {{ icons_html }}
+    </div>
+
+    <div class="gift-tracker__row gift-tracker__row--text" aria-hidden="true">
+      {{ labels_html }}
+    </div>
+  </div>
+</div>

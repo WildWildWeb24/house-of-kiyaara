@@ -1,0 +1,62 @@
+{%- comment -%}
+  Free scarf line item card: side label | image | title, color chooser, struck compare-at + "Free", quantity text.
+  Params: item (cart line item), item_index (1-based line position)
+  A hidden updates[] input keeps the form's positional quantities aligned with the cart lines;
+  there is no stepper and no remove button on purpose (quantity is locked to 1 by free-product.js).
+{%- endcomment -%}
+{%- comment -%} Compact card when the gift has no color swatches (sticker pack, greeting cards) {%- endcomment -%}
+{%- assign has_swatches = false -%}
+{%- for i in (1..3) -%}
+  {%- assign swatch_key = 'free_scarf_product_' | append: i -%}
+  {%- if settings[swatch_key].id == item.product_id -%}{%- assign has_swatches = true -%}{%- endif -%}
+{%- endfor -%}
+<div
+  class="cart-item cart-item--gift{% unless has_swatches %} cart-item--gift-compact{% endunless %}"
+  id="CartItem-{{ item_index }}"
+  style="
+    --fg-label-bg: {{ settings.free_scarf_card_label_bg }};
+    --fg-label-color: {{ settings.free_scarf_card_label_color }};
+    --fg-card-bg: {{ settings.free_scarf_card_bg }};
+    --fg-radius: {{ settings.free_scarf_card_radius }}px;
+    --fg-price-color: {{ settings.free_scarf_price_color }};
+    --fg-title-size: {{ settings.free_scarf_title_size }}px;
+  "
+>
+  <input type="hidden" name="updates[]" value="{{ item.quantity }}" data-index="{{ item_index }}">
+
+  <div class="gift-card__label"><span>{{ settings.free_scarf_card_label_text | escape }}</span></div>
+
+  <div class="gift-card__image">
+    {%- if item.image -%}
+      <img src="{{ item.image | image_url: width: 240 }}" alt="{{ item.product.title | escape }}" loading="lazy" width="240" height="{{ 240 | divided_by: item.image.aspect_ratio | ceil }}">
+    {%- endif -%}
+  </div>
+
+  <div class="gift-card__details">
+    <span class="cart-item__title gift-card__title">{{ item.product.title | escape }}</span>
+
+    {%- if has_swatches -%}
+      <div class="gift-card__chooser">
+        {%- render 'cart-free-scarf-chooser', item: item -%}
+      </div>
+    {%- endif -%}
+
+    <div class="gift-card__meta">
+      <div class="gift-card__price">
+        {%- if item.variant.compare_at_price > item.original_price -%}
+          <s class="gift-card__old size--small">{{ item.variant.compare_at_price | money_without_trailing_zeros }}</s>
+        {%- endif -%}
+        <strong class="gift-card__free">
+          {%- if settings.free_scarf_price_text != blank -%}
+            {{- settings.free_scarf_price_text | escape -}}
+          {%- else -%}
+            {{- item.final_line_price | money -}}
+          {%- endif -%}
+        </strong>
+      </div>
+      {%- if settings.free_scarf_qty_label != blank -%}
+        <span class="gift-card__qty size--small"><strong>{{ settings.free_scarf_qty_label | escape }}:</strong> {{ item.quantity }}</span>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

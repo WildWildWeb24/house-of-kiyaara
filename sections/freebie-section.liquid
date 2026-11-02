@@ -1,0 +1,643 @@
+{%- comment -%}
+  Freebie Section (homepage).
+  Desktop: heading + gift cards in a row with "+" between them + a progress tracker under the cards.
+  Mobile: stacked horizontal cards (text left, image right), tracker hidden by default.
+  Each card's amount comes from the same theme settings as the cart drawer / header gift tracker
+  (free_sticker_threshold, free_cards_threshold, free_scarf_threshold, free_shipping_threshold),
+  so all three trackers always agree. The tracker progress uses the same cart value as the cart
+  tracker (cart.items_subtotal_price) and is refreshed live by assets/free-product.js.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign total = cart.items_subtotal_price
+  assign cards = section.blocks | where: 'type', 'gift'
+  assign n = cards.size
+
+  # Build the threshold list (paise) in card order
+  assign thr_str = ''
+  for block in cards
+    case block.settings.source
+      when 'sticker'
+        assign t = settings.free_sticker_threshold | default: 999 | times: 100
+      when 'cards'
+        assign t = settings.free_cards_threshold | default: 1500 | times: 100
+      when 'scarf'
+        assign t = settings.free_scarf_threshold | default: 2000 | times: 100
+      when 'shipping'
+        assign t = settings.free_shipping_threshold | default: 2500 | times: 100
+      else
+        assign t = block.settings.custom_amount | default: 0 | times: 100
+    endcase
+    assign thr_str = thr_str | append: t | append: ','
+  endfor
+  assign thrs = thr_str | split: ','
+
+  # Same piecewise progress + checkpoint positions as snippets/cart-free-scarf-tracker.liquid:
+  # Checkpoint i (0..n-1) sits at (2*i + 1) / (2*n) of the bar (e.g. 12.5%, 37.5%, 62.5%, 87.5% for 4 cards),
+  # so 0 -> checkpoint 1 progresses from 0% to 12.5%, matching the cart and header trackers 1:1.
+  assign n2 = n | times: 2
+  assign prev_thr = 0
+  assign prev_pos = 0
+  assign fill = 100
+  assign fill_done = false
+  if n > 0
+    for block in cards
+      assign idx = forloop.index0
+      assign rank = idx | plus: 1
+      assign thr = thrs[idx] | plus: 0
+      assign pos = rank | times: 2 | minus: 1 | times: 100.0 | divided_by: n2
+      if fill_done == false
+        if total < thr
+          if thr > prev_thr
+            assign span = thr | minus: prev_thr
+            assign pos_span = pos | minus: prev_pos
+            assign fill = total | minus: prev_thr | times: 1.0 | divided_by: span | times: pos_span | plus: prev_pos
+          else
+            assign fill = prev_pos
+          endif
+          assign fill_done = true
+        else
+          assign prev_thr = thr
+          assign prev_pos = pos
+        endif
+      endif
+    endfor
+  else
+    assign fill = 0
+  endif
+  if fill > 100
+    assign fill = 100
+  endif
+
+  # Desktop grid columns: card | plus | card | plus | card ...
+  assign cols = ''
+  for block in cards
+    assign cols = cols | append: 'var(--fb-card-w) '
+    unless forloop.last
+      assign cols = cols | append: 'var(--fb-plus-w) '
+    endunless
+  endfor
+-%}
+
+<section
+  id="FreebieSection-{{ section.id }}"
+  class="freebie-section"
+  data-live-tracker
+  data-section-id="{{ section.id }}"
+  style="
+    --fb-bg: {{ s.bg_color }};
+    --fb-heading-color: {{ s.heading_color }};
+    --fb-card-bg: {{ s.card_bg }};
+    --fb-text: {{ s.text_color }};
+    --fb-price: {{ s.price_color }};
+    --fb-plus: {{ s.plus_color }};
+    --fb-track: {{ s.track_color }};
+    --fb-fill: {{ s.fill_color }};
+    --fb-tick: {% if s.tick_color != blank %}{{ s.tick_color }}{% else %}{{ settings.free_scarf_tick_color | default: '#000000' }}{% endif %};
+    --fb-icon-size: {{ s.icon_size }}px;
+    --fb-track-w-m: {{ s.track_width_mobile }}px;
+    --fb-track-gap-m: {{ s.track_gap_mobile }}px;
+    --fb-icon-bg: {% if s.icon_bg != blank %}{{ s.icon_bg }}{% else %}{{ settings.free_scarf_icon_bg | default: '#f4efe6' }}{% endif %};
+    --fb-icon-bg-active: {% if s.icon_bg_active != blank %}{{ s.icon_bg_active }}{% else %}{{ settings.free_scarf_icon_bg_active | default: '#d9c7a0' }}{% endif %};
+    --fb-card-w: {{ s.card_width }}px;
+    --fb-plus-w: {{ s.plus_width }}px;
+    --fb-plus-eff: {% if s.show_plus %}{{ s.plus_width }}px{% else %}0px{% endif %};
+    --fb-card-radius: {{ s.card_radius }}px;
+    --fb-card-gap-m: {{ s.card_gap_mobile }}px;
+    --fb-img-h: {{ s.image_height }}px;
+    --fb-img-h-m: {{ s.image_height_mobile }}px;
+    --fb-heading-size: {{ s.heading_size }}px;
+    --fb-heading-size-m: {{ s.heading_size_mobile }}px;
+    --fb-pt: {{ s.padding_top }}px;
+    --fb-pb: {{ s.padding_bottom }}px;
+    --fb-pt-m: {{ s.padding_top_mobile }}px;
+    --fb-pb-m: {{ s.padding_bottom_mobile }}px;
+    --fb-px-m: {{ s.padding_x_mobile }}px;
+    --fb-mt: {{ s.margin_top }}px;
+    --fb-mb: {{ s.margin_bottom }}px;
+    --fb-mt-m: {{ s.margin_top_mobile }}px;
+    --fb-mb-m: {{ s.margin_bottom_mobile }}px;
+    --fb-decor-l-w: {{ s.decor_left_width }}px;
+    --fb-decor-r-w: {{ s.decor_right_width }}px;
+    --fb-decor-l-w-m: {{ s.decor_left_width_mobile }}px;
+    --fb-decor-r-w-m: {{ s.decor_right_width_mobile }}px;
+  "
+>
+  {%- if s.decor_left != blank -%}
+    <div class="freebie-section__decor freebie-section__decor--left{% unless s.decor_left_mobile %} fb-hide-mobile{% endunless %}" aria-hidden="true">
+      {{ s.decor_left | image_url: width: 600 | image_tag: loading: 'lazy', alt: '' }}
+    </div>
+  {%- endif -%}
+  {%- if s.decor_right != blank -%}
+    <div class="freebie-section__decor freebie-section__decor--right{% unless s.decor_right_mobile %} fb-hide-mobile{% endunless %}" aria-hidden="true">
+      {{ s.decor_right | image_url: width: 600 | image_tag: loading: 'lazy', alt: '' }}
+    </div>
+  {%- endif -%}
+
+  <div class="freebie-section__inner">
+    {%- if s.heading != blank -%}
+      <h2 class="freebie-section__heading">{{ s.heading | escape | newline_to_br }}</h2>
+    {%- endif -%}
+
+    <div class="freebie-section__grid{% if s.show_tracker and s.show_tracker_mobile and n > 1 %} has-mobile-track{% endif %}" style="--fb-cols: {{ cols }}; --fb-n: {{ n }}; --fb-gaps-n: {{ n | minus: 1 }};" data-live-tracker-inner data-cart-subtotal="{{ total }}">
+      {%- for block in cards -%}
+        {%- liquid
+          assign idx = forloop.index0
+          assign t = thrs[idx] | plus: 0
+          assign rs = t | divided_by: 100
+          if rs >= 1000
+            assign th = rs | divided_by: 1000
+            assign rest = rs | modulo: 1000
+            assign rest_str = rest | prepend: '00' | slice: -3, 3
+            assign amount = th | append: ',' | append: rest_str
+          else
+            assign amount = rs
+          endif
+          if block.settings.amount_override != blank
+            assign amount_text = block.settings.amount_override
+          else
+            assign amount_text = '₹' | append: amount
+          endif
+
+          assign img = block.settings.image
+          if img == blank
+            case block.settings.source
+              when 'sticker'
+                assign img = settings.free_sticker_product.featured_image
+              when 'cards'
+                assign img = settings.free_cards_product.featured_image
+              when 'scarf'
+                assign img = settings.free_scarf_product_1.featured_image
+            endcase
+          endif
+
+          assign unlocked = false
+          if total >= t and t > 0
+            assign unlocked = true
+          endif
+          assign col = idx | times: 2 | plus: 1
+        -%}
+        <div class="fb-card{% if unlocked %} is-unlocked{% endif %}" style="grid-column: {{ col }}; grid-row: 1; --fb-row: {{ idx | plus: 1 }};" {{ block.shopify_attributes }}>
+          <p class="fb-card__label">{{ block.settings.label | default: 'On order worth' }}</p>
+          <p class="fb-card__price">{{ amount_text }}</p>
+          <div class="fb-card__media">
+            {%- if img != blank -%}
+              {{ img | image_url: width: 500 | image_tag: loading: 'lazy', alt: block.settings.name, sizes: '(min-width: 768px) 220px, 45vw' }}
+            {%- elsif block.settings.source == 'shipping' -%}
+              <span class="fb-card__icon">{%- render 'icon-truck' -%}</span>
+            {%- else -%}
+              <span class="fb-card__icon">{%- render 'icon-gift' -%}</span>
+            {%- endif -%}
+          </div>
+          <p class="fb-card__get">{{ block.settings.get_text | default: 'Get Free' }}</p>
+          <p class="fb-card__name">{{ block.settings.name }}</p>
+        </div>
+        {%- unless forloop.last -%}
+          {%- if s.show_plus -%}
+            <span class="fb-plus" style="grid-column: {{ col | plus: 1 }}; grid-row: 1;" aria-hidden="true">+</span>
+          {%- endif -%}
+        {%- endunless -%}
+      {%- endfor -%}
+
+      {%- if s.show_tracker and n > 1 -%}
+        <div class="fb-track{% unless s.show_tracker_mobile %} fb-hide-mobile{% endunless %}" style="grid-column: 1 / -1; grid-row: 2;" aria-hidden="true">
+          <div class="fb-track__line">
+            <span class="fb-track__fill" style="width: {{ fill }}%; --fb-fill-pct: {{ fill }}%;"></span>
+            {%- if fill > 0 and fill < 100 -%}
+              <span class="fb-track__tick" style="left: {{ fill }}%; --fb-fill-pct: {{ fill }}%;"></span>
+            {%- endif -%}
+            {%- for block in cards -%}
+              {%- liquid
+                assign idx = forloop.index0
+                assign rank = idx | plus: 1
+                assign t = thrs[idx] | plus: 0
+                assign pos = rank | times: 2 | minus: 1 | times: 100.0 | divided_by: n2
+                assign cp_icon = blank
+                case block.settings.source
+                  when 'sticker'
+                    assign cp_icon = settings.free_sticker_icon
+                  when 'cards'
+                    assign cp_icon = settings.free_cards_icon
+                  when 'scarf'
+                    assign cp_icon = settings.free_scarf_icon_scarf
+                  when 'shipping'
+                    assign cp_icon = settings.free_scarf_icon_shipping
+                endcase
+              -%}
+              {%- comment -%} Same icon markup + settings as the cart / header tracker (cart-free-scarf-tracker.liquid) {%- endcomment -%}
+              <span class="fb-track__icon{% if total >= t and t > 0 %} is-active{% endif %}" style="left: {{ pos }}%; --fb-pos: {{ pos }}%;">
+                {%- if cp_icon != blank -%}
+                  {{ cp_icon | image_url: width: 112 | image_tag: loading: 'lazy', alt: '' }}
+                {%- elsif block.settings.source == 'shipping' -%}
+                  {%- render 'icon-truck' -%}
+                {%- else -%}
+                  {%- render 'icon-gift' -%}
+                {%- endif -%}
+              </span>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  #FreebieSection-{{ section.id }} {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--fb-bg);
+    {%- if s.bg_image != blank -%}
+      background-image: url('{{ s.bg_image | image_url: width: 2400 }}');
+      background-size: {{ s.bg_size | default: 'cover' }};
+      background-position: {{ s.bg_position | default: 'center center' }};
+      background-repeat: no-repeat;
+    {%- endif -%}
+    color: var(--fb-text);
+    padding: var(--fb-pt) 20px var(--fb-pb);
+    margin: var(--fb-mt) 0 var(--fb-mb);
+  }
+  #FreebieSection-{{ section.id }} p { margin: 0; max-width: none; }
+  #FreebieSection-{{ section.id }} .freebie-section__inner { position: relative; z-index: 1; }
+  #FreebieSection-{{ section.id }} .freebie-section__heading {
+    margin: 0 auto 28px;
+    max-width: 520px;
+    text-align: center;
+    font-size: var(--fb-heading-size);
+    line-height: 1.3;
+    font-weight: 400;
+    color: var(--fb-heading-color);
+  }
+  #FreebieSection-{{ section.id }} .freebie-section__decor {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    line-height: 0;
+  }
+  #FreebieSection-{{ section.id }} .freebie-section__decor img { width: 100%; height: auto; display: block; }
+  #FreebieSection-{{ section.id }} .freebie-section__decor--left { top: 0; left: 0; width: var(--fb-decor-l-w); }
+  #FreebieSection-{{ section.id }} .freebie-section__decor--right { bottom: 0; right: 0; width: var(--fb-decor-r-w); }
+
+  /* Desktop: one grid, row 1 = cards and "+", row 2 = tracker */
+  #FreebieSection-{{ section.id }} .freebie-section__grid {
+    display: grid;
+    grid-template-columns: var(--fb-cols);
+    justify-content: center;
+    align-items: center;
+    row-gap: 24px;
+  }
+  #FreebieSection-{{ section.id }} .fb-card {
+    background: var(--fb-card-bg);
+    border-radius: var(--fb-card-radius);
+    padding: 16px 14px 18px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "label price"
+      "media media"
+      "get   get"
+      "name  name";
+    align-self: stretch;
+  }
+  #FreebieSection-{{ section.id }} .fb-card__label {
+    grid-area: label;
+    font-size: 12px;
+    line-height: 1.25;
+    max-width: 64px;
+  }
+  #FreebieSection-{{ section.id }} .fb-card__price {
+    grid-area: price;
+    justify-self: end;
+    font-size: 20px;
+    line-height: 1.1;
+    color: var(--fb-price);
+  }
+  #FreebieSection-{{ section.id }} .fb-card__media {
+    grid-area: media;
+    height: var(--fb-img-h);
+    margin: 12px 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #FreebieSection-{{ section.id }} .fb-card__media img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  #FreebieSection-{{ section.id }} .fb-card__icon svg { width: 56px; height: 56px; }
+  #FreebieSection-{{ section.id }} .fb-card__get {
+    grid-area: get;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.3;
+  }
+  #FreebieSection-{{ section.id }} .fb-card__name {
+    grid-area: name;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+  #FreebieSection-{{ section.id }} .fb-plus {
+    text-align: center;
+    font-size: 34px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--fb-plus);
+  }
+
+  /* Tracker: checkpoints sit at (2*i + 1) / (2*n) of the line (same as cart/header tracker),
+     and the line extends half a step before card 1 and after card n so each icon aligns with its card centre. */
+  #FreebieSection-{{ section.id }} .fb-track {
+    padding: 0;
+  }
+  #FreebieSection-{{ section.id }} .fb-track__line {
+    position: relative;
+    height: 6px;
+    margin: 0 calc(-0.5 * var(--fb-plus-eff));
+    border-radius: 6px;
+    background: var(--fb-track);
+  }
+  #FreebieSection-{{ section.id }} .fb-track__fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 6px;
+    background: var(--fb-fill);
+    transition: width 0.5s ease;
+  }
+  #FreebieSection-{{ section.id }} .fb-track__tick {
+    position: absolute;
+    top: 50%;
+    width: 2px;
+    height: 14px;
+    transform: translate(-50%, -50%);
+    background: var(--fb-tick);
+    transition: left 0.5s ease;
+  }
+  #FreebieSection-{{ section.id }} .fb-track__icon {
+    position: absolute;
+    top: 50%;
+    width: var(--fb-icon-size);
+    height: var(--fb-icon-size);
+    border-radius: 50%;
+    background: var(--fb-icon-bg);
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s;
+  }
+  #FreebieSection-{{ section.id }} .fb-track__icon.is-active { background: var(--fb-icon-bg-active); }
+  #FreebieSection-{{ section.id }} .fb-track__icon img { width: 62%; height: 62%; object-fit: contain; }
+  #FreebieSection-{{ section.id }} .fb-track__icon svg { width: 55%; height: 55%; }
+  #FreebieSection-{{ section.id }} .fb-track { padding-top: calc(var(--fb-icon-size) / 2 - 3px); padding-bottom: calc(var(--fb-icon-size) / 2 - 3px); }
+
+  /* Mobile: stacked horizontal cards, text left, image right */
+  @media only screen and (max-width: 767px) {
+    #FreebieSection-{{ section.id }} {
+      padding: var(--fb-pt-m) var(--fb-px-m) var(--fb-pb-m);
+      margin: var(--fb-mt-m) 0 var(--fb-mb-m);
+      {%- if s.bg_image_mobile != blank -%}
+        background-image: url('{{ s.bg_image_mobile | image_url: width: 1200 }}');
+        background-size: {{ s.bg_size | default: 'cover' }};
+        background-position: {{ s.bg_position | default: 'center center' }};
+        background-repeat: no-repeat;
+      {%- endif -%}
+    }
+    #FreebieSection-{{ section.id }} .fb-hide-mobile { display: none !important; }
+    #FreebieSection-{{ section.id }} .freebie-section__heading {
+      font-size: var(--fb-heading-size-m);
+      margin-bottom: 24px;
+    }
+    #FreebieSection-{{ section.id }} .freebie-section__decor--left { width: var(--fb-decor-l-w-m); }
+    #FreebieSection-{{ section.id }} .freebie-section__decor--right { width: var(--fb-decor-r-w-m); }
+    #FreebieSection-{{ section.id }} .freebie-section__grid {
+      grid-template-columns: 1fr;
+      row-gap: var(--fb-card-gap-m);
+    }
+    #FreebieSection-{{ section.id }} .fb-card,
+    #FreebieSection-{{ section.id }} .fb-plus,
+    #FreebieSection-{{ section.id }} .fb-track {
+      grid-column: 1 !important;
+      grid-row: auto !important;
+    }
+    #FreebieSection-{{ section.id }} .fb-plus { display: none; }
+    #FreebieSection-{{ section.id }} .fb-track { padding: 8px 12px 0; }
+
+    /* Mobile vertical tracker: column 1 = tracker, column 2 = cards. All card rows are equal height,
+       so the line runs from the middle of the first card to the middle of the last card and each
+       icon lines up with the middle of its card. */
+    #FreebieSection-{{ section.id }} .freebie-section__grid.has-mobile-track {
+      grid-template-columns: var(--fb-track-w-m) minmax(0, 1fr);
+      grid-auto-rows: 1fr;
+      column-gap: var(--fb-track-gap-m);
+    }
+    #FreebieSection-{{ section.id }} .has-mobile-track .fb-card {
+      grid-column: 2 !important;
+      grid-row: var(--fb-row) !important;
+    }
+    #FreebieSection-{{ section.id }} .has-mobile-track .fb-track {
+      grid-column: 1 !important;
+      grid-row: 1 / span var(--fb-n) !important;
+      position: relative;
+      padding: 0;
+      align-self: stretch;
+    }
+    #FreebieSection-{{ section.id }} .has-mobile-track .fb-track__line {
+      position: absolute;
+      left: 50%;
+      width: 6px;
+      height: auto;
+      margin: 0;
+      transform: translateX(-50%);
+      /* Extends half a gap before card 1 and after card n so (2*i + 1)/(2*n) lands at each card's vertical centre */
+      top: calc(-0.5 * var(--fb-card-gap-m));
+      bottom: calc(-0.5 * var(--fb-card-gap-m));
+    }
+    #FreebieSection-{{ section.id }} .has-mobile-track .fb-track__fill {
+      width: 100% !important;
+      height: var(--fb-fill-pct);
+      bottom: auto;
+      transition: height 0.5s ease;
+    }
+    #FreebieSection-{{ section.id }} .has-mobile-track .fb-track__tick {
+      left: 50% !important;
+      top: var(--fb-fill-pct);
+      width: 14px;
+      height: 2px;
+      transition: top 0.5s ease;
+    }
+    #FreebieSection-{{ section.id }} .has-mobile-track .fb-track__icon {
+      left: 50% !important;
+      top: var(--fb-pos);
+    }
+    #FreebieSection-{{ section.id }} .fb-card {
+      padding: 18px 16px 18px 24px;
+      grid-template-columns: 1fr 46%;
+      grid-template-rows: auto auto 1fr auto auto;
+      grid-template-areas:
+        "label media"
+        "price media"
+        ".     media"
+        "get   media"
+        "name  media";
+      column-gap: 8px;
+    }
+    #FreebieSection-{{ section.id }} .fb-card__label { max-width: none; font-size: 13px; }
+    #FreebieSection-{{ section.id }} .fb-card__price {
+      justify-self: start;
+      font-size: 28px;
+      margin: 6px 0 18px;
+    }
+    #FreebieSection-{{ section.id }} .fb-card__media {
+      height: var(--fb-img-h-m);
+      margin: 0;
+      align-self: center;
+    }
+    #FreebieSection-{{ section.id }} .fb-card__get { text-align: left; font-size: 13px; }
+    #FreebieSection-{{ section.id }} .fb-card__name { text-align: left; font-size: 20px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Freebie Section",
+  "tag": "div",
+  "class": "freebie-section-wrapper",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Card amounts and the tracker come from Theme settings (same thresholds as the cart drawer and header gift tracker), so they always stay in sync."
+    },
+    { "type": "header", "content": "Text" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "info": "Press Enter for a new line.", "default": "Free gifts\nwith every order" },
+    { "type": "range", "id": "heading_size", "label": "Heading size (desktop)", "min": 16, "max": 48, "step": 1, "unit": "px", "default": 24 },
+    { "type": "range", "id": "heading_size_mobile", "label": "Heading size (mobile)", "min": 16, "max": 48, "step": 1, "unit": "px", "default": 28 },
+
+    { "type": "header", "content": "Background" },
+    { "type": "image_picker", "id": "bg_image", "label": "Background image (desktop)" },
+    { "type": "image_picker", "id": "bg_image_mobile", "label": "Background image (mobile)", "info": "If empty, the desktop background image is used." },
+    {
+      "type": "select",
+      "id": "bg_size",
+      "label": "Background image fit",
+      "options": [
+        { "value": "cover", "label": "Cover (fill section)" },
+        { "value": "contain", "label": "Contain (fit inside)" },
+        { "value": "100% 100%", "label": "Stretch to edges" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "select",
+      "id": "bg_position",
+      "label": "Background image position",
+      "options": [
+        { "value": "center center", "label": "Center" },
+        { "value": "top center", "label": "Top" },
+        { "value": "bottom center", "label": "Bottom" }
+      ],
+      "default": "center center"
+    },
+    { "type": "color", "id": "bg_color", "label": "Fallback background color", "default": "#f3efe8" },
+
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#4a4a4a" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Card text", "default": "#3d3d3d" },
+    { "type": "color", "id": "price_color", "label": "Amount", "default": "#3d3d3d" },
+    { "type": "color", "id": "plus_color", "label": "\"+\" sign", "default": "#4a4a4a" },
+    { "type": "color", "id": "track_color", "label": "Tracker line", "default": "#e3d8c2" },
+    { "type": "color", "id": "fill_color", "label": "Tracker progress", "default": "#c3ad7f" },
+    { "type": "color", "id": "tick_color", "label": "Tracker progress marker (tick)", "info": "Leave empty to use the same color as the cart tracker." },
+    { "type": "color", "id": "icon_bg", "label": "Tracker icon background", "info": "Leave empty to use the same color as the cart tracker." },
+    { "type": "color", "id": "icon_bg_active", "label": "Tracker icon background (unlocked)", "info": "Leave empty to use the same color as the cart tracker." },
+
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "card_width", "label": "Card width (desktop)", "min": 140, "max": 300, "step": 5, "unit": "px", "default": 200 },
+    { "type": "range", "id": "plus_width", "label": "Space for \"+\" (desktop)", "min": 20, "max": 120, "step": 2, "unit": "px", "default": 64 },
+    { "type": "checkbox", "id": "show_plus", "label": "Show \"+\" between cards (desktop)", "default": true },
+    { "type": "range", "id": "card_radius", "label": "Card corner radius", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "card_gap_mobile", "label": "Gap between cards (mobile)", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 18 },
+    { "type": "range", "id": "image_height", "label": "Image height (desktop)", "min": 60, "max": 220, "step": 5, "unit": "px", "default": 105 },
+    { "type": "range", "id": "image_height_mobile", "label": "Image height (mobile)", "min": 60, "max": 220, "step": 5, "unit": "px", "default": 130 },
+
+    { "type": "header", "content": "Tracker" },
+    { "type": "checkbox", "id": "show_tracker", "label": "Show tracker", "default": true },
+    { "type": "range", "id": "icon_size", "label": "Tracker icon size", "info": "Icons are the same as the cart tracker (Theme settings).", "min": 20, "max": 60, "step": 1, "unit": "px", "default": 34 },
+    { "type": "checkbox", "id": "show_tracker_mobile", "label": "Show tracker on mobile (vertical)", "default": true },
+    { "type": "range", "id": "track_width_mobile", "label": "Tracker column width (mobile)", "min": 24, "max": 80, "step": 2, "unit": "px", "default": 40 },
+    { "type": "range", "id": "track_gap_mobile", "label": "Space between tracker and cards (mobile)", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 12 },
+
+    { "type": "header", "content": "Decorative images" },
+    { "type": "image_picker", "id": "decor_left", "label": "Top-left image" },
+    { "type": "range", "id": "decor_left_width", "label": "Top-left width (desktop)", "min": 40, "max": 400, "step": 5, "unit": "px", "default": 150 },
+    { "type": "range", "id": "decor_left_width_mobile", "label": "Top-left width (mobile)", "min": 30, "max": 300, "step": 5, "unit": "px", "default": 90 },
+    { "type": "checkbox", "id": "decor_left_mobile", "label": "Show top-left image on mobile", "default": true },
+    { "type": "image_picker", "id": "decor_right", "label": "Bottom-right image" },
+    { "type": "range", "id": "decor_right_width", "label": "Bottom-right width (desktop)", "min": 40, "max": 400, "step": 5, "unit": "px", "default": 150 },
+    { "type": "range", "id": "decor_right_width_mobile", "label": "Bottom-right width (mobile)", "min": 30, "max": 300, "step": 5, "unit": "px", "default": 90 },
+    { "type": "checkbox", "id": "decor_right_mobile", "label": "Show bottom-right image on mobile", "default": false },
+
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "label": "Top (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_top_mobile", "label": "Top (mobile)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Bottom (mobile)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_x_mobile", "label": "Left/right (mobile)", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 26 },
+
+    { "type": "header", "content": "Margin" },
+    { "type": "range", "id": "margin_top", "label": "Top (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Bottom (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_top_mobile", "label": "Top (mobile)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom_mobile", "label": "Bottom (mobile)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 0 }
+  ],
+  "blocks": [
+    {
+      "type": "gift",
+      "name": "Gift card",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "select",
+          "id": "source",
+          "label": "Tracker checkpoint",
+          "info": "The amount is taken from the matching Theme setting so it matches the cart tracker.",
+          "options": [
+            { "value": "sticker", "label": "Free sticker threshold" },
+            { "value": "cards", "label": "Free cards threshold" },
+            { "value": "scarf", "label": "Free scarf threshold" },
+            { "value": "shipping", "label": "Free shipping threshold" },
+            { "value": "custom", "label": "Custom amount" }
+          ],
+          "default": "sticker"
+        },
+        { "type": "number", "id": "custom_amount", "label": "Custom amount (₹)", "info": "Only used when checkpoint is \"Custom amount\"." },
+        { "type": "text", "id": "amount_override", "label": "Amount text override", "info": "Leave empty to show the amount automatically (e.g. ₹999)." },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "If empty, the gift product's image is used." },
+        { "type": "text", "id": "label", "label": "Top text", "default": "On order worth" },
+        { "type": "text", "id": "get_text", "label": "Small text", "default": "Get Free" },
+        { "type": "text", "id": "name", "label": "Gift name", "default": "Sticker Pack" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Freebie Section",
+      "blocks": [
+        { "type": "gift", "settings": { "source": "sticker", "name": "Sticker Pack" } },
+        { "type": "gift", "settings": { "source": "cards", "name": "Greeting Cards" } },
+        { "type": "gift", "settings": { "source": "scarf", "name": "Medium Scarf" } },
+        { "type": "gift", "settings": { "source": "shipping", "name": "Delivery" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

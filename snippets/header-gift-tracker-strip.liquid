@@ -1,0 +1,96 @@
+{%- comment -%}
+  Header gift tracker strip.
+  Renders the exact same tracker as the cart (cart-free-scarf-tracker.liquid): same message,
+  checkpoints, icons, amounts and colors, all driven by the same theme settings.
+  Kept in sync in real time by assets/free-product.js (re-fetches this header section on cart changes).
+{%- endcomment -%}
+<div
+  id="HeaderTrackerStrip"
+  class="header-tracker-strip"
+  data-section-id="{{ section_id }}"
+  style="--hts-bg: {{ block.settings.bg_color | default: '#ffffff' }}; --hts-text: {{ block.settings.text_color | default: '#000000' }};"
+  {{ block.shopify_attributes }}
+>
+  <div class="header-tracker-strip__inner" data-cart-subtotal="{{ cart.items_subtotal_price }}">
+    {%- render 'cart-free-scarf-tracker', force_show: true -%}
+  </div>
+</div>
+
+<style>
+  .header-tracker-strip {
+    background-color: var(--hts-bg, #ffffff);
+    color: var(--hts-text, #000000);
+    width: 100%;
+    padding: 8px 16px 6px;
+    position: relative;
+    z-index: 3;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  /* Not sticky: when the sticky header appears on scroll, slide it up by the strip + announcement
+     bar height so only the main navigation stays pinned. */
+  html.sticky-header-initialized.sticky-header-show header.header {
+    transform: translateY(calc(-1 * (var(--toolbar-height, 0px) + var(--tracker-strip-height, 0px))));
+  }
+  .header-tracker-strip__inner {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+  .header-tracker-strip .gift-tracker {
+    margin: 0;
+    padding: 0 24px;
+  }
+  .header-tracker-strip .gift-tracker__msg,
+  .header-tracker-strip .gift-tracker__all {
+    margin: 0 0 6px;
+    color: var(--gt-msg-color, var(--hts-text, #000));
+  }
+  .header-tracker-strip .gift-tracker__row--amounts,
+  .header-tracker-strip .gift-tracker__row--text {
+    color: var(--hts-text, #000);
+  }
+  @media only screen and (max-width: 767px) {
+    .header-tracker-strip { padding: 6px 12px 4px; }
+  }
+  /* Larger screens: message on the left, progress bar on the right */
+  @media only screen and (min-width: 768px) {
+    .header-tracker-strip {
+      padding: 6px var(--header-margin, 24px);
+    }
+    .header-tracker-strip__inner {
+      max-width: none;
+    }
+    .header-tracker-strip .gift-tracker {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 0;
+    }
+    .header-tracker-strip .gift-tracker__messages {
+      flex: 0 1 auto;
+      min-width: 0;
+    }
+    .header-tracker-strip .gift-tracker__msg,
+    .header-tracker-strip .gift-tracker__all {
+      text-align: right;
+      margin: 0;
+    }
+    .header-tracker-strip .gift-tracker__track {
+      flex: 0 0 440px;
+      max-width: 50%;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var strip = document.getElementById('HeaderTrackerStrip');
+    if (!strip) return;
+    function setH() {
+      document.documentElement.style.setProperty('--tracker-strip-height', strip.offsetHeight + 'px');
+    }
+    setH();
+    if (window.ResizeObserver) new ResizeObserver(setH).observe(strip);
+    else window.addEventListener('resize', setH);
+  })();
+</script>
