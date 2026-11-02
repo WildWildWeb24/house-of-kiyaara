@@ -178,6 +178,8 @@
         {%- if upsell_behavior == 'default' -%}
           {% render 'quantity-input', class: 'small', input_class: upsell_quantity_selector %}
         {%- elsif upsell_behavior == 'separate' -%}
+          {%- comment -%} Rs0 guard: no add button for products priced 0 (same rule as the sticky buy bar). {%- endcomment -%}
+          {%- if product.price != 0 and product.selected_or_first_available_variant.price != 0 -%}
           <div class="card-actions flex flex-col">
               <input type="hidden" name="quantity" value="1" disabled/>
               {%- if is_preorder -%}
@@ -206,6 +208,7 @@
                 </button>
               </div>
           </div>
+          {%- endif -%}
         {%- endif -%}
       {%- endunless -%}
 

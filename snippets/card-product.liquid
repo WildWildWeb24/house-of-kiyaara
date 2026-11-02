@@ -60,6 +60,12 @@
         assign quick_add_availability = product.available
         assign quick_add_variant = product.selected_or_first_available_variant.id
       endif
+
+      # Rs0 guard (same rule as the sticky buy bar in main-product-big-image.liquid): free-gift-only
+      # products never get a quick-add button; the card shows the disabled Unavailable button instead.
+      if product.price == 0 or product.selected_or_first_available_variant.price == 0
+        assign quick_add_availability = false
+      endif
     %}
 
     {% capture quick_buy_html %}
