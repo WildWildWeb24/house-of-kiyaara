@@ -422,6 +422,8 @@
       "cart_error": "There was an error while updating your cart. Please try again.",
       "cart_quantity_error_html": "You can only add {{ quantity }} of this item to your cart.",
       "checkout": "Checkout",
+      "checkout_blocked_free": "Free gifts can't be checked out on their own. Please add a product to your cart.",
+      "checkout_blocked_busy": "Your cart is updating. Please tap Checkout again in a moment.",
       "empty": "Your cart is empty",
       "empty_cart_haiku_html": "<em>Your cart is waiting to be filled.<br>Explore our latest collections.</em>",
       "headings": {

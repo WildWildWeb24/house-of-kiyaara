@@ -444,3 +444,8 @@ cart-items {
 .drawer-cart #cart-footer .cart__subtotal > span:first-child::after { content: ':'; }
 .drawer-cart #cart-footer .cart__extras { display: contents; }
 .drawer-cart #cart-footer .cart__tax { margin: 2px 0 0; }
+
+/* Checkout guard message (assets/cart-checkout-guard.js) */
+.cart-checkout-guard__msg { margin: 6px 0 0; line-height: 1.4; color: var(--color-error, #b3261e); }
+.cart-checkout-guard__msg[hidden] { display: none; }
+

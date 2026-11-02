@@ -4,6 +4,16 @@
 -%}
 
 <div id="cart-footer" class="cart-footer">
+  {%- liquid
+    # Checkout guard data for assets/cart-checkout-guard.js (re-rendered with #cart-footer on every cart change)
+    assign guard_paid_lines = 0
+    for item in cart.items
+      if item.final_line_price > 0
+        assign guard_paid_lines = guard_paid_lines | plus: 1
+      endif
+    endfor
+  -%}
+  <span hidden data-checkout-guard data-item-count="{{ cart.item_count }}" data-total="{{ cart.total_price }}" data-paid-lines="{{ guard_paid_lines }}"></span>
   {% if cart.item_count > 0 %}
     <div id="cart-subtotal" class="cart__subtotals">
       <div class="cart__subtotal">
@@ -20,6 +30,7 @@
       <button class="btn btn--full btn--primary size--small sm-size--default" type="submit" name="checkout" form="cart">
         {{ 'sections.cart.checkout' | t }}
       </button>
+      <p class="cart-checkout-guard__msg size--tiny" role="alert" hidden data-checkout-guard-msg data-msg-free="{{ 'sections.cart.checkout_blocked_free' | t | escape }}" data-msg-busy="{{ 'sections.cart.checkout_blocked_busy' | t | escape }}"></p>
 
       {%- if settings.show_cart_link -%}
         <a href="{{ routes.cart_url }}" class="btn btn--secondary size--small sm-size--default btn--full view-cart">

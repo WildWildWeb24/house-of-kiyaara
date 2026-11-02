@@ -286,6 +286,7 @@
       {{ settings.body_custom_liquid }}
     {%- endif -%}
 
+<script src="{{ 'cart-checkout-guard.js' | asset_url }}" defer="defer"></script>
 {% render 'razorpay-magic-checkout' %}
 
 {%- comment -%}
