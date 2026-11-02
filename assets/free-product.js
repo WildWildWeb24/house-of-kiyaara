@@ -325,6 +325,16 @@
     }, Promise.resolve());
   }
 
+  // Tell the theme the cart changed (header count, recommendations, birthdate box) after OUR own cart writes,
+  // which the theme never sees. Reuses the theme's existing 'cart:update' event (assets/cart.js L135).
+  function notifyThemeCartUpdate() {
+    return getCart().then(function (cart) {
+      if (!cart) return;
+      document.dispatchEvent(new CustomEvent('cart:update', { detail: cart }));
+      updateHeaderTracker(cart);
+    }).catch(function () {});
+  }
+
   function refreshCartUI() {
     dbg('re-render cart (our refresh)');
     document.dispatchEvent(new CustomEvent('cart:refresh'));
@@ -335,7 +345,13 @@
     if (cartItems && typeof cartItems.renderAndShowItems === 'function') {
       try {
         var result = cartItems.renderAndShowItems(true);
-        return (result && typeof result.then === 'function') ? result : Promise.resolve();
+        // Replaced (2026-11-02-freebie-fix): notify theme listeners after our own cart writes settle:
+        // return (result && typeof result.then === 'function') ? result : Promise.resolve();
+        var renderPromise = (result && typeof result.then === 'function') ? result : Promise.resolve();
+        return renderPromise.then(
+          function (val) { notifyThemeCartUpdate(); return val; },
+          function (err) { notifyThemeCartUpdate(); throw err; }
+        );
       } catch (e) {
         console.warn('[free-product] renderAndShowItems failed, falling back to generic refresh', e);
       }
@@ -354,7 +370,10 @@
           if (replacement) el.replaceWith(replacement);
         });
       })
-      .catch(function () {});
+      // Replaced (2026-11-02-freebie-fix): notify theme listeners after fallback render settles:
+      // .catch(function () {});
+      .catch(function () {})
+      .then(function () { notifyThemeCartUpdate(); });
   }
 
   // Disables the gift lines' quantity stepper (matched by data-index = cart position).
