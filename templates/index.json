@@ -366,6 +366,7 @@
         "image_HgLeM8",
         "image_xxzWCP"
       ],
+      "disabled": true,
       "custom_css": [
         ".banner-overlay {justify-content: flex-start !important; align-items: flex-start !important; text-align: left !important; padding: 20px 20px 70px !important;}",
         ".banner-overlay > :last-child {position: absolute !important; bottom: 20px; left: 50%; transform: translateX(-50%); margin: 0 !important; white-space: nowrap;}",
