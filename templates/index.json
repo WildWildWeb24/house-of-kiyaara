@@ -285,9 +285,9 @@
         "padding_bottom_mobile": 48,
         "padding_x_mobile": 26,
         "margin_top": 0,
-        "margin_bottom": 0,
+        "margin_bottom": 40,
         "margin_top_mobile": 0,
-        "margin_bottom_mobile": 0
+        "margin_bottom_mobile": 40
       }
     },
     "promo_grid_and_slideshow_dPLLC8": {
