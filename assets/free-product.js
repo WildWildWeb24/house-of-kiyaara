@@ -248,12 +248,15 @@
   function isGiftItem(item) { return !!giftOf(item); }
 
   // Cart value without any gift line, and whether a non-gift item is in the eligible collection.
+  // Gift cards never count: not towards the threshold and not for eligibility (2026-11-02).
+  // Must match the Liquid total in snippets/cart-free-scarf-tracker.liquid and sections/freebie-section.liquid.
   function totals(cart) {
     var total = 0;
     var hasEligible = false;
     cart.items.forEach(function (item) {
       if (isGiftItem(item)) return;
-      total += item.line_price;
+      if (item.gift_card === true) return;
+      total += (item.final_line_price != null ? item.final_line_price : item.line_price);
       if (ELIGIBLE_IDS.indexOf(item.product_id) !== -1) hasEligible = true;
     });
     return { total: total, hasEligible: hasEligible };
@@ -700,6 +703,8 @@
     return originalSend.apply(this, arguments);
   };
 
+  // Replaced 2026-11-02 by assets/cart-checkout-guard.js (submit + click, capture on window). Kept for reference.
+  /*
   // --- Checkout guard: never let Buy Now / Checkout run on a cart that only holds free gifts
   // (Razorpay shows "Your cart is empty" for a zero-value cart). Capture phase, so this runs before the
   // Razorpay button's own handler. If a theme cart write is still in flight the click is also held back;
@@ -716,6 +721,13 @@
       if (onlyFreeLines(lastCart)) clearFree(); else sync();
     }
   }, true);
+  */
+  // State for assets/cart-checkout-guard.js (it runs even when this file exits early because no gift is configured).
+  window.HOKFreeProduct = {
+    isBusy: function () { return pendingWrites > 0; },
+    isOnlyFree: function () { return onlyFreeLines(lastCart); },
+    resync: function () { if (onlyFreeLines(lastCart)) clearFree(); else sync(); }
+  };
 
   // --- Plain (non-AJAX) <form action="/cart/add"> submit that causes a real page load ---
   document.addEventListener('submit', function (e) {

@@ -55,6 +55,14 @@
           "settings": {
             "title": "Discount codes applicable on non-sale items only"
           }
+        },
+        "tracker_strip": {
+          "type": "tracker_strip",
+          "settings": {
+            "bg_color": "#F4EFE6",
+            "text_color": "#000000"
+          },
+          "disabled": true
         }
       },
       "block_order": [
@@ -62,7 +70,8 @@
         "overlay",
         "announcement_2",
         "announcement_3",
-        "announcement_4"
+        "announcement_4",
+        "tracker_strip"
       ],
       "custom_css": [
         "/* Keep announcement text in its entered case */#ToolBar .announcement,#ToolBar .announcement * {text-transform: none;}"

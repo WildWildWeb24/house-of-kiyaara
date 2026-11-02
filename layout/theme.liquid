@@ -288,6 +288,11 @@
 
 {% render 'razorpay-magic-checkout' %}
 
+{%- comment -%}
+  RETIRED 2026-11-02: free Twilly auto-add (window.freeGiftConfig + assets/free-gift-twilly.js) is switched off.
+  Replaced by the tiered freebie engine (window.freeProductConfig + assets/free-product.js) below. Kept for reference.
+{%- endcomment -%}
+{%- comment -%}
 {%- liquid
   assign gift_eligible_collection = collections['all-products-sitewide-auto']
   if gift_eligible_collection == blank or gift_eligible_collection.id == nil
@@ -333,5 +338,37 @@
   };
 </script>
 <script src="{{ 'free-gift-twilly.js' | asset_url }}" defer="defer"></script>
+{%- endcomment -%}
+{%- liquid
+  assign free_product_eligible_collection = collections['all-products-sitewide-auto']
+  if free_product_eligible_collection == blank or free_product_eligible_collection.id == nil
+    for c in collections
+      if c.title == 'All Products (Sitewide - Auto)'
+        assign free_product_eligible_collection = c
+        break
+      endif
+    endfor
+  endif
+-%}
+<script>
+  window.freeProductConfig = {
+    gifts: [{%- render 'free-product-gifts' -%}],
+    cartCompareAtPrices: {
+      {%- for item in cart.items -%}
+        "{{ item.variant_id }}": {{ item.variant.compare_at_price | default: 0 }}{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    },
+    eligibleProductIds: [
+      {%- if free_product_eligible_collection != blank -%}
+        {%- paginate free_product_eligible_collection.products by 1000 -%}
+          {%- for p in free_product_eligible_collection.products -%}
+            {{ p.id }}{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        {%- endpaginate -%}
+      {%- endif -%}
+    ]
+  };
+</script>
+<script src="{{ 'free-product.js' | asset_url }}" defer="defer"></script>
 </body>
 </html>

@@ -4,13 +4,21 @@
   Mobile: stacked horizontal cards (text left, image right), tracker hidden by default.
   Each card's amount comes from the same theme settings as the cart drawer / header gift tracker
   (free_sticker_threshold, free_cards_threshold, free_scarf_threshold, free_shipping_threshold),
-  so all three trackers always agree. The tracker progress uses the same cart value as the cart
-  tracker (cart.items_subtotal_price) and is refreshed live by assets/free-product.js.
+  so all three trackers always agree. The tracker progress uses the freebie total: subtotal without
+  gift cards, same as the cart tracker, and is refreshed live by assets/free-product.js.
 {%- endcomment -%}
 
 {%- liquid
   assign s = section.settings
-  assign total = cart.items_subtotal_price
+  # Freebie total: same rule as totals() in assets/free-product.js - skip free-gift lines and gift cards.
+  # (was: assign total = cart.items_subtotal_price)
+  assign total = 0
+  for item in cart.items
+    if item.properties._free_product == 'true' or item.gift_card or item.product.gift_card?
+      continue
+    endif
+    assign total = total | plus: item.final_line_price
+  endfor
   assign cards = section.blocks | where: 'type', 'gift'
   assign n = cards.size
 
@@ -140,7 +148,7 @@
       <h2 class="freebie-section__heading">{{ s.heading | escape | newline_to_br }}</h2>
     {%- endif -%}
 
-    <div class="freebie-section__grid{% if s.show_tracker and s.show_tracker_mobile and n > 1 %} has-mobile-track{% endif %}" style="--fb-cols: {{ cols }}; --fb-n: {{ n }}; --fb-gaps-n: {{ n | minus: 1 }};" data-live-tracker-inner data-cart-subtotal="{{ total }}">
+    <div class="freebie-section__grid{% if s.show_tracker and s.show_tracker_mobile and n > 1 %} has-mobile-track{% endif %}" style="--fb-cols: {{ cols }}; --fb-n: {{ n }}; --fb-gaps-n: {{ n | minus: 1 }};" data-live-tracker-inner data-cart-subtotal="{{ cart.items_subtotal_price }}">
       {%- for block in cards -%}
         {%- liquid
           assign idx = forloop.index0
