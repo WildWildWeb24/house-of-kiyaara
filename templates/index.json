@@ -17,8 +17,8 @@
           "settings": {
             "media_toggle": "show_image",
             "overlay_opacity": 0,
-            "image": "shopify://shop_images/hok-festive-v3-desktop-HD-001.webp",
-            "image_mobile": "shopify://shop_images/hok-festive-v3-mobile-HD-single.webp"
+            "image": "shopify://shop_images/hok-nov-banner-02-desktop.webp",
+            "image_mobile": "shopify://shop_images/hok-nov-banner-02-mobile.webp"
           }
         }
       },
