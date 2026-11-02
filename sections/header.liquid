@@ -184,6 +184,12 @@
 
 <header id="MainHeader" class="header container {% if section.settings.enable_full_width %} edge-to-edge{% else %}sm-down-edge-to-edge{% endif %} color-{{ section.settings.color_scheme }} {{ section.settings.header_layout }}{% if overlay_header %} overlay{% endif %} header-border--{{ section.settings.header_border_style }} {% if inverted_colors %}use-background{% else %}use-foreground{% endif %}" data-sticky-behavior="{{- section.settings.header_sticky_behavior -}}" style="--overlay-background-opacity: {{ overlay_object.settings.background_opacity | divided_by: 100.0 | default: 1 }}; --overlay-blur: {{ overlay_object.settings.background_blur |  default: 0 }}px">
 
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'tracker_strip' and settings.enable_free_scarf -%}
+      {% render 'header-gift-tracker-strip', block: block, section_id: section.id %}
+    {%- endif -%}
+  {%- endfor -%}
+
   {% render 'toolbar' %}
 
   <div class="header-content">
@@ -521,6 +527,29 @@
       }
     ],
     "blocks": [
+      {
+        "name": "Gift Tracker Strip",
+        "type": "tracker_strip",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Shows the same gift tracker as the cart (messages, thresholds, icons, labels and bar colors come from Theme settings > Free scarf / gifts)."
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Strip background color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Strip text color",
+            "default": "#000000"
+          }
+        ]
+      },
       {
         "name": "t:sections.header.blocks.announcement.name",
         "type": "announcement",
