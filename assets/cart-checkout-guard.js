@@ -13,6 +13,15 @@
   window.__hokCheckoutGuard = true;
 
   var CLICK_SELECTOR = 'button[name="checkout"], input[name="checkout"], magic-checkout-btn, .magic-cart-btn, .magic-cart-btn__parent, a[href*="/checkout"]';
+  var QTY_BUSY_MS = 3000;
+  var lastQtyEdit = 0;
+
+  ['input', 'change'].forEach(function (type) {
+    document.addEventListener(type, function (e) {
+      var t = e.target;
+      if (t && t.matches && t.matches('input[name="updates[]"]')) lastQtyEdit = Date.now();
+    }, true);
+  });
 
   function num(v) { var n = Number(v); return isNaN(n) ? -1 : n; }
 
@@ -24,9 +33,16 @@
         (num(m.getAttribute('data-total')) === 0 || num(m.getAttribute('data-paid-lines')) === 0)) return 'free';
     if (document.querySelector('cart-items.is-processing')) return 'busy';
     if (fp && typeof fp.isBusy === 'function' && fp.isBusy()) return 'busy';
-    var q = document.querySelectorAll('input[name="updates[]"]');
-    for (var i = 0; i < q.length; i++) {
-      if (q[i].type !== 'hidden' && q[i].value !== q[i].getAttribute('value')) return 'busy';
+    // Replaced (2026-11-02-freebie-fix): previously had no QTY_BUSY_MS cap on input[name="updates[]"] mismatch:
+    // var q = document.querySelectorAll('input[name="updates[]"]');
+    // for (var i = 0; i < q.length; i++) {
+    //   if (q[i].type !== 'hidden' && q[i].value !== q[i].getAttribute('value')) return 'busy';
+    // }
+    if (lastQtyEdit > 0 && Date.now() - lastQtyEdit < QTY_BUSY_MS) {
+      var q = document.querySelectorAll('input[name="updates[]"]');
+      for (var i = 0; i < q.length; i++) {
+        if (q[i].type !== 'hidden' && q[i].value !== q[i].getAttribute('value')) return 'busy';
+      }
     }
     return null;
   }
