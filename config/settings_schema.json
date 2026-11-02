@@ -1947,7 +1947,443 @@
       },
       {
         "type": "header",
-        "content": "Free gift promotion"
+        "content": "Free Scarf promotion"
+      },
+      {
+        "type": "paragraph",
+        "content": "Each free product is auto-added when cart value >= its minimum AND a cart item is in the \"All Products (Sitewide - Auto)\" collection. Free products must be priced at ₹0 and available (a product that is draft, priced above ₹0 or not picked is ignored). Keep the minimums in ascending order: sticker pack, greeting cards, scarf, free shipping."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_free_scarf",
+        "label": "Enable free products (sticker pack, greeting cards, scarf)",
+        "default": false
+      },
+      {
+        "type": "number",
+        "id": "free_scarf_threshold",
+        "label": "Minimum cart value for free scarf (₹)",
+        "default": 2000
+      },
+      {
+        "type": "header",
+        "content": "Free sticker pack"
+      },
+      {
+        "type": "product",
+        "id": "free_sticker_product",
+        "label": "Sticker pack product (₹0)"
+      },
+      {
+        "type": "number",
+        "id": "free_sticker_threshold",
+        "label": "Minimum cart value for free sticker pack (₹)",
+        "default": 999
+      },
+      {
+        "type": "text",
+        "id": "free_sticker_cp_label",
+        "label": "Tracker checkpoint label"
+      },
+      {
+        "type": "image_picker",
+        "id": "free_sticker_icon",
+        "label": "Tracker checkpoint icon"
+      },
+      {
+        "type": "header",
+        "content": "Free greeting cards"
+      },
+      {
+        "type": "product",
+        "id": "free_cards_product",
+        "label": "Greeting cards product (₹0)"
+      },
+      {
+        "type": "number",
+        "id": "free_cards_threshold",
+        "label": "Minimum cart value for free greeting cards (₹)",
+        "default": 1500
+      },
+      {
+        "type": "text",
+        "id": "free_cards_cp_label",
+        "label": "Tracker checkpoint label"
+      },
+      {
+        "type": "image_picker",
+        "id": "free_cards_icon",
+        "label": "Tracker checkpoint icon"
+      },
+      {
+        "type": "header",
+        "content": "Free scarf color option 1 (default selection)"
+      },
+      {
+        "type": "product",
+        "id": "free_scarf_product_1",
+        "label": "Scarf product 1"
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_label_1",
+        "label": "Color name (tooltip / accessibility)"
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_color_1",
+        "label": "Swatch color"
+      },
+      {
+        "type": "header",
+        "content": "Free scarf color option 2"
+      },
+      {
+        "type": "product",
+        "id": "free_scarf_product_2",
+        "label": "Scarf product 2"
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_label_2",
+        "label": "Color name (tooltip / accessibility)"
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_color_2",
+        "label": "Swatch color"
+      },
+      {
+        "type": "header",
+        "content": "Free scarf color option 3"
+      },
+      {
+        "type": "product",
+        "id": "free_scarf_product_3",
+        "label": "Scarf product 3"
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_label_3",
+        "label": "Color name (tooltip / accessibility)"
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_color_3",
+        "label": "Swatch color"
+      },
+      {
+        "type": "header",
+        "content": "Free scarf line item (cart)"
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_card_label_text",
+        "label": "Side label text"
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_card_label_bg",
+        "label": "Side label background",
+        "default": "#f4efe6"
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_card_label_color",
+        "label": "Side label text color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_card_bg",
+        "label": "Card background",
+        "default": "#faf7f1"
+      },
+      {
+        "type": "range",
+        "id": "free_scarf_card_radius",
+        "label": "Card corner radius",
+        "min": 0,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "default": 10
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_price_text",
+        "label": "Price text (replaces ₹0)",
+        "info": "Shown in place of the ₹0 price. The compare-at price is shown struck out beside it."
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_price_color",
+        "label": "Price text color",
+        "default": "#1f7a3d"
+      },
+      {
+        "type": "range",
+        "id": "free_scarf_title_size",
+        "label": "Product title font size (single line)",
+        "min": 9,
+        "max": 16,
+        "step": 1,
+        "unit": "px",
+        "default": 11
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_qty_label",
+        "label": "Quantity label (e.g. Qty)"
+      },
+      {
+        "type": "header",
+        "content": "Free scarf color chooser (cart)"
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_chooser_heading",
+        "label": "Chooser heading"
+      },
+      {
+        "type": "range",
+        "id": "free_scarf_swatch_size",
+        "label": "Swatch size",
+        "min": 12,
+        "max": 48,
+        "step": 2,
+        "unit": "px",
+        "default": 18
+      },
+      {
+        "type": "range",
+        "id": "free_scarf_swatch_gap",
+        "label": "Gap between swatches",
+        "min": 4,
+        "max": 24,
+        "step": 2,
+        "unit": "px",
+        "default": 8
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_swatch_ring",
+        "label": "Selected swatch ring color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "free_scarf_chooser_margin_top",
+        "label": "Chooser top margin",
+        "min": 0,
+        "max": 32,
+        "step": 2,
+        "unit": "px",
+        "default": 8
+      },
+      {
+        "type": "header",
+        "content": "Progress tracker messages"
+      },
+      {
+        "type": "paragraph",
+        "content": "Use [amount] where the remaining amount should appear. Leave blank to show nothing."
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_msg_progress",
+        "label": "Below the sticker minimum (use [amount] or [number])",
+        "info": "Shown below the first checkpoint unless the \"Before free sticker pack\" message is filled."
+      },
+      {
+        "type": "text",
+        "id": "free_msg_before_sticker",
+        "label": "Before free sticker pack (use [amount] or [number])"
+      },
+      {
+        "type": "text",
+        "id": "free_msg_before_cards",
+        "label": "Before free greeting cards (use [amount] or [number])"
+      },
+      {
+        "type": "text",
+        "id": "free_msg_before_scarf",
+        "label": "Before free scarf (use [amount] or [number])"
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_msg_unlocked",
+        "label": "Free scarf unlocked"
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_msg_shipping_progress",
+        "label": "Before free shipping (use [amount] or [number])"
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_msg_shipping_unlocked",
+        "label": "Free shipping unlocked"
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_msg_all_unlocked",
+        "label": "Heading when all freebies are unlocked"
+      },
+      {
+        "type": "header",
+        "content": "Progress tracker design"
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_label_scarf",
+        "label": "Checkpoint label: free scarf"
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_label_shipping",
+        "label": "Checkpoint label: free shipping"
+      },
+      {
+        "type": "checkbox",
+        "id": "free_scarf_show_amounts",
+        "label": "Show threshold amounts beside checkpoint labels",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_tick_color",
+        "label": "Progress marker color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "free_scarf_label_size",
+        "label": "Amount / label font size",
+        "min": 10,
+        "max": 18,
+        "step": 1,
+        "unit": "px",
+        "default": 11
+      },
+      {
+        "type": "image_picker",
+        "id": "free_scarf_icon_scarf",
+        "label": "Checkpoint icon: free scarf"
+      },
+      {
+        "type": "image_picker",
+        "id": "free_scarf_icon_shipping",
+        "label": "Checkpoint icon: free shipping"
+      },
+      {
+        "type": "range",
+        "id": "free_scarf_icon_size",
+        "label": "Checkpoint icon size",
+        "min": 16,
+        "max": 56,
+        "step": 2,
+        "unit": "px",
+        "default": 22
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_icon_bg",
+        "label": "Checkpoint background (locked)",
+        "default": "#f4efe6"
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_icon_bg_active",
+        "label": "Checkpoint background (unlocked)",
+        "default": "#d9c7a0"
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_track_color",
+        "label": "Bar track color",
+        "default": "#e9e2d3"
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_fill_from",
+        "label": "Bar fill gradient: start",
+        "default": "#d9c7a0"
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_fill_to",
+        "label": "Bar fill gradient: end",
+        "default": "#b89c62"
+      },
+      {
+        "type": "range",
+        "id": "free_scarf_bar_height",
+        "label": "Bar height",
+        "min": 2,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "free_scarf_bar_radius",
+        "label": "Bar corner radius",
+        "min": 0,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "free_scarf_tracker_pad_y",
+        "label": "Tracker padding (top/bottom)",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "free_scarf_tracker_pad_x",
+        "label": "Tracker padding (left/right)",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "free_scarf_tracker_margin_y",
+        "label": "Tracker margin (top/bottom)",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "free_scarf_message_size",
+        "label": "Message font size",
+        "min": 11,
+        "max": 20,
+        "step": 1,
+        "unit": "px",
+        "default": 14
+      },
+      {
+        "type": "color",
+        "id": "free_scarf_message_color",
+        "label": "Message text color"
+      },
+      {
+        "type": "header",
+        "content": "Free gift promotion (Twilly) - RETIRED 2026-11-02, not used by the theme"
       },
       {
         "type": "checkbox",
