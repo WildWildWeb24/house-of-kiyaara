@@ -64,6 +64,16 @@ cart-items {
 #cart-footer {
   width: 100%;
 }
+#cart-note textarea,
+#cart-note-input {
+  min-height: 54px;
+  height: 54px;
+  padding: 8px 12px;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  border-radius: var(--button-border-radius, 4px);
+  resize: vertical;
+}
 .cart__subtotals {
   margin: 12px 0;
 }
@@ -213,8 +223,11 @@ cart-items {
 .drawer-cart .drawer-panel {
   overflow: hidden;
 }
-.drawer cart-items, .drawer #cart-note {
-  margin-bottom: 40px;
+.drawer cart-items {
+  margin-bottom: 30px;
+}
+.drawer #cart-note {
+  margin-bottom: 16px;
 }
 .drawer .empty-cart-notice,
 .drawer .empty-cart-haiku {
@@ -224,10 +237,9 @@ cart-items {
 .drawer .cart-item {
   grid-template-columns: 72px 1fr auto;
   grid-template-areas:
-    "a b c"
     "a b d"
     "e e e";
-  align-items: start;
+  align-items: center;
 }
 .drawer .cart-item__image-container {
   grid-area: a;
@@ -236,7 +248,8 @@ cart-items {
   grid-area: b;
 }
 .drawer .cart-item__total {
- grid-area: c;
+  grid-area: c;
+  display: none !important;
 }
 .drawer .cart-item__actions {
   grid-area: d;
@@ -385,3 +398,49 @@ cart-items {
     display: grid !important;
   }
 }
+
+/* Drawer layout: the tracker replaces the "Cart" title in the header. The sticky footer starts at the
+   "Pay via store credit" row (left) + Subtotal (right), then checkout button, payment strip,
+   secure-payment logos and tax note. Spacing is kept tight on purpose. */
+.drawer-cart .drawer-header {
+  display: block;
+  padding: 10px 16px 12px;
+}
+.drawer-cart .drawer-header.is-empty,
+.drawer-cart:has(.empty-cart-notice) .drawer-header,
+.drawer-cart .drawer-header:has(#cart-shipping-notification:empty) {
+  border-bottom: none !important;
+}
+.drawer-cart #cart-shipping-notification { width: 100%; }
+.drawer-cart .drawer-header .gift-tracker__messages { padding: 0 44px; }
+.drawer-cart .drawer-header .gift-tracker__msg:last-child { margin-bottom: 8px; }
+.drawer-cart .drawer-footer {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.drawer-cart #cart-footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 12px;
+  row-gap: 4px;
+  align-items: center;
+}
+.drawer-cart #cart-footer > * { grid-column: 1 / -1; }
+.drawer-cart #cart-footer > .cart-buttons { display: contents; }
+.drawer-cart #cart-footer .cart-buttons > * { grid-column: 1 / -1; width: 100%; }
+.drawer-cart #cart-footer .cart-buttons > .magic-native-checkout-checkbox-container {
+  grid-column: 1;
+  grid-row: 1;
+  width: auto;
+}
+.drawer-cart #cart-footer > #cart-subtotal {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  margin: 0;
+}
+.drawer-cart #cart-footer .cart__subtotals { margin: 0; }
+.drawer-cart #cart-footer .cart__subtotal { gap: 6px; justify-content: flex-end; }
+.drawer-cart #cart-footer .cart__subtotal > span:first-child::after { content: ':'; }
+.drawer-cart #cart-footer .cart__extras { display: contents; }
+.drawer-cart #cart-footer .cart__tax { margin: 2px 0 0; }

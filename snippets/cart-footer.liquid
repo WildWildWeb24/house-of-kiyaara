@@ -10,6 +10,9 @@
         <span>{{ 'sections.cart.subtotal' | t }}</span>
         <span>{{ cart.original_total_price | money_with_currency }}</span>
       </div>
+    </div>
+
+    <div class="cart__extras">
       {%- render 'cart-discounts', cart: cart -%}
     </div>
 
@@ -30,7 +33,7 @@
         </div>
       {%- endif -%}
     </div>
-          
+
     <div class="cart-secure-payment">
       <p class="cart-secure-payment__text size--tiny text-align-left">Secure and easy payment process</p>
       <img src="https://cdn.shopify.com/s/files/1/0567/8661/6449/files/HOK_Secure_Payments.png?v=1787296891" alt="Secure and easy payment process" class="cart-secure-payment__image" width="905" height="100" loading="lazy">  
@@ -58,11 +61,11 @@
 
 <style>
   .cart-secure-payment {
-    margin-top: 30px;
+    margin-top: 6px;
   }
 
   .cart-secure-payment__text {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
 
   .cart-secure-payment__image {
@@ -73,3 +76,4 @@
     margin: 0 auto;
   }
 </style>
+

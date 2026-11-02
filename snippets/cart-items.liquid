@@ -14,7 +14,18 @@
     <span class="h6 subheading size--tiny sm-down-hide">{{ 'sections.cart.headings.quantity' | t }}</span>
     <span class="h6 subheading size--tiny text-align-right">{{ 'sections.cart.headings.total' | t }}</span>
   </header>
+  {%- comment -%} 1. Regular / paid products first {%- endcomment -%}
   {%- for item in cart.items -%}
+    {%- assign gift_line = false -%}
+    {%- if settings.enable_free_scarf and item.properties._free_product == 'true' -%}
+      {%- assign gift_keys = 'free_scarf_product_1,free_scarf_product_2,free_scarf_product_3,free_sticker_product,free_cards_product' | split: ',' -%}
+      {%- for gift_key in gift_keys -%}
+        {%- if settings[gift_key].id == item.product_id -%}{%- assign gift_line = true -%}{%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+    {%- if gift_line -%}
+      {%- continue -%}
+    {%- endif -%}
     <div class="cart-item" id="CartItem-{{ forloop.index }}">
 
       {%- if item.image -%}
@@ -38,7 +49,22 @@
           {{- item.product.title | escape -}}
         </a>
 
-        {%- if item.original_price != item.final_price -%}
+        {%- if item.variant.compare_at_price > item.final_price -%}
+          <div class="cart-item__discounted-prices size--small">
+            <span class="visually-hidden">
+              {{ 'products.product.price.regular_price' | t }}
+            </span>
+            <s class="cart-item__old-price">
+              {{- item.variant.compare_at_price | money -}}
+            </s>
+            <span class="visually-hidden">
+              {{ 'products.product.price.sale_price' | t }}
+            </span>
+            <strong class="price cart-item__final-price">
+              {{ item.final_price | money }}
+            </strong>
+          </div>
+        {%- elsif item.original_price != item.final_price -%}
           <div class="cart-item__discounted-prices size--small">
             <span class="visually-hidden">
               {{ 'products.product.price.regular_price' | t }}
@@ -119,7 +145,25 @@
       </div>
 
       <div class="cart-item__total text-align-right">
-        {%- if item.original_line_price != item.final_line_price -%}
+        {%- assign line_compare_at_price = item.variant.compare_at_price | times: item.quantity -%}
+        {%- if line_compare_at_price > item.final_line_price -%}
+          <dl class="cart-item__discounted-prices">
+            <dt class="visually-hidden">
+              {{ 'products.product.price.regular_price' | t }}
+            </dt>
+            <dd>
+              <s class="cart-item__old-price price price--end">
+                {{ line_compare_at_price | money }}
+              </s>
+            </dd>
+            <dt class="visually-hidden">
+              {{ 'products.product.price.sale_price' | t }}
+            </dt>
+            <dd class="price price--end">
+              {{ item.final_line_price | money }}
+            </dd>
+          </dl>
+        {%- elsif item.original_line_price != item.final_line_price -%}
           <dl class="cart-item__discounted-prices">
             <dt class="visually-hidden">
               {{ 'products.product.price.regular_price' | t }}
@@ -164,6 +208,20 @@
       </div>
 
   </div>
+  {%- endfor -%}
+
+  {%- comment -%} 2. Free gift products below paid products {%- endcomment -%}
+  {%- for item in cart.items -%}
+    {%- assign gift_line = false -%}
+    {%- if settings.enable_free_scarf and item.properties._free_product == 'true' -%}
+      {%- assign gift_keys = 'free_scarf_product_1,free_scarf_product_2,free_scarf_product_3,free_sticker_product,free_cards_product' | split: ',' -%}
+      {%- for gift_key in gift_keys -%}
+        {%- if settings[gift_key].id == item.product_id -%}{%- assign gift_line = true -%}{%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+    {%- if gift_line -%}
+      {%- render 'cart-free-scarf-line', item: item, item_index: forloop.index -%}
+    {%- endif -%}
   {%- endfor -%}
   {% endif %}
 

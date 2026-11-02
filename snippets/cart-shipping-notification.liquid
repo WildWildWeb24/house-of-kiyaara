@@ -1,4 +1,18 @@
-{%- if settings.free_shipping_threshold != blank -%}
+{%- liquid
+  assign use_scarf_tracker = false
+  if settings.enable_free_scarf and settings.free_shipping_threshold != blank and shop.currency == localization.country.currency.iso_code
+    assign gift_keys = 'free_scarf_product_1,free_scarf_product_2,free_scarf_product_3,free_sticker_product,free_cards_product' | split: ','
+    for gift_key in gift_keys
+      assign gift_product = settings[gift_key]
+      if gift_product != blank and gift_product.price == 0
+        assign use_scarf_tracker = true
+      endif
+    endfor
+  endif
+-%}
+{%- if use_scarf_tracker -%}
+  <div id="cart-shipping-notification">{%- render 'cart-free-scarf-tracker' -%}</div>
+{%- elsif settings.free_shipping_threshold != blank -%}
   {{ 'component-level.css' | asset_url | stylesheet_tag }}
 
   {%- liquid

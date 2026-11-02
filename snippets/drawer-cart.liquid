@@ -1,7 +1,7 @@
 <drawer-cart
   id="drawer-cart"
   data-id="{{ section.id }}"
-  class="drawer slide-from-right drawer-cart color-{{ settings.color_scheme_drawers }}"
+  class="drawer slide-from-right drawer-cart color-{{ settings.color_scheme_drawers }}{% if cart.item_count == 0 %} is-empty{% endif %}"
   data-drawer
   data-parent
   style="opacity: 0; display: none;"
@@ -10,8 +10,9 @@
   {% render 'close-button', button_class: 'drawer-close drawer-float-close', context: 'cart-drawer' %}
 {% endif %}
   <div class="drawer-panel slide-from-right user-select-none color-{{ settings.color_scheme_drawers }}">
-    <header class="drawer-header">
-      <h2 class="drawer-title h1">{{ 'sections.cart.title' | t }}</h2>
+    <header class="drawer-header{% if cart.item_count == 0 %} is-empty{% endif %}">
+      <h2 class="visually-hidden">{{ 'sections.cart.title' | t }}</h2>
+      {%- render 'cart-shipping-notification', cart: cart -%}
       {% if settings.drawer_appearance == 'drawer' %}
         {%- render 'close-button', button_class: 'drawer-close' -%}
       {% endif %}
@@ -32,7 +33,6 @@
     </div>
 
     <footer class="drawer-footer">
-      {%- render 'cart-shipping-notification', cart: cart -%}
       {%- render 'cart-footer', show_cart_link: settings.show_cart_link -%}
     </footer>
   </div>
