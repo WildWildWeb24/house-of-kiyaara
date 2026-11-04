@@ -389,6 +389,14 @@
     var fixes = [];
     var adds = [];
 
+    // Legacy cleanup (2026-11-04): remove leftover free-Twilly lines (_free_gift = 'true') from carts saved
+    // before the Twilly offer was retired on 2026-11-02; may be removed once old carts have expired (~2 weeks).
+    cart.items.forEach(function (item) {
+      if (item.properties && item.properties._free_gift === 'true') {
+        removes.push(item);
+      }
+    });
+
     GIFTS.forEach(function (gift) {
       var lines = cart.items.filter(function (i) { return giftOf(i) === gift; });
       if (!qualifies(gift, t)) {
