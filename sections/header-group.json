@@ -58,7 +58,6 @@
         },
         "tracker_strip": {
           "type": "tracker_strip",
-          "disabled": true,
           "settings": {
             "bg_color": "#f4efe6",
             "text_color": "#000000"

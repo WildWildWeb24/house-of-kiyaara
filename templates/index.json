@@ -242,7 +242,6 @@
         "gift_scarf",
         "gift_shipping"
       ],
-      "disabled": true,
       "settings": {
         "heading": "Free gifts\nwith every order",
         "heading_size": 24,
