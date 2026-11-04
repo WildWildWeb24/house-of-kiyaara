@@ -136,7 +136,7 @@
     "show_cart_birthday": true,
     "cart_birthday_heading": "For a birthday discount!",
     "cart_birthday_subtext": "",
-    "enable_free_scarf": true,
+    "enable_free_scarf": false,
     "free_scarf_threshold": 2000,
     "free_sticker_product": "free-sticker-pack",
     "free_sticker_threshold": 999,
