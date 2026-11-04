@@ -53,7 +53,22 @@
         "content_width": "default",
         "sm_content_position": "center",
         "sm_text_alignment": "center",
-        "text_alignment": "center"
+        "text_alignment": "center",
+        "custom_bg_color": "",
+        "custom_card_bg_color": "",
+        "custom_border_color": "",
+        "custom_card_border_color": "",
+        "custom_border_width": 1,
+        "custom_accent_color": "",
+        "custom_heading_color": "",
+        "custom_text_color": "",
+        "custom_btn_bg_color": "",
+        "custom_btn_text_color": "",
+        "custom_btn_border_color": "",
+        "md_padding_top": 80,
+        "md_padding_bottom": 80,
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "custom_liquid_3iCm6A": {
@@ -84,6 +99,24 @@
     "multicolumn_P39AXY": {
       "type": "multicolumn",
       "blocks": {
+        "column_m7AePw": {
+          "type": "column",
+          "settings": {
+            "press_date": "October 2026",
+            "press_logo": "shopify://shop_images/Marwar_India_logo.webp",
+            "image": "shopify://shop_images/Marwar_Twilly_full_crop.webp",
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "House of Kiyaara",
+            "text": "<p>The latest collection, Farasha: Forever in Bloom, draws inspiration from the butterfly and explores transformation, new beginnings and the freedom to bloom at your own pace.</p>",
+            "button_label": "View Magazine",
+            "button_link": "https://cdn.shopify.com/s/files/1/0567/8661/6449/files/HOK_Marwar_Mag_Print.pdf?v=1793780967",
+            "button_style": "link",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
         "column_rN8N8a": {
           "type": "column",
           "settings": {
@@ -122,6 +155,7 @@
         }
       },
       "block_order": [
+        "column_m7AePw",
         "column_rN8N8a",
         "column_67a3N8"
       ],
@@ -140,7 +174,22 @@
         "media_aspect_ratio": "natural",
         "autoplay": false,
         "autoplay_speed": 5,
-        "sliding_behavior": "all"
+        "sliding_behavior": "all",
+        "custom_bg_color": "",
+        "custom_card_bg_color": "",
+        "custom_border_color": "",
+        "custom_card_border_color": "",
+        "custom_border_width": 1,
+        "custom_accent_color": "",
+        "custom_heading_color": "",
+        "custom_text_color": "",
+        "custom_btn_bg_color": "",
+        "custom_btn_text_color": "",
+        "custom_btn_border_color": "",
+        "md_padding_top": 32,
+        "md_padding_bottom": 96,
+        "padding_top": 24,
+        "padding_bottom": 64
       }
     }
   },
