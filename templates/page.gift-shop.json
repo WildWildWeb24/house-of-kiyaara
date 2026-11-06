@@ -27,8 +27,8 @@
           "settings": {
             "media_toggle": "show_image",
             "overlay_opacity": 0,
-            "image": "shopify://shop_images/HOK-Festive0280-retouched.png",
-            "image_mobile": "shopify://shop_images/HOK-Festive0280-retouched.png"
+            "image": "shopify://shop_images/gift_page_hero_banner_-_web.webp",
+            "image_mobile": "shopify://shop_images/gift_page_hero_banner_-_mob.webp"
           }
         }
       },
@@ -40,12 +40,12 @@
         "media_link": "",
         "enable_parallax": false,
         "enable_full_width": true,
-        "sm_section_height": "by_pixels",
-        "sm_pixel_height": 560,
+        "sm_section_height": "auto",
+        "sm_pixel_height": 200,
         "content_width": "col-sm-max-6",
         "sm_content_position": "sm-vertical-center sm-horizontal-center",
         "sm_text_alignment": "center",
-        "section_height": "by_pixels",
+        "section_height": "auto",
         "pixel_height": 380,
         "content_position": "vertical-center horizontal-center",
         "text_alignment": "center"
