@@ -58,7 +58,7 @@
       "name": "Collection Banner Desktop",
       "settings": {
         "color_scheme": "",
-        "custom_liquid": "<div class=\"custom-image-banner-desktop\">\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/collection-desktop.webp?v=1790253188\"\n    alt=\"House of Kiyaara\"\n    loading=\"lazy\"\n    width=\"1600\"\n    height=\"900\"\n  >\n</div>\n\n<style>\n  .custom-image-banner-desktop {\n    width: 100%;\n    text-align: center;\n    overflow: hidden;\n  }\n\n  .custom-image-banner-desktop img {\n    display: block;\n    width: 100%;\n    height: auto;\n    margin: 0 auto;\n  }\n\n  @media screen and (max-width: 749px) {\n    .custom-image-banner-desktop {\n      display: none;\n    }\n  }\n</style>",
+        "custom_liquid": "<div class=\"custom-image-banner-desktop\">\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/hok-nov-collection-banner.webp?v=1793777113\"\n    alt=\"House of Kiyaara\"\n    loading=\"lazy\"\n    width=\"1600\"\n    height=\"900\"\n  >\n</div>\n\n<style>\n  .custom-image-banner-desktop {\n    width: 100%;\n    text-align: center;\n    overflow: hidden;\n  }\n\n  .custom-image-banner-desktop img {\n    display: block;\n    width: 100%;\n    height: auto;\n    margin: 0 auto;\n  }\n\n  @media screen and (max-width: 749px) {\n    .custom-image-banner-desktop {\n      display: none;\n    }\n  }\n</style>",
         "enable_full_width": true
       }
     },
@@ -83,7 +83,7 @@
       "name": "Collection Banner Mobile",
       "settings": {
         "color_scheme": "",
-        "custom_liquid": "<div class=\"custom-image-banner-mobile\">\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/collection-mobile.webp?v=1790253187\"\n    alt=\"House of Kiyaara\"\n    loading=\"lazy\"\n    width=\"1600\"\n    height=\"900\"\n  >\n</div>\n\n<style>\n  .custom-image-banner-mobile {\n    width: 100%;\n    text-align: center;\n    overflow: hidden;\n  }\n\n  .custom-image-banner-mobile img {\n    display: block;\n    width: 100%;\n    height: auto;\n    margin: 0 auto;\n  }\n\n  @media screen and (min-width: 750px) {\n    .custom-image-banner-mobile {\n      display: none;\n    }\n  }\n</style>",
+        "custom_liquid": "<div class=\"custom-image-banner-mobile\">\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/collection_banner_-_mob.jpg?v=1793955454\"\n    alt=\"House of Kiyaara\"\n    loading=\"lazy\"\n    width=\"1600\"\n    height=\"900\"\n  >\n</div>\n\n<style>\n  .custom-image-banner-mobile {\n    width: 100%;\n    text-align: center;\n    overflow: hidden;\n  }\n\n  .custom-image-banner-mobile img {\n    display: block;\n    width: 100%;\n    height: auto;\n    margin: 0 auto;\n  }\n\n  @media screen and (min-width: 750px) {\n    .custom-image-banner-mobile {\n      display: none;\n    }\n  }\n</style>",
         "enable_full_width": true
       }
     },
