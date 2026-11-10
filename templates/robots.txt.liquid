@@ -5,7 +5,15 @@
   {%- endfor -%}
   {%- if group.user_agent.value == '*' -%}
     {{ 'Disallow: /products/twilly' }}
-  {%- endif -%}
+{{ 'Disallow: /collections$' }}
+{{ 'Disallow: /collections/all$' }}
+{{ 'Disallow: /collections/all-bags$' }}
+{{ 'Disallow: /collections/bags$' }}
+{{ 'Disallow: /collections/all-products-sitewide-auto$' }}
+{{ 'Disallow: /collections/all-products$' }}
+{{ 'Disallow: /pages/kp-account$' }}
+{{ 'Disallow: /blogs/news$' }}
+{% endif -%}
   {%- if group.sitemap != blank -%}
     {{ group.sitemap }}
   {%- endif -%}
