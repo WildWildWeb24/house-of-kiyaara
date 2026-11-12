@@ -114,7 +114,7 @@
         "ai_gen_block_f3964f7_aWtKbA": {
           "type": "ai_gen_block_f3964f7",
           "settings": {
-            "subheading": "<p>Welcome to Kiyaara</p>",
+            "subheading": "<h1>Welcome to Kiyaara</h1>",
             "heading": "It starts with a brushstroke",
             "body": "<p>Every Kiyaara motif begins as an original hand-painted artwork, thoughtfully transformed into bags made to be carried, loved and lived with every day.</p>",
             "hide_mark": false,
@@ -127,7 +127,7 @@
             "mark_to_heading": 25,
             "heading_to_body": 25,
             "heading_size": 28,
-            "subheading_size": 12,
+            "subheading_size": 11,
             "body_size": 14,
             "padding_top": 60,
             "padding_bottom": 30,
@@ -148,6 +148,10 @@
       },
       "block_order": [
         "ai_gen_block_f3964f7_aWtKbA"
+      ],
+      "custom_css": [
+        "[class*=\"__subheading\"] h1 {font-family: var(--font-body-family) !important; font-size: 12px !important; font-weight: inherit !important; font-style: inherit !important; line-height: 1.4 !important; letter-spacing: 0.12em !important; text-transform: uppercase !important; color: inherit !important; margin: 0 !important;}",
+        "@media screen and (max-width: 749px) {[class*=\"__subheading\"] h1 {font-size: 11px !important; }}"
       ],
       "name": "Kiyaara's Intro",
       "settings": {}
