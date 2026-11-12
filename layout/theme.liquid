@@ -162,6 +162,9 @@
 
     {%- render 'meta-tags' %}
     {%- render 'schema-organization' -%}
+    {%- if template.name == 'collection' -%}
+      {%- render 'schema-collection-breadcrumb' -%}
+    {%- endif -%}
 
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
