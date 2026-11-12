@@ -1,0 +1,32 @@
+{%- comment -%}
+  BreadcrumbList JSON-LD for the blog index (Home > Blog) and blog posts (Home > Blog > Post).
+{%- endcomment -%}
+{%- if template.name == 'article' or template.name == 'blog' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": {{ shop.url | json }}
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ blog.title | json }},
+      "item": {{ blog.url | prepend: shop.url | json }}
+    }{%- if template.name == 'article' -%},
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": {{ article.title | json }},
+      "item": {{ article.url | prepend: shop.url | json }}
+    }
+    {%- endif %}
+  ]
+}
+</script>
+{%- endif -%}

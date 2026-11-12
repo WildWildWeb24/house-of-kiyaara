@@ -70,8 +70,8 @@
   </nav>
 {% endif %}
 
-{%- comment -%} Collections get their BreadcrumbList from snippets/schema-collection-breadcrumb.liquid (layout), so skip it here to avoid duplicates. {%- endcomment -%}
-{%- unless template.name == 'collection' -%}
+{%- comment -%} Collections, blog and posts get their BreadcrumbList from schema-collection-breadcrumb / schema-blog-breadcrumb (layout), so skip it here to avoid duplicates. {%- endcomment -%}
+{%- unless template.name == 'collection' or template.name == 'article' or template.name == 'blog' -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
