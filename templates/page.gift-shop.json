@@ -22,6 +22,18 @@
     "hero_gift_banner": {
       "type": "hero",
       "blocks": {
+        "title_WHWJcJ": {
+          "type": "title",
+          "disabled": true,
+          "settings": {
+            "title": "Gift for your loved ones",
+            "heading_tag": "h1",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--default",
+            "margin_top": 0
+          }
+        },
         "image_banner": {
           "type": "image",
           "settings": {
@@ -33,6 +45,7 @@
         }
       },
       "block_order": [
+        "title_WHWJcJ",
         "image_banner"
       ],
       "settings": {
@@ -49,50 +62,6 @@
         "pixel_height": 380,
         "content_position": "vertical-center horizontal-center",
         "text_alignment": "center"
-      }
-    },
-    "rich_text_eV7dCJ": {
-      "type": "rich-text",
-      "blocks": {
-        "button_n9ztzQ": {
-          "type": "button",
-          "settings": {
-            "button_label": "See more gift options",
-            "button_sublabel": "",
-            "button_link": "shopify://collections/all-bags",
-            "button_style": "link",
-            "sm_size_multiplier": "sm-size--default",
-            "sm_margin_top": -10,
-            "size_multiplier": "size--small",
-            "margin_top": -10
-          }
-        }
-      },
-      "block_order": [
-        "button_n9ztzQ"
-      ],
-      "name": "t:sections.rich-text.name",
-      "settings": {
-        "color_scheme": "",
-        "content_width": "default",
-        "sm_content_position": "center",
-        "sm_text_alignment": "center",
-        "text_alignment": "center",
-        "custom_bg_color": "",
-        "custom_card_bg_color": "",
-        "custom_border_color": "",
-        "custom_card_border_color": "",
-        "custom_border_width": 1,
-        "custom_accent_color": "",
-        "custom_heading_color": "",
-        "custom_text_color": "",
-        "custom_btn_bg_color": "",
-        "custom_btn_text_color": "",
-        "custom_btn_border_color": "",
-        "md_padding_top": 0,
-        "md_padding_bottom": 44,
-        "padding_top": 0,
-        "padding_bottom": 44
       }
     },
     "collection_switcher_gift_curated": {
@@ -681,6 +650,50 @@
         "autoplay": false,
         "autoplay_speed": 5,
         "sliding_behavior": "single"
+      }
+    },
+    "rich_text_eV7dCJ": {
+      "type": "rich-text",
+      "blocks": {
+        "button_n9ztzQ": {
+          "type": "button",
+          "settings": {
+            "button_label": "See more gift options",
+            "button_sublabel": "",
+            "button_link": "shopify://collections/all-bags",
+            "button_style": "link",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": -10,
+            "size_multiplier": "size--small",
+            "margin_top": -10
+          }
+        }
+      },
+      "block_order": [
+        "button_n9ztzQ"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "color_scheme": "",
+        "content_width": "default",
+        "sm_content_position": "center",
+        "sm_text_alignment": "center",
+        "text_alignment": "center",
+        "custom_bg_color": "",
+        "custom_card_bg_color": "",
+        "custom_border_color": "",
+        "custom_card_border_color": "",
+        "custom_border_width": 1,
+        "custom_accent_color": "",
+        "custom_heading_color": "",
+        "custom_text_color": "",
+        "custom_btn_bg_color": "",
+        "custom_btn_text_color": "",
+        "custom_btn_border_color": "",
+        "md_padding_top": 0,
+        "md_padding_bottom": 44,
+        "padding_top": 0,
+        "padding_bottom": 44
       }
     },
     "rich_text_gift_concierge": {
