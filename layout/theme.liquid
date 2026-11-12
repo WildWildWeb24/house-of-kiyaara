@@ -166,6 +166,9 @@
       {%- render 'schema-collection-breadcrumb' -%}
     {%- endif -%}
     {%- render 'schema-blog-breadcrumb' -%}
+    {%- if template.name == 'article' -%}
+      {%- render 'schema-article-faq' -%}
+    {%- endif -%}
 
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');

@@ -1,0 +1,33 @@
+{%- comment -%}
+  FAQPage JSON-LD for blog posts, built from the article metafield custom.faq_schema.
+  Format (multi-line text):  Q: question   A: answer   (repeat for each question)
+{%- endcomment -%}
+{%- liquid
+  assign raw = article.metafields.custom.faq_schema.value | default: '' | strip
+  assign chunks = raw | split: 'Q:'
+  assign faq_count = 0
+-%}
+{%- if raw != blank -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for chunk in chunks -%}
+      {%- assign parts = chunk | split: 'A:' -%}
+      {%- assign q = parts[0] | strip -%}
+      {%- assign a = chunk | remove_first: parts[0] | remove_first: 'A:' | strip -%}
+      {%- if q != blank and a != blank -%}
+        {%- if faq_count > 0 -%},{%- endif -%}
+        {%- assign faq_count = faq_count | plus: 1 -%}
+    {
+      "@type": "Question",
+      "name": {{ q | strip_html | json }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ a | newline_to_br | json }} }
+    }
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}
