@@ -300,7 +300,7 @@
           "type": "collection-tab",
           "settings": {
             "tab_title": "Scarves",
-            "collection": "all-bags"
+            "collection": "scarves"
           }
         },
         "spacing_curated": {
