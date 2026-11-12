@@ -51,170 +51,6 @@
         "text_alignment": "center"
       }
     },
-    "rich_text_i6eTAg": {
-      "type": "rich-text",
-      "blocks": {
-        "text_HNLrUn": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>Something special for<br/>that special one</h2>",
-            "sm_size_multiplier": "sm-size--default",
-            "sm_margin_top": 0,
-            "size_multiplier": "size--default",
-            "margin_top": 0
-          }
-        }
-      },
-      "block_order": [
-        "text_HNLrUn"
-      ],
-      "name": "t:sections.rich-text.name",
-      "settings": {
-        "color_scheme": "",
-        "content_width": "default",
-        "sm_content_position": "center",
-        "sm_text_alignment": "center",
-        "text_alignment": "center",
-        "custom_bg_color": "",
-        "custom_card_bg_color": "",
-        "custom_border_color": "",
-        "custom_card_border_color": "",
-        "custom_border_width": 1,
-        "custom_accent_color": "",
-        "custom_heading_color": "",
-        "custom_text_color": "",
-        "custom_btn_bg_color": "",
-        "custom_btn_text_color": "",
-        "custom_btn_border_color": "",
-        "md_padding_top": 80,
-        "md_padding_bottom": 0,
-        "padding_top": 60,
-        "padding_bottom": 0
-      }
-    },
-    "promo_grid_and_slideshow_Key7y8": {
-      "type": "promo-grid-and-slideshow",
-      "blocks": {
-        "custom_spacing_DQUgTr": {
-          "type": "custom_spacing",
-          "settings": {
-            "sm_margin_top": 0,
-            "sm_padding_top": 30,
-            "sm_padding_bottom": 30,
-            "margin_top": 0,
-            "padding_top": 30,
-            "padding_bottom": 30
-          }
-        },
-        "image_FAdx8z": {
-          "type": "image",
-          "name": "Under ₹999",
-          "settings": {
-            "image": "shopify://shop_images/under_999.webp",
-            "media_link": "shopify://collections/under-999",
-            "title": "<p>Under<br/>₹999</p><p></p>",
-            "button_label": "Shop Now",
-            "button_style": "primary",
-            "color_scheme": "",
-            "overlay_opacity": 15,
-            "content_alignment": "v-bottom h-center"
-          }
-        },
-        "image_qemUVY": {
-          "type": "image",
-          "name": "Under ₹2500",
-          "settings": {
-            "image": "shopify://shop_images/under_2500.webp",
-            "media_link": "shopify://collections/under-2500",
-            "title": "<p>Under<br/>₹2500</p><p></p>",
-            "button_label": "Shop Now",
-            "button_style": "primary",
-            "color_scheme": "",
-            "overlay_opacity": 15,
-            "content_alignment": "v-bottom h-center"
-          }
-        },
-        "image_GnQcjq": {
-          "type": "image",
-          "name": "Under ₹3500",
-          "settings": {
-            "image": "shopify://shop_images/under_3500.webp",
-            "media_link": "shopify://collections/under-3500",
-            "title": "<p>Under<br/>₹3500</p><p></p>",
-            "button_label": "Shop Now",
-            "button_style": "primary",
-            "color_scheme": "",
-            "overlay_opacity": 15,
-            "content_alignment": "v-bottom h-center"
-          }
-        },
-        "image_ewiRh4": {
-          "type": "image",
-          "name": "Under ₹4000",
-          "settings": {
-            "image": "shopify://shop_images/under_4000.webp",
-            "media_link": "shopify://collections/under-4000",
-            "title": "<p>Under<br/>₹4000</p><p></p>",
-            "button_label": "Shop Now",
-            "button_style": "primary",
-            "color_scheme": "",
-            "overlay_opacity": 15,
-            "content_alignment": "v-bottom h-center"
-          }
-        },
-        "image_FXFT7W": {
-          "type": "image",
-          "name": "Under ₹6000",
-          "settings": {
-            "image": "shopify://shop_images/under_6000.webp",
-            "media_link": "shopify://collections/under-6000",
-            "title": "<p>Under<br/>₹6000</p><p></p>",
-            "button_label": "Shop Now",
-            "button_style": "primary",
-            "color_scheme": "",
-            "overlay_opacity": 15,
-            "content_alignment": "v-bottom h-center"
-          }
-        }
-      },
-      "block_order": [
-        "custom_spacing_DQUgTr",
-        "image_FAdx8z",
-        "image_qemUVY",
-        "image_GnQcjq",
-        "image_ewiRh4",
-        "image_FXFT7W"
-      ],
-      "custom_css": [
-        ".banner-overlay {justify-content: flex-start !important; align-items: flex-start !important; text-align: left !important; padding: 20px 20px 70px !important;}",
-        ".banner-overlay > :last-child {position: absolute !important; bottom: 20px; left: 50%; transform: translateX(-50%); margin: 0 !important; white-space: nowrap;}",
-        ".banner-overlay p {font-size: 40px !important; line-height: 1.1; margin: 0;}",
-        ".banner-overlay p::first-line {font-size: 14px;}",
-        "@media (max-width: 767px) {.banner + .banner {margin-top: 10px !important; }}"
-      ],
-      "name": "t:sections.promo-grid-slideshow.name",
-      "settings": {
-        "color_scheme": "default",
-        "sm_block_aspect_ratio": "square",
-        "layout_desktop": "slide",
-        "section_columns_desktop": 3,
-        "sm_grid_gap": 12,
-        "sm_padding": 0,
-        "enable_full_width": false,
-        "sm_rounded_corners": false,
-        "section_columns_tablet": 2,
-        "block_aspect_ratio": "square",
-        "layout_mobile": "grid",
-        "section_columns_mobile": 1,
-        "grid_gap": 0,
-        "padding": 0,
-        "sm_down_edge_to_edge": false,
-        "rounded_corners": false,
-        "autoplay": false,
-        "autoplay_speed": 5,
-        "sliding_behavior": "single"
-      }
-    },
     "rich_text_eV7dCJ": {
       "type": "rich-text",
       "blocks": {
@@ -683,6 +519,170 @@
         "padding_bottom": 28
       }
     },
+    "rich_text_i6eTAg": {
+      "type": "rich-text",
+      "blocks": {
+        "text_HNLrUn": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Something special for<br/>that special one</h2>",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--default",
+            "margin_top": 0
+          }
+        }
+      },
+      "block_order": [
+        "text_HNLrUn"
+      ],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "color_scheme": "",
+        "content_width": "default",
+        "sm_content_position": "center",
+        "sm_text_alignment": "center",
+        "text_alignment": "center",
+        "custom_bg_color": "",
+        "custom_card_bg_color": "",
+        "custom_border_color": "",
+        "custom_card_border_color": "",
+        "custom_border_width": 1,
+        "custom_accent_color": "",
+        "custom_heading_color": "",
+        "custom_text_color": "",
+        "custom_btn_bg_color": "",
+        "custom_btn_text_color": "",
+        "custom_btn_border_color": "",
+        "md_padding_top": 80,
+        "md_padding_bottom": 0,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "promo_grid_and_slideshow_Key7y8": {
+      "type": "promo-grid-and-slideshow",
+      "blocks": {
+        "custom_spacing_DQUgTr": {
+          "type": "custom_spacing",
+          "settings": {
+            "sm_margin_top": 0,
+            "sm_padding_top": 30,
+            "sm_padding_bottom": 30,
+            "margin_top": 0,
+            "padding_top": 30,
+            "padding_bottom": 30
+          }
+        },
+        "image_FAdx8z": {
+          "type": "image",
+          "name": "Under ₹999",
+          "settings": {
+            "image": "shopify://shop_images/under_999.webp",
+            "media_link": "shopify://collections/under-999",
+            "title": "<p>Under<br/>₹999</p><p></p>",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 15,
+            "content_alignment": "v-bottom h-center"
+          }
+        },
+        "image_qemUVY": {
+          "type": "image",
+          "name": "Under ₹2500",
+          "settings": {
+            "image": "shopify://shop_images/under_2500.webp",
+            "media_link": "shopify://collections/under-2500",
+            "title": "<p>Under<br/>₹2500</p><p></p>",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 15,
+            "content_alignment": "v-bottom h-center"
+          }
+        },
+        "image_GnQcjq": {
+          "type": "image",
+          "name": "Under ₹3500",
+          "settings": {
+            "image": "shopify://shop_images/under_3500.webp",
+            "media_link": "shopify://collections/under-3500",
+            "title": "<p>Under<br/>₹3500</p><p></p>",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 15,
+            "content_alignment": "v-bottom h-center"
+          }
+        },
+        "image_ewiRh4": {
+          "type": "image",
+          "name": "Under ₹4000",
+          "settings": {
+            "image": "shopify://shop_images/under_4000.webp",
+            "media_link": "shopify://collections/under-4000",
+            "title": "<p>Under<br/>₹4000</p><p></p>",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 15,
+            "content_alignment": "v-bottom h-center"
+          }
+        },
+        "image_FXFT7W": {
+          "type": "image",
+          "name": "Under ₹6000",
+          "settings": {
+            "image": "shopify://shop_images/under_6000.webp",
+            "media_link": "shopify://collections/under-6000",
+            "title": "<p>Under<br/>₹6000</p><p></p>",
+            "button_label": "Shop Now",
+            "button_style": "primary",
+            "color_scheme": "",
+            "overlay_opacity": 15,
+            "content_alignment": "v-bottom h-center"
+          }
+        }
+      },
+      "block_order": [
+        "custom_spacing_DQUgTr",
+        "image_FAdx8z",
+        "image_qemUVY",
+        "image_GnQcjq",
+        "image_ewiRh4",
+        "image_FXFT7W"
+      ],
+      "custom_css": [
+        ".banner-overlay {justify-content: flex-start !important; align-items: flex-start !important; text-align: left !important; padding: 20px 20px 70px !important;}",
+        ".banner-overlay > :last-child {position: absolute !important; bottom: 20px; left: 50%; transform: translateX(-50%); margin: 0 !important; white-space: nowrap;}",
+        ".banner-overlay p {font-size: 40px !important; line-height: 1.1; margin: 0;}",
+        ".banner-overlay p::first-line {font-size: 14px;}",
+        "@media (max-width: 767px) {.banner + .banner {margin-top: 10px !important; }}"
+      ],
+      "name": "t:sections.promo-grid-slideshow.name",
+      "settings": {
+        "color_scheme": "default",
+        "sm_block_aspect_ratio": "square",
+        "layout_desktop": "slide",
+        "section_columns_desktop": 3,
+        "sm_grid_gap": 12,
+        "sm_padding": 0,
+        "enable_full_width": false,
+        "sm_rounded_corners": false,
+        "section_columns_tablet": 2,
+        "block_aspect_ratio": "square",
+        "layout_mobile": "grid",
+        "section_columns_mobile": 1,
+        "grid_gap": 0,
+        "padding": 0,
+        "sm_down_edge_to_edge": false,
+        "rounded_corners": false,
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "sliding_behavior": "single"
+      }
+    },
     "rich_text_gift_concierge": {
       "type": "gift-shop-concierge-form",
       "blocks": {
@@ -838,14 +838,14 @@
   "order": [
     "main",
     "hero_gift_banner",
-    "rich_text_i6eTAg",
-    "promo_grid_and_slideshow_Key7y8",
-    "rich_text_eV7dCJ",
     "collection_switcher_gift_curated",
     "rich_text_GAayAm",
     "multicolumn_TzT6Kk",
     "rich_text_wG4Un3",
     "multicolumn_tFtWEx",
+    "rich_text_i6eTAg",
+    "promo_grid_and_slideshow_Key7y8",
+    "rich_text_eV7dCJ",
     "rich_text_gift_concierge",
     "featured_product_iYnznY"
   ]
