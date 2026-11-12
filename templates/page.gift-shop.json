@@ -22,18 +22,6 @@
     "hero_gift_banner": {
       "type": "hero",
       "blocks": {
-        "title_WHWJcJ": {
-          "type": "title",
-          "disabled": true,
-          "settings": {
-            "title": "Gift for your loved ones",
-            "heading_tag": "h1",
-            "sm_size_multiplier": "sm-size--default",
-            "sm_margin_top": 0,
-            "size_multiplier": "size--default",
-            "margin_top": 0
-          }
-        },
         "image_banner": {
           "type": "image",
           "settings": {
@@ -42,11 +30,25 @@
             "image": "shopify://shop_images/Web_Banner_03_Gift_Page.webp",
             "image_mobile": "shopify://shop_images/Mobile_Banner_03_Gift_Page.webp"
           }
+        },
+        "title_WHWJcJ": {
+          "type": "title",
+          "settings": {
+            "title": "Gift for your loved ones",
+            "heading_tag": "h1",
+            "sm_size_multiplier": "sm-size--default",
+            "sm_margin_top": 0,
+            "size_multiplier": "size--default",
+            "margin_top": 0
+          }
         }
       },
       "block_order": [
-        "title_WHWJcJ",
-        "image_banner"
+        "image_banner",
+        "title_WHWJcJ"
+      ],
+      "custom_css": [
+        "h1 {position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip-path: inset(50%) !important; white-space: nowrap !important; border: 0 !important;}"
       ],
       "settings": {
         "color_scheme": "default",
