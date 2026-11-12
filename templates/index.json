@@ -150,8 +150,8 @@
         "ai_gen_block_f3964f7_aWtKbA"
       ],
       "custom_css": [
-        "[class*=\"__subheading\"] h1 {font-family: var(--font-body-family) !important; font-size: 12px !important; font-weight: inherit !important; font-style: inherit !important; line-height: 1.4 !important; letter-spacing: 0.12em !important; text-transform: uppercase !important; color: inherit !important; margin: 0 !important;}",
-        "@media screen and (max-width: 749px) {[class*=\"__subheading\"] h1 {font-size: 11px !important; }}"
+        "h1 {font-family: var(--font-body-family) !important; font-size: 12px !important; font-weight: inherit !important; font-style: inherit !important; line-height: 1.4 !important; letter-spacing: 0.12em !important; text-transform: uppercase !important; color: inherit !important; margin: 0 !important;}",
+        "@media screen and (max-width: 749px) {h1 {font-size: 11px !important; }}"
       ],
       "name": "Kiyaara's Intro",
       "settings": {}
