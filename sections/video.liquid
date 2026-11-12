@@ -26,7 +26,15 @@
   <div class="media-with-text grid col-align-items-center col-justify-items-center">
     <div class="{{ media_col_classes }}" {{ media_block.shopify_attributes }}>
       {% if media_block.settings.video != blank %}
-        {{ media_block.settings.video | video_tag: controls: true, image_size: 'x1080', controlslist: 'nodownload', class: 'br-video' }}
+        {%- capture section_video_html -%}
+          {{ media_block.settings.video | video_tag: controls: true, image_size: 'x1080', controlslist: 'nodownload', class: 'br-video' }}
+        {%- endcapture -%}
+        {%- unless section_video_html contains ' alt=' -%}
+          {%- assign section_video_alt = media_block.settings.video.alt | escape -%}
+          {%- assign section_img_with_alt = '<img alt="' | append: section_video_alt | append: '" ' -%}
+          {%- assign section_video_html = section_video_html | replace: '<img ', section_img_with_alt -%}
+        {%- endunless -%}
+        {{ section_video_html }}
       {% elsif media_block.settings.video_url != blank %}
         {% render 'video-url-to-player', video_url: media_block.settings.video_url %}
       {% else %}

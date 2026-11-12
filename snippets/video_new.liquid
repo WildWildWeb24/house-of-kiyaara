@@ -62,4 +62,14 @@
   {% assign html_video_tag = html_video_tag | replace: 'autoplay="autoplay"', 'data-autoplay' %}
 {% endif %}
 
+{%- comment -%}
+  Shopify's video_tag renders its poster <img> without an alt attribute.
+  Use the video file's alt text (set in Content > Files) when none is present.
+{%- endcomment -%}
+{%- unless html_video_tag contains ' alt=' -%}
+  {%- assign video_alt_text = video_default.alt | escape -%}
+  {%- assign img_with_alt = '<img alt="' | append: video_alt_text | append: '" ' -%}
+  {%- assign html_video_tag = html_video_tag | replace: '<img ', img_with_alt -%}
+{%- endunless -%}
+
 {{ html_video_tag }}
