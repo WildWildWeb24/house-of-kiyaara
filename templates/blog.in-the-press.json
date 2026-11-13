@@ -99,6 +99,24 @@
     "multicolumn_P39AXY": {
       "type": "multicolumn",
       "blocks": {
+        "column_49JzFq": {
+          "type": "column",
+          "settings": {
+            "press_date": "November 2026",
+            "press_logo": "shopify://shop_images/her_zindagi_logo.svg",
+            "image": "shopify://shop_images/Renata_Tote_Bag_Press_1280x720_6f404811-6dc9-413a-b6e3-55c12c2d26bd.webp",
+            "video_autoplay": true,
+            "video_controls": false,
+            "title": "Bhai Dooj 2026 Gift Ideas For Sister: 10+ Thoughtful And Luxury Picks",
+            "text": "<p>An everyday use bag perfect for girls who love space and make your corporate look ready for the evening too.&nbsp;The brand’s collection features distinctive designs inspired by butterflies, flowers, and leaves, bringing an artistic touch to everyday accessories. The bag can be a great fit for your gifting list for your sister, wife or mother.</p>",
+            "button_label": "Read More",
+            "button_link": "https://www.herzindagi.com/society-culture/bhai-dooj-2026-gift-ideas-for-sister-thoughtful-and-luxury-picks-article-1072010",
+            "button_style": "link",
+            "button_2_label": "",
+            "button_2_link": "",
+            "button_2_style": ""
+          }
+        },
         "column_m7AePw": {
           "type": "column",
           "settings": {
@@ -155,6 +173,7 @@
         }
       },
       "block_order": [
+        "column_49JzFq",
         "column_m7AePw",
         "column_rN8N8a",
         "column_67a3N8"
