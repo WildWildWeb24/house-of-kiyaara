@@ -1,3 +1,7 @@
+{%- comment -%} Enforced rule: empty (null) metafield text renders nothing. {%- endcomment -%}
+{%- capture richtext_plain -%}{{ block.settings.text | strip_html | strip }}{%- endcapture -%}
+{%- if richtext_plain != blank or block.settings.text contains '<img' or block.settings.text contains '<iframe' -%}
 <div class="rte {{ block.settings.size_multiplier }} {{ block.settings.sm_size_multiplier }}">
   {{- block.settings.text -}}
 </div>
+{%- endif -%}

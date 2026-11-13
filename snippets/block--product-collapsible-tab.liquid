@@ -9,7 +9,18 @@
   - sections/main-product.liquid: The main product section
 {% endcomment %}
 
-{% if block.settings.content != empty or block.settings.page.content != blank or block.settings.custom_liquid != blank %}
+{%- comment -%}
+  Enforced rule: a tab is only shown when its text (the metafield-bound content) has a value.
+  Empty metafields render "" or "<p></p>", so the rendered output is tested.
+  Images/titles inside the tab never keep an otherwise empty tab alive.
+{%- endcomment -%}
+{%- capture tab_content_text -%}{{ block.settings.content | strip_html | strip }}{%- endcapture -%}
+{%- assign tab_has_value = false -%}
+{%- if tab_content_text != blank or block.settings.page.content != blank -%}
+  {%- assign tab_has_value = true -%}
+{%- endif -%}
+
+{% if tab_has_value %}
   {%- assign collapsible_id = 'Details-' | append: block.id | append: '-' | append: section.id -%}
   {%- capture summary_title -%}
     <span>{{ block.settings.title | default: block.settings.page.title }}</span>

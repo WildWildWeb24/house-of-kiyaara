@@ -48,6 +48,15 @@
   assign slider_desktop = false
   assign slide_peek = false
   assign slider_items_count = column_blocks | size
+  assign show_multicolumn = true
+  if template.name == 'product'
+    # Enforced rule: if ANY column's metafield media is empty, the whole section is hidden
+    for block in column_blocks
+      if block.settings.video == blank and block.settings.image == blank
+        assign show_multicolumn = false
+      endif
+    endfor
+  endif
   assign aspect_ratio = section.settings.media_aspect_ratio | append: ' sm-' | append: section.settings.sm_media_aspect_ratio
 
   if section.settings.layout_mobile contains 'slide'
@@ -67,6 +76,7 @@
   endcapture
 -%}
 
+{%- if show_multicolumn -%}
 {% render 'section-custom-colors', section: section %}
 <div
   id="{{ section.id }}"
@@ -184,6 +194,7 @@
   </gridy-slider>
 
 </div>
+{%- endif -%}
 
 {% schema %}
 {
