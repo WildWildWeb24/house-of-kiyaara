@@ -10,19 +10,13 @@
 {% endcomment %}
 
 {%- comment -%}
-  Enforced rule: a tab is only shown when it has something to show.
-  Metafield-bound content that is null/empty renders as "" or "<p></p>", so we
-  test the RENDERED output: real text, or an image/video/svg/iframe, counts as a value.
+  Enforced rule: a tab is only shown when its text (the metafield-bound content) has a value.
+  Empty metafields render "" or "<p></p>", so the rendered output is tested.
+  Images/titles inside the tab never keep an otherwise empty tab alive.
 {%- endcomment -%}
 {%- capture tab_content_text -%}{{ block.settings.content | strip_html | strip }}{%- endcapture -%}
-{%- capture tab_custom_html -%}{{ block.settings.custom_liquid }}{%- endcapture -%}
-{%- capture tab_custom_text -%}{{ tab_custom_html | strip_html | strip }}{%- endcapture -%}
-{%- assign tab_has_media = false -%}
-{%- if tab_custom_html contains '<img' or tab_custom_html contains '<video' or tab_custom_html contains '<svg' or tab_custom_html contains '<iframe' or block.settings.content contains '<img' or block.settings.content contains '<video' -%}
-  {%- assign tab_has_media = true -%}
-{%- endif -%}
 {%- assign tab_has_value = false -%}
-{%- if tab_content_text != blank or tab_custom_text != blank or tab_has_media or block.settings.page.content != blank -%}
+{%- if tab_content_text != blank or block.settings.page.content != blank -%}
   {%- assign tab_has_value = true -%}
 {%- endif -%}
 
