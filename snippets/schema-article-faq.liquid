@@ -1,0 +1,50 @@
+{%- comment -%}
+  FAQPage JSON-LD for blog posts.
+  Source 1 (default): the post body. Any heading (h2-h4) that ends with "?" is a question,
+  and the text under it, up to the next heading, is its answer. The editor can style the FAQ any way.
+  Source 2 (optional override): article metafield custom.faq_schema, format  Q: question  A: answer
+{%- endcomment -%}
+{%- liquid
+  assign meta_raw = article.metafields.custom.faq_schema.value | default: '' | strip
+  assign faq_json = ''
+-%}
+{%- capture faq_json -%}
+  {%- assign faq_count = 0 -%}
+  {%- if meta_raw != blank -%}
+    {%- assign chunks = meta_raw | split: 'Q:' -%}
+    {%- for chunk in chunks -%}
+      {%- assign parts = chunk | split: 'A:' -%}
+      {%- assign q = parts[0] | strip_html | strip -%}
+      {%- assign a = chunk | remove_first: parts[0] | remove_first: 'A:' | strip_html | strip -%}
+      {%- if q != blank and a != blank -%}
+        {%- if faq_count > 0 -%},{%- endif -%}
+        {%- assign faq_count = faq_count | plus: 1 -%}
+{ "@type": "Question", "name": {{ q | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ a | json }} } }
+      {%- endif -%}
+    {%- endfor -%}
+  {%- else -%}
+    {%- assign body = article.content | replace: '<h3', '<h2' | replace: '</h3>', '</h2>' | replace: '<h4', '<h2' | replace: '</h4>', '</h2>' | replace: '<H2', '<h2' | replace: '</H2>', '</h2>' | replace: '</p>', '</p> ' | replace: '</li>', '</li> ' | replace: '<br>', ' ' -%}
+    {%- assign chunks = body | split: '<h2' -%}
+    {%- for chunk in chunks offset: 1 -%}
+      {%- assign open_end = chunk | split: '>' | first -%}
+      {%- assign rest = chunk | remove_first: open_end | remove_first: '>' -%}
+      {%- assign parts = rest | split: '</h2>' -%}
+      {%- assign q = parts[0] | strip_html | strip | replace: '&nbsp;', ' ' | strip -%}
+      {%- assign q_last = q | slice: -1 -%}
+      {%- if q_last == '?' -%}
+        {%- assign a = rest | remove_first: parts[0] | remove_first: '</h2>' | strip_html | strip | replace: '&nbsp;', ' ' | strip -%}
+        {%- if a != blank -%}
+          {%- if faq_count > 0 -%},{%- endif -%}
+          {%- assign faq_count = faq_count | plus: 1 -%}
+{ "@type": "Question", "name": {{ q | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ a | json }} } }
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- assign faq_json = faq_json | strip -%}
+{%- if faq_json != blank -%}
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [ {{ faq_json }} ] }
+</script>
+{%- endif -%}
