@@ -118,21 +118,10 @@
           "type": "custom_liquid",
           "name": "Festive10 offer",
           "settings": {
-            "custom_liquid": "{% assign show_non_sale_banner = false %}\n\n{% if product != blank %}\n  {% for product_collection in product.collections %}\n    {% if product_collection.title == 'Non Sale Items' %}\n      {% assign show_non_sale_banner = true %}\n      {% break %}\n    {% endif %}\n  {% endfor %}\n{% endif %}\n\n{% if show_non_sale_banner %}\n  <div class=\"non-sale-pdp-banner\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/hok-pdp-10.webp?v=1789556727\"\n      alt=\"Non Sale Items\"\n      loading=\"lazy\"\n      width=\"1600\"\n      height=\"500\"\n    >\n  </div>\n{% endif %}\n\n<style>\n  .non-sale-pdp-banner {\n    width: 100%;\n    margin: 20px 0;\n    line-height: 0;\n    overflow: hidden;\n  }\n\n  .non-sale-pdp-banner img {\n    display: block;\n    width: 100%;\n    height: auto;\n    max-width: 100%;\n  }\n</style>",
+            "custom_liquid": "<div class=\"non-sale-pdp-banner\"><img src=\"https://cdn.shopify.com/s/files/1/0567/8661/6449/files/hok-pdp-10.webp?v=1789556727\" alt=\"Non Sale Items\" loading=\"lazy\" width=\"1600\" height=\"500\"></div>\n<style>\n.non-sale-pdp-banner { width: 100%; margin: 20px 0; line-height: 0; overflow: hidden; }\n.non-sale-pdp-banner img { display: block; width: 100%; height: auto; max-width: 100%; }\n</style>",
             "sm_margin_top": 8,
             "block_column": "left",
             "margin_top": 8
-          }
-        },
-        "text_8PVtb3": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>*Discount codes applicable on non-sale items only</strong></p>",
-            "sm_margin_top": 8,
-            "sm_size_multiplier": "sm-size--default",
-            "block_column": "left",
-            "margin_top": 8,
-            "size_multiplier": "size--default"
           }
         },
         "same_day_pincode_checker_VNqrLy": {
@@ -312,7 +301,7 @@
           "name": "Terms & Conditions",
           "settings": {
             "title": "Terms & Conditions",
-            "content": "<p><strong>Terms & Conditions - Promotions, Rewards & Benefits</strong></p><p>House of Kiyaara may, from time to time, offer promotions, rewards, and benefits for purchases of bags and accessories, for a limited period. The terms and conditions of such promotions, rewards, and benefits will be specified separately at the time of the offer. &nbsp;&nbsp;</p><p>House of Kiyaara reserves the right to withdraw, modify, or change the terms and conditions of promotions, rewards, and benefits for online purchases at any time without prior notice. Any changes will be effective immediately upon posting to the website.</p><p><br/><strong>T&C Apply:&nbsp;</strong></p><ul><li>Only one free product can be claimed per order, regardless of the number of bags or accessories purchased in that single order.</li><li>Festival of Joy, up to 40% discount on selected styles.&nbsp;</li><li>Use code FESTIVE10 to enjoy a 10% discount on selected items only.</li><li>Discount codes applicable on non-sale items only.</li><li>Prepaid orders delivered within 24 hours across Mumbai</li></ul>",
+            "content": "<p><strong>Terms & Conditions - Promotions, Rewards & Benefits</strong></p><p>House of Kiyaara may, from time to time, offer promotions, rewards, and benefits for purchases of bags and accessories, for a limited period. The terms and conditions of such promotions, rewards, and benefits will be specified separately at the time of the offer. &nbsp;&nbsp;</p><p>House of Kiyaara reserves the right to withdraw, modify, or change the terms and conditions of promotions, rewards, and benefits for online purchases at any time without prior notice. Any changes will be effective immediately upon posting to the website.</p><p><br/><strong>T&C Apply:&nbsp;</strong></p><ul><li>Only one free product can be claimed per order, regardless of the number of bags or accessories purchased in that single order.</li><li>Festival of Joy, up to 40% discount on selected styles.&nbsp;</li><li>Use code FESTIVE10 to enjoy a 10% discount on selected items only.</li><li>Prepaid orders delivered within 24 hours across Mumbai</li></ul>",
             "page": "",
             "icon": "default",
             "sm_margin_top": 8,
@@ -351,7 +340,6 @@
         "description",
         "custom_liquid_KbBNk4",
         "custom_liquid_cYMBUm",
-        "text_8PVtb3",
         "same_day_pincode_checker_VNqrLy",
         "buy_buttons",
         "custom_liquid_dkRtjj",
