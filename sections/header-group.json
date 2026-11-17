@@ -50,12 +50,6 @@
             "title": "A little festive joy - Use code FESTIVE10 for 10% off"
           }
         },
-        "announcement_4": {
-          "type": "announcement",
-          "settings": {
-            "title": "Discount codes applicable on non-sale items only"
-          }
-        },
         "tracker_strip": {
           "type": "tracker_strip",
           "settings": {
@@ -69,7 +63,6 @@
         "overlay",
         "announcement_2",
         "announcement_3",
-        "announcement_4",
         "tracker_strip"
       ],
       "custom_css": [
