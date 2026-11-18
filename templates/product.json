@@ -152,112 +152,6 @@
             "margin_top": 40
           }
         },
-        "coupon_offer_aura700": {
-          "type": "coupon_offer",
-          "disabled": true,
-          "settings": {
-            "title": "Flat ₹700 Off",
-            "description": "Extra ₹700 off on this Auralis handbag",
-            "code": "aura700",
-            "products": [
-              "vegan-leather-deep-sea-blue-auralis-handbag",
-              "vegan-leather-dusty-teal-auralis-handbag"
-            ],
-            "hide_for_returning": false,
-            "hint_text": "Tap to copy",
-            "copied_text": "Copied ✓",
-            "card_bg": "#eef4f2",
-            "card_border": "#06413b",
-            "text_color": "#06413b",
-            "sm_margin_top": 10,
-            "block_column": "left",
-            "margin_top": 10
-          }
-        },
-        "coupon_offer_ila500": {
-          "type": "coupon_offer",
-          "disabled": true,
-          "settings": {
-            "title": "Flat ₹500 Off",
-            "description": "Extra ₹500 off on this Ila sling bag",
-            "code": "ila500",
-            "products": [
-              "vegan-leather-grey-blue-ila-sling-bag",
-              "vegan-leather-mustard-ila-sling-bag"
-            ],
-            "hide_for_returning": false,
-            "hint_text": "Tap to copy",
-            "copied_text": "Copied ✓",
-            "card_bg": "#eef4f2",
-            "card_border": "#06413b",
-            "text_color": "#06413b",
-            "sm_margin_top": 10,
-            "block_column": "left",
-            "margin_top": 10
-          }
-        },
-        "coupon_offer_save400": {
-          "type": "coupon_offer",
-          "disabled": true,
-          "settings": {
-            "title": "Flat ₹400 Off",
-            "description": "Extra ₹400 off on this bag",
-            "code": "save400",
-            "products": [
-              "vegan-leather-brown-fable-sling-crossbody-bag",
-              "vegan-leather-black-fable-sling-crossbody-bag",
-              "vegan-leather-white-taupe-knotty-bucket-bag",
-              "vegan-leather-cream-brown-knotty-bucket-bag"
-            ],
-            "hide_for_returning": false,
-            "hint_text": "Tap to copy",
-            "copied_text": "Copied ✓",
-            "card_bg": "#eef4f2",
-            "card_border": "#06413b",
-            "text_color": "#06413b",
-            "sm_margin_top": 10,
-            "block_column": "left",
-            "margin_top": 10
-          }
-        },
-        "coupon_offer_festive10": {
-          "type": "coupon_offer",
-          "disabled": true,
-          "settings": {
-            "title": "Flat 10% Off",
-            "description": "Get 10% off on orders above ₹400",
-            "code": "FESTIVE10",
-            "products": [],
-            "hide_for_returning": false,
-            "hint_text": "Tap to copy",
-            "copied_text": "Copied ✓",
-            "card_bg": "#eef4f2",
-            "card_border": "#06413b",
-            "text_color": "#06413b",
-            "sm_margin_top": 10,
-            "block_column": "left",
-            "margin_top": 10
-          }
-        },
-        "coupon_offer_welcome10": {
-          "type": "coupon_offer",
-          "disabled": true,
-          "settings": {
-            "title": "Welcome Offer: 10% Off",
-            "description": "10% off your first order above ₹400",
-            "code": "WELCOME10",
-            "products": [],
-            "hide_for_returning": true,
-            "hint_text": "Tap to copy",
-            "copied_text": "Copied ✓",
-            "card_bg": "#eef4f2",
-            "card_border": "#06413b",
-            "text_color": "#06413b",
-            "sm_margin_top": 10,
-            "block_column": "left",
-            "margin_top": 10
-          }
-        },
         "custom_liquid_dkRtjj": {
           "type": "custom_liquid",
           "name": "Kiyaara's USPs",
@@ -276,6 +170,107 @@
             "sm_margin_top": 8,
             "block_column": "left",
             "margin_top": 8
+          }
+        },
+        "coupon_offer_aura700": {
+          "type": "coupon_offer",
+          "settings": {
+            "title": "Flat ₹700 Off",
+            "description": "Extra ₹700 off on Auralis handbag",
+            "code": "aura700",
+            "products": [
+              "vegan-leather-deep-sea-blue-auralis-handbag",
+              "vegan-leather-dusty-teal-auralis-handbag"
+            ],
+            "hide_for_returning": false,
+            "hint_text": "Tap to copy",
+            "copied_text": "Copied ✓",
+            "card_bg": "#F5F0E6",
+            "card_border": "#241F14",
+            "text_color": "#22201E",
+            "sm_margin_top": 10,
+            "block_column": "left",
+            "margin_top": 10
+          }
+        },
+        "coupon_offer_ila500": {
+          "type": "coupon_offer",
+          "settings": {
+            "title": "Flat ₹500 Off",
+            "description": "Extra ₹500 off on Ila sling bag",
+            "code": "ila500",
+            "products": [
+              "vegan-leather-grey-blue-ila-sling-bag",
+              "vegan-leather-mustard-ila-sling-bag"
+            ],
+            "hide_for_returning": false,
+            "hint_text": "Tap to copy",
+            "copied_text": "Copied ✓",
+            "card_bg": "#F5F0E6",
+            "card_border": "#241F14",
+            "text_color": "#22201E",
+            "sm_margin_top": 10,
+            "block_column": "left",
+            "margin_top": 10
+          }
+        },
+        "coupon_offer_save400": {
+          "type": "coupon_offer",
+          "settings": {
+            "title": "Flat ₹400 Off",
+            "description": "Extra ₹400 off on this bag",
+            "code": "save400",
+            "products": [
+              "vegan-leather-brown-fable-sling-crossbody-bag",
+              "vegan-leather-black-fable-sling-crossbody-bag",
+              "vegan-leather-white-taupe-knotty-bucket-bag",
+              "vegan-leather-cream-brown-knotty-bucket-bag"
+            ],
+            "hide_for_returning": false,
+            "hint_text": "Tap to copy",
+            "copied_text": "Copied ✓",
+            "card_bg": "#F5F0E6",
+            "card_border": "#241F14",
+            "text_color": "#22201E",
+            "sm_margin_top": 10,
+            "block_column": "left",
+            "margin_top": 10
+          }
+        },
+        "coupon_offer_festive10": {
+          "type": "coupon_offer",
+          "settings": {
+            "title": "Flat 10% Off",
+            "description": "Get 10% off on your order",
+            "code": "FESTIVE10",
+            "products": [],
+            "hide_for_returning": false,
+            "hint_text": "Tap to copy",
+            "copied_text": "Copied ✓",
+            "card_bg": "#F5F0E6",
+            "card_border": "#241F14",
+            "text_color": "#22201E",
+            "sm_margin_top": 10,
+            "block_column": "left",
+            "margin_top": 10
+          }
+        },
+        "coupon_offer_welcome10": {
+          "type": "coupon_offer",
+          "settings": {
+            "title": "Welcome Offer: 10% Off",
+            "description": "10% off your first order",
+            "code": "WELCOME10",
+            "products": [],
+            "hide_for_returning": true,
+            "hint_text": "Tap to copy",
+            "copied_text": "Copied ✓",
+            "card_bg": "#F5F0E6",
+            "card_border": "#241F14",
+            "text_color": "#22201E",
+            "sm_margin_top": 10,
+            "block_column": "left",
+            "margin_top": 10
           }
         },
         "icons_TG89Mz": {
@@ -448,13 +443,13 @@
         "custom_liquid_cYMBUm",
         "same_day_pincode_checker_VNqrLy",
         "buy_buttons",
+        "custom_liquid_dkRtjj",
+        "custom_liquid_mG8JnJ",
         "coupon_offer_aura700",
         "coupon_offer_ila500",
         "coupon_offer_save400",
         "coupon_offer_festive10",
         "coupon_offer_welcome10",
-        "custom_liquid_dkRtjj",
-        "custom_liquid_mG8JnJ",
         "icons_TG89Mz",
         "share_MaQgQM",
         "inventory",
