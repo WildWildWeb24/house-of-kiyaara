@@ -206,6 +206,34 @@
           render 'block--property-bars', block: block
         when 'same_day_pincode_checker'
             render 'block--same-day-pincode-checker', block: block
+        when 'coupon_offer'
+          assign coupon_show = true
+          if block.settings.code == blank
+            assign coupon_show = false
+          endif
+          if block.settings.products.size > 0
+            assign coupon_match = false
+            for coupon_product in block.settings.products
+              if coupon_product.id == product.id
+                assign coupon_match = true
+                break
+              endif
+            endfor
+            unless coupon_match
+              assign coupon_show = false
+            endunless
+          endif
+          if block.settings.hide_for_returning and customer and customer.orders_count > 0
+            assign coupon_show = false
+          endif
+          if coupon_show
+            assign coupon_first = true
+            if coupon_first_done
+              assign coupon_first = false
+            endif
+            assign coupon_first_done = true
+            render 'block--coupon-offer', block: block, first: coupon_first, heading: section.settings.coupon_heading, heading_icon: section.settings.coupon_heading_icon, toast_message: section.settings.coupon_toast
+          endif
         endcase
     endcapture
   -%}
@@ -730,6 +758,30 @@
       "id": "sticky_buy_bar_color_scheme",
       "default": "default",
       "label": "t:sections.colors.color_scheme.label"
+    }
+    ,{
+      "type": "header",
+      "content": "Coupon offers"
+    },
+    {
+      "type": "text",
+      "id": "coupon_heading",
+      "label": "Offers heading",
+      "default": "Available Offers",
+      "info": "Shown above the first visible coupon offer block. Leave empty to hide."
+    },
+    {
+      "type": "image_picker",
+      "id": "coupon_heading_icon",
+      "label": "Offers heading icon",
+      "info": "Optional. A % badge is shown if empty."
+    },
+    {
+      "type": "text",
+      "id": "coupon_toast",
+      "label": "Message after copying",
+      "default": "[code] copied! Paste it at checkout",
+      "info": "[code] is replaced with the coupon code."
     }
   ],
   "blocks": [
@@ -3303,6 +3355,38 @@
           "max": 100,
           "step": 1
         }
+      ]
+    }
+    ,{
+      "type": "coupon_offer",
+      "name": "Coupon offer",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Flat 10% Off" },
+        { "type": "text", "id": "description", "label": "Description", "default": "Get 10% off on orders above ₹400" },
+        { "type": "text", "id": "code", "label": "Coupon code", "default": "FESTIVE10", "info": "Copied when the customer taps the card." },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Optional. Product image on a transparent or light background." },
+        { "type": "product_list", "id": "products", "label": "Eligible products", "limit": 50, "info": "Leave empty to show this offer on every product." },
+        { "type": "checkbox", "id": "hide_for_returning", "label": "Hide for logged-in customers with past orders", "info": "Use for first-order codes like WELCOME10. Guests still see it.", "default": false },
+        { "type": "text", "id": "hint_text", "label": "Tap hint", "default": "Tap to copy" },
+        { "type": "text", "id": "copied_text", "label": "Hint after copying", "default": "Copied ✓" },
+        { "type": "header", "content": "Colours" },
+        { "type": "color", "id": "card_bg", "label": "Card background", "default": "#EEF4F2" },
+        { "type": "color", "id": "card_border", "label": "Dashed border", "default": "#06413B" },
+        { "type": "color", "id": "text_color", "label": "Text", "default": "#06413B" },
+        { "type": "header", "content": "t:sections.headers.desktop_layout" },
+        { "id": "sm_margin_top", "type": "range", "label": "t:sections.layout.margin_top", "info": "t:blocks.margin_info", "unit": "px", "default": 10, "min": 0, "max": 200, "step": 2 },
+        {
+          "type": "select",
+          "id": "block_column",
+          "visible_if": "{{ section.settings.image_position == 'center' }}",
+          "label": "t:sections.main-product-big-image.block_column.label",
+          "options": [
+            { "value": "left", "label": "t:sections.main-product-big-image.block_column.options.left" },
+            { "value": "right", "label": "t:sections.main-product-big-image.block_column.options.right" }
+          ]
+        },
+        { "type": "header", "content": "t:sections.headers.mobile_layout" },
+        { "id": "margin_top", "type": "range", "label": "t:sections.layout.margin_top", "info": "t:blocks.margin_info", "unit": "px", "default": 10, "min": 0, "max": 100, "step": 1 }
       ]
     }
   ]

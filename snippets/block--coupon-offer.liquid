@@ -1,0 +1,188 @@
+{%- comment -%}
+  Renders one "Coupon offer" card on the product page.
+  Tapping the card copies the coupon code and shows a toast.
+  Expects:
+    block         - the section block (coupon_offer)
+    first         - true for the first visible offer (renders heading + shared CSS/JS)
+    heading       - offers heading text (section setting)
+    heading_icon  - optional image for the heading (section setting)
+    toast_message - text shown after copying (section setting)
+{%- endcomment -%}
+
+{%- if first -%}
+  {%- if heading != blank -%}
+    <div class="coupon-offers__heading">
+      {%- if heading_icon != blank -%}
+        {{ heading_icon | image_url: width: 64 | image_tag: class: 'coupon-offers__icon', alt: '', loading: 'lazy', width: 22, height: 22 }}
+      {%- else -%}
+        <svg class="coupon-offers__icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M12 1.5l2.4 1.8 3-.2 1 2.8 2.6 1.5-.6 2.9 1.1 2.7-2.2 2 -.3 3-2.9.6-1.7 2.5-2.8-1-2.8 1-1.7-2.5-2.9-.6-.3-3-2.2-2 1.1-2.7-.6-2.9 2.6-1.5 1-2.8 3 .2z"/>
+          <g fill="#fff"><circle cx="9" cy="9.5" r="1.6"/><circle cx="15" cy="14.5" r="1.6"/><rect x="11.2" y="5.5" width="1.6" height="13" rx=".8" transform="rotate(35 12 12)"/></g>
+        </svg>
+      {%- endif -%}
+      <p class="coupon-offers__title h6">{{ heading | escape }}</p>
+    </div>
+  {%- endif -%}
+
+  <style>
+    .coupon-offers__heading { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; padding-top: 28px; position: relative; z-index: 1; }
+    .coupon-offers__icon { width: 22px; height: 22px; object-fit: contain; flex: 0 0 auto; }
+    .coupon-offers__title { margin: 0; font-weight: 600; }
+    .coupon-offer__card {
+      --notch: 10px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      padding: 14px calc(var(--notch) + 12px);
+      background: var(--coupon-bg);
+      color: var(--coupon-text);
+      border: 1px dashed var(--coupon-border);
+      border-radius: 6px;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-mask:
+        radial-gradient(circle var(--notch) at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat,
+        radial-gradient(circle var(--notch) at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+              mask:
+        radial-gradient(circle var(--notch) at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat,
+        radial-gradient(circle var(--notch) at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+      transition: transform .15s ease;
+    }
+    .coupon-offer__card:active { transform: scale(.99); }
+    .coupon-offer__card:focus-visible { outline: 2px solid var(--coupon-border); outline-offset: 3px; }
+    .coupon-offer__media { flex: 0 0 56px; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; }
+    .coupon-offer__media img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+    .coupon-offer__body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+    .coupon-offer__name { font-weight: 700; font-size: 16px; line-height: 1.3; }
+    .coupon-offer__desc { font-size: 14px; line-height: 1.4; opacity: .85; }
+    .coupon-offer__code {
+      flex: 0 0 auto;
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      padding-left: 12px;
+      border-left: 1px dashed var(--coupon-border);
+    }
+    .coupon-offer__pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-weight: 700; font-size: 13px; letter-spacing: .04em; text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .coupon-offer__hint { font-size: 11px; letter-spacing: .03em; text-transform: uppercase; opacity: .7; white-space: nowrap; }
+    .coupon-offer__card.is-copied .coupon-offer__hint { opacity: 1; font-weight: 600; }
+    .coupon-offer__note { font-size: 12px; padding: 8px 10px; border: 1px dashed #bbb; opacity: .7; }
+    .coupon-toast {
+      position: fixed; left: 50%; bottom: 24px; z-index: 2147483000;
+      transform: translate(-50%, 20px);
+      max-width: calc(100vw - 32px);
+      padding: 12px 18px; border-radius: 999px;
+      background: #1a1a1a; color: #fff;
+      font-size: 14px; line-height: 1.3; text-align: center;
+      box-shadow: 0 6px 24px rgba(0,0,0,.18);
+      opacity: 0; pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .coupon-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+    @media (max-width: 480px) {
+      .coupon-offer__card { gap: 10px; padding-block: 12px; }
+      .coupon-offer__media { flex-basis: 44px; width: 44px; height: 44px; }
+      .coupon-offer__name { font-size: 15px; }
+      .coupon-offer__desc { font-size: 13px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .coupon-offer__card, .coupon-toast { transition: none; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      if (window.__couponOffersInit) return;
+      window.__couponOffersInit = true;
+
+      var toast, toastTimer;
+
+      function showToast(text) {
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.className = 'coupon-toast';
+          toast.setAttribute('role', 'status');
+          toast.setAttribute('aria-live', 'polite');
+          document.body.appendChild(toast);
+        }
+        toast.textContent = text;
+        toast.offsetHeight;
+        toast.classList.add('is-visible');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove('is-visible'); }, 2200);
+      }
+
+      function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-1000px';
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, text.length);
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        return ok;
+      }
+
+      function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          return navigator.clipboard.writeText(text).then(function () { return true; }, function () { return fallbackCopy(text); });
+        }
+        return Promise.resolve(fallbackCopy(text));
+      }
+
+      document.addEventListener('click', function (event) {
+        var card = event.target.closest('.coupon-offer__card');
+        if (!card) return;
+        var code = card.getAttribute('data-code');
+        if (!code) return;
+        var hint = card.querySelector('.coupon-offer__hint');
+        var hintText = hint ? hint.getAttribute('data-default') : '';
+        copyText(code).then(function (ok) {
+          var msg = ok ? (card.getAttribute('data-toast') || 'Code copied') : ('Your code: ' + code);
+          showToast(msg.replace('[code]', code));
+          if (ok && hint) {
+            card.classList.add('is-copied');
+            hint.textContent = hint.getAttribute('data-copied');
+            setTimeout(function () { card.classList.remove('is-copied'); hint.textContent = hintText; }, 2200);
+          }
+        });
+      });
+    })();
+  </script>
+{%- endif -%}
+
+<button
+  type="button"
+  class="coupon-offer__card"
+  data-code="{{ block.settings.code | strip | escape }}"
+  data-toast="{{ toast_message | escape }}"
+  aria-label="{{ block.settings.title | escape }}. Tap to copy code {{ block.settings.code | strip | escape }}"
+  style="--coupon-bg: {{ block.settings.card_bg }}; --coupon-border: {{ block.settings.card_border }}; --coupon-text: {{ block.settings.text_color }};"
+>
+  {%- if block.settings.image != blank -%}
+    <span class="coupon-offer__media">
+      {{ block.settings.image | image_url: width: 160 | image_tag: alt: '', loading: 'lazy', width: 56, height: 56 }}
+    </span>
+  {%- endif -%}
+  <span class="coupon-offer__body">
+    {%- if block.settings.title != blank -%}<span class="coupon-offer__name">{{ block.settings.title | escape }}</span>{%- endif -%}
+    {%- if block.settings.description != blank -%}<span class="coupon-offer__desc">{{ block.settings.description | escape }}</span>{%- endif -%}
+  </span>
+  <span class="coupon-offer__code">
+    <span class="coupon-offer__pill">
+      {{ block.settings.code | strip | escape }}
+      <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 9h10v12H9zM5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>
+    </span>
+    <span class="coupon-offer__hint" data-default="{{ block.settings.hint_text | escape }}" data-copied="{{ block.settings.copied_text | escape }}">{{ block.settings.hint_text | escape }}</span>
+  </span>
+</button>
