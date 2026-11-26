@@ -365,10 +365,3 @@
   order: 1;
   margin-top: auto;
 }
-/* Product card image: rating text and star in the same red as the discount */
-.card--product .card-media-overlay .badge.rating {
-  color: var(--badge-color-foreground--sale);
-}
-.card--product .card-media-overlay .badge.rating .rating-star::before {
-  color: inherit;
-}
