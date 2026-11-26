@@ -348,16 +348,18 @@
 .card--product:not(upsell-card) quick-add {
   margin-top: auto;
 }
-/* Product card image: rating top-left, discount % top-right */
+/* Product card image: discount % top-left, rating bottom-left */
 .card--product .card-media-overlay .badges {
   width: 100%;
+  height: 100%;
+  flex-direction: column;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
 }
-.card--product .card-media-overlay .badge.rating {
-  margin-right: auto;
-}
 .card--product .card-media-overlay .badge.sale {
-  margin-left: auto;
+  margin-bottom: auto;
+}
+.card--product .card-media-overlay .badge.rating {
+  margin-top: auto;
 }
