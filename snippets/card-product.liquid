@@ -69,7 +69,13 @@
     %}
 
     {% capture quick_buy_html %}
-      {%- if quick_buy_mode == 'quick_view' -%}
+      {%- if product.available == false -%}
+        <div class="quick-add-unavailable quick-view-or-add">
+          <button class="btn btn--primary size--small btn--full" disabled>
+            <span class="quick-add-text">Out of Stock</span>
+          </button>
+        </div>
+      {%- elsif quick_buy_mode == 'quick_view' -%}
         <quick-view data-product="{{ product.id }}" data-variant="{{ product.selected_or_first_available_variant.id }}" data-url="{{ product.url }}" class="js quick-view quick-view-or-add">
           <button class="btn btn--primary size--small btn--full quick-view-link" data-product-handle="{{ product.handle }}" data-open="{{ 'modal-' | append: product.id | append: '-product' }}" aria-label="{{ 'accessibility.open_quick_view' | t: product: product.title }}" aria-haspopup="dialog">
             <span class="label">{{- 'products.quick_buy.label_mode_view' | t -}}</span>
