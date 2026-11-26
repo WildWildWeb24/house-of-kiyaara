@@ -358,8 +358,10 @@
   align-items: flex-start;
 }
 .card--product .card-media-overlay .badge.sale {
+  order: -1;
   margin-bottom: auto;
 }
 .card--product .card-media-overlay .badge.rating {
+  order: 1;
   margin-top: auto;
 }
