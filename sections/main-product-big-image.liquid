@@ -226,15 +226,12 @@
           if block.settings.hide_for_returning and customer and customer.orders_count > 0
             assign coupon_show = false
           endif
-          assign coupon_code_up = block.settings.code | upcase
-          unless coupon_code_up == 'FESTIVE10' or coupon_code_up == 'WELCOME10'
-            for coupon_collection in product.collections
-              if coupon_collection.handle == 'curated-bundles'
-                assign coupon_show = false
-                break
-              endif
-            endfor
-          endunless
+          for coupon_collection in product.collections
+            if coupon_collection.handle == 'curated-bundles'
+              assign coupon_show = false
+              break
+            endif
+          endfor
           if coupon_show
             assign coupon_first = true
             if coupon_first_done
