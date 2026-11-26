@@ -358,7 +358,7 @@
       "product_variants": "Product variants",
       "shipping_policy_html": "<a href=\"{{ link }}\" class=\"link\">Shipping</a> calculated at checkout.",
       "sku": "SKU",
-      "sold_out": "Sold out",
+      "sold_out": "Out of Stock",
       "unavailable": "Unavailable",
       "value_unavailable": "{{ option_value }} - Unavailable",
       "video_exit_message": "{{ title }} opens full screen video in same window.",
