@@ -349,7 +349,15 @@
           "overlay": "#000000"
         }
       }
-    }
+    },
+    "mid": "19g857agfvkf",
+    "envType": "production",
+    "goEnable": true,
+    "goBuynowEnable": true,
+    "buyNowText": "Buy Now",
+    "ga4Gokwik": "G-9WS4L748J7",
+    "fbpixel": "819363707457341",
+    "enableIntlFlow": false
   },
   "installed_preset_name": "Carry",
   "presets": {

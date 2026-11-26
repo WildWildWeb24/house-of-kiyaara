@@ -348,3 +348,16 @@
 .card--product:not(upsell-card) quick-add {
   margin-top: auto;
 }
+/* Product card image: rating top-left, discount % top-right */
+.card--product .card-media-overlay .badges {
+  width: 100%;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.card--product .card-media-overlay .badge.rating {
+  margin-right: auto;
+}
+.card--product .card-media-overlay .badge.sale {
+  margin-left: auto;
+}

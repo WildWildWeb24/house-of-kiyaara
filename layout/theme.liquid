@@ -181,7 +181,12 @@
     {% if settings.head_custom_liquid != blank -%}
       {{ settings.head_custom_liquid }}
     {% endif %}
-  </head>
+  <!-- Gokwik theme code start -->
+<link rel="dns-prefetch" href="https://pdp.gokwik.co/">
+<link rel="dns-prefetch" href="https://api.gokwik.co">
+{% render 'gokwik' %}
+<!-- Gokwik theme code End -->
+</head>
 
   <body class="woolman">
     <!-- Google Tag Manager (noscript) -->
@@ -294,7 +299,9 @@
     {%- endif -%}
 
 <script src="{{ 'cart-checkout-guard.js' | asset_url }}" defer="defer"></script>
+{% comment %} gk-neutralized
 {% render 'razorpay-magic-checkout' %}
+{% endcomment %}
 
 {%- comment -%}
   RETIRED 2026-11-02: free Twilly auto-add (window.freeGiftConfig + assets/free-gift-twilly.js) is switched off.

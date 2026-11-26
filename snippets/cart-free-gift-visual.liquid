@@ -1,0 +1,50 @@
+{%- comment -%}
+  Display-only free gift card (GoKwik): same look as cart-free-scarf-line.liquid, but built from a product
+  instead of a real cart line. Nothing is added to the cart or sent to checkout: the gifts are
+  added at the GoKwik checkout layer. No updates[] input on purpose, so the cart form's positional
+  quantities are untouched.
+  Params: product (the gift product), label, note (optional short line shown under the title, e.g. a prompt to choose the colour at checkout). show_chooser is not supported (colour is chosen at checkout).
+{%- endcomment -%}
+{%- assign gv = product.selected_or_first_available_variant -%}
+<div
+  class="cart-item cart-item--gift cart-item--gift-compact cart-item--gift-visual"
+  data-gift-visual="{{ product.id }}"
+  style="
+    --fg-label-bg: {{ settings.free_scarf_card_label_bg }};
+    --fg-label-color: {{ settings.free_scarf_card_label_color }};
+    --fg-card-bg: {{ settings.free_scarf_card_bg }};
+    --fg-radius: {{ settings.free_scarf_card_radius }}px;
+    --fg-price-color: {{ settings.free_scarf_price_color }};
+    --fg-title-size: {{ settings.free_scarf_title_size }}px;
+  "
+>
+  <div class="gift-card__label"><span>{{ settings.free_scarf_card_label_text | escape }}</span></div>
+
+  <div class="gift-card__image">
+    {%- if product.featured_image -%}
+      <img src="{{ product.featured_image | image_url: width: 240 }}" alt="{{ label | default: product.title | escape }}" loading="lazy" width="240" height="{{ 240 | divided_by: product.featured_image.aspect_ratio | ceil }}">
+    {%- endif -%}
+  </div>
+
+  <div class="gift-card__details">
+    <span class="cart-item__title gift-card__title">{{ label | default: product.title | escape }}</span>
+    {%- if note != blank -%}
+      <span class="gift-card__note">{{ note | escape }}</span>
+    {%- endif -%}
+
+    <div class="gift-card__meta">
+      <div class="gift-card__price">
+        {%- if gv.compare_at_price > 0 -%}
+          <s class="gift-card__old size--small">{{ gv.compare_at_price | money_without_trailing_zeros }}</s>
+        {%- endif -%}
+        <strong class="gift-card__free">
+          {%- if settings.free_scarf_price_text != blank -%}
+            {{- settings.free_scarf_price_text | escape -}}
+          {%- else -%}
+            {{- 0 | money -}}
+          {%- endif -%}
+        </strong>
+      </div>
+    </div>
+  </div>
+</div>

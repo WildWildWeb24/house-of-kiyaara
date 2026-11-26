@@ -210,19 +210,67 @@
   </div>
   {%- endfor -%}
 
-  {%- comment -%} 2. Free gift products below paid products {%- endcomment -%}
-  {%- for item in cart.items -%}
-    {%- assign gift_line = false -%}
-    {%- if settings.enable_free_scarf and item.properties._free_product == 'true' -%}
-      {%- assign gift_keys = 'free_scarf_product_1,free_scarf_product_2,free_scarf_product_3,free_sticker_product,free_cards_product' | split: ',' -%}
-      {%- for gift_key in gift_keys -%}
-        {%- if settings[gift_key].id == item.product_id -%}{%- assign gift_line = true -%}{%- endif -%}
+  {%- comment -%}
+    2. Free gifts, DISPLAY ONLY (GoKwik): shown from the cart value, never added to the cart. They are
+    added at the GoKwik checkout layer, so nothing but the purchased products moves on to checkout.
+    Same rules as the tracker: paid lines only (gift cards excluded), one eligible-collection item needed.
+  {%- endcomment -%}
+  {%- liquid
+    assign vg_total = 0
+    for item in cart.items
+      if item.properties._free_product == 'true' or item.gift_card or item.product.gift_card?
+        continue
+      endif
+      assign vg_total = vg_total | plus: item.final_line_price
+    endfor
+
+    assign vg_eligible = false
+    assign vg_collection = collections['all-products-sitewide-auto']
+    if vg_collection != blank and vg_collection.id != nil
+      for item in cart.items
+        if item.properties._free_product == 'true' or item.gift_card or item.product.gift_card?
+          continue
+        endif
+        for c in item.product.collections
+          if c.id == vg_collection.id
+            assign vg_eligible = true
+            break
+          endif
+        endfor
+        if vg_eligible
+          break
+        endif
+      endfor
+    endif
+  -%}
+  {%- if settings.enable_free_scarf and vg_eligible -%}
+    {%- assign vg_sticker = settings.free_sticker_product -%}
+    {%- assign vg_sticker_thr = settings.free_sticker_threshold | default: 999 | times: 100 -%}
+    {%- if vg_sticker != blank and vg_sticker.price == 0 and vg_sticker.selected_or_first_available_variant.available and vg_total >= vg_sticker_thr -%}
+      {%- render 'cart-free-gift-visual', product: vg_sticker, label: 'Free Sticker Pack' -%}
+    {%- endif -%}
+
+    {%- assign vg_cards = settings.free_cards_product -%}
+    {%- assign vg_cards_thr = settings.free_cards_threshold | default: 1500 | times: 100 -%}
+    {%- if vg_cards != blank and vg_cards.price == 0 and vg_cards.selected_or_first_available_variant.available and vg_total >= vg_cards_thr -%}
+      {%- render 'cart-free-gift-visual', product: vg_cards, label: 'Free Farasha Greeting Cards' -%}
+    {%- endif -%}
+
+    {%- assign vg_scarf_thr = settings.free_scarf_threshold | default: 2000 | times: 100 -%}
+    {%- if vg_total >= vg_scarf_thr -%}
+      {%- assign vg_scarf = blank -%}
+      {%- for k in (1..3) -%}
+        {%- assign vg_scarf_key = 'free_scarf_product_' | append: k -%}
+        {%- assign vg_gp = settings[vg_scarf_key] -%}
+        {%- if vg_scarf == blank and vg_gp != blank and vg_gp.price == 0 and vg_gp.selected_or_first_available_variant.available -%}
+          {%- assign vg_scarf = vg_gp -%}
+        {%- endif -%}
       {%- endfor -%}
+      {%- if vg_scarf != blank -%}
+        {%- render 'cart-free-gift-visual', product: vg_scarf, label: 'Free Scarf', note: settings.free_scarf_checkout_note -%}
+      {%- endif -%}
     {%- endif -%}
-    {%- if gift_line -%}
-      {%- render 'cart-free-scarf-line', item: item, item_index: forloop.index -%}
-    {%- endif -%}
-  {%- endfor -%}
+  {%- endif -%}
   {% endif %}
 
   <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>

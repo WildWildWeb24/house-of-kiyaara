@@ -272,3 +272,21 @@
   font-weight: 600;
   color: var(--savings-color, #1f7a3d);
 }
+
+/* Display-only gift cards (GoKwik): show the full product name, wrap instead of cutting it off */
+.cart-item--gift-visual .gift-card__title {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
+}
+
+/* Display-only free scarf: prompt to pick the colour at checkout */
+.cart-item--gift-visual .gift-card__note {
+  grid-column: 1 / -1;
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+}

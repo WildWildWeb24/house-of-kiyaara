@@ -399,7 +399,10 @@
 
     GIFTS.forEach(function (gift) {
       var lines = cart.items.filter(function (i) { return giftOf(i) === gift; });
-      if (!qualifies(gift, t)) {
+      // GoKwik (2026-11-17): gifts are DISPLAY ONLY in the cart (rendered by snippets/cart-free-gift-visual.liquid)
+      // and are added at the GoKwik checkout layer. So never add or keep a real gift line in the cart; any that
+      // exist (old carts, console) are removed so nothing but purchased products reaches checkout.
+      if (true) {
         removes = removes.concat(lines);
         return;
       }

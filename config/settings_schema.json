@@ -299,8 +299,8 @@
         "label": "t:sections.typography.line_height",
         "default": 1.6,
         "step": 0.1,
-        "min": 1.0,
-        "max": 2.0,
+        "min": 1,
+        "max": 2,
         "unit": "×"
       },
       {
@@ -330,8 +330,8 @@
         "label": "t:sections.typography.line_height",
         "default": 1.2,
         "step": 0.1,
-        "min": 1.0,
-        "max": 2.0,
+        "min": 1,
+        "max": 2,
         "unit": "×"
       },
       {
@@ -1844,7 +1844,7 @@
         "default": false,
         "info": "t:settings_schema.cart.settings.show_cart_recommendations.info"
       },
-            {
+      {
         "type": "product_list",
         "id": "cart_recommendation_products",
         "label": "Cart drawer \"You may also like\" products",
@@ -1879,7 +1879,7 @@
         "info": "t:settings_schema.cart.settings.show_empty_cart_haiku.info",
         "default": false
       },
-            {
+      {
         "type": "header",
         "content": "Make it a gift"
       },
@@ -2139,6 +2139,13 @@
       {
         "type": "header",
         "content": "Free scarf color chooser (cart)"
+      },
+      {
+        "type": "text",
+        "id": "free_scarf_checkout_note",
+        "label": "Free scarf note (cart)",
+        "info": "Shown under the Free Scarf line in the cart. Leave empty to hide it.",
+        "default": "Make your color selection at checkout."
       },
       {
         "type": "text",
@@ -2568,6 +2575,146 @@
         "id": "body_custom_liquid",
         "label": "t:settings_schema.advanced.settings.body_custom_liquid.label",
         "info": "t:settings_schema.advanced.settings.body_custom_liquid.info"
+      }
+    ]
+  },
+  {
+    "name": "Gokwik",
+    "settings": [
+      {
+        "type": "text",
+        "id": "mid",
+        "label": "Merchant Id"
+      },
+      {
+        "type": "header",
+        "content": "Select environment"
+      },
+      {
+        "type": "select",
+        "id": "envType",
+        "default": "production",
+        "options": [
+          {
+            "value": "qa",
+            "label": "QA"
+          },
+          {
+            "value": "sandbox",
+            "label": "Sandbox"
+          },
+          {
+            "value": "production",
+            "label": "Production"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "hideFlow",
+        "label": "Button hide without disable",
+        "info": "To hide only button without disable Gokwik flow",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Data Tracking"
+      },
+      {
+        "type": "text",
+        "id": "ga4Gokwik",
+        "label": "Enter Google Analytics ID (GA4)",
+        "placeholder": "Starts with GA- ...."
+      },
+      {
+        "type": "text",
+        "id": "fbpixel",
+        "label": "FB Pixel"
+      },
+      {
+        "type": "text",
+        "id": "snapPixel",
+        "label": "Snapchat Pixel"
+      },
+      {
+        "type": "text",
+        "id": "gadsGokwik",
+        "label": "Google Ads Conversion ID (AW-…)"
+      },
+      {
+        "type": "header",
+        "content": "Checkout Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "goEnable",
+        "label": "Enable Checkout Interception",
+        "info": "GoKwik will intercept native checkout buttons automatically",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "checkoutSubText",
+        "label": "Checkout Button Sub Text",
+        "placeholder": "e.g. ₹100 Off on prepaid orders",
+        "info": "Leave blank to hide sub text on checkout button"
+      },
+      {
+        "type": "checkbox",
+        "id": "checkoutEnableLogo",
+        "label": "Show Payment Icons on Checkout Button",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "checkoutEnableBanner",
+        "label": "Show Checkout Sub Text as Banner (above button)",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Buy Now Button"
+      },
+      {
+        "type": "checkbox",
+        "id": "goBuynowEnable",
+        "label": "Enable Buy Now Interception",
+        "info": "GoKwik will intercept native buy now buttons automatically",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "buyNowText",
+        "label": "Buy Now Button Text",
+        "default": "Buy It Now"
+      },
+      {
+        "type": "text",
+        "id": "buyNowSubText",
+        "label": "Buy Now Button Sub Text",
+        "placeholder": "e.g. ₹100 Off on prepaid orders",
+        "info": "Leave blank to hide sub text on buy now button"
+      },
+      {
+        "type": "checkbox",
+        "id": "buyNowEnableLogo",
+        "label": "Show Payment Icons on Buy Now Button",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "buyNowEnableBanner",
+        "label": "Show Buy Now Sub Text as Banner (above button)",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Other Settings"
+      },
+      {
+        "type": "checkbox",
+        "id": "enableIntlFlow",
+        "label": "Enable International Flow"
       }
     ]
   }
